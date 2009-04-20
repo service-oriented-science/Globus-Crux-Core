@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.globus.sos</groupId>
     <artifactId>sos-core-parent</artifactId>
-    <version>0.1</version>
+    <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>SOS Core Parent Project</name>
 
@@ -143,7 +143,6 @@
                 <version>${postgresql.jdbc.version}</version>
             </dependency>
         </dependencies>
-
     </dependencyManagement>
 
 
@@ -178,8 +177,28 @@
                 </configuration>
             </plugin>
         </plugins>
-        
     </build>
+
+    <repositories>
+        <repository>
+          <id>globus-repo</id>
+          <name>Globus Maven Repository</name>
+          <url>http://jira.globus.org/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>globus-releases</id>
+      <name>Globus Snapshots</name>
+      <url>http://jira.globus.org/nexus/content/repositories/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>globus-snapshots</id>
+      <name>Globus Snapshots</name>
+      <url>http://jira.globus.org/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 
 
     <pluginRepositories>

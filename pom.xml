@@ -10,6 +10,7 @@
     <name>Crux Parent Project</name>
 
     <modules>
+        <module>sample</module>
     </modules>
 
 </project>

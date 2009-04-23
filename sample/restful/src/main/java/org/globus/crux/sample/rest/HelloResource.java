@@ -6,6 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
+
 @Path("/hello")
 public class HelloResource {
     private SampleService service;

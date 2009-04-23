@@ -11,6 +11,23 @@
 
     <modules>
         <module>sample</module>
+        <module>archetype</module>
     </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>2.0-beta-6</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.doxia</groupId>
+                        <artifactId>doxia-module-docbook-simple</artifactId>
+                        <version>1.0-alpha-10</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

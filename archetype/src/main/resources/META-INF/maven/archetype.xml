@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype>
+  <id>sample-project</id>
+  <resources>
+    <resource>restful/pom.xml</resource>
+    <resource>restful/restful.iml</resource>
+    <resource>restful/src/main/java/org/globus/crux/sample/rest/HelloResource.java</resource>
+    <resource>restful/src/main/java/readme.txt</resource>
+    <resource>restful/src/main/resources/log4j.properties</resource>
+    <resource>restful/src/main/webapp/WEB-INF/beans.xml</resource>
+    <resource>restful/src/main/webapp/WEB-INF/web.xml</resource>
+    <resource>sample.iml</resource>
+    <resource>service/pom.xml</resource>
+    <resource>service/service.iml</resource>
+    <resource>service/src/main/java/org/globus/crux/sample/service/impl/SampleServiceImpl.java</resource>
+    <resource>service/src/main/java/org/globus/crux/sample/service/SampleService.java</resource>
+    <resource>service/src/main/java/readme.txt</resource>
+  </resources>
+</archetype>

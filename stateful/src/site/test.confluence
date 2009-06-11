@@ -1,0 +1,140 @@
+CXF uses WSS4J to implement its WS-Security Interceptors.  Metro (WSIT) uses XWSS.  Because XWSS uses StAX processing instead of DOM, we were curious to know if XWSS outperformed WSS4J when signing and encrypting SOAP Messages.
+
+The code used for this test is attached at the end of this page.  The code is configured as a [Maven|http://maven.apache.org] project.
+
+h2. Test Configuration
+
+To test the performance, we set up the following test:
+
+Test details:
+MacBook Pro 2.4 GHz Intel Core 2 Duo 4GB SDRAM
+Intellij 8.1.2 (for development)
+Java 1.6.0_7 (Apple version)
+WSS4J 1.5.7
+XWSS 3.0
+JMeter 2.3.3
+
+The test was set up to sign and encrypt an actual message used by the caBig team.  The message was 3.5 m in size.
+
+For encrypting, we used a Java Key Store (JKS).  However, because XWSS relies on the SubjectKeyIdentifier certificate extension (at least according to: [Glen Mazza|http://www.jroller.com/gmazza/date/20080805]), we generated the certificates using OpenSSL and converted them to JKS using the directions supplied by Glen Mazza:
+{panel}
+Creating the Service keystore:
+
+rm *.p12 *.pem *.jks *.cer
+openssl req -x509 -days 3650 -newkey rsa:1024 -keyout servicekey.pem -out servicecert.pem
+   -passout pass:sspass   # See Note 1
+openssl pkcs12 -export -inkey servicekey.pem -in servicecert.pem -out service.p12
+   -name myservicekey -passin pass:sspass -passout pass:skpass   # See Note 2
+keytool -importkeystore -destkeystore servicestore.jks -deststorepass sspass
+   -srckeystore service.p12 -srcstorepass skpass -srcstoretype pkcs12    # See Note 3
+keytool -list -keystore servicestore.jks -storepass sspass    # See Note 4
+keytool -exportcert -alias myservicekey -storepass sspass -keystore servicestore.jks
+   -file service.cer
+keytool -printcert -file service.cer
+rm *.pem *.p12
+
+Creating the Client keystore:
+
+openssl req -x509 -days 3650 -newkey rsa:1024 -keyout clientkey.pem -out clientcert.pem
+   -passout pass:cspass   # See Note 1
+openssl pkcs12 -export -inkey clientkey.pem -in clientcert.pem -out client.p12
+   -name myclientkey -passin pass:cspass -passout pass:ckpass
+keytool -importkeystore -destkeystore clientstore.jks -deststorepass cspass
+   -srckeystore client.p12 -srcstorepass ckpass -srcstoretype pkcs12
+keytool -list -keystore clientstore.jks -storepass cspass
+keytool -exportcert -alias myclientkey -storepass cspass -keystore clientstore.jks
+   -file client.cer
+keytool -printcert -file client.cer
+rm *.pem *.p12
+{panel}
+
+At this point we had both a client keystore and a server keystore.&nbsp; The security plan was:
+# Add WSS Timestamp Header.
+# Encrypt the message using the server's certificate in client keystore.
+# Sign message using client's private key in client keystore.
+# Verify signature using client's certificate in server keystore.
+# Decrypt message using server's private key in server keystore.
+
+XWSS and WSS4J have different ways of configuring and executing security plans.&nbsp; 
+
+h3. WSS4J Code
+The standard method in WSS4J is to configure it programmatically.  The following snippet is how we configured our test in WSS4J:
+
+{code:Java}
+WSSecEncrypt encrypt = new WSSecEncrypt();
+WSSecSignature sign = new WSSecSignature();
+WSSecTimestamp timestamp = new WSSecTimestamp();
+String alias = "myclientkey";
+String password = "ckpass";
+Document doc = getSOAPAsDoc(message);
+encrypt.setUserInfo("myservicekey", password);
+sign.setUserInfo(alias, password);
+WSSecHeader secHeader = new WSSecHeader();
+secHeader.insertSecurityHeader(doc);
+//build timestamp
+doc = timestamp.build(doc, secHeader);
+//encrypt message
+doc = encrypt.build(doc, clientCrypto, secHeader);
+//sign message
+doc = sign.build(doc, clientCrypto, 
+{code}
+The "clientCrypt" object was configured to use the client keystore using an external properties file.  The signed and encrypted message was then decrypted using this code:
+
+{code:Java}
+secEngine.processSecurityHeader(doc, null, this, serviceCrypto);
+{code}
+Similarly, the serviceCrypto was configured to use the service keystore using and external properties file.
+
+h3. XWSS Code
+XWSS configuration is generally specified in XML.  The following code executed the security steps we specify in our XML configuration file:
+
+{code:Java}
+ProcessingContext context = new ProcessingContext();
+context.setSOAPMessage(message);
+cprocessor.secureOutboundMessage(context);
+verify(context.getSOAPMessage());
+{code}
+
+The ProcessingContext object is configured to use our XML configuration file, which defines our security steps:
+
+{code:XML}
+<xwss:SecurityConfiguration dumpMessages="true"
+                            xmlns:xwss="http://java.sun.com/xml/ns/xwss/config">
+    <xwss:Timestamp/>
+            
+    <xwss:Sign>
+        <xwss:X509Token certificateAlias="myclientkey"/>        
+    </xwss:Sign>
+
+    <xwss:Encrypt>
+        <xwss:X509Token certificateAlias="myservicekey"/>
+        <xwss:EncryptionTarget type="xpath" value=".//SOAP-ENV:Body"/>
+    </xwss:Encrypt>
+    
+</xwss:SecurityConfiguration>
+{code}
+
+h2. Test Setup
+We used [JMeter|http://jakarta.apache.org/jmeter] to run our performance test and collect the results.  We created an instance of JavaSamplerClient from JMeter to allow us to run our arbitrary code in JMeter.  Then we executed the above security plan (including decryption) 1000 times sequentially, i.e., XWSS followed by WSS4J, using a single thread in a thread group.  The results were collected as aggregates and as individual results.
+
+h2. Results
+
+Simply put, WSS4J performed far better than XWSS in our test.  Below are the aggregated results.  The time required to process each message with WSS4J is less than half the time required to process the same message with XWSS.
+
+The following summarizes the results for both WSS4J and XWSS.
+
+|| Toolkit || Num. Samples || Average Time (ms) || Min Time (ms) || Max Time (ms) || Std. Dev. (ms) || Throughput (samples/min) ||
+| WSS4J | 1000 | 1402 | 1238 | 1827 | 132.21 | 42.7/min |
+| XWSS | 1000 | 3260 | 2932 | 4110 | 1222.32 | 18.4/min |
+
+Below is a graph showing a sample of requests for WSS4J, with spline curves connecting the points:
+!wss4j-spline.png!
+
+And, similarly, here is a graph showing a sample of requests for XWSS, with spline curves connecting the points:
+!xwss-spline.png!
+
+h2. Conclusions
+
+Based on this evaluation, assuming all other factors are equal, it seems clear that WSS4J performs far better than XWSS and should be chosen as our default WS-Security engine.  It is also worth noting that the absolute time required to encrypt the messages are still significant, with WSS4J still clocking in at ~1.4 for a 3.5 mb message (after a burn down period).  This indicates that we should try to keep the SOAP envelope size as small as possible, containing only the information necessary to get the request to the right location and determine how to process it.  Additional data required for the process should be attached using MTOM (potentially in encrypted form).  This should eliminate much of the overhead required in sending large amounts of data inlined in the SOAP envelope.
+
+[Performance Test Source Code|^performancetest.tgz]

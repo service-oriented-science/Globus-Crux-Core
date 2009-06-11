@@ -1,0 +1,16 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="Custom suite">
+    <groups>
+    </groups>
+    <test name="stateful">
+      <class name="org.globus.crux.StatefulServiceFactoryBeanTest">
+        <test-method status="PASS" signature="testGetObject()" name="testGetObject" duration-ms="805" started-at="2009-06-11T08:18:59Z" finished-at="2009-06-11T08:19:00Z">
+        </test-method>
+        <test-method status="PASS" signature="init()" name="init" is-config="true" duration-ms="30" started-at="2009-06-11T08:18:59Z" finished-at="2009-06-11T08:18:59Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>

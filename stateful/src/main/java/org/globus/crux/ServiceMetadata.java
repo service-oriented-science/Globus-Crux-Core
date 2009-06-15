@@ -1,8 +1,6 @@
 package org.globus.crux;
 
 import static ch.lambdaj.Lambda.filter;
-import org.globus.crux.StateInfo;
-import org.globus.crux.StatefulContext;
 import org.globus.crux.internal.ThreadLocalStateInfoAdapter;
 import org.globus.crux.utils.ThreadLocalAdapter;
 import org.globus.crux.utils.FieldAnnotationMatcher;
@@ -18,9 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ServiceMetadata<T, V> {
-    T target;
-    List<Field> stateInfoFields = new ArrayList<Field>();
-    Map<Field, ThreadLocalAdapter<V>> proxyMap = new HashMap<Field, ThreadLocalAdapter<V>>();
+    private List<Field> stateInfoFields = new ArrayList<Field>();
+    private Map<Field, ThreadLocalAdapter<V>> proxyMap = new HashMap<Field, ThreadLocalAdapter<V>>();
 
     private List<Matcher<? extends Field>> getMatchers(){
         List<Matcher<? extends Field>> matchers = new ArrayList<Matcher<? extends Field>>();
@@ -30,7 +27,6 @@ public class ServiceMetadata<T, V> {
     }
 
     public ServiceMetadata(T target) {
-        this.target = target;
         Class targetClass = target.getClass();
         Field[] fields = targetClass.getDeclaredFields();
         Matcher<Field> matcher = new AllOf<Field>(getMatchers());

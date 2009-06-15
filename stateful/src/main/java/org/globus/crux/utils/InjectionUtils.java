@@ -8,17 +8,20 @@ import java.security.AccessController;
 import java.lang.reflect.Field;
 
 
-public class InjectionUtils {
-    Logger logger = LoggerFactory.getLogger(getClass());
+public final class InjectionUtils {
+    private static Logger logger = LoggerFactory.getLogger(InjectionUtils.class);
+
+    private InjectionUtils() {
+    }
 
     @SuppressWarnings("unchecked")
     public static void injectFieldValue(final Field f,
                                         final Object o,
                                         final Object v) {
         AccessController.doPrivileged(new PrivilegedAction() {
-            Logger logger = LoggerFactory.getLogger(getClass());
 
             public Object run() {
+                logger.debug("Injecting {} into {} via field: {}", new Object[]{v, o, f});
                 f.setAccessible(true);
                 try {
                     f.set(o, v);

@@ -2,9 +2,9 @@ package org.globus.crux.utils;
 
 public interface ThreadLocalAdapter<T> {
 
-    public T get();
+    T get();
 
-    public void remove();
+    void remove();
 
-    public void set(T value);
+    void set(T value);
 }

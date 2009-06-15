@@ -8,7 +8,7 @@ import java.lang.annotation.Annotation;
 
 
 public class FieldAnnotationMatcher extends BaseMatcher<Field> {
-    Class<? extends Annotation> annoClass;
+    private Class<? extends Annotation> annoClass;
 
     public FieldAnnotationMatcher(Class<? extends Annotation> targetClass) {
         this.annoClass = targetClass;

@@ -17,6 +17,13 @@
         <cglib.version>2.1_3</cglib.version>
     </properties>
 
+    <scm>
+        <connection>scm:svn:https://svn.ci.uchicago.edu/svn/sos/crux/trunk/</connection>
+        <developerConnection>scm:svn:https://svn.ci.uchicago.edu/svn/sos/crux/trunk/</developerConnection>
+        <url>scm:svn:https://svn.ci.uchicago.edu/svn/sos/crux/trunk/</url>
+    </scm>
+
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -139,15 +146,15 @@
 
 
     <build>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>1.5</source>
-                        <target>1.5</target>
-                    </configuration>
-                </plugin>
-            </plugins>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>

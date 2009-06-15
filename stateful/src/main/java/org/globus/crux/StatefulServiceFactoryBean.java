@@ -1,13 +1,12 @@
 package org.globus.crux;
 
-import org.globus.crux.ServiceMetadata;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 import org.springframework.beans.factory.FactoryBean;
 
 
 public class StatefulServiceFactoryBean<T, V> implements FactoryBean {
-    T target;
-    StateAdapter<V> stateAdapter;
+    private T target;
+    private StateAdapter<V> stateAdapter;
 
     public Object getObject() throws Exception {
         return getStatefulService();
@@ -23,9 +22,10 @@ public class StatefulServiceFactoryBean<T, V> implements FactoryBean {
     }
 
     @SuppressWarnings("unchecked")
-    public T getStatefulService() throws Exception {
-        if (isProxy(target.getClass()))
+    public T getStatefulService() throws StatefulServiceException {
+        if (isProxy(target.getClass())) {
             return target;
+        }
         AspectJProxyFactory factory = new AspectJProxyFactory(target);
         StatefulWSAspect<T, V> aspect = new StatefulWSAspect<T, V>(new ServiceMetadata<T, V>(target), this.stateAdapter);
         factory.addAspect(aspect);

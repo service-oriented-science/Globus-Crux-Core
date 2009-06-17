@@ -12,6 +12,19 @@
         <name>Globus Jira</name>
         <url>http://jira.globus.org</url>
       </jira>
+      <bamboo>
+        <server-id>9541c0c7-71d8-4ff7-9d01-bd8877480c9f</server-id>
+        <name>Globus Bamboo</name>
+        <url>http://bamboo.globus.org</url>
+        <use-favourites>false</use-favourites>
+        <bamboo2>true</bamboo2>
+        <plans />
+      </bamboo>
+      <fisheye>
+        <server-id>995a59ec-1cef-4b8d-a9d2-371eefaf89f5</server-id>
+        <name>Globus Fisheye</name>
+        <url>http://fisheye.globus.org</url>
+      </fisheye>
     </servers>
   </project-configuration>
 </atlassian-ide-plugin>

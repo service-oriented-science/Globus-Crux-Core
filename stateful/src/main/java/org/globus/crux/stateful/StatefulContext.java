@@ -1,4 +1,4 @@
-package org.globus.crux;
+package org.globus.crux.stateful;
 
 import java.lang.annotation.Target;
 import java.lang.annotation.ElementType;

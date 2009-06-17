@@ -1,4 +1,4 @@
-package org.globus.crux.utils;
+package org.globus.crux.stateful.utils;
 
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;

@@ -1,4 +1,4 @@
-package org.globus.crux;
+package org.globus.crux.stateful;
 
 import org.springframework.stereotype.Service;
 

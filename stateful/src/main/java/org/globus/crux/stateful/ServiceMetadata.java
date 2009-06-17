@@ -1,10 +1,10 @@
-package org.globus.crux;
+package org.globus.crux.stateful;
 
 import static ch.lambdaj.Lambda.filter;
-import org.globus.crux.internal.ThreadLocalStateInfoAdapter;
-import org.globus.crux.utils.ThreadLocalAdapter;
-import org.globus.crux.utils.FieldAnnotationMatcher;
-import org.globus.crux.utils.FieldTypeInstanceOf;
+import org.globus.crux.stateful.internal.ThreadLocalStateInfoAdapter;
+import org.globus.crux.stateful.utils.ThreadLocalAdapter;
+import org.globus.crux.stateful.utils.FieldAnnotationMatcher;
+import org.globus.crux.stateful.utils.FieldTypeInstanceOf;
 import org.hamcrest.Matcher;
 import org.hamcrest.core.AllOf;
 

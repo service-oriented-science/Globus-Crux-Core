@@ -1,11 +1,11 @@
-package org.globus.crux;
+package org.globus.crux.stateful;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.globus.crux.utils.InjectionUtils;
-import org.globus.crux.utils.ThreadLocalAdapter;
+import org.globus.crux.stateful.utils.InjectionUtils;
+import org.globus.crux.stateful.utils.ThreadLocalAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -39,7 +39,7 @@ public class StatefulWSAspect<T, V> {
     }
 
 
-    @Pointcut("@within(org.globus.crux.StatefulService)")
+    @Pointcut("@within(org.globus.crux.stateful.StatefulService)")
     public void inStatefulWS() {
     }
 

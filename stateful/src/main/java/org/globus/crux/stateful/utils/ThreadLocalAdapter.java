@@ -1,4 +1,4 @@
-package org.globus.crux.utils;
+package org.globus.crux.stateful.utils;
 
 public interface ThreadLocalAdapter<T> {
 

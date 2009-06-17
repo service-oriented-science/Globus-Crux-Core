@@ -1,4 +1,4 @@
-package org.globus.crux;
+package org.globus.crux.stateful;
 
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 import org.springframework.beans.factory.FactoryBean;

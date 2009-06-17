@@ -1,4 +1,4 @@
-package org.globus.crux.utils;
+package org.globus.crux.stateful.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -9,7 +9,7 @@ public class MySampleBean {
     @StatefulContext
     StateInfo<Integer> context;
     
-    public Integer getState() {
+    public Integer getState() throws StatefulServiceException{
         return context.getResource();
     }
 

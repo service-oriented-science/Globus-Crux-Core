@@ -14,14 +14,14 @@ import java.lang.reflect.Field;
 
 @Aspect
 @Component
-public class StatefulWSAspect<T, V> {
+public class StatefulWSAspect<V> {
     private Logger logger = LoggerFactory.getLogger(StatefulWSAspect.class);
 
     private StateAdapter<V> stateAdapter;
 
-    private ServiceMetadata<T, V> serviceMetadata;    
+    private AbstractServiceMetadata<V> serviceMetadata;
 
-    public StatefulWSAspect(ServiceMetadata<T, V> metadata, StateAdapter<V> adapter){
+    public StatefulWSAspect(AbstractServiceMetadata<V> metadata, StateAdapter<V> adapter) {
         this.serviceMetadata = metadata;
         this.stateAdapter = adapter;
     }
@@ -44,16 +44,16 @@ public class StatefulWSAspect<T, V> {
     }
 
     @Around("anyPublicMethod() && inStatefulWS()")
-    public Object instantiateState(ProceedingJoinPoint pjp) throws Exception {
+    public Object instantiateState(ProceedingJoinPoint pjp) throws StatefulServiceException{
         logger.info("Updating State");
         for (Field f : serviceMetadata.getStateInfoFields()) {
             ThreadLocalAdapter<V> adapter = serviceMetadata.getStateInfoProxy(f);
             adapter.set(this.stateAdapter.getState());
             InjectionUtils.injectFieldValue(f, pjp.getTarget(), adapter);
         }
-        try{
-        return pjp.proceed();
-        }catch(Throwable t){
+        try {
+            return pjp.proceed();
+        } catch (Throwable t) {
             throw new StatefulServiceException(t);
         }
     }

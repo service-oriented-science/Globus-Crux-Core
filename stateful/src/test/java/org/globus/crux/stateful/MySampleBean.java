@@ -2,14 +2,15 @@ package org.globus.crux.stateful;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.globus.crux.stateful.SampleBean;
 
 @StatefulService
-public class MySampleBean {
+public class MySampleBean<T> implements SampleBean<T> {
     Logger logger = LoggerFactory.getLogger(MySampleBean.class);
     @StatefulContext
-    StateInfo<Integer> context;
+    StateInfo<T> context;
     
-    public Integer getState() throws StatefulServiceException{
+    public T getState() throws StatefulServiceException{
         return context.getResource();
     }
 

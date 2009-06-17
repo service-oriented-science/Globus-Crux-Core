@@ -2,13 +2,16 @@ package org.globus.crux.stateful;
 
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 import org.springframework.beans.factory.FactoryBean;
+import org.globus.crux.stateful.resource.ResourceManager;
+import org.globus.crux.stateful.resource.LookupServiceMetadata;
 
 
-public class StatefulServiceFactoryBean<T, V> implements FactoryBean {
-    private T target;
-    private StateAdapter<V> stateAdapter;
+public class StatefulServiceFactoryBean<TARGET, KEY> implements FactoryBean {
+    private TARGET target;
+    private StateAdapter<KEY> stateAdapter;
+    private ResourceManager<KEY, Object> resourceManager;
 
-    public Object getObject() throws Exception {
+    public Object getObject() throws StatefulServiceException {
         return getStatefulService();
     }
 
@@ -21,15 +24,22 @@ public class StatefulServiceFactoryBean<T, V> implements FactoryBean {
                 || net.sf.cglib.proxy.Proxy.class.isAssignableFrom(targetClass);
     }
 
-    @SuppressWarnings("unchecked")
-    public T getStatefulService() throws StatefulServiceException {
+    //    @SuppressWarnings("unchecked")
+    public TARGET getStatefulService() throws StatefulServiceException {
         if (isProxy(target.getClass())) {
             return target;
         }
         AspectJProxyFactory factory = new AspectJProxyFactory(target);
-        StatefulWSAspect<T, V> aspect = new StatefulWSAspect<T, V>(new ServiceMetadata<T, V>(target), this.stateAdapter);
+        AbstractServiceMetadata<KEY> metadata;
+        if (this.resourceManager == null) {
+            metadata = new ServiceMetadata<KEY>(target.getClass());
+        } else {
+            metadata = new LookupServiceMetadata<KEY, Object>(target.getClass(), this.resourceManager);
+        }
+        metadata.init();
+        StatefulWSAspect<KEY> aspect = new StatefulWSAspect<KEY>(metadata, this.stateAdapter);
         factory.addAspect(aspect);
-        target = (T) factory.getProxy();
+        target = (TARGET) factory.getProxy();
         return target;
     }
 
@@ -41,15 +51,23 @@ public class StatefulServiceFactoryBean<T, V> implements FactoryBean {
         return target;
     }
 
-    public void setTarget(T target) {
+    public void setTarget(TARGET target) {
         this.target = target;
     }
 
-    public StateAdapter<V> getStateAdapter() {
+    public StateAdapter<KEY> getStateAdapter() {
         return stateAdapter;
     }
 
-    public void setStateAdapter(StateAdapter<V> stateAdapter) {
+    public void setStateAdapter(StateAdapter<KEY> stateAdapter) {
         this.stateAdapter = stateAdapter;
+    }
+
+    public ResourceManager<KEY, Object> getResourceManager() {
+        return resourceManager;
+    }
+
+    public void setResourceManager(ResourceManager<KEY, Object> resourceManager) {
+        this.resourceManager = resourceManager;
     }
 }

@@ -4,15 +4,17 @@ package org.globus.crux.stateful;
 public class StatefulServiceException extends Exception {
 
     public StatefulServiceException() {
-        super();
     }
 
-    public StatefulServiceException(String message) {
-        super(message);
+    public StatefulServiceException(String s) {
+        super(s);
     }
 
-    public StatefulServiceException(Throwable t) {
-        super(t);
+    public StatefulServiceException(String s, Throwable throwable) {
+        super(s, throwable);
     }
 
+    public StatefulServiceException(Throwable throwable) {
+        super(throwable);
+    }
 }

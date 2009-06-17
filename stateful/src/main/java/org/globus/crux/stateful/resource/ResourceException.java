@@ -1,11 +1,21 @@
 package org.globus.crux.stateful.resource;
 
-/**
- * Created by IntelliJ IDEA.
- * User: turtlebender
- * Date: Jun 16, 2009
- * Time: 10:31:31 AM
- * To change this template use File | Settings | File Templates.
- */
-public class ResourceException {
+import org.globus.crux.stateful.StatefulServiceException;
+
+
+public class ResourceException extends StatefulServiceException{
+    public ResourceException() {
+    }
+
+    public ResourceException(String s) {
+        super(s);
+    }
+
+    public ResourceException(String s, Throwable throwable) {
+        super(s, throwable);
+    }
+
+    public ResourceException(Throwable throwable) {
+        super(throwable);
+    }
 }

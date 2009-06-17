@@ -1,11 +1,18 @@
 package org.globus.crux.stateful.resource;
 
 /**
- * Created by IntelliJ IDEA.
- * User: turtlebender
- * Date: Jun 16, 2009
- * Time: 9:26:34 AM
- * To change this template use File | Settings | File Templates.
+ * Very simple CRUD interface for handling Resources.  This will generally be used in conjucntion
+ * with org.globus.crux.stateful.ResourcefulStateInfo to lookup resources.
+ *
+ * @param <T> The type of the Key.
+ * @param <V> The type of the Value.
  */
-public interface ResourceManager {
+public interface ResourceManager<T, V> {
+    V findResource(T key) throws ResourceException;
+
+    V removeResource(T key) throws ResourceException;
+
+    void storeResource(T key, V resource) throws ResourceException;
+
+    V updateResource(T key, V resource) throws ResourceException;
 }

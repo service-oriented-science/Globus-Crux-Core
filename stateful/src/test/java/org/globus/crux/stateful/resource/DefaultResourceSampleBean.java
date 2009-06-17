@@ -19,7 +19,7 @@ public class DefaultResourceSampleBean<T> implements ResourceSampleBean<T> {
     }
 
     public T getState() throws StatefulServiceException {
-        return context.getResource();
+        return context.getState();
     }
 
     public ResourcefulStateInfo<Integer, T> getContext() {

@@ -8,6 +8,9 @@ import org.springframework.beans.factory.FactoryBean;
  *
  * @param <T> The type of the bean to be created
  * @param <V> The type of the state.
+ * @author Tom Howe
+ * @since 1.0
+ * @version 1.0
  */
 public class StatefulServiceFactoryBean<T, V> extends StatefulServiceFactory<T, V> implements FactoryBean {
 
@@ -26,7 +29,7 @@ public class StatefulServiceFactoryBean<T, V> extends StatefulServiceFactory<T, 
      * @return Target class
      */
     public Class getObjectType() {
-        return target.getClass();
+        return getTarget().getClass();
     }
 
     /**

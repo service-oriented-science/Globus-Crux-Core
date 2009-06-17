@@ -11,7 +11,7 @@ public class MySampleBean<T> implements SampleBean<T> {
     StateInfo<T> context;
     
     public T getState() throws StatefulServiceException{
-        return context.getResource();
+        return context.getState();
     }
 
 }

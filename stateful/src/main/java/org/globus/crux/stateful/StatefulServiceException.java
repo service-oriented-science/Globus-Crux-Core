@@ -1,6 +1,12 @@
 package org.globus.crux.stateful;
 
-
+/**
+ * Base exception for stateful services.
+ *
+ * @author Tom Howe
+ * @since 1.0
+ * @version 1.0
+ */
 public class StatefulServiceException extends Exception {
 
     public StatefulServiceException() {

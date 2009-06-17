@@ -20,7 +20,7 @@ import org.globus.crux.stateful.resource.ResourceManager;
  * @param <V> The type of the value returned as "state"
  */
 public class StatefulServiceFactory<T, V> {
-    protected T target;
+    private T target;
     private StateAdapter<V> stateAdapter;
     private ResourceManager<V, Object> resourceManager;
 

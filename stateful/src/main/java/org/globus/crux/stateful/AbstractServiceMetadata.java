@@ -14,17 +14,26 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * @author turtlebender
- *         User: turtlebender
- *         Date: Jun 16, 2009
- *         Time: 3:57:43 PM
+ * This is an abstract class for describing the stateful service metadata associated with a class.
+ * This defines which fields/methods contain stateful information for the service targeted.
+ *
+ * @param <T> This is the type of the state value.
+ *
+ * @author Tom Howe
+ * @since 1.0
+ * @version 1.0
  */
-public abstract class AbstractServiceMetadata<KEY> {
+public abstract class AbstractServiceMetadata<T> {
     private List<Field> stateInfoFields = new ArrayList<Field>();
-    private Map<Field, ThreadLocalAdapter<KEY>> proxyMap =
-            new HashMap<Field, ThreadLocalAdapter<KEY>>();
+    private Map<Field, ThreadLocalAdapter<T>> proxyMap =
+            new HashMap<Field, ThreadLocalAdapter<T>>();
     private Class<?> clazz;
 
+    /**
+     * Standard constructor which takes the class associated with this metadata.
+     *
+     * @param clazz The associated target class.
+     */
     public AbstractServiceMetadata(Class<?> clazz) {
         this.clazz = clazz;
     }
@@ -35,7 +44,17 @@ public abstract class AbstractServiceMetadata<KEY> {
 
     protected abstract void processFields(Field[] fields);
 
-    protected final void fillMap(Field[] fields, Class fieldType, ThreadLocalAdapter<KEY> adapter) {
+    /**
+     * This will create the metadata by finding the fields that match the provided field type
+     * and define them to the supplied ThreadLocalAdapter type.
+     *
+     * @see org.globus.crux.stateful.utils.ThreadLocalAdapter
+     *
+     * @param fields The candidate fields.
+     * @param fieldType The field type to match.
+     * @param adapter The ThreadLocalAdapter to assign to the field.
+     */
+    protected final void fillMap(Field[] fields, Class fieldType, ThreadLocalAdapter<T> adapter) {
         Matcher<Field> matcher = new AllOf<Field>(getMatchers(fieldType));
         List<Field> matchedFields = ch.lambdaj.Lambda.filter(matcher, Arrays.asList(fields));
         if (this.stateInfoFields != null) {
@@ -48,6 +67,7 @@ public abstract class AbstractServiceMetadata<KEY> {
         }
     }
 
+    //This is the list of matchers currently assigned to filter the fields.
     private List<Matcher<? extends Field>> getMatchers(Class fieldType) {
         List<Matcher<? extends Field>> matchers = new ArrayList<Matcher<? extends Field>>();
         matchers.add(new FieldAnnotationMatcher(StatefulContext.class));
@@ -55,7 +75,7 @@ public abstract class AbstractServiceMetadata<KEY> {
         return matchers;
     }
 
-    public ThreadLocalAdapter<KEY> getStateInfoProxy(Field f) {
+    public ThreadLocalAdapter<T> getStateInfoProxy(Field f) {
         return proxyMap.get(f);
     }
 

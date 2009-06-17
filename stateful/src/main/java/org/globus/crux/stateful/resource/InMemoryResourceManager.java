@@ -63,7 +63,7 @@ public class InMemoryResourceManager<T, V> implements ResourceManager<T, V> {
      * @throws ResourceException If the update operation fails.
      */
     public V updateResource(T key, V resource) throws ResourceException {
-        if (!map.contains(key)) {
+        if (map.get(key) == null) {
             throw new ResourceException("Key does not exist in map");
         } else {
             map.put(key, resource);

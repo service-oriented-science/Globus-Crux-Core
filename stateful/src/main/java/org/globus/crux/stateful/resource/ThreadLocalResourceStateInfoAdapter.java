@@ -25,9 +25,6 @@ public class ThreadLocalResourceStateInfoAdapter<T, V> extends
         this.resourceManager = resourceManager;
     }
 
-    public ThreadLocalResourceStateInfoAdapter() {
-    }
-
     /**
      * Get the key associated with the current request.
      *

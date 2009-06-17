@@ -17,11 +17,33 @@
         <cglib.version>2.1_3</cglib.version>
     </properties>
 
+    <ciManagement>
+        <system>bamboo</system>
+        <url>http://bamboo.globus.org/browse/CRUX-TRUNK</url>
+    </ciManagement>
+    <issueManagement>
+        <system>jira</system>
+        <url>http://jira.globus.org/browse/SOS</url>
+    </issueManagement>
     <scm>
-        <connection>scm:svn:https://svn.ci.uchicago.edu/svn/sos/crux/trunk/</connection>
-        <developerConnection>scm:svn:https://svn.ci.uchicago.edu/svn/sos/crux/trunk/</developerConnection>
-        <url>scm:svn:https://svn.ci.uchicago.edu/svn/sos/crux/trunk/</url>
+        <connection>scm:svn:http://svn.ci.uchicago.edu/svn/sos/crux</connection>
+        <developerConnection>scm:svn:https://svn.ci.uchicago.edu/svn/sos/crux</developerConnection>
+        <tag>TRUNK</tag>
+        <url>http://svn.ci.uchicago.edu/svn/sos/crux</url>
     </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>globRelease</id>
+            <name>Globus Nexus Release Repository</name>
+            <url>http://repo.globus.org/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>globSnapshot</id>
+            <name>Globus Nexus Snapshot Repository</name>
+            <url>http://repo.globus.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 
     <dependencyManagement>

@@ -1,23 +1,21 @@
 package org.globus.crux.stateful.resource;
 
 import org.globus.crux.stateful.StatefulServiceFactoryBean;
-import org.globus.crux.stateful.TestRunnable;
 import org.globus.crux.stateful.TestStateAdapter;
-import org.jmock.Expectations;
-import org.jmock.Mockery;
+import org.globus.crux.stateful.StateAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.HashMap;
+
+import static org.testng.AssertJUnit.*;
+import static org.mockito.Mockito.*;
 
 /**
  * @author turtlebender
@@ -28,11 +26,10 @@ import java.util.concurrent.Executors;
 @Test
 public class ResourceStatefulServiceFactoryBeanTest {
     StatefulServiceFactoryBean<ResourceSampleBean, Integer> factory;
-    ResourceManager<Integer, Object> manager;
-    TestStateAdapter<Integer> adapter;
-    Mockery context;
+    @Mock ResourceManager<Integer, Object> manager;
+    @Mock StateAdapter<Integer> adapter;
     Logger logger = LoggerFactory.getLogger(getClass());
-    Map<Integer, String> resources = new ConcurrentHashMap<Integer, String>();
+    Map<Integer, String> resources = new HashMap<Integer, String>();
 
     @BeforeTest
     public void init() {
@@ -41,34 +38,24 @@ public class ResourceStatefulServiceFactoryBeanTest {
         resources.put(2, "Two");
         resources.put(3, "Three");
         resources.put(4, "Four");
-    }
+    }   
 
     @BeforeMethod
     public void setup() throws Exception {
         factory = new StatefulServiceFactoryBean<ResourceSampleBean, Integer>();
         adapter = new TestStateAdapter<Integer>();
-        context = new Mockery();
-        manager = context.mock(ResourceManager.class);
-        context.checking(new Expectations() {{
-            for(int i = 0 ; i < 5 ; i++){
-                oneOf(manager).findResource(i);
-                will(returnValue(resources.get(i)));
-            }
-        }});
+        MockitoAnnotations.initMocks(this);
     }
 
     public void testStoreGet() throws Exception {
-        ExecutorService exec = Executors.newFixedThreadPool(5);
+        when(manager.findResource(0)).thenReturn(resources.get(0));
+        when(adapter.getState()).thenReturn(0);
         ResourceSampleBean<String> bean = new DefaultResourceSampleBean<String>();
         factory.setTarget(bean);
         factory.setStateAdapter(this.adapter);
         factory.setResourceManager(this.manager);
         bean = factory.getStatefulService();
-        List<Callable<String>> requests = new ArrayList<Callable<String>>();
-        for (int x = 0; x < 5; x++) {
-            ResourceRunnable client = new ResourceRunnable(bean, x, this.resources.get(x), this.adapter);
-            requests.add(client);
-        }
-        exec.invokeAny(requests);
+        assertEquals(resources.get(0), bean.getState());
+        verify(manager, times(1)).findResource(0);
     }
 }

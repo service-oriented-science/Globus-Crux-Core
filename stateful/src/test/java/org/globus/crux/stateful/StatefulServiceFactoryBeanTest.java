@@ -2,14 +2,14 @@ package org.globus.crux.stateful;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import org.testng.annotations.BeforeMethod;
+import static org.testng.AssertJUnit.assertEquals;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
 
 /**
  * StatefulServiceFactoryBean Tester.
@@ -22,30 +22,29 @@ import java.util.concurrent.Executors;
 public class StatefulServiceFactoryBeanTest {
     StatefulServiceFactoryBean<SampleBean, Integer> factory;
     MySampleBean bean;
-    TestStateAdapter<Integer> adapter;
+    @Mock StateAdapter<Integer> adapter;
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    @BeforeTest
+    @BeforeMethod
     public void init() throws Exception {
+        MockitoAnnotations.initMocks(this);
         factory = new StatefulServiceFactoryBean<SampleBean, Integer>();
-        adapter = new TestStateAdapter<Integer>();
     }
 
     /**
      * Method: getObject()
      */
     public void testGetObject() throws Exception {
-        ExecutorService exec = Executors.newFixedThreadPool(5);
         SampleBean bean = new MySampleBean();
         factory.setTarget(bean);
         factory.setStateAdapter(this.adapter);
         bean = factory.getStatefulService();
-        List<Callable<Integer>> requests = new ArrayList<Callable<Integer>>();
-        for (int x = 0; x < 5; x++) {
-            TestRunnable client = new TestRunnable(bean, x, this.adapter);
-            requests.add(client);
-        }
-        exec.invokeAny(requests);
+        //Create mock assumptions
+        when(adapter.getState()).thenReturn(0);
+        //Test assumptions
+        assertEquals(0, adapter.getState().intValue());
+        //Verify executions
+        verify(adapter, times(1)).getState();
     }
 }

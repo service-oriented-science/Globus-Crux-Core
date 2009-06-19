@@ -159,14 +159,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <repositories>
-        <repository>
-            <id>GlobusNexus</id>
-            <url>http://jira.globus.org/nexus/content/groups/public/</url>
-        </repository>
-    </repositories>
-
-
     <build>
         <plugins>
             <plugin>
@@ -182,15 +174,39 @@
     <profiles>
         <profile>
             <id>clover</id>
-            <build>
+            <activation>
+                <property>
+                    <name>clover.license.file</name>
+                </property>
+            </activation>
+            <reporting>
                 <plugins>
                     <plugin>
                         <groupId>com.atlassian.maven.plugins</groupId>
                         <artifactId>maven-clover2-plugin</artifactId>
                         <version>[2.5.1,)</version>
+                        <configuration>
+                            <targetPercentage>75%</targetPercentage>
+                            <licenseLocation>${clover.license.file}</licenseLocation>
+                            <generateHtml>true</generateHtml>
+                            <generateXml>true</generateXml>
+                            <includesTestSourceRoots>false</includesTestSourceRoots>
+                        </configuration>
                     </plugin>
                 </plugins>
-            </build>
+            </reporting>
         </profile>
     </profiles>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <id>atlassian-m2-repository</id>
+            <name>Atlassian Maven 2.x Repository</name>
+            <url>http://repository.atlassian.com/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
 </project>

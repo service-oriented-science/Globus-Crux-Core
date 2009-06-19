@@ -168,6 +168,18 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>maven-clover2-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <targetPercentage>75%</targetPercentage>
+                    <licenseLocation>${clover.license.file}</licenseLocation>
+                    <generateHtml>true</generateHtml>
+                    <generateXml>true</generateXml>
+                    <includesTestSourceRoots>false</includesTestSourceRoots>
+                </configuration>
+            </plugin>            
         </plugins>
     </build>
 
@@ -179,12 +191,33 @@
                     <name>clover.license.file</name>
                 </property>
             </activation>
+            <repositories>
+                <repository>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <id>atlassian-m2-repository</id>
+                    <name>Atlassian Maven 2.x Repository</name>
+                    <url>http://repository.atlassian.com/maven2</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <id>atlassian-m2-repository</id>
+                    <name>Atlassian Maven 2.x Repository</name>
+                    <url>http://repository.atlassian.com/maven2</url>
+                </pluginRepository>
+            </pluginRepositories>
+
             <reporting>
                 <plugins>
                     <plugin>
                         <groupId>com.atlassian.maven.plugins</groupId>
                         <artifactId>maven-clover2-plugin</artifactId>
-                        <version>[2.5.1,)</version>
+                        <version>2.5.1</version>
                         <configuration>
                             <targetPercentage>75%</targetPercentage>
                             <licenseLocation>${clover.license.file}</licenseLocation>
@@ -197,16 +230,5 @@
             </reporting>
         </profile>
     </profiles>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <id>atlassian-m2-repository</id>
-            <name>Atlassian Maven 2.x Repository</name>
-            <url>http://repository.atlassian.com/maven2</url>
-        </pluginRepository>
-    </pluginRepositories>
 
 </project>

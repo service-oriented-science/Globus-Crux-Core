@@ -46,7 +46,7 @@ public class InMemoryResourceManager<T, V> implements ResourceManager<T, V> {
      * @throws ResourceException If the store operation fails.
      */
     public void storeResource(T key, V resource) throws ResourceException {
-        if (!map.contains(key)) {
+        if (map.get(key) == null) {
             map.put(key, resource);
         } else {
             throw new ResourceException("Key already exists in Map");

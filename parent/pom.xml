@@ -174,8 +174,7 @@
                 <version>2.5.1</version>
                 <configuration>
                     <targetPercentage>75%</targetPercentage>
-                    <licenseLocation>${clover.license.file}</licenseLocation>
-                    <generateHtml>true</generateHtml>
+                    <licenseLocation>${clover.license.file}</licenseLocation>                                       
                     <generateXml>true</generateXml>
                     <includesTestSourceRoots>false</includesTestSourceRoots>
                 </configuration>

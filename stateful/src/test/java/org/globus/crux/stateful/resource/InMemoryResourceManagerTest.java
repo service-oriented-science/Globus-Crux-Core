@@ -7,17 +7,24 @@ import static org.testng.AssertJUnit.*;
 /**
  * @author turtlebender
  */
+@Test(groups = {"unit","stateful"})
 public class InMemoryResourceManagerTest {
     private ResourceManager<Integer, String> manager;
 
     @BeforeTest
-    public void init(){
+    public void init() throws ResourceException{
         manager = new InMemoryResourceManager<Integer, String>();
+        manager.storeResource(1, "One");
     }
 
     @Test
     public void testInsert() throws ResourceException{
-        manager.storeResource(1, "One");
+        try{
+            manager.storeResource(1, "Two");
+            fail();
+        }catch(Exception e){
+            //do nothing catch
+        }
     }
 
     @Test(dependsOnMethods = {"testInsert"})

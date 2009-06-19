@@ -23,7 +23,7 @@ import static org.mockito.Mockito.*;
  *         Date: Jun 16, 2009
  *         Time: 12:44:41 PM
  */
-@Test
+@Test(groups = {"unit","stateful"})
 public class ResourceStatefulServiceFactoryBeanTest {
     StatefulServiceFactoryBean<ResourceSampleBean, Integer> factory;
     @Mock ResourceManager<Integer, Object> manager;
@@ -55,6 +55,7 @@ public class ResourceStatefulServiceFactoryBeanTest {
         factory.setStateAdapter(this.adapter);
         factory.setResourceManager(this.manager);
         bean = factory.getStatefulService();
+        assertEquals(this.manager, factory.getResourceManager());
         assertEquals(resources.get(0), bean.getState());
         verify(manager, times(1)).findResource(0);
     }

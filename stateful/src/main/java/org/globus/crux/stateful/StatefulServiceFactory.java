@@ -10,17 +10,17 @@ import org.globus.crux.stateful.resource.ResourceManager;
  * as @StatefulService and requires that one field be marked as @StatefulContext.  The object
  * produced by this factory will have the threadsafe StateInfo injected before each method call.
  *
- * @see org.globus.crux.stateful.StatefulService
- * @see org.globus.crux.stateful.StateInfo
- * 
  * @author turtlebender
- * @since 1.0
  * @version 1.0
  * @param <T> The type of the target bean (both input and output)
  * @param <V> The type of the value returned as "state"
+ * @see org.globus.crux.stateful.StatefulService
+ * @see org.globus.crux.stateful.StateInfo
+ * @since 1.0
  */
 public class StatefulServiceFactory<T, V> {
     private T target;
+    private Class<?> targetClass;
     private StateAdapter<V> stateAdapter;
     private ResourceManager<V, Object> resourceManager;
 
@@ -35,7 +35,8 @@ public class StatefulServiceFactory<T, V> {
      * bean with the aspect for injecting the state.
      *
      * @return The advised, stateful bean.
-     * @throws org.globus.crux.stateful.StatefulServiceException If advising fails.
+     * @throws org.globus.crux.stateful.StatefulServiceException
+     *          If advising fails.
      */
     @SuppressWarnings("unchecked")
     public T getStatefulService() throws StatefulServiceException {
@@ -62,6 +63,7 @@ public class StatefulServiceFactory<T, V> {
 
     public void setTarget(T target) {
         this.target = target;
+        this.targetClass = target.getClass();
     }
 
     public StateAdapter<V> getStateAdapter() {
@@ -78,5 +80,9 @@ public class StatefulServiceFactory<T, V> {
 
     public void setResourceManager(ResourceManager<V, Object> resourceManager) {
         this.resourceManager = resourceManager;
+    }
+
+    public Class<?> getTargetClass() {
+        return targetClass;
     }
 }

@@ -29,7 +29,7 @@ public class StatefulServiceFactoryBean<T, V> extends StatefulServiceFactory<T, 
      * @return Target class
      */
     public Class getObjectType() {
-        return getTarget().getClass();
+        return getTargetClass();
     }
 
     /**

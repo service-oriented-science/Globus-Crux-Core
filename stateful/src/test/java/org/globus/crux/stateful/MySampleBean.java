@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.globus.crux.stateful.SampleBean;
 
-@StatefulService
+@StatefulService(autoCommit = true)
 public class MySampleBean<T> implements SampleBean<T> {
     Logger logger = LoggerFactory.getLogger(MySampleBean.class);
     @StatefulContext

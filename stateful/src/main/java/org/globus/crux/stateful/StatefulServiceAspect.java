@@ -4,6 +4,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.globus.crux.stateful.resource.ResourceException;
+import org.globus.crux.stateful.resource.ResourceManager;
 import org.globus.crux.stateful.utils.InjectionUtils;
 import org.globus.crux.stateful.utils.ThreadLocalAdapter;
 import org.slf4j.Logger;
@@ -11,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This is an aspect which injects State into an annotated target in a thread-safe way.
@@ -18,37 +22,47 @@ import java.lang.reflect.Field;
  * field injection, but soon it will support setter injection in the future as well.
  *
  * @author Tom Howe
- * @since 1.0
  * @version 1.0
- * @param <V> The type associated with the field to be injected.
+ * @param <T> The type associated with the field to be injected.
+ * @since 1.0
  */
 @Aspect
 @Component
-public class StatefulServiceAspect<V> {
+public class StatefulServiceAspect<T, V> {
     private Logger logger = LoggerFactory.getLogger(StatefulServiceAspect.class);
 
-    private StateAdapter<V> stateAdapter;
+    private StateAdapter<T> stateAdapter;
 
-    private AbstractServiceMetadata<V> serviceMetadata;
+    private ResourceManager<T, V> resourceManager;
+
+    private ServiceMetadata<V>  serviceMetadata;
 
     /**
      * SimpleConstructor for the aspect which requires the metadata as well as the adapter
      * which retrieves the state value for each request.
      *
      * @param metadata The ServiceMetadata containing the fields to be injected.
-     * @param adapter This adapter retreives the state value.
+     * @param adapter  This adapter retreives the state value.
      */
-    public StatefulServiceAspect(AbstractServiceMetadata<V> metadata, StateAdapter<V> adapter) {
+    public StatefulServiceAspect(ServiceMetadata<V> metadata, StateAdapter<T> adapter) {
         this.serviceMetadata = metadata;
         this.stateAdapter = adapter;
     }
 
-    public StateAdapter<V> getStateAdapter() {
+    public StateAdapter<T> getStateAdapter() {
         return stateAdapter;
     }
 
-    public void setStateAdapter(StateAdapter<V> stateAdapter) {
+    public void setStateAdapter(StateAdapter<T> stateAdapter) {
         this.stateAdapter = stateAdapter;
+    }
+
+    public ResourceManager<T, V> getResourceManager() {
+        return resourceManager;
+    }
+
+    public void setResourceManager(ResourceManager<T, V> resourceManager) {
+        this.resourceManager = resourceManager;
     }
 
     /**
@@ -58,12 +72,21 @@ public class StatefulServiceAspect<V> {
     public void anyPublicMethod() {
     }
 
-
     /**
      * Pointcut defining any method in a class annotated as @StatefulService
      */
-    @Pointcut("@within(org.globus.crux.stateful.StatefulService)")
-    public void inStatefulWS() {
+    @Pointcut("@within(statefulService)")
+    public void inStatefulWS(StatefulService statefulService) {
+    }
+
+
+    @Pointcut(value = "anyPublicMethod() && inStatefulWS(statefulService) && " +
+            "!@annotation(org.globus.crux.stateful.StateTransient) && " +
+            "!@annotation(org.globus.crux.stateful.Create) && " +
+            "!@annotation(org.globus.crux.stateful.Destroy)",
+            argNames = "statefulService")
+    public void anyUpdatingStatefulMethod(StatefulService statefulService) {
+
     }
 
 
@@ -76,18 +99,43 @@ public class StatefulServiceAspect<V> {
      * @return The result of the invoked JoinPoint
      * @throws StatefulServiceException Thrown if the joinpoint fails when it is invoked.
      */
-    @Around("anyPublicMethod() && inStatefulWS()")
-    public Object instantiateState(ProceedingJoinPoint pjp) throws StatefulServiceException{
-        logger.info("Updating State");
-        for (Field f : serviceMetadata.getStateInfoFields()) {
-            ThreadLocalAdapter<V> adapter = serviceMetadata.getStateInfoProxy(f);
-            adapter.set(this.stateAdapter.getState());
-            InjectionUtils.injectFieldValue(f, pjp.getTarget(), adapter);
-        }
+    @Around(value = "anyUpdatingStatefulMethod(statefulService)",
+            argNames = "pjp,statefulService")
+    public Object instantiateState(ProceedingJoinPoint pjp, StatefulService statefulService)
+            throws StatefulServiceException {
+        logger.debug("Updating State");
+        Object proxy = pjp.getTarget();
+        Map<Field, T> keyMap = fillFields(proxy);
+        Object result;
         try {
-            return pjp.proceed();
+            result = pjp.proceed();
+            if (statefulService.autoCommit()) {
+                postProcessFields(proxy, keyMap);
+            }
         } catch (Throwable t) {
             throw new StatefulServiceException(t);
         }
+        return result;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void postProcessFields(Object proxy, Map<Field, T> keyMap) throws ResourceException {
+        for (Field f : serviceMetadata.getStateInfoFields()) {
+            T key = keyMap.get(f);
+            this.resourceManager.updateResource(key, (V) InjectionUtils.extractFieldValue(f, proxy));
+        }
+    }
+
+    private Map<Field, T> fillFields(Object proxy) throws ResourceException {
+        Map<Field, T> keyMap = new HashMap<Field, T>();
+        for (Field f : serviceMetadata.getStateInfoFields()) {
+            ThreadLocalAdapter<V> adapter = serviceMetadata.getStateInfoProxy(f);
+            T key = this.stateAdapter.getState();
+            keyMap.put(f, key);
+            V resource = resourceManager.findResource(key);
+            adapter.set(resource);
+            InjectionUtils.injectFieldValue(f, proxy, adapter);
+        }
+        return keyMap;
     }
 }

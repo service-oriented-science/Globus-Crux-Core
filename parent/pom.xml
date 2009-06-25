@@ -111,6 +111,7 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${slf4j.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.testng</groupId>
@@ -160,6 +161,15 @@
     </dependencyManagement>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>failsafe-maven-plugin</artifactId>
+                    <version>2.4.3-alpha-1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -168,17 +178,6 @@
                     <target>1.5</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>com.atlassian.maven.plugins</groupId>
-                <artifactId>maven-clover2-plugin</artifactId>
-                <version>2.5.1</version>
-                <configuration>
-                    <targetPercentage>75%</targetPercentage>
-                    <licenseLocation>${clover.license.file}</licenseLocation>                                       
-                    <generateXml>true</generateXml>
-                    <includesTestSourceRoots>false</includesTestSourceRoots>
-                </configuration>
-            </plugin>            
         </plugins>
     </build>
 
@@ -190,6 +189,24 @@
                     <name>clover.license.file</name>
                 </property>
             </activation>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>com.atlassian.maven.plugins</groupId>
+                        <artifactId>maven-clover2-plugin</artifactId>
+                        <version>2.5.1</version>
+                        <configuration>
+                            <methodContexts>
+                                <main>^.*@Pointcut?\(.*\)?public.*</main>
+                            </methodContexts>
+                            <targetPercentage>75%</targetPercentage>
+                            <licenseLocation>${clover.license.file}</licenseLocation>
+                            <generateXml>true</generateXml>
+                            <includesTestSourceRoots>false</includesTestSourceRoots>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </reporting>
             <repositories>
                 <repository>
                     <releases>
@@ -209,24 +226,30 @@
                     <name>Atlassian Maven 2.x Repository</name>
                     <url>http://repository.atlassian.com/maven2</url>
                 </pluginRepository>
-            </pluginRepositories>
-
-            <reporting>
+            </pluginRepositories>            
+        </profile>
+        <profile>
+            <id>integration</id>
+            <build>
                 <plugins>
                     <plugin>
-                        <groupId>com.atlassian.maven.plugins</groupId>
-                        <artifactId>maven-clover2-plugin</artifactId>
-                        <version>2.5.1</version>
-                        <configuration>
-                            <targetPercentage>75%</targetPercentage>
-                            <licenseLocation>${clover.license.file}</licenseLocation>
-                            <generateHtml>true</generateHtml>
-                            <generateXml>true</generateXml>
-                            <includesTestSourceRoots>false</includesTestSourceRoots>
-                        </configuration>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>failsafe-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>integration</id>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                </goals>
+                                <configuration>
+                                    <testSourceDirectory>${basedir}/src/systests</testSourceDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
-            </reporting>
+            </build>
         </profile>
     </profiles>
 

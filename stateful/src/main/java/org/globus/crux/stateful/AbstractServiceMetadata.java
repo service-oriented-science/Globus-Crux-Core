@@ -17,16 +17,17 @@ import java.util.HashMap;
  * This is an abstract class for describing the stateful service metadata associated with a class.
  * This defines which fields/methods contain stateful information for the service targeted.
  *
- * @param <T> This is the type of the state value.
+ * @param <V> This is the type of the key pointing to the state.
+ * @param <V> This is the type of the state value.
  *
  * @author Tom Howe
  * @since 1.0
  * @version 1.0
  */
-public abstract class AbstractServiceMetadata<T> {
+public abstract class AbstractServiceMetadata<V> {
     private List<Field> stateInfoFields = new ArrayList<Field>();
-    private Map<Field, ThreadLocalAdapter<T>> proxyMap =
-            new HashMap<Field, ThreadLocalAdapter<T>>();
+    private Map<Field, ThreadLocalAdapter<V>> proxyMap =
+            new HashMap<Field, ThreadLocalAdapter<V>>();
     private Class<?> clazz;
 
     /**
@@ -54,7 +55,7 @@ public abstract class AbstractServiceMetadata<T> {
      * @param fieldType The field type to match.
      * @param adapter The ThreadLocalAdapter to assign to the field.
      */
-    protected final void fillMap(Field[] fields, Class fieldType, ThreadLocalAdapter<T> adapter) {
+    protected final void fillMap(Field[] fields, Class fieldType, ThreadLocalAdapter<V> adapter) {
         Matcher<Field> matcher = new AllOf<Field>(getMatchers(fieldType));
         List<Field> matchedFields = ch.lambdaj.Lambda.filter(matcher, Arrays.asList(fields));
         if (this.stateInfoFields != null) {
@@ -75,7 +76,7 @@ public abstract class AbstractServiceMetadata<T> {
         return matchers;
     }
 
-    public ThreadLocalAdapter<T> getStateInfoProxy(Field f) {
+    public ThreadLocalAdapter<V> getStateInfoProxy(Field f) {
         return proxyMap.get(f);
     }
 

@@ -11,8 +11,8 @@ import java.lang.reflect.Field;
  * Utilities for injecting values into fields and methods.
  *
  * @author Tom Howe
- * @since 1.0
  * @version 1.0
+ * @since 1.0
  */
 public final class InjectionUtils {
     private static Logger logger = LoggerFactory.getLogger(InjectionUtils.class);
@@ -47,4 +47,22 @@ public final class InjectionUtils {
 
     }
 
+    @SuppressWarnings("unchecked")
+    public static Object extractFieldValue(final Field f,
+                                           final Object o) {
+        return AccessController.doPrivileged(new PrivilegedAction() {
+
+            public Object run() {
+                logger.debug("Extracting value from {} via field: {}", new Object[]{o, f});
+                f.setAccessible(true);
+                Object result = null;
+                try {
+                    result = f.get(o);
+                } catch (IllegalAccessException ex) {
+                    logger.error("FIELD_ACCESS_FAILURE", f.getType().getName());
+                }
+                return result;
+            }
+        });
+    }
 }

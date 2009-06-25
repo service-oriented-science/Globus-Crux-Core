@@ -1,8 +1,7 @@
 package org.globus.crux.stateful;
 
-import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
-import org.globus.crux.stateful.resource.LookupServiceMetadata;
 import org.globus.crux.stateful.resource.ResourceManager;
+import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 
 /**
  * This is a factory object for taking a service (using the term loosely here) object
@@ -13,16 +12,17 @@ import org.globus.crux.stateful.resource.ResourceManager;
  * @author turtlebender
  * @version 1.0
  * @param <T> The type of the target bean (both input and output)
+ * @param <K> The type of the key pointing to the state
  * @param <V> The type of the value returned as "state"
  * @see org.globus.crux.stateful.StatefulService
  * @see org.globus.crux.stateful.StateInfo
  * @since 1.0
  */
-public class StatefulServiceFactory<T, V> {
+public class StatefulServiceFactory<T, K, V> {
     private T target;
     private Class<?> targetClass;
-    private StateAdapter<V> stateAdapter;
-    private ResourceManager<V, Object> resourceManager;
+    private StateAdapter<K> stateAdapter;
+    private ResourceManager<K, V> resourceManager;
 
     private boolean isProxy(Class<?> targetClass) {
         //Just want to make sure that the target has not already been proxied.
@@ -44,14 +44,11 @@ public class StatefulServiceFactory<T, V> {
             return target;
         }
         AspectJProxyFactory factory = new AspectJProxyFactory(target);
-        AbstractServiceMetadata<V> metadata;
-        if (this.resourceManager == null) {
-            metadata = new ServiceMetadata<V>(target.getClass());
-        } else {
-            metadata = new LookupServiceMetadata<V, Object>(target.getClass(), this.resourceManager);
-        }
+        ServiceMetadata<V> metadata =
+                new ServiceMetadata<V>(target.getClass());
         metadata.init();
-        StatefulServiceAspect<V> aspect = new StatefulServiceAspect<V>(metadata, this.stateAdapter);
+        StatefulServiceAspect<K, V> aspect = new StatefulServiceAspect<K, V>(metadata, this.stateAdapter);
+        aspect.setResourceManager(this.resourceManager);
         factory.addAspect(aspect);
         target = (T) factory.getProxy();
         return target;
@@ -66,19 +63,19 @@ public class StatefulServiceFactory<T, V> {
         this.targetClass = target.getClass();
     }
 
-    public StateAdapter<V> getStateAdapter() {
+    public StateAdapter<K> getStateAdapter() {
         return stateAdapter;
     }
 
-    public void setStateAdapter(StateAdapter<V> stateAdapter) {
+    public void setStateAdapter(StateAdapter<K> stateAdapter) {
         this.stateAdapter = stateAdapter;
     }
 
-    public ResourceManager<V, Object> getResourceManager() {
+    public ResourceManager<K,V> getResourceManager() {
         return resourceManager;
     }
 
-    public void setResourceManager(ResourceManager<V, Object> resourceManager) {
+    public void setResourceManager(ResourceManager<K,V> resourceManager) {
         this.resourceManager = resourceManager;
     }
 

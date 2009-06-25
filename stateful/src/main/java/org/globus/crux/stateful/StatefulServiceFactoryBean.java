@@ -12,7 +12,7 @@ import org.springframework.beans.factory.FactoryBean;
  * @since 1.0
  * @version 1.0
  */
-public class StatefulServiceFactoryBean<T, V> extends StatefulServiceFactory<T, V> implements FactoryBean {
+public class StatefulServiceFactoryBean<T, K, V> extends StatefulServiceFactory<T, K, V> implements FactoryBean {
 
     /**
      * @see org.springframework.beans.factory.FactoryBean

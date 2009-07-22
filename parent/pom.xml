@@ -34,12 +34,12 @@
 
     <distributionManagement>
         <repository>
-            <id>globRelease</id>
+            <id>globus-releases</id>
             <name>Globus Nexus Release Repository</name>
             <url>http://repo.globus.org/content/repositories/releases/</url>
         </repository>
         <snapshotRepository>
-            <id>globSnapshot</id>
+            <id>globus-snapshots</id>
             <name>Globus Nexus Snapshot Repository</name>
             <url>http://repo.globus.org/content/repositories/snapshots/</url>
         </snapshotRepository>
@@ -160,7 +160,7 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>        
+    <build>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -229,7 +229,7 @@
             </pluginRepositories>
         </profile>
         <profile>
-            <id>integration</id>            
+            <id>integration</id>
             <build>
                 <plugins>
                     <plugin>
@@ -270,7 +270,7 @@
 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>                        
+                        <artifactId>maven-surefire-plugin</artifactId>
                         <executions>
                             <execution>
                                 <id>integration-tests</id>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Foo" 
+    targetNamespace="http://www.globus.org/foo" 
+    xmlns:gtwsdl="http://www.globus.org/namespaces/2004/01/GTWSDLExtensions"
+    xmlns:wsrp="http://docs.oasis-open.org/wsrf/rp-2"
+    xmlns:bar="http://www.globus.org/bar" 
+    xmlns:foo="http://www.globus.org/foo" 
+    xmlns="http://schemas.xmlsoap.org/wsdl/"> 
+
+    <import location="bar.wsdl" namespace="http://www.globus.org/bar"/>
+
+    <types>
+        <xsd:schema targetNamespace="http://www.globus.org/foo"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://www.globus.org/foo"
+            attributeFormDefault="qualified"
+            elementFormDefault="qualified">
+
+            <xsd:element name="foobarRP">
+                <xsd:complexType/>
+            </xsd:element>
+
+            <xsd:element name="foobarProperties">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="tns:foobarRP" minOccurs="1"
+                            maxOccurs="1"/>
+                        <xsd:element ref="tns:foobarRP" 
+                            minOccurs="1" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+        </xsd:schema>
+    </types>
+
+
+    <portType name="foo" 
+        gtwsdl:implements="bar:bar" 
+        wsrp:ResourceProperties="foo:foobarProperties">
+        <operation name="foo"/>
+    </portType>
+
+</definitions>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright 1999-2006 University of Chicago
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+  http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<definitions name="Counter"
+    targetNamespace="http://counter.com"
+    xmlns:tns="http://counter.com"
+    xmlns:wsa="http://www.w3.org/2005/08/addressing"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdlpp="http://www.globus.org/namespaces/2004/10/WSDLPreprocessor"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsrp="http://docs.oasis-open.org/wsrf/rp-2"
+    xmlns:wsrpw="http://docs.oasis-open.org/wsrf/rpw-2"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <wsdl:import 
+        namespace="http://docs.oasis-open.org/wsrf/rpw-2"
+        location="http://docs.oasis-open.org/wsrf/rpw-2.wsdl" />
+
+
+    <types>
+        <xsd:schema targetNamespace="http://counter.com"
+            xmlns:tns="http://counter.com"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified">
+
+            <xsd:import 
+                namespace="http://www.w3.org/2005/08/addressing"
+                schemaLocation="http://www.w3.org/2005/08/addressing/ws-addr.xsd"/>
+
+            <xsd:element name="createCounter">
+                <xsd:complexType/>
+            </xsd:element>
+
+            <xsd:element name="createCounterResponse">
+               <xsd:complexType>
+                 <xsd:sequence> 
+                   <xsd:element ref="wsa:EndpointReference"/>
+                 </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            
+            <xsd:element name="add" type="xsd:int"/>
+            <xsd:element name="addResponse" type="xsd:int"/>
+            
+            <xsd:element name="Value" type="xsd:int"/>
+            
+            <xsd:element name="CounterRP">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="tns:Value"        
+                            minOccurs="1" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            
+        </xsd:schema>
+    </types>
+
+    <message name="CreateCounterRequest">
+        <part name="request" element="tns:createCounter"/>
+    </message>
+    <message name="CreateCounterResponse">
+        <part name="response" element="tns:createCounterResponse"/>
+    </message>
+
+    <message name="AddInputMessage">
+        <part name="parameters" element="tns:add"/>
+    </message>
+
+    <message name="AddOutputMessage">
+        <part name="parameters" element="tns:addResponse"/>
+    </message>
+
+    <portType name="CounterPortType"
+        wsdlpp:extends="wsrpw:GetResourceProperty"
+        wsrp:ResourceProperties ="tns:CounterRP">
+        <operation name="createCounter">
+            <input message="tns:CreateCounterRequest"/>
+            <output message="tns:CreateCounterResponse"/>
+        </operation>
+        
+        <operation name="add">
+            <input message="tns:AddInputMessage"/>
+            <output message="tns:AddOutputMessage"/>
+        </operation>
+
+    </portType>
+
+</definitions>

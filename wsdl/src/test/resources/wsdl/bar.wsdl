@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Bar" 
+    targetNamespace="http://www.globus.org/bar" 
+    xmlns:gtwsdl="http://www.globus.org/namespaces/2004/01/GTWSDLExtensions"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"> 
+
+    <portType name="bar" gtwsdl:implements="notfound">
+        <operation name="foobar"/>
+    </portType>
+
+</definitions>

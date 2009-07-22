@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <DataSource DataSourceSourceName="LOCAL">
+    <option name="DRIVER_CLASS" value="org.h2.Driver" />
+    <option name="DATABASE_URL" value="jdbc:h2:~/test" />
+    <option name="DRIVER_PATH" />
+    <option name="DATBASE_USERNAME" value="sa" />
+    <option name="ENCODED_DATABASE_PASSWORD" value="" />
+    <option name="DEFAULT_SCHEMA_NAME" />
+    <option name="TABLE_PATTERN" value="" />
+    <option name="UUID" value="530271e6-0bc4-4adc-9312-8c068e22f578" />
+    <option name="NAME" value="TestDataSet" />
+    <option name="DATABASE_PRODUCT_NAME" />
+    <option name="DATABASE_PRODUCT_VERSION" />
+    <libraries>
+      <library>
+        <url>jar:///Users/turtlebender/Apps/h2/bin/h2-1.1.114.jar!/</url>
+      </library>
+    </libraries>
+  </DataSource>
+</component>
+

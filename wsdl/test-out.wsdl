@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Test" targetNamespace="http://www.globus.org/test" xsi:schemaLocation="                 http://docs.oasis-open.org/wsrf/rp-2 http://docs.oasis-open.org/wsrf/rp-2.xsd" xmlns:gtwsdl="http://www.globus.org/namespaces/2004/01/GTWSDLExtensions" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsrpw="http://docs.oasis-open.org/wsrf/rpw-2" xmlns:tns="http://www.globus.org/test" xmlns:wsrp="http://docs.oasis-open.org/wsrf/rp-2" xmlns:foo="http://www.globus.org/foo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <import namespace="http://www.globus.org/foo" location="foo.wsdl">
+    </import>
+  <import namespace="http://docs.oasis-open.org/wsrf/rpw-2" location="http://docs.oasis-open.org/wsrf/rpw-2.wsdl">
+    </import>
+  <types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.globus.org/test" xmlns:tns="http://www.globus.org/test" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+            <xsd:element name="testRP">
+                <xsd:complexType/>
+            </xsd:element>
+
+            <xsd:element name="testProperties">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="1" ref="tns:testRP"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+        </xsd:schema>
+  </types>
+  <portType name="test" gtwsdl:implements="foo:foo wsrpw:QueryResourceProperties" wsrp:ResourceProperties="tns:testProperties">
+    <operation name="bar">
+    </operation>
+  </portType>
+</definitions>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Counter" targetNamespace="http://counter.com" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsrpw="http://docs.oasis-open.org/wsrf/rpw-2" xmlns:wsdlpp="http://www.globus.org/namespaces/2004/10/WSDLPreprocessor" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:gtwsdl0="http://docs.oasis-open.org/wsrf/rw-2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://counter.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsrp="http://docs.oasis-open.org/wsrf/rp-2">
+  <import namespace="http://docs.oasis-open.org/wsrf/rpw-2" location="http://docs.oasis-open.org/wsrf/rpw-2.wsdl">
+    </import>
+  <import namespace="http://docs.oasis-open.org/wsrf/rw-2" location="http://docs.oasis-open.org/wsrf/rw-2.wsdl">
+    </import>
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://counter.com" xmlns:tns="http://counter.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+            <xsd:import namespace="http://www.w3.org/2005/08/addressing" schemaLocation="http://www.w3.org/2005/08/addressing/ws-addr.xsd"/>
+
+            <xsd:element name="createCounter">
+                <xsd:complexType/>
+            </xsd:element>
+
+            <xsd:element name="createCounterResponse">
+               <xsd:complexType>
+                 <xsd:sequence> 
+                   <xsd:element ref="wsa:EndpointReference"/>
+                 </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            
+            <xsd:element name="add" type="xsd:int"/>
+            <xsd:element name="addResponse" type="xsd:int"/>
+            
+            <xsd:element name="Value" type="xsd:int"/>
+            
+            <xsd:element name="CounterRP">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="1" ref="tns:Value"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            
+        </xsd:schema>
+  </types>
+  <message name="AddInputMessage">
+    <part name="parameters" element="tns:add">
+    </part>
+  </message>
+  <message name="CreateCounterRequest">
+    <part name="request" element="tns:createCounter">
+    </part>
+  </message>
+  <message name="CreateCounterResponse">
+    <part name="response" element="tns:createCounterResponse">
+    </part>
+  </message>
+  <message name="AddOutputMessage">
+    <part name="parameters" element="tns:addResponse">
+    </part>
+  </message>
+  <portType name="CounterPortType" wsrp:ResourceProperties="tns:CounterRP">
+    <operation name="createCounter">
+      <input message="tns:CreateCounterRequest">
+    </input>
+      <output message="tns:CreateCounterResponse">
+    </output>
+    </operation>
+    <operation name="add">
+      <input message="tns:AddInputMessage">
+    </input>
+      <output message="tns:AddOutputMessage">
+    </output>
+    </operation>
+    <operation name="GetResourceProperty">
+      <input name="GetResourcePropertyRequest" message="wsrpw:GetResourcePropertyRequest">
+    </input>
+      <output name="GetResourcePropertyResponse" message="wsrpw:GetResourcePropertyResponse">
+    </output>
+      <fault name="InvalidResourcePropertyQNameFault" message="wsrpw:InvalidResourcePropertyQNameFault">
+    </fault>
+      <fault name="ResourceUnknownFault" message="gtwsdl0:ResourceUnknownFault">
+    </fault>
+      <fault name="ResourceUnavailableFault" message="gtwsdl0:ResourceUnavailableFault">
+    </fault>
+    </operation>
+  </portType>
+</definitions>

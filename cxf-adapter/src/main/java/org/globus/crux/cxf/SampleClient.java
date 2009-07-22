@@ -1,8 +1,7 @@
-package cxf;
+package org.globus.crux.cxf;
 
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.endpoint.dynamic.DynamicClientFactory;
-import org.apache.cxf.ws.addressing.WSAddressingFeature;
 import org.apache.cxf.ws.addressing.MAPAggregator;
 import org.apache.cxf.ws.addressing.AddressingProperties;
 import org.apache.cxf.ws.addressing.AttributedURIType;
@@ -12,11 +11,9 @@ import org.apache.cxf.ws.addressing.ReferenceParametersType;
 import org.apache.cxf.ws.addressing.EndpointReferenceType;
 import org.apache.cxf.ws.addressing.soap.MAPCodec;
 
-import javax.xml.ws.BindingProvider;
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 import static org.apache.cxf.ws.addressing.JAXWSAConstants.CLIENT_ADDRESSING_PROPERTIES;
 import org.apache.cxf.BusFactory;

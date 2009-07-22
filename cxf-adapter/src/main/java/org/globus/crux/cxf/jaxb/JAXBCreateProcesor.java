@@ -1,6 +1,6 @@
-package cxf.jaxb;
+package org.globus.crux.cxf.jaxb;
 
-import cxf.StatefulServiceWebProvider;
+import org.globus.crux.cxf.StatefulServiceWebProvider;
 
 import java.lang.reflect.Method;
 

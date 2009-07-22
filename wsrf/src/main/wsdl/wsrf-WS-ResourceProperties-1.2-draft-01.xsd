@@ -14,51 +14,147 @@ The limited permissions granted above are perpetual and will not be revoked by O
 This document and the information contained herein is provided on an "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
 
 -->
-<xsd:schema 
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns:wsrp=
-  "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  elementFormDefault="qualified" attributeFormDefault="unqualified" 
-  targetNamespace=
-  "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd" 
->
- 
-<!-- ======= Global Attribute Declaration for WSDL 1.1 portType==== --> 
-  <xsd:attribute name="ResourceProperties" type="xsd:QName" />
+<xsd:schema
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:wsrp=
+                "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:wsbf="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd"
+        elementFormDefault="qualified" attributeFormDefault="unqualified"
+        targetNamespace=
+                "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"
+        >
+    <xsd:import namespace=
+                    "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd"
+            schemaLocation= "WS-BaseFaults.xsd"/>
 
-<!-- = Notification Message for ResourceProperties value change === -->
-  <xsd:complexType name="ResourcePropertyValueChangeNotificationType">
-    <xsd:sequence>
-      <xsd:element name="OldValue" nillable="true"
-                   minOccurs="0" maxOccurs="1" >
+    <!-- ======= Global Attribute Declaration for WSDL 1.1 portType==== -->
+    <xsd:attribute name="ResourceProperties" type="xsd:QName"/>
+
+    <!-- = Notification Message for ResourceProperties value change === -->
+    <xsd:complexType name="ResourcePropertyValueChangeNotificationType">
+        <xsd:sequence>
+            <xsd:element name="OldValue" nillable="true"
+                         minOccurs="0" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:any minOccurs="1" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="NewValue" nillable="true"
+                         minOccurs="1" maxOccurs="1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:any minOccurs="1" maxOccurs="1"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="ResourcePropertyValueChangeNotification"
+                 type="wsrp:ResourcePropertyValueChangeNotificationType"/>
+
+    <xsd:complexType name="QueryExpressionType" mixed="true">
+        <xsd:sequence>
+            <xsd:any minOccurs="0" maxOccurs="1" processContents="lax"/>
+        </xsd:sequence>
+        <xsd:attribute name="Dialect" type="xsd:anyURI"/>
+    </xsd:complexType>
+
+    <xsd:element name="QueryExpression" type="wsrp:QueryExpressionType"/>
+
+    <xsd:element name="GetResourceProperty"
+                 type="xsd:QName"/>
+
+    <xsd:element name="GetResourcePropertyResponse">
         <xsd:complexType>
-          <xsd:sequence>
-            <xsd:any minOccurs="1" maxOccurs="1" />
-          </xsd:sequence>
+            <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
         </xsd:complexType>
-      </xsd:element>
-      <xsd:element name="NewValue" nillable="true"
-                   minOccurs="1" maxOccurs="1" >
+    </xsd:element>
+
+    <xsd:complexType name="ResourceUnknownFaultType">
+        <xsd:complexContent>
+            <xsd:extension base="wsbf:BaseFaultType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="ResourceUnknownFault"
+                 type="wsrp:ResourceUnknownFaultType"/>
+
+    <xsd:complexType name="InvalidResourcePropertyQNameFaultType">
+        <xsd:complexContent>
+            <xsd:extension base="wsbf:BaseFaultType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="InvalidResourcePropertyQNameFault"
+                 type="wsrp:InvalidResourcePropertyQNameFaultType"/>
+
+
+    <!-- ====== Message Types for GetMultipleResourceProperties ======= -->
+    <xsd:element name="GetMultipleResourceProperties">
         <xsd:complexType>
-          <xsd:sequence>
-            <xsd:any minOccurs="1" maxOccurs="1" />
-          </xsd:sequence>
+            <xsd:sequence>
+                <xsd:element name="ResourceProperty" type="xsd:QName"
+                             minOccurs="1" maxOccurs="unbounded"/>
+            </xsd:sequence>
         </xsd:complexType>
-      </xsd:element>      
-    </xsd:sequence>
-  </xsd:complexType>
-  
-  <xsd:element name="ResourcePropertyValueChangeNotification" 
-        type="wsrp:ResourcePropertyValueChangeNotificationType" />
+    </xsd:element>
 
-  <xsd:complexType name="QueryExpressionType" mixed="true">
-    <xsd:sequence>
-      <xsd:any minOccurs="0" maxOccurs="1" processContents="lax" />
-    </xsd:sequence>
-    <xsd:attribute name="Dialect" type="xsd:anyURI" />
-  </xsd:complexType>
+    <xsd:element name="GetMultipleResourcePropertiesResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:any minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
 
-  <xsd:element name="QueryExpression" type="wsrp:QueryExpressionType" />
+    <xsd:element name="QueryResourceProperties">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="wsrp:QueryExpression"
+                             minOccurs="1" maxOccurs="1"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="QueryResourcePropertiesResponse">
+        <xsd:complexType>
+            <xsd:complexContent mixed="true">
+                <xsd:restriction base="xsd:anyType">
+                    <xsd:sequence>
+                        <xsd:any processContents="lax"
+                                 minOccurs="1" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:restriction>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="UnknownQueryExpressionDialectFaultType">
+        <xsd:complexContent>
+            <xsd:extension base="wsbf:BaseFaultType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="UnknownQueryExpressionDialectFault"
+                 type="wsrp:UnknownQueryExpressionDialectFaultType"/>
+
+    <xsd:complexType name="InvalidQueryExpressionFaultType">
+        <xsd:complexContent>
+            <xsd:extension base="wsbf:BaseFaultType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="InvalidQueryExpressionFault"
+                 type="wsrp:InvalidQueryExpressionFaultType"/>
+
+    <xsd:complexType name="QueryEvaluationErrorFaultType">
+        <xsd:complexContent>
+            <xsd:extension base="wsbf:BaseFaultType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="QueryEvaluationErrorFault"
+                 type="wsrp:QueryEvaluationErrorFaultType"/>
 
 </xsd:schema> 

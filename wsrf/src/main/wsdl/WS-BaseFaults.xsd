@@ -20,17 +20,15 @@ This document and the information contained herein is provided on an "AS IS" bas
         xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing"
         xmlns:wsbf=
                 "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd"
+        xmlns:xml="http://www.w3.org/XML/1998/namespace"
         elementFormDefault="qualified" attributeFormDefault="unqualified"
         targetNamespace=
                 "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd">
-    <xsd:import
-            namespace=
-                    "http://schemas.xmlsoap.org/ws/2003/03/addressing"
-            schemaLocation=
-                    "http://schemas.xmlsoap.org/ws/2003/03/addressing"
-            />
+    <xsd:import namespace="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+                schemaLocation="http://schemas.xmlsoap.org/ws/2003/03/addressing"/>
+
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace"
-                schemaLocation="http://www.w3.org/XML/1998/namespace">
+                schemaLocation="http://www.w3.org/2001/xml.xsd">
         <xsd:annotation>
             <xsd:documentation>
                 Get access to the xml: attribute groups for xml:lang as declared on 'schema'

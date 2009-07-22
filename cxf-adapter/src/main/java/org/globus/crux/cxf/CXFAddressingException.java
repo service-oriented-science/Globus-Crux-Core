@@ -1,4 +1,4 @@
-package cxf;
+package org.globus.crux.cxf;
 
 import org.globus.crux.stateful.StatefulServiceException;
 

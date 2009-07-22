@@ -1,4 +1,4 @@
-package cxf;
+package org.globus.crux.cxf;
 
 import org.apache.cxf.message.Message;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
@@ -8,15 +8,9 @@ import org.apache.cxf.ws.addressing.ContextUtils;
 import org.apache.cxf.ws.addressing.AddressingPropertiesImpl;
 import org.apache.cxf.ws.addressing.ReferenceParametersType;
 import org.apache.cxf.ws.addressing.soap.MAPCodec;
-import org.apache.cxf.wsdl.EndpointReferenceUtils;
 import org.globus.crux.stateful.StateAdapter;
-import org.globus.crux.stateful.utils.AbstractThreadLocalAdapter;
-import org.globus.crux.stateful.utils.ThreadLocalAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.annotation.Resource;
-import javax.xml.ws.WebServiceContext;
 
 /**
  * @author turtlebender

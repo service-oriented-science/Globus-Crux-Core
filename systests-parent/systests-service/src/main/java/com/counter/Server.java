@@ -12,9 +12,10 @@ import javax.xml.namespace.QName;
 import javax.xml.bind.JAXBContext;
 import java.io.File;
 
-import cxf.StatefulServiceWebProvider;
-import cxf.jaxb.JAXBStatefulProcessor;
-import cxf.jaxb.JAXBCreateProcesor;
+import org.globus.crux.cxf.StatefulServiceWebProvider;
+import org.globus.crux.cxf.jaxb.JAXBStatefulProcessor;
+import org.globus.crux.cxf.jaxb.JAXBCreateProcesor;
+import org.globus.crux.wsrf.properties.GetRPJAXBProcessor;
 
 /**
  * @author turtlebender
@@ -26,27 +27,31 @@ public class Server {
         if (!outputDir.exists()) {
             outputDir.mkdirs();
         }
-        WSDLPreprocessor pp = new WSDLPreprocessor();
-        pp.setInputFile("src/main/wsdl/counter_port_type.wsdl");
-        pp.setOutputFile("target/wsdl/counter_flattened.wsdl");
-        pp.setPortTypeName("CounterPortType");
-        pp.execute();
         Runtime.getRuntime().exec("cp src/main/wsdl/* target/wsdl");
-        GenerateBinding gb = new GenerateBinding();
-        gb.setFileRoot("target/wsdl/counter");
-        gb.setProtocol("http");
-        gb.setPortTypeFile("target/wsdl/counter_flattened.wsdl");
-        gb.execute();
-
-        JAXBContext jaxb = JAXBContext.newInstance("com.counter");
+        prepareWsdl("src/main/wsdl/counter_port_type.wsdl", "CounterPortType");
+        JAXBContext jaxb = JAXBContext.newInstance("com.counter:org.oasis.wsrf.v200406.properties:org.oasis.wsrf.v200406.faults");
         CounterService service = new CounterService();
         StatefulServiceWebProvider provider = new StatefulServiceWebProvider();
         AnnotationProcessor processor = new AnnotationProcessor().
                 withProvider(provider).
                 withProcessor(new JAXBStatefulProcessor(jaxb)).
-                withProcessor(new JAXBCreateProcesor(jaxb));
+                withProcessor(new JAXBCreateProcesor(jaxb)).
+                withProcessor(new GetRPJAXBProcessor(jaxb));
         processor.processObject(service);
         createService(provider);
+    }
+
+    private static void prepareWsdl(String compactWsdl, String portType) throws Exception {
+        WSDLPreprocessor pp = new WSDLPreprocessor();
+        pp.setInputFile(compactWsdl);
+        pp.setOutputFile("target/wsdl/counter_flattened.wsdl");
+        pp.setPortTypeName(portType);
+        pp.execute();
+        GenerateBinding gb = new GenerateBinding();
+        gb.setFileRoot("target/wsdl/counter");
+        gb.setProtocol("http");
+        gb.setPortTypeFile("target/wsdl/counter_flattened.wsdl");
+        gb.execute();
     }
 
     private static void createService(StatefulServiceWebProvider provider) {

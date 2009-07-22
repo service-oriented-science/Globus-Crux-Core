@@ -1,19 +1,15 @@
 package com.counter.service;
 
-import cxf.Handler;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 import javax.xml.ws.WebServiceContext;
-import javax.xml.ws.EndpointReference;
 import javax.xml.ws.wsaddressing.W3CEndpointReference;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 
 import com.counter.CreateCounter;
 import com.counter.CreateCounterResponse;
-import org.w3c.dom.Element;
 import org.w3c.dom.Document;
 
 /**

@@ -1,0 +1,25 @@
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb"
+          xmlns:wsa="http://www.w3.org/2005/08/addressing"
+          xmlns:wsadraft="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+
+    <bindings scd="x-schema::wsa" if-exists="true">
+        <schemaBindings map="false"/>
+        <bindings scd="wsa:EndpointReference">
+            <class ref="javax.xml.ws.wsaddressing.W3CEndpointReference"/>
+        </bindings>
+        <bindings scd="~wsa:EndpointReferenceType">
+            <class ref="javax.xml.ws.wsaddressing.W3CEndpointReference"/>
+        </bindings>
+    </bindings>
+
+    <bindings scd="x-schema::wsadraft" if-exists="true">
+        <schemaBindings map="false"/>
+        <bindings scd="wsadraft:EndpointReference">
+            <class ref="javax.xml.ws.wsaddressing.W3CEndpointReference"/>
+        </bindings>
+        <bindings scd="~wsadraft:EndpointReferenceType">
+            <class ref="javax.xml.ws.wsaddressing.W3CEndpointReference"/>
+        </bindings>
+    </bindings>
+
+</bindings>

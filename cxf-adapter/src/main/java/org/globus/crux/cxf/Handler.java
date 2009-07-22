@@ -1,10 +1,6 @@
-package cxf;
-
-import org.apache.cxf.ws.addressing.AddressingProperties;
+package org.globus.crux.cxf;
 
 import javax.xml.transform.Source;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamSource;
 import javax.xml.ws.WebServiceContext;
 
 /**

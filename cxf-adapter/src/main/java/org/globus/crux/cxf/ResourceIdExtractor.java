@@ -1,6 +1,5 @@
-package cxf;
+package org.globus.crux.cxf;
 
-import org.w3c.dom.Element;
 import org.apache.cxf.ws.addressing.ReferenceParametersType;
 
 /**

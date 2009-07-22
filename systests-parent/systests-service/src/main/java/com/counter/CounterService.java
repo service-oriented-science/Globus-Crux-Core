@@ -1,13 +1,13 @@
 package com.counter;
 
-import org.globus.crux.stateful.StatefulService;
-import org.globus.crux.stateful.StateKey;
 import org.globus.crux.stateful.CreateState;
-import org.globus.crux.stateful.StatefulMethod;
-import org.globus.crux.stateful.StateKeyParam;
-import org.globus.crux.stateful.GetResourceProperty;
-import org.globus.crux.stateful.PayloadParam;
 import org.globus.crux.stateful.Payload;
+import org.globus.crux.stateful.PayloadParam;
+import org.globus.crux.stateful.StateKey;
+import org.globus.crux.stateful.StateKeyParam;
+import org.globus.crux.stateful.StatefulMethod;
+import org.globus.crux.stateful.StatefulService;
+import org.globus.crux.wsrf.properties.GetResourceProperty;
 
 import javax.xml.bind.JAXBElement;
 import java.util.Map;
@@ -42,7 +42,7 @@ public class CounterService {
 
 
     @GetResourceProperty(namespace = "http://counter.com", localpart = "CounterRP")
-    public CounterRP getCounter(@StateKeyParam String id) {
-        return new CounterRP();
+    public CounterRP getCounter(@StateKeyParam JAXBElement<String> id) {
+        return counterMap.get(id.getValue());
     }
 }

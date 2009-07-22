@@ -15,65 +15,63 @@
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-jaxws_2.1_spec</artifactId>
-            <version>1.0</version>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>cxf-adapter</artifactId>
+            <version>${version}</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-codegen-plugin</artifactId>
-                <version>2.2.2</version>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.7.1</version>
                 <executions>
                     <execution>
-                        <id>generate-faults</id>
                         <phase>generate-sources</phase>
-                        <configuration>
-                            <wsdlOptions>
-                                <wsdlOption>
-                                    <wsdl>${basedir}/src/main/wsdl/WS-BaseFaults.wsdl</wsdl>
-                                    <extraargs>
-                                        <extraarg>-nexclude</extraarg>
-                                        <extraarg>http://schemas.xmlsoap.org/ws/2003/03/addressing</extraarg>
-                                        <extraarg>-keep</extraarg>
-                                    </extraargs>
-                                </wsdlOption>
-                            </wsdlOptions>
-                        </configuration>
                         <goals>
-                            <goal>wsdl2java</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>generate-properties</id>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <wsdlOptions>
-                                <wsdlOption>
-                                    <wsdl>${basedir}/src/main/wsdl/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl</wsdl>
-                                    <bindingFiles>
-                                        <bindingFile>${basedir}/src/main/wsdl/RPBinding.xml</bindingFile>
-                                    </bindingFiles>
-                                    <extraargs>
-                                        <extraarg>-nexclude</extraarg>
-                                        <extraarg>http://schemas.xmlsoap.org/ws/2003/03/addressing</extraarg>
-                                        <extraarg>-nexclude</extraarg>
-                                        <extraarg>
-                                            http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd
-                                        </extraarg>
-                                        <extraarg>-keep</extraarg>
-                                    </extraargs>
-                                </wsdlOption>
-                            </wsdlOptions>
-                        </configuration>
-                        <goals>
-                            <goal>wsdl2java</goal>
+                            <goal>generate</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <extension>true</extension>
+                    <args>
+                        <arg>-Xfluent-api</arg>
+                        <arg>-Xcollection-setter-injector</arg>
+                        <args>-Xvalue-constructor</args>
+                    </args>
+                    <schemaDirectory>src/main/wsdl</schemaDirectory>
+                    <bindingDirectory>src/main/wsdl</bindingDirectory>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>basic</artifactId>
+                            <version>0.4.1</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>net.java.dev.jaxb2-commons</groupId>
+                            <artifactId>jaxb-fluent-api</artifactId>
+                            <version>2.1.8</version>
+                        </plugin>
+                        <dependency>
+                            <groupId>org.jvnet.jaxb2-commons</groupId>
+                            <artifactId>collection-setter-injector</artifactId>
+                            <version>1.0</version>
+                        </dependency>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2-commons</groupId>
+                            <artifactId>value-constructor-plugin</artifactId>
+                            <version>1.0</version>
+                        </plugin>
+                    </plugins>
+                </configuration>
             </plugin>
         </plugins>
     </build>

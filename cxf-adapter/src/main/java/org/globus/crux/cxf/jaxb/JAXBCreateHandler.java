@@ -1,4 +1,4 @@
-package cxf.jaxb;
+package org.globus.crux.cxf.jaxb;
 
 import org.globus.crux.stateful.CreateState;
 import org.w3c.dom.Document;
@@ -15,7 +15,7 @@ import java.beans.Introspector;
 import java.beans.BeanInfo;
 import java.beans.PropertyDescriptor;
 
-import cxf.Handler;
+import org.globus.crux.cxf.Handler;
 
 /**
  * @author turtlebender

@@ -1,14 +1,9 @@
-package cxf;
+package org.globus.crux.cxf;
 
-import org.apache.cxf.ws.addressing.JAXWSAConstants;
-import org.apache.cxf.ws.addressing.AddressingProperties;
 import org.apache.cxf.ws.addressing.WSAddressingFeature;
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
 import org.apache.cxf.interceptor.LoggingOutInterceptor;
 import org.apache.cxf.interceptor.LoggingInInterceptor;
-import org.w3c.dom.Element;
-import org.w3c.dom.Document;
-import org.xml.sax.ContentHandler;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.ext.DefaultHandler2;
@@ -18,27 +13,14 @@ import javax.xml.ws.ServiceMode;
 import javax.xml.ws.WebServiceProvider;
 import javax.xml.ws.Provider;
 import javax.xml.ws.WebServiceContext;
-import javax.xml.ws.wsaddressing.W3CEndpointReference;
 import javax.xml.transform.Source;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.sax.SAXResult;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.dom.DOMResult;
 import javax.xml.namespace.QName;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.JAXBIntrospector;
-import javax.xml.bind.Marshaller;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.io.StringWriter;
-import java.io.InputStream;
-import java.io.BufferedInputStream;
 
 /**
  * @author turtlebender

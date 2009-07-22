@@ -42,68 +42,6 @@ This document and the information contained herein is provided on an "AS IS" bas
             <xsd:include schemaLocation=
                     "wsrf-WS-ResourceProperties-1.2-draft-01.xsd"/>
 
-            <xsd:import
-                    namespace=
-                            "http://schemas.xmlsoap.org/ws/2003/03/addressing"
-                    schemaLocation=
-                            "http://schemas.xmlsoap.org/ws/2003/03/addressing"
-                    />
-
-            <xsd:import
-                    namespace=
-                            "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd"
-                    schemaLocation=
-                            "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd"
-                    />
-
-            <!-- ========== Message Types for GetResourceProperty  ============ -->
-
-            <xsd:element name="GetResourceProperty"
-                         type="xsd:QName"/>
-
-            <xsd:element name="GetResourcePropertyResponse">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:any minOccurs="0" maxOccurs="unbounded"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-
-            <xsd:complexType name="ResourceUnknownFaultType">
-                <xsd:complexContent>
-                    <xsd:extension base="wsbf:BaseFaultType"/>
-                </xsd:complexContent>
-            </xsd:complexType>
-            <xsd:element name="ResourceUnknownFault"
-                         type="wsrp:ResourceUnknownFaultType"/>
-
-            <xsd:complexType name="InvalidResourcePropertyQNameFaultType">
-                <xsd:complexContent>
-                    <xsd:extension base="wsbf:BaseFaultType"/>
-                </xsd:complexContent>
-            </xsd:complexType>
-            <xsd:element name="InvalidResourcePropertyQNameFault"
-                         type="wsrp:InvalidResourcePropertyQNameFaultType"/>
-
-
-            <!-- ====== Message Types for GetMultipleResourceProperties ======= -->
-            <xsd:element name="GetMultipleResourceProperties">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="ResourceProperty" type="xsd:QName"
-                                     minOccurs="1" maxOccurs="unbounded"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-
-            <xsd:element name="GetMultipleResourcePropertiesResponse">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:any minOccurs="0" maxOccurs="unbounded"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-
             <!-- ========= Message Types for SetResourceProperties =========== -->
 
            <!-- <xsd:complexType name="InsertType">
@@ -171,52 +109,6 @@ This document and the information contained herein is provided on an "AS IS" bas
                          type="wsrp:SetResourcePropertyRequestFailedFaultType"/>
 -->
             <!-- ========= Message Types for QueryResourceProperties ========== -->
-
-            <xsd:element name="QueryResourceProperties">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element ref="wsrp:QueryExpression"
-                                     minOccurs="1" maxOccurs="1"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-
-            <xsd:element name="QueryResourcePropertiesResponse">
-                <xsd:complexType>
-                    <xsd:complexContent mixed="true">
-                        <xsd:restriction base="xsd:anyType">
-                            <xsd:sequence>
-                                <xsd:any processContents="lax"
-                                         minOccurs="1" maxOccurs="unbounded"/>
-                            </xsd:sequence>
-                        </xsd:restriction>
-                    </xsd:complexContent>
-                </xsd:complexType>
-            </xsd:element>
-
-            <xsd:complexType name="UnknownQueryExpressionDialectFaultType">
-                <xsd:complexContent>
-                    <xsd:extension base="wsbf:BaseFaultType"/>
-                </xsd:complexContent>
-            </xsd:complexType>
-            <xsd:element name="UnknownQueryExpressionDialectFault"
-                         type="wsrp:UnknownQueryExpressionDialectFaultType"/>
-
-            <xsd:complexType name="InvalidQueryExpressionFaultType">
-                <xsd:complexContent>
-                    <xsd:extension base="wsbf:BaseFaultType"/>
-                </xsd:complexContent>
-            </xsd:complexType>
-            <xsd:element name="InvalidQueryExpressionFault"
-                         type="wsrp:InvalidQueryExpressionFaultType"/>
-
-            <xsd:complexType name="QueryEvaluationErrorFaultType">
-                <xsd:complexContent>
-                    <xsd:extension base="wsbf:BaseFaultType"/>
-                </xsd:complexContent>
-            </xsd:complexType>
-            <xsd:element name="QueryEvaluationErrorFault"
-                         type="wsrp:QueryEvaluationErrorFaultType"/>
 
 
         </xsd:schema>

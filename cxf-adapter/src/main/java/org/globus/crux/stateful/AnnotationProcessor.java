@@ -1,9 +1,8 @@
 package org.globus.crux.stateful;
 
-import cxf.StatefulServiceWebProvider;
-import cxf.jaxb.MethodProcessor;
+import org.globus.crux.cxf.StatefulServiceWebProvider;
+import org.globus.crux.cxf.jaxb.MethodProcessor;
 
-import javax.xml.bind.JAXBContext;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.ArrayList;

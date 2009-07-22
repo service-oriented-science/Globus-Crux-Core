@@ -30,7 +30,13 @@ public class Client {
 
         CounterService service = new CounterService();
         CreateCounterResponse response = service.getCounterPortTypePort().createCounter(new CreateCounter());
-        JAXBContext context = JAXBContext.newInstance("com.counter");
+        StringBuilder builder = new StringBuilder();
+        builder.append("com.counter");
+        builder.append(":");
+        builder.append("org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01");
+        builder.append(":");
+        builder.append("org.oasis_open.docs.wsrf._2004._06.wsrf_ws_basefaults_1_2_draft_01");
+        JAXBContext context = JAXBContext.newInstance(builder.toString());
         StringWriter writer = new StringWriter();
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);

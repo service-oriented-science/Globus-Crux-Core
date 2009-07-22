@@ -121,6 +121,11 @@
         </dependency>
         <dependency>
             <groupId>${groupId}</groupId>
+            <artifactId>wsrf</artifactId>
+            <version>${version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${groupId}</groupId>
             <artifactId>wsdl</artifactId>
             <version>${version}</version>
         </dependency>

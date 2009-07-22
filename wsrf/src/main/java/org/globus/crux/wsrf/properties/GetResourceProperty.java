@@ -1,4 +1,4 @@
-package org.globus.crux.stateful;
+package org.globus.crux.wsrf.properties;
 
 import java.lang.annotation.Target;
 import java.lang.annotation.ElementType;

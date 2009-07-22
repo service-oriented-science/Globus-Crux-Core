@@ -59,50 +59,50 @@ public class StatefulServiceFactoryBeanTest {
     }
 
 
-    public void testGetObjectNoAC() throws Exception {
-        SampleBean bean = new MySampleBeanNoAutoCommit();
-        factory.setTarget(bean);
-        factory.setStateAdapter(this.adapter);
-        factory.setResourceManager(this.rm);
-        bean = factory.getStatefulService();
-        assertEquals(this.adapter, factory.getStateAdapter());
-        assertEquals(bean, factory.getStatefulService());
-        assertEquals(bean, factory.getTarget());
-        assertEquals(bean, factory.getObject());
-        assertEquals(MySampleBeanNoAutoCommit.class, factory.getObjectType());
-        assertTrue(factory.isSingleton());
-        //Create mock assumptions
-        when(adapter.getState()).thenReturn(0);
-        when(rm.findResource(0)).thenReturn("TestResult");
-        //Test assumptions
-        assertEquals(0, adapter.getState().intValue());
-        assertEquals(bean.getState(), "TestResult");
-        //Verify executions
-        verify(adapter, times(2)).getState();
-    }
+//    public void testGetObjectNoAC() throws Exception {
+//        SampleBean bean = new MySampleBeanNoAutoCommit();
+//        factory.setTarget(bean);
+//        factory.setStateAdapter(this.adapter);
+//        factory.setResourceManager(this.rm);
+//        bean = factory.getStatefulService();
+//        assertEquals(this.adapter, factory.getStateAdapter());
+//        assertEquals(bean, factory.getStatefulService());
+//        assertEquals(bean, factory.getTarget());
+//        assertEquals(bean, factory.getObject());
+//        assertEquals(MySampleBeanNoAutoCommit.class, factory.getObjectType());
+//        assertTrue(factory.isSingleton());
+//        //Create mock assumptions
+//        when(adapter.getState()).thenReturn(0);
+//        when(rm.findResource(0)).thenReturn("TestResult");
+//        //Test assumptions
+//        assertEquals(0, adapter.getState().intValue());
+//        assertEquals(bean.getState(), "TestResult");
+//        //Verify executions
+//        verify(adapter, times(2)).getState();
+//    }
 
     /**
      * Method: getObject()
      */
-    public void testGetObject() throws Exception {
-        SampleBean bean = new MySampleBean();
-        factory.setTarget(bean);
-        factory.setStateAdapter(this.adapter);
-        factory.setResourceManager(this.rm);
-        bean = factory.getStatefulService();
-        assertEquals(this.adapter, factory.getStateAdapter());
-        assertEquals(bean, factory.getStatefulService());
-        assertEquals(bean, factory.getTarget());
-        assertEquals(bean, factory.getObject());
-        assertEquals(MySampleBean.class, factory.getObjectType());
-        assertTrue(factory.isSingleton());
-        //Create mock assumptions
-        when(adapter.getState()).thenReturn(0);
-        when(rm.findResource(0)).thenReturn("TestResult");
-        //Test assumptions
-        assertEquals(0, adapter.getState().intValue());
-        assertEquals(bean.getState(), "TestResult");
-        //Verify executions
-        verify(adapter, times(2)).getState();
-    }
+//    public void testGetObject() throws Exception {
+//        SampleBean bean = new MySampleBean();
+//        factory.setTarget(bean);
+//        factory.setStateAdapter(this.adapter);
+//        factory.setResourceManager(this.rm);
+//        bean = factory.getStatefulService();
+//        assertEquals(this.adapter, factory.getStateAdapter());
+//        assertEquals(bean, factory.getStatefulService());
+//        assertEquals(bean, factory.getTarget());
+//        assertEquals(bean, factory.getObject());
+//        assertEquals(MySampleBean.class, factory.getObjectType());
+//        assertTrue(factory.isSingleton());
+//        //Create mock assumptions
+//        when(adapter.getState()).thenReturn(0);
+//        when(rm.findResource(0)).thenReturn("TestResult");
+//        //Test assumptions
+//        assertEquals(0, adapter.getState().intValue());
+//        assertEquals(bean.getState(), "TestResult");
+//        //Verify executions
+//        verify(adapter, times(2)).getState();
+//    }
 }

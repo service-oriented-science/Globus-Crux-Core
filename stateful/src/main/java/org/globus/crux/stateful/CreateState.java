@@ -11,4 +11,5 @@ import java.lang.annotation.ElementType;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface CreateState {
+    Class responseType() default Object.class;
 }

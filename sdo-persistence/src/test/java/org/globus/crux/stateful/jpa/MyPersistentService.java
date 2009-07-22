@@ -5,6 +5,6 @@ import org.globus.crux.stateful.StatefulService;
 /**
  * @author turtlebender
  */
-@StatefulService
+//@StatefulService
 public class MyPersistentService {
 }

@@ -160,22 +160,22 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>failsafe-maven-plugin</artifactId>
-                    <version>2.4.3-alpha-1</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+    <build>        
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>1.5</source>
                     <target>1.5</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/integration/*.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
@@ -226,24 +226,66 @@
                     <name>Atlassian Maven 2.x Repository</name>
                     <url>http://repository.atlassian.com/maven2</url>
                 </pluginRepository>
-            </pluginRepositories>            
+            </pluginRepositories>
         </profile>
         <profile>
-            <id>integration</id>
+            <id>integration</id>            
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>failsafe-maven-plugin</artifactId>
+                        <groupId>org.mortbay.jetty</groupId>
+                        <artifactId>maven-jetty-plugin</artifactId>
+                        <configuration>
+                            <scanIntervalSeconds>5</scanIntervalSeconds>
+                            <stopPort>9966</stopPort>
+                            <stopKey>foo</stopKey>
+                            <connectors>
+                                <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                                    <port>9080</port>
+                                    <maxIdleTime>60000</maxIdleTime>
+                                </connector>
+                            </connectors>
+                        </configuration>
                         <executions>
                             <execution>
-                                <id>integration</id>
-                                <phase>integration-test</phase>
+                                <id>start-jetty</id>
+                                <phase>pre-integration-test</phase>
                                 <goals>
-                                    <goal>integration-test</goal>
+                                    <goal>run</goal>
                                 </goals>
                                 <configuration>
-                                    <testSourceDirectory>${basedir}/src/systests</testSourceDirectory>
+                                    <scanIntervalSeconds>0</scanIntervalSeconds>
+                                    <daemon>true</daemon>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>stop-jetty</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>                        
+                        <executions>
+                            <execution>
+                                <id>integration-tests</id>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <skip>false</skip>
+                                    <excludes>
+                                        <exclude>none</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/integration/*Test.java</include>
+                                    </includes>
                                 </configuration>
                             </execution>
                         </executions>
@@ -252,5 +294,4 @@
             </build>
         </profile>
     </profiles>
-
 </project>

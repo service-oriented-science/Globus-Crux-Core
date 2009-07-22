@@ -82,8 +82,8 @@ public class StatefulServiceAspect<T, V> {
 
     @Pointcut(value = "anyPublicMethod() && inStatefulWS(statefulService) && " +
             "!@annotation(org.globus.crux.stateful.StateTransient) && " +
-            "!@annotation(org.globus.crux.stateful.Create) && " +
-            "!@annotation(org.globus.crux.stateful.Destroy)",
+            "!@annotation(org.globus.crux.stateful.CreateState) && " +
+            "!@annotation(org.globus.crux.stateful.DestroyState)",
             argNames = "statefulService")
     public void anyUpdatingStatefulMethod(StatefulService statefulService) {
 

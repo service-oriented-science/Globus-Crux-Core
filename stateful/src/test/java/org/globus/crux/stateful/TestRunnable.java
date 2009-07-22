@@ -28,7 +28,7 @@ public class TestRunnable implements Callable<Integer> {
     }
 
     public Integer call() throws Exception {
-        adapter.addState(id);
+        adapter.setState(id);
 //        logger.info("bean state = {}", bean.getState());
         assertEquals(id, bean.getState().intValue());
         return id;

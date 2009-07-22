@@ -15,6 +15,7 @@ import java.lang.annotation.ElementType;
 @Target(ElementType.TYPE)
 @Service
 public @interface StatefulService {
+    StateKey value();
     /**
      * If this is set to true, state will be automatically perserved at the end of
      * each method.
@@ -22,4 +23,6 @@ public @interface StatefulService {
      * @return
      */
     boolean autoCommit() default false;
+
+    Class publicInterface() default Object.class;
 }

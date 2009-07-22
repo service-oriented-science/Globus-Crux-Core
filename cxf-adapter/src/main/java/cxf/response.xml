@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:EndpointReference xmlns:ns2="http://www.w3.org/2005/08/addressing" xmlns="http://counter.com">
+    <ns2:Address>http://localhost:9000/counter</ns2:Address>
+    <ns2:ReferenceParameters>
+        <ns3:CounterKey xmlns:ns2="http://counter.com" xmlns="http://www.w3.org/2005/08/addressing"
+                        xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:ns3="http://counter.com/key">counter1
+        </ns3:CounterKey>
+    </ns2:ReferenceParameters>
+    <ns2:Metadata>
+        <wsaw:ServiceName EndpointName="CounterPortTypePort" xmlns="" xmlns:ns2="http://counter.com/service"
+                          xmlns:wsa="http://www.w3.org/2005/08/addressing"
+                          xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                          xmlns:ns6="http://www.w3.org/2005/08/addressing" xmlns:ns7="http://counter.com">
+            ns2:CounterService
+        </wsaw:ServiceName>
+    </ns2:Metadata>
+</ns2:EndpointReference>

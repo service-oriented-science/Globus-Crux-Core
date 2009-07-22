@@ -36,10 +36,6 @@
             <artifactId>spring-aop</artifactId>
         </dependency>
         <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-        </dependency>
-        <dependency>
             <groupId>aopalliance</groupId>
             <artifactId>aopalliance</artifactId>
         </dependency>
@@ -123,7 +119,7 @@
                 </executions>
                 <configuration>
                     <methodContexts>
-                        <pointcuts>^.*@Pointcut.*</pointcuts>                        
+                        <pointcuts>^.*@Pointcut.*</pointcuts>
                     </methodContexts>
                     <contextFilters>pointcuts</contextFilters>
                     <excludes>

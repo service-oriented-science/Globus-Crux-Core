@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+    ">
+
+    <cxf:cxfEndpoint id="serviceEndpoint" address="http://localhost:9027/counter"
+                     wsdlURL="target/wsdl/Counter_service.wsdl"
+                     endpointName="s:CounterPortTypePort"
+                     serviceName="s:CounterService"
+                     serviceClass="org.globus.crux.RoutingProvider"
+                     xmlns:s="http://counter.com/service">
+        <!--<cxf:features>-->
+
+        <!--</cxf:features>-->
+    </cxf:cxfEndpoint>
+
+    <bean id="myJaxb" class="org.apache.camel.model.dataformat.JaxbDataFormat">
+        <property name="prettyPrint" value="true"/>
+        <property name="contextPath" value="com.counter"/>
+    </bean>
+
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <route>
+            <from uri="cxf:bean:serviceEndpoint"/>
+            <!--<unmarshal ref="myJaxb"/>-->
+            <to uri="log:counter?level=warn"/>
+        </route>
+    </camelContext>
+
+</beans>

@@ -11,5 +11,6 @@ package org.globus.crux.stateful;
  * @version 1.0
  */
 public interface StateAdapter<T> {
-    T getState(); 
+    T getState();
+    void setState(T state);
 }

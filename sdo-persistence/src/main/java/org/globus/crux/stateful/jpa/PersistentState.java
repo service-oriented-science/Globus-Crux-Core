@@ -12,6 +12,6 @@ import java.lang.annotation.RetentionPolicy;
  */
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@StatefulService
+//@StatefulService
 public @interface PersistentState {
 }

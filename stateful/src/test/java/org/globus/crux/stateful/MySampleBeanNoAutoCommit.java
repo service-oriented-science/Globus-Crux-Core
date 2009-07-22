@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * @author turtlebender
  */
-@StatefulService(autoCommit = false)
+//@StatefulService(autoCommit = false)
 public class MySampleBeanNoAutoCommit<T> implements SampleBean<T>{
     Logger logger = LoggerFactory.getLogger(MySampleBean.class);
         @StatefulContext

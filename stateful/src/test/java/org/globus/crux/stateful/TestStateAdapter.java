@@ -16,7 +16,7 @@ public class TestStateAdapter<T> implements StateAdapter<T> {
         return stateMap.get(Thread.currentThread());
     }
 
-    public void addState(T state) {
+    public void setState(T state) {
         stateMap.put(Thread.currentThread(), state);
     }
 

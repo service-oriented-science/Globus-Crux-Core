@@ -15,12 +15,12 @@ import java.beans.Introspector;
 import java.beans.BeanInfo;
 import java.beans.PropertyDescriptor;
 
-import org.globus.crux.cxf.Handler;
+import org.globus.crux.cxf.WSDispatchHandler;
 
 /**
  * @author turtlebender
  */
-public class JAXBCreateHandler implements Handler {
+public class JAXBCreateHandler implements WSDispatchHandler {
     private Method method;
     private Class<?> returnType = null;
     private JAXBContext jaxb;

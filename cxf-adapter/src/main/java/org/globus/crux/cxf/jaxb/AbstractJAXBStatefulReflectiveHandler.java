@@ -1,6 +1,6 @@
 package org.globus.crux.cxf.jaxb;
 
-import org.globus.crux.cxf.Handler;
+import org.globus.crux.cxf.WSDispatchHandler;
 import org.apache.cxf.ws.addressing.AddressingProperties;
 import org.apache.cxf.ws.addressing.JAXWSAConstants;
 import org.w3c.dom.Document;
@@ -16,7 +16,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 /**
  * @author turtlebender
  */
-public abstract class AbstractJAXBStatefulReflectiveHandler<T, V> implements Handler {
+public abstract class AbstractJAXBStatefulReflectiveHandler<T, V> implements WSDispatchHandler {
     private JAXBContext jaxb;
     private QName keyName;
     private DocumentBuilderFactory dbf;

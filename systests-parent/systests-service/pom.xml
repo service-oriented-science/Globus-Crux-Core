@@ -8,6 +8,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>systests-service</artifactId>
+    <name>Integration Test service project</name>
     <packaging>jar</packaging>
 
     <properties>

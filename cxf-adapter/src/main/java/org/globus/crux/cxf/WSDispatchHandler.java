@@ -6,6 +6,6 @@ import javax.xml.ws.WebServiceContext;
 /**
  * @author turtlebender
  */
-public interface Handler {
+public interface WSDispatchHandler {
     public Source handle(WebServiceContext wsc, Source request) throws Exception;        
 }

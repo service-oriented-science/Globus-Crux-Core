@@ -1,6 +1,7 @@
 package org.globus.crux.cxf.jaxb;
 
 import org.globus.crux.cxf.StatefulServiceWebProvider;
+import org.globus.crux.stateful.MethodProcessor;
 
 import java.lang.reflect.Method;
 
@@ -17,16 +18,18 @@ import javax.xml.bind.JAXBContext;
  */
 public class JAXBStatefulProcessor implements MethodProcessor {
     JAXBContext jaxb;
+    private StatefulServiceWebProvider provider;
 
-    public JAXBStatefulProcessor(JAXBContext jaxb) {
+    public JAXBStatefulProcessor(JAXBContext jaxb, StatefulServiceWebProvider provider) {
         this.jaxb = jaxb;
+        this.provider = provider;
     }    
 
     public boolean canProcess(Method method) {
         return method.isAnnotationPresent(Payload.class) && method.isAnnotationPresent(StatefulMethod.class);
     }
 
-    public void process(Object toProcess, Method method, StatefulServiceWebProvider provider) {
+    public void process(Object toProcess, Method method) {
         Payload payload = method.getAnnotation(Payload.class);
         QName payloadQName = new QName(payload.namespace(), payload.localpart());
         StateKey key = toProcess.getClass().getAnnotation(StatefulService.class).value();

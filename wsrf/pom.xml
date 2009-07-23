@@ -8,11 +8,8 @@
         <groupId>org.globus.crux</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.globus.crux</groupId>
     <artifactId>wsrf</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>wsrf</name>
-    <url>http://maven.apache.org</url>
+    <name>WSRF Implementation</name>
     <dependencies>
         <dependency>
             <groupId>javax.xml.bind</groupId>

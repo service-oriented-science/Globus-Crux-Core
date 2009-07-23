@@ -30,9 +30,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class StatefulServiceWebProvider implements Provider<Source> {
     @Resource
     private WebServiceContext context;
-    private Map<QName, Handler> handlerMap = new ConcurrentHashMap<QName, Handler>();
+    private Map<QName, WSDispatchHandler> handlerMap = new ConcurrentHashMap<QName, WSDispatchHandler>();
 
-    public void registerHandler(QName name, Handler handler) {
+    public void registerHandler(QName name, WSDispatchHandler handler) {
         handlerMap.put(name, handler);
     }
 
@@ -44,7 +44,7 @@ public class StatefulServiceWebProvider implements Provider<Source> {
             QNameExtractor qe = new QNameExtractor();
             trans.transform(streamSource, new SAXResult(qe));
             QName requestName = qe.qname;
-            Handler handler = handlerMap.get(requestName);
+            WSDispatchHandler handler = handlerMap.get(requestName);
             return handler.handle(context, streamSource);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -77,5 +77,5 @@ public class StatefulServiceWebProvider implements Provider<Source> {
             qname = new QName(s, s1);
         }
 
-    }
+    }   
 }

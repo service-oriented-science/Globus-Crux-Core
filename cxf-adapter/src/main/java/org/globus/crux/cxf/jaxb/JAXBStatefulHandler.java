@@ -9,7 +9,12 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
- * @author turtlebender
+ * A WSDispatch Handler for calling stateful methods.  This acquires the state from the WS-Addressing headers
+ * and passes the key and the request message to the specified method.
+ *
+ * @since 1.0
+ * @version 1.0
+ * @author Tom Howe
  */
 public class JAXBStatefulHandler extends AbstractJAXBStatefulReflectiveHandler<Object, Object> {
     private Method method;

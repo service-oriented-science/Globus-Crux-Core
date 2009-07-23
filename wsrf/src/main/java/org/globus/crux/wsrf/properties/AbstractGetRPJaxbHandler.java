@@ -1,6 +1,5 @@
 package org.globus.crux.wsrf.properties;
 
-import org.oasis.wsrf.v200406.properties.DraftGetResourcePropertyResponse;
 import org.globus.crux.cxf.jaxb.AbstractJAXBStatefulReflectiveHandler;
 import org.globus.crux.stateful.StateKeyParam;
 

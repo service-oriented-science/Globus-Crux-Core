@@ -1,6 +1,6 @@
 package org.globus.crux.wsrf.properties;
 
-import org.globus.crux.cxf.jaxb.MethodProcessor;
+import org.globus.crux.stateful.MethodProcessor;
 import org.globus.crux.cxf.StatefulServiceWebProvider;
 import org.globus.crux.stateful.StateKey;
 import org.globus.crux.stateful.StatefulService;
@@ -15,8 +15,10 @@ import java.lang.reflect.Method;
 public class GetRPJAXBProcessor implements MethodProcessor {
     private GetRPJAXBHandler handler;
     private JAXBContext jaxb;
+    private StatefulServiceWebProvider provider;
 
-    public GetRPJAXBProcessor(JAXBContext jaxb) {
+    public GetRPJAXBProcessor(JAXBContext jaxb, StatefulServiceWebProvider provider) {
+        this.provider = provider;
         this.jaxb = jaxb;
     }
 
@@ -24,7 +26,7 @@ public class GetRPJAXBProcessor implements MethodProcessor {
         return method.isAnnotationPresent(GetResourceProperty.class);
     }
 
-    public void process(Object toProcess, Method method, StatefulServiceWebProvider provider) {
+    public void process(Object toProcess, Method method) {
         if (handler == null) {
             StateKey key = toProcess.getClass().getAnnotation(StatefulService.class).value();
             QName keyName = new QName(key.namespace(), key.localpart());

@@ -29,7 +29,7 @@ public class Server {
         }
         Runtime.getRuntime().exec("cp src/main/wsdl/* target/wsdl");
         prepareWsdl("src/main/wsdl/counter_port_type.wsdl", "CounterPortType");
-        JAXBContext jaxb = JAXBContext.newInstance("com.counter:org.oasis.wsrf.v200406.properties:org.oasis.wsrf.v200406.faults");
+        JAXBContext jaxb = JAXBContext.newInstance("com.counter:org.oasis.wsrf.properties:org.oasis.wsrf.v200406.properties:org.oasis.wsrf.faults:org.oasis.wsrf.v200406.faults");
         CounterService service = new CounterService();
         StatefulServiceWebProvider provider = new StatefulServiceWebProvider();
         AnnotationProcessor processor = new AnnotationProcessor().

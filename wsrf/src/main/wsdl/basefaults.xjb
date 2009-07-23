@@ -1,10 +1,21 @@
 <bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb"
-          xmlns:bf="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd">
+          xmlns:bf="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd"
+          xmlns:bffinal="http://docs.oasis-open.org/wsrf/bf-2">
 
     <bindings scd="x-schema::bf" if-exists="true">
         <schemaBindings>
             <package name="org.oasis.wsrf.v200406.faults"/>
-        </schemaBindings>        
+            <nameXmlTransform>
+                <elementName prefix="Draft"/>                
+                <typeName prefix="Draft"/>
+            </nameXmlTransform>
+        </schemaBindings>
+    </bindings>
+
+    <bindings scd="x-schema::bffinal" if-exists="true">
+        <schemaBindings>
+            <package name="org.oasis.wsrf.faults"/>
+        </schemaBindings>
     </bindings>
 
 </bindings>

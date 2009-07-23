@@ -1,11 +1,24 @@
 <bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb"
           xmlns:wsa="http://www.w3.org/2005/08/addressing"
           xmlns:wsadraft="http://schemas.xmlsoap.org/ws/2003/03/addressing"
-          xmlns:wsrp="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd">
+          xmlns:wsrp="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"
+          xmlns:wsrpfinal="http://docs.oasis-open.org/wsrf/rp-2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://docs.oasis-open.org/wsrf/rp-2 http://docs.oasis-open.org/wsrf/rp-2.xsd">
 
     <bindings scd="x-schema::wsrp" if-exists="true">
         <schemaBindings>
             <package name="org.oasis.wsrf.v200406.properties"/>
+            <nameXmlTransform>
+                <elementName prefix="Draft"/>
+                <typeName prefix="Draft"/>
+            </nameXmlTransform>
+        </schemaBindings>
+    </bindings>
+
+    <bindings scd="x-schema::wsrpfinal" if-exists="true">
+        <schemaBindings>
+            <package name="org.oasis.wsrf.properties"/>
         </schemaBindings>
     </bindings>
 

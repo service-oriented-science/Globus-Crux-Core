@@ -12,6 +12,7 @@ import javax.xml.bind.JAXBContext;
 import java.io.File;
 
 import org.globus.crux.cxf.StatefulServiceWebProvider;
+import org.globus.crux.cxf.CXFCruxContextFactory;
 import org.globus.crux.stateful.ServiceMethodProcessor;
 import org.globus.crux.stateful.ServiceProcessor;
 import org.globus.crux.cxf.jaxb.JAXBCreateProcesor;
@@ -21,7 +22,7 @@ import org.globus.crux.wsrf.properties.GetRPJAXBProcessor;
 /**
  * @author turtlebender
  */
-public class Server {
+public class DummyServer {
 
     public static void main(String[] args) throws Exception {
         File outputDir = new File("target/wsdl");
@@ -34,6 +35,9 @@ public class Server {
         JAXBContext jaxb = JAXBContext.newInstance("com.counter:org.oasis.wsrf.properties:org.oasis.wsrf.v200406.properties:org.oasis.wsrf.faults:org.oasis.wsrf.v200406.faults");
         CounterService service = new CounterService();
         StatefulServiceWebProvider provider = new StatefulServiceWebProvider();
+        //TODO: getQName Dynamically
+        CXFCruxContextFactory fac = new CXFCruxContextFactory(jaxb, new QName("http://counter.com", "CounterKey"));
+        provider.setFactory(fac);
         ServiceProcessor processor = new ServiceMethodProcessor().
                 withProcessor(new JAXBStatefulProcessor(jaxb, provider)).
                 withProcessor(new JAXBCreateProcesor(jaxb, provider)).

@@ -2,8 +2,8 @@ package org.globus.crux.wsrf.properties;
 
 import org.globus.crux.stateful.MethodProcessor;
 import org.globus.crux.cxf.StatefulServiceWebProvider;
-import org.globus.crux.stateful.StateKey;
-import org.globus.crux.stateful.StatefulService;
+import org.globus.crux.service.StatefulService;
+import org.globus.crux.service.StateKey;
 
 import javax.xml.namespace.QName;
 import javax.xml.bind.JAXBContext;

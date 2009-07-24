@@ -1,17 +1,17 @@
 package org.globus.crux.stateful.internal;
 
-import org.globus.crux.stateful.StatefulService;
 import org.globus.crux.stateful.StatefulServiceException;
-import org.globus.crux.stateful.StatefulMethod;
-import org.globus.crux.stateful.StateKeyParam;
-import org.globus.crux.stateful.CreateState;
-import org.globus.crux.stateful.DestroyState;
+import org.globus.crux.service.StatefulService;
+import org.globus.crux.service.DestroyState;
+import org.globus.crux.service.CreateState;
+import org.globus.crux.service.StatefulMethod;
+import org.globus.crux.service.StateKeyParam;
 
 import javax.xml.namespace.QName;
-import java.util.concurrent.ConcurrentHashMap;
-import java.lang.reflect.Method;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author turtlebender
@@ -60,7 +60,7 @@ public class StatefulServiceDesc {
         }
     }
 
-    public Object invoke(Object parameter) throws StatefulServiceException{
+    public Object invoke(Object parameter) throws StatefulServiceException {
         return invoke(parameter, null);
     }
 

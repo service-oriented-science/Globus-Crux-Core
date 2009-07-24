@@ -2,11 +2,10 @@ package org.globus.crux.cxf.jaxb;
 
 import org.globus.crux.cxf.StatefulServiceWebProvider;
 import org.globus.crux.stateful.MethodProcessor;
+import org.globus.crux.service.Payload;
+import org.globus.crux.service.CreateState;
 
 import java.lang.reflect.Method;
-
-import org.globus.crux.stateful.Payload;
-import org.globus.crux.stateful.CreateState;
 
 import javax.xml.namespace.QName;
 import javax.xml.bind.JAXBContext;

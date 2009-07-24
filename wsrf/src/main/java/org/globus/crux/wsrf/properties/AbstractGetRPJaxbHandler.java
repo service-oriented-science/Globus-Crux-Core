@@ -1,7 +1,7 @@
 package org.globus.crux.wsrf.properties;
 
 import org.globus.crux.cxf.jaxb.AbstractJAXBStatefulReflectiveHandler;
-import org.globus.crux.stateful.StateKeyParam;
+import org.globus.crux.service.StateKeyParam;
 
 import javax.xml.namespace.QName;
 import javax.xml.bind.JAXBElement;

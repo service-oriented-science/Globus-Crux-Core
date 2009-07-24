@@ -1,7 +1,8 @@
 package org.globus.crux.cxf.jaxb;
 
-import org.globus.crux.stateful.PayloadParam;
-import org.globus.crux.stateful.StateKeyParam;
+
+import org.globus.crux.service.StateKeyParam;
+import org.globus.crux.service.PayloadParam;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.namespace.QName;

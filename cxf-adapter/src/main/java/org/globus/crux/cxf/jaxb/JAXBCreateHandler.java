@@ -1,6 +1,5 @@
 package org.globus.crux.cxf.jaxb;
 
-import org.globus.crux.stateful.CreateState;
 import org.w3c.dom.Document;
 
 import javax.xml.ws.WebServiceContext;
@@ -16,6 +15,7 @@ import java.beans.BeanInfo;
 import java.beans.PropertyDescriptor;
 
 import org.globus.crux.cxf.WSDispatchHandler;
+import org.globus.crux.service.CreateState;
 
 /**
  * @author turtlebender

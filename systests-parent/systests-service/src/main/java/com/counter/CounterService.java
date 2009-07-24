@@ -1,13 +1,14 @@
 package com.counter;
 
-import org.globus.crux.stateful.CreateState;
-import org.globus.crux.stateful.Payload;
-import org.globus.crux.stateful.PayloadParam;
-import org.globus.crux.stateful.StateKey;
-import org.globus.crux.stateful.StateKeyParam;
-import org.globus.crux.stateful.StatefulMethod;
-import org.globus.crux.stateful.StatefulService;
+
 import org.globus.crux.wsrf.properties.GetResourceProperty;
+import org.globus.crux.service.StatefulService;
+import org.globus.crux.service.StateKey;
+import org.globus.crux.service.CreateState;
+import org.globus.crux.service.Payload;
+import org.globus.crux.service.PayloadParam;
+import org.globus.crux.service.StatefulMethod;
+import org.globus.crux.service.StateKeyParam;
 
 import javax.xml.bind.JAXBElement;
 import java.util.Map;

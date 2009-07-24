@@ -17,5 +17,6 @@
         <module>systests-parent</module>
         <module>wsdl</module>
     	<module>wsrf</module>
+        <module>api</module>
     </modules>
 </project>

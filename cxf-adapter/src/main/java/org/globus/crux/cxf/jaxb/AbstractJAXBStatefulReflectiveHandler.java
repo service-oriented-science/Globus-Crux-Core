@@ -1,6 +1,6 @@
 package org.globus.crux.cxf.jaxb;
 
-import org.globus.crux.cxf.DispatchHandler;
+import org.globus.crux.DispatchHandler;
 import org.globus.crux.stateful.CruxContext;
 import org.w3c.dom.Document;
 

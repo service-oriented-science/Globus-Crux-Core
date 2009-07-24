@@ -13,7 +13,7 @@ import java.beans.Introspector;
 import java.beans.BeanInfo;
 import java.beans.PropertyDescriptor;
 
-import org.globus.crux.cxf.DispatchHandler;
+import org.globus.crux.DispatchHandler;
 import org.globus.crux.cxf.CXFCruxContext;
 import org.globus.crux.service.CreateState;
 

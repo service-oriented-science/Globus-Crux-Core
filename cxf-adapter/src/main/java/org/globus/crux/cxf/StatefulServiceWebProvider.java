@@ -1,13 +1,9 @@
 package org.globus.crux.cxf;
 
-import org.apache.cxf.ws.addressing.WSAddressingFeature;
-import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
-import org.apache.cxf.interceptor.LoggingOutInterceptor;
-import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.ext.DefaultHandler2;
-import org.globus.crux.stateful.CruxContext;
+import org.globus.crux.DispatchHandler;
 
 import javax.xml.ws.Service;
 import javax.xml.ws.ServiceMode;

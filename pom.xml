@@ -14,7 +14,7 @@
         <module>parent</module>
         <module>stateful</module>
         <module>cxf-adapter</module>
-        <module>systests-parent</module>
+        <module>systests</module>
         <module>wsdl</module>
     	<module>wsrf</module>
         <module>api</module>

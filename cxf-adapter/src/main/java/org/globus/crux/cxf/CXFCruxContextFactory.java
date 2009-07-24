@@ -1,5 +1,7 @@
 package org.globus.crux.cxf;
 
+import org.globus.crux.CruxContextFactory;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.namespace.QName;
 import javax.xml.ws.WebServiceContext;

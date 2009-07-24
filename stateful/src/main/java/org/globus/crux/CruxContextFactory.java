@@ -1,8 +1,6 @@
-package org.globus.crux.cxf;
+package org.globus.crux;
 
 import org.globus.crux.stateful.CruxContext;
-
-import javax.xml.ws.WebServiceContext;
 
 /**
  * @author turtlebender

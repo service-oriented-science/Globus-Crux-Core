@@ -2,7 +2,6 @@ package org.globus.crux.cxf.jaxb;
 
 import org.w3c.dom.Document;
 
-import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.wsaddressing.W3CEndpointReference;
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMSource;
@@ -14,13 +13,14 @@ import java.beans.Introspector;
 import java.beans.BeanInfo;
 import java.beans.PropertyDescriptor;
 
-import org.globus.crux.cxf.WSDispatchHandler;
+import org.globus.crux.cxf.DispatchHandler;
+import org.globus.crux.cxf.CXFCruxContext;
 import org.globus.crux.service.CreateState;
 
 /**
  * @author turtlebender
  */
-public class JAXBCreateHandler implements WSDispatchHandler {
+public class JAXBCreateHandler implements DispatchHandler<CXFCruxContext> {
     private Method method;
     private Class<?> returnType = null;
     private JAXBContext jaxb;
@@ -39,7 +39,7 @@ public class JAXBCreateHandler implements WSDispatchHandler {
         }
     }
 
-    public Source handle(WebServiceContext wsc, Source request) throws Exception {
+    public Source handle(CXFCruxContext context, Source request) throws Exception {
         Object requestObject = jaxb.createUnmarshaller().unmarshal(request);
         Object result = method.invoke(targetService, requestObject);
         DocumentBuilder db = dbf.newDocumentBuilder();
@@ -48,7 +48,8 @@ public class JAXBCreateHandler implements WSDispatchHandler {
             jaxb.createMarshaller().marshal(result, doc);
         } else {
             jaxb.createMarshaller().marshal(result, doc);
-            W3CEndpointReference epr = (W3CEndpointReference) wsc.getEndpointReference(doc.getDocumentElement());
+            W3CEndpointReference epr = (W3CEndpointReference) context.getWebServiceContext().
+                    getEndpointReference(doc.getDocumentElement());
             Object object = this.returnType.newInstance();
             BeanInfo spec = Introspector.getBeanInfo(this.returnType);
             if (this.writeKeyMethod == null) {

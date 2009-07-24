@@ -6,7 +6,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * @author turtlebender
+ * Marks a method as being stateful.  A StateKeyParam is required to inject the state.
+ *
+ * @author Tom Howe
  */
 @Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)

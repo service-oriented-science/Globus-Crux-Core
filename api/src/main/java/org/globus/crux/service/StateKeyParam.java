@@ -6,7 +6,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * @author turtlebender
+ * Used to specify which parameter is associated with the State key.
+ *
+ * @author Tom Howe
  */
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)

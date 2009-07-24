@@ -7,6 +7,7 @@ import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.ext.DefaultHandler2;
+import org.globus.crux.stateful.CruxContext;
 
 import javax.xml.ws.Service;
 import javax.xml.ws.ServiceMode;
@@ -30,39 +31,29 @@ import java.util.concurrent.ConcurrentHashMap;
 public class StatefulServiceWebProvider implements Provider<Source> {
     @Resource
     private WebServiceContext context;
-    private Map<QName, WSDispatchHandler> handlerMap = new ConcurrentHashMap<QName, WSDispatchHandler>();
+    private Map<QName, DispatchHandler<CXFCruxContext>> handlerMap =
+            new ConcurrentHashMap<QName, DispatchHandler<CXFCruxContext>>();
+    private CXFCruxContextFactory factory;
 
-    public void registerHandler(QName name, WSDispatchHandler handler) {
+    public void setFactory(CXFCruxContextFactory factory) {
+        this.factory = factory;
+    }
+
+    public void registerHandler(QName name, DispatchHandler<CXFCruxContext> handler) {
         handlerMap.put(name, handler);
     }
 
     public Source invoke(Source streamSource) {
-//        AddressingProperties map =
-//                (AddressingProperties) context.getMessageContext().get(JAXWSAConstants.SERVER_ADDRESSING_PROPERTIES_INBOUND);
         try {
             Transformer trans = TransformerFactory.newInstance().newTransformer();
             QNameExtractor qe = new QNameExtractor();
             trans.transform(streamSource, new SAXResult(qe));
             QName requestName = qe.qname;
-            WSDispatchHandler handler = handlerMap.get(requestName);
-            return handler.handle(context, streamSource);
+            DispatchHandler<CXFCruxContext> handler = handlerMap.get(requestName);
+            return handler.handle(factory.createContext(context), streamSource);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        JaxWsServerFactoryBean svrFactory = new JaxWsServerFactoryBean();
-        svrFactory.setServiceClass(StatefulServiceWebProvider.class);
-        svrFactory.setWsdlURL("cxf-adapter/stock.wsdl");
-        svrFactory.setAddress("http://localhost:9000/helloWorld");
-
-        svrFactory.setServiceName(new QName("http://example.com/stockquote", "StockQuoteService"));
-        svrFactory.setServiceBean(new StatefulServiceWebProvider());
-        svrFactory.getFeatures().add(new WSAddressingFeature());
-        svrFactory.getInInterceptors().add(new LoggingInInterceptor());
-        svrFactory.getOutInterceptors().add(new LoggingOutInterceptor());
-        svrFactory.create();
     }
 
     class QNameExtractor extends DefaultHandler2 {
@@ -76,6 +67,5 @@ public class StatefulServiceWebProvider implements Provider<Source> {
             }
             qname = new QName(s, s1);
         }
-
     }   
 }

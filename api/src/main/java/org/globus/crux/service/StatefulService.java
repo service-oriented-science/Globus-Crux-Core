@@ -12,14 +12,11 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface StatefulService {
-    StateKey value();
     /**
-     * If this is set to true, state will be automatically perserved at the end of
-     * each method.
-     * 
+     * Specifies the key QName for the resource associated with the service.
      * @return
      */
-    boolean autoCommit() default false;
+    StateKey value();
 
     Class publicInterface() default Object.class;
 }

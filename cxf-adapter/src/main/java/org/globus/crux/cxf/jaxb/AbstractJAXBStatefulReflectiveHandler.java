@@ -1,14 +1,11 @@
 package org.globus.crux.cxf.jaxb;
 
-import org.globus.crux.cxf.WSDispatchHandler;
-import org.apache.cxf.ws.addressing.AddressingProperties;
-import org.apache.cxf.ws.addressing.JAXWSAConstants;
+import org.globus.crux.cxf.DispatchHandler;
+import org.globus.crux.stateful.CruxContext;
 import org.w3c.dom.Document;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMSource;
-import javax.xml.ws.WebServiceContext;
-import javax.xml.bind.JAXBIntrospector;
 import javax.xml.bind.JAXBContext;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -16,7 +13,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 /**
  * @author turtlebender
  */
-public abstract class AbstractJAXBStatefulReflectiveHandler<T, V> implements WSDispatchHandler {
+public abstract class AbstractJAXBStatefulReflectiveHandler<T, V> implements DispatchHandler {
     private JAXBContext jaxb;
     private QName keyName;
     private DocumentBuilderFactory dbf;
@@ -29,18 +26,9 @@ public abstract class AbstractJAXBStatefulReflectiveHandler<T, V> implements WSD
         this.target = target;
     }
 
-    public Source handle(WebServiceContext wsc, Source request) throws Exception {
-        AddressingProperties map =
-                (AddressingProperties) wsc.getMessageContext().
-                        get(JAXWSAConstants.SERVER_ADDRESSING_PROPERTIES_INBOUND);
-        JAXBIntrospector jaxbspec = jaxb.createJAXBIntrospector();
-        Object key = null;
-        for (Object candidate : map.getToEndpointReference().getReferenceParameters().getAny()) {
-            if (jaxbspec.getElementName(candidate).equals(this.keyName)) {
-                key = candidate;
-                break;
-            }
-        }
+    public Source handle(CruxContext context, Source request) throws Exception {
+
+        Object key = context.getKey();
         Object unmarshalled = jaxb.createUnmarshaller().unmarshal(request);
         V result = doHandle(key, target, (T) unmarshalled);
         Document doc = dbf.newDocumentBuilder().newDocument();

@@ -5,7 +5,9 @@ import java.lang.annotation.Target;
 import java.lang.annotation.ElementType;
 
 /**
- * @author turtlebender
+ * Used to specify which parameter is associated with the Payload.
+ *
+ * @author Tom Howe
  */
 @Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)

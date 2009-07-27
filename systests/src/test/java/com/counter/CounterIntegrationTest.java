@@ -93,7 +93,7 @@ public class CounterIntegrationTest {
         QName port = new QName("http://counter.com/service", "CounterPortTypePort");
         service = Service.create(new QName("http://counter.com/service", "CounterService"));
         service.addPort(port, SOAPBinding.SOAP12HTTP_BINDING,
-                "http://localhost:9000/counter");
+                "http://localhost:12345/counter");
         dispatch = service.createDispatch(port, jaxb, Service.Mode.PAYLOAD);
     }
 
@@ -101,7 +101,7 @@ public class CounterIntegrationTest {
         JaxWsServerFactoryBean svrFactory = new JaxWsServerFactoryBean();
         svrFactory.setServiceBean(provider);
         svrFactory.setWsdlURL("target/wsdl/counter_service.wsdl");
-        svrFactory.setAddress("http://localhost:9000/counter");
+        svrFactory.setAddress("http://localhost:12345/counter");
         svrFactory.setServiceName(new QName("http://counter.com/service", "CounterService"));
         svrFactory.setEndpointName(new QName("http://counter.com/service", "CounterPortTypePort"));
         svrFactory.getFeatures().add(new WSAddressingFeature());

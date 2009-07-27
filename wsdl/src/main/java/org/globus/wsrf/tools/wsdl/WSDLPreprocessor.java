@@ -72,7 +72,7 @@ import org.globus.wsrf.utils.XmlUtils;
 
 // TODO: need to i18n
 public class WSDLPreprocessor {
-    private static Log logger =
+    private static Log log =
             LogFactory.getLog(WSDLPreprocessor.class.getName());
 
     private boolean wsaImport = false;
@@ -102,8 +102,7 @@ public class WSDLPreprocessor {
         this.portTypeName = new QName(name);
     }
 
-    public void execute()
-            throws Exception {
+    public void execute() throws Exception {
         if (this.inFileName == null || this.inFileName.length() == 0) {
             throw new Exception("Input file not specified");
         }
@@ -232,7 +231,7 @@ public class WSDLPreprocessor {
             }
         }
         if (this.outFileName != null && !this.quiet) {
-            System.out.println("Generated " + this.outFileName);
+            log.info("Generated " + this.outFileName);
         }
     }
 
@@ -251,14 +250,14 @@ public class WSDLPreprocessor {
 
             if (portTypeNames != null
                     && portTypeNames.contains(currentPortType.getQName())) {
-                logger.debug("Found porttype: " +
+                log.debug("Found porttype: " +
                         currentPortType.getQName());
 
                 QName resourceProperties = (QName)
                         currentPortType.getExtensionAttribute(RP);
 
                 if (resourceProperties != null) {
-                    logger.debug("Adding resource properties for porttype: " +
+                    log.debug("Adding resource properties for porttype: " +
                             currentPortType.getQName());
                     resourcePropertyElements.putAll(
                             getResourceProperties(resourceProperties,
@@ -277,13 +276,13 @@ public class WSDLPreprocessor {
                     if (!newDependencies.isEmpty() &&
                             definition != parentDefinition &&
                             !quiet) {
-                        System.err.println(
+                        log.warn(
                                 "WARNING: The following porttypes are missing:");
                         Iterator portTypeNamesIterator =
                                 newDependencies.iterator();
                         while (portTypeNamesIterator.hasNext()) {
-                            System.err.println(
-                                    "\t" + ((QName) portTypeNamesIterator.next()).toString());
+                            log.error(
+                                    "\t" + portTypeNamesIterator.next().toString());
                         }
                     }
                 }
@@ -351,13 +350,10 @@ public class WSDLPreprocessor {
                 }
 
                 if (!portTypeNames.isEmpty() && !quiet) {
-                    System.err.println(
-                            "WARNING: The following porttypes are missing:");
+                    log.warn("The following porttypes are missing:");
                     Iterator portTypeNamesIterator = portTypeNames.iterator();
                     while (portTypeNamesIterator.hasNext()) {
-                        System.err.println(
-                                "\t" +
-                                        ((QName) portTypeNamesIterator.next()).toString());
+                        log.warn("\t" + (portTypeNamesIterator.next()).toString());
                     }
                 }
             }
@@ -456,12 +452,12 @@ public class WSDLPreprocessor {
         schemaInput.setStringData(
                 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
                         + XmlUtils.getElementAsString(schema));
-        logger.debug("Loading schema in types section of definition " +
+        log.info("Loading schema in types section of definition " +
                 def.getDocumentBaseURI());
         schemaInput.setSystemId(def.getDocumentBaseURI());
         XMLSchemaLoader schemaLoader = new XMLSchemaLoader();
         XSModel schemaModel = schemaLoader.load(schemaInput);
-        logger.debug("Done loading");
+        log.info("Done loading");
         return schemaModel;
     }
 
@@ -514,8 +510,8 @@ public class WSDLPreprocessor {
             Types types = def.getTypes();
             if (types == null) {
                 if (!quiet) {
-                    System.err.println(
-                            "WARNING: The " + def.getDocumentBaseURI()
+                    log.warn(
+                            "The " + def.getDocumentBaseURI()
                                     + " definition does not have a types section");
                 }
                 return resourcePropertyElements;

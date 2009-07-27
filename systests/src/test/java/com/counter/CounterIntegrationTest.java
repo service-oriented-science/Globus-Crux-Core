@@ -85,22 +85,7 @@ public class CounterIntegrationTest {
                 withProcessor(new GetRPJAXBProcessor(jaxb, provider));
         processor.processObject(service);
         createService(provider);
-    }
-
-    private void prepareWsdl(String compactWsdl, String portType) throws Exception {
-        FileUtils.copyDirectory(new File("src/main/wsdl"), new File("target/wsdl"));
-
-        WSDLPreprocessor pp = new WSDLPreprocessor();
-        pp.setInputFile(compactWsdl);
-        pp.setOutputFile("target/wsdl/counter_flattened.wsdl");
-        pp.setPortTypeName(portType);
-        pp.execute();
-        GenerateBinding gb = new GenerateBinding();
-        gb.setFileRoot("target/wsdl/counter");
-        gb.setProtocol("http");
-        gb.setPortTypeFile("target/wsdl/counter_flattened.wsdl");
-        gb.execute();
-    }
+    }    
 
     @BeforeClass
     public void setupClient() throws JAXBException {

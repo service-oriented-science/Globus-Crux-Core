@@ -21,6 +21,7 @@
             <artifactId>cxf-adapter</artifactId>
             <version>${version}</version>
         </dependency>
+
     </dependencies>
 
     <build>

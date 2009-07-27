@@ -15,42 +15,32 @@
  */
 package org.globus.wsrf.utils;
 
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.StringWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Iterator;
-
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import javax.xml.namespace.QName;
-
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.xerces.impl.dv.util.Base64;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.Attr;
-import org.w3c.dom.NamedNodeMap;
-
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
-import org.apache.xerces.impl.dv.util.Base64;
+import javax.xml.namespace.QName;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Various XML utilities.
@@ -59,8 +49,8 @@ public class XmlUtils {
 
     public static final String NS_URI_XMLNS = "http://www.w3.org/2000/xmlns/";
 
-    private static Logger log =
-            LoggerFactory.getLogger(XmlUtils.class.getName());
+    private static Log log =
+            LogFactory.getLog(XmlUtils.class);
 
 //    private static I18n i18n =
 //        I18n.getI18n(Resources.class.getName());
@@ -78,7 +68,7 @@ public class XmlUtils {
             }
             trans.transform(new DOMSource(e), result);
         } catch (TransformerException e1) {
-            log.error("", e);
+            log.error("", e1);
             return null;
         }
         return writer.toString();
@@ -94,7 +84,7 @@ public class XmlUtils {
             }
             trans.transform(new DOMSource(e), result);
         } catch (TransformerException e1) {
-            log.error("", e);
+            log.error("", e1);
             return null;
         }
         return writer.toString();

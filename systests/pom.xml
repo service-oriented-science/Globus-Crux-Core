@@ -17,7 +17,23 @@
 
     <build>
         <plugins>
-
+            <plugin>
+                <groupId>org.globus.crux</groupId>
+                <artifactId>crux</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generateWSDL</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFile>src/main/wsdl/counter.wsdl</wsdlFile>
+                            <portTypeName>CounterPortType</portTypeName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>

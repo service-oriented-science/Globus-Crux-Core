@@ -51,6 +51,8 @@ import com.ibm.wsdl.extensions.soap.SOAPBindingImpl;
 import com.ibm.wsdl.extensions.soap.SOAPBodyImpl;
 import com.ibm.wsdl.extensions.soap.SOAPFaultImpl;
 import com.ibm.wsdl.extensions.soap.SOAPOperationImpl;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class GenerateBinding
 {
@@ -85,9 +87,8 @@ public class GenerateBinding
         this.quiet = quiet;
     }
     
-    public void execute() 
-        throws Exception 
-    {
+    public void execute() throws Exception {
+        Log log = LogFactory.getLog(getClass());
         if (this.portTypeFile == null || this.portTypeFile.length() == 0) 
         {
             throw new Exception("Input file not specified");
@@ -200,8 +201,8 @@ public class GenerateBinding
             writer.writeWSDL(serviceDefinition, serviceDefinitionOutput);
             if (!this.quiet)
             {
-                System.out.println("Generated " + bindingFile);
-                System.out.println("Generated " + serviceFile);                              
+                log.info("Generated " + bindingFile);
+                log.info("Generated " + serviceFile);                              
             }
         }
         finally

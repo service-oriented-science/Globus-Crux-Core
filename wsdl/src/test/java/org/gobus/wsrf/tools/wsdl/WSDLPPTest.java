@@ -3,7 +3,6 @@ package org.gobus.wsrf.tools.wsdl;
 import org.testng.annotations.Test;
 import org.globus.wsrf.tools.wsdl.WSDLPreprocessor;
 import org.globus.wsrf.tools.wsdl.GenerateBinding;
-import org.apache.cxf.wsdl11.ResourceManagerWSDLLocator;
 
 /**
  * @author turtlebender

@@ -71,8 +71,6 @@ public class CounterIntegrationTest {
 
     @BeforeTest
     public void startServer() throws Exception, IOException {
-        prepareWsdl("src/main/wsdl/counter_port_type.wsdl", "CounterPortType");
-
         jaxb = JAXBContext.newInstance("com.counter:org.oasis.wsrf.properties:org.oasis.wsrf.v200406.properties:org.oasis.wsrf.faults:org.oasis.wsrf.v200406.faults");
         CounterService service = new CounterService();
         StatefulServiceWebProvider provider = new StatefulServiceWebProvider();

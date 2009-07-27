@@ -19,7 +19,7 @@
         <plugins>
             <plugin>
                 <groupId>org.globus.crux</groupId>
-                <artifactId>crux</artifactId>
+                <artifactId>maven-crux-plugin</artifactId>
                 <version>1.0-SNAPSHOT</version>
                 <executions>
                     <execution>

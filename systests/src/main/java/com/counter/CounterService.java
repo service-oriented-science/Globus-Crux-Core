@@ -9,8 +9,11 @@ import org.globus.crux.service.Payload;
 import org.globus.crux.service.PayloadParam;
 import org.globus.crux.service.StatefulMethod;
 import org.globus.crux.service.StateKeyParam;
+import org.globus.crux.service.EPRFactory;
 
 import javax.xml.bind.JAXBElement;
+import javax.xml.ws.wsaddressing.W3CEndpointReference;
+import javax.annotation.Resource;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -19,17 +22,21 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class CounterService {
     private ObjectFactory factory = new ObjectFactory();
 
+    @Resource
+    private EPRFactory eprFac;
+
     private Map<String, CounterRP> counterMap = new ConcurrentHashMap<String, CounterRP>();
     private AtomicInteger counter = new AtomicInteger(0);
 
-    @CreateState(responseType = CreateCounterResponse.class)
+    @CreateState()
     @Payload(namespace = "http://counter.com", localpart = "createCounter")
-    public JAXBElement<String> createCounter(
+    public CreateCounterResponse createCounter(
             @PayloadParam CreateCounter request) {
         int idNum = counter.incrementAndGet();
         String id = "counter" + Integer.toString(idNum);
         counterMap.put(id, new CounterRP());
-        return factory.createCounterKey(id);
+        W3CEndpointReference epr = eprFac.createEPRWithId(factory.createCounterKey(id));
+        return new CreateCounterResponse(epr);
     }
 
     @StatefulMethod

@@ -13,12 +13,5 @@ import java.lang.annotation.ElementType;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface CreateState {
-    /**
-     * If the xml defined return type is a wrapper around the id, this parameter
-     * can be used to specify the type of the wrapper.
-     *
-     * @return the type of the wrapper
-     */
-    Class responseType() default Object.class;
+public @interface CreateState {    
 }

@@ -14,8 +14,8 @@ public class DraftGetRPJaxbHandler extends AbstractGetRPJaxbHandler<DraftGetReso
     private ObjectFactory objectFactory = new ObjectFactory();
 
 
-    public DraftGetRPJaxbHandler(QName keyName, Object target, JAXBContext jaxb) {
-        super(keyName, target, jaxb);
+    public DraftGetRPJaxbHandler(Object target, JAXBContext jaxb) {
+        super(target, jaxb);
     }
 
     protected DraftGetResourcePropertyResponse doHandle(Object key, Object target, JAXBElement<QName> payload) throws Exception {

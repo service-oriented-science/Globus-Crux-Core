@@ -32,8 +32,7 @@ public class JAXBStatefulProcessor implements MethodProcessor {
         Payload payload = method.getAnnotation(Payload.class);
         QName payloadQName = new QName(payload.namespace(), payload.localpart());
         StateKey key = toProcess.getClass().getAnnotation(StatefulService.class).value();
-        QName keyQName = new QName(key.namespace(), key.localpart());
-        JAXBStatefulHandler handler = new JAXBStatefulHandler(keyQName, toProcess, method, jaxb);
+        JAXBStatefulHandler handler = new JAXBStatefulHandler(toProcess, method, jaxb);
         provider.registerHandler(payloadQName, handler);
     }
 }

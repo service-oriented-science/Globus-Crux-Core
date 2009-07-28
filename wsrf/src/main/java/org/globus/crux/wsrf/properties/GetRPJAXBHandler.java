@@ -15,10 +15,10 @@ public class GetRPJAXBHandler extends AbstractJAXBStatefulReflectiveHandler<JAXB
     private DraftGetRPJaxbHandler draftHandler;
     private FinalGetRPJaxbHandler finalHandler;
 
-    public GetRPJAXBHandler(QName keyName, Object target, JAXBContext jaxb) {
-        super(keyName, target, jaxb);
-        draftHandler = new DraftGetRPJaxbHandler(keyName, target, jaxb);
-        finalHandler = new FinalGetRPJaxbHandler(keyName, target, jaxb);
+    public GetRPJAXBHandler(Object target, JAXBContext jaxb) {
+        super(target, jaxb);
+        draftHandler = new DraftGetRPJaxbHandler(target, jaxb);
+        finalHandler = new FinalGetRPJaxbHandler(target, jaxb);
     }
 
     public void registerMethod(QName qname, Method method) {

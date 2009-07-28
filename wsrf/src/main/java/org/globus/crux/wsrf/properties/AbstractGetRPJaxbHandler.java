@@ -14,12 +14,12 @@ import java.util.HashMap;
 /**
  * @author turtlebender
  */
-public abstract class AbstractGetRPJaxbHandler<T> extends AbstractJAXBStatefulReflectiveHandler<JAXBElement<QName>,
-        T> {
+public abstract class AbstractGetRPJaxbHandler<T> extends
+        AbstractJAXBStatefulReflectiveHandler<JAXBElement<QName>, T> {
     private Map<QName, Method> propertyMap = new HashMap<QName, Method>();
 
-    public AbstractGetRPJaxbHandler(QName keyName, Object target, JAXBContext jaxb) {
-        super(keyName, target, jaxb);
+    public AbstractGetRPJaxbHandler(Object target, JAXBContext jaxb) {
+        super(target, jaxb);
     }
 
     public void registerMethod(QName qname, Method method) {

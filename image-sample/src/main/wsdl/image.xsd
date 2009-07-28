@@ -1,0 +1,104 @@
+<xsd:schema targetNamespace="http://images.com"
+            xmlns:tns="http://images.com"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            xmlns:wsa="http://www.w3.org/2005/08/addressing">
+
+    <xsd:import namespace="http://www.w3.org/2005/08/addressing" schemaLocation="ws-addr.xsd"/>
+
+    <xsd:element name="galleryId" type="xsd:string"/>
+
+    <xsd:element name="imageId" type="xsd:int"/>
+
+    <xsd:element name="CreateGallery">
+        <xsd:complexType>
+            <xsd:attribute name="name"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="CreateGalleryResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="wsa:EndpointReference"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="FindGallery">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="galleryName" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="FindGalleryResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="wsa:EndpointReference"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="FindImage">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="imageName" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="Gallery">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="images" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="galleryName" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="FindImageResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="wsa:EndpointReference"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="CreateImage">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="imageName" type="xsd:string"/>
+                <xsd:element name="imageUrl" type="xsd:anyURI"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="CreateImageResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="wsa:EndpointReference"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="RotateImage">
+        <xsd:complexType>
+            <xsd:attribute name="rotation" type="xsd:int"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="RotateImageResponse">
+        <xsd:complexType/>
+    </xsd:element>
+
+    <xsd:element name="Image">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="fileUri" type="xsd:anyURI"/>
+                <xsd:element name="width" type="xsd:int"/>
+                <xsd:element name="height" type="xsd:int"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

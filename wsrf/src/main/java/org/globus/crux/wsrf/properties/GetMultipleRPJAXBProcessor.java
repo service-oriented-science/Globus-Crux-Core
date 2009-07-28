@@ -3,8 +3,6 @@ package org.globus.crux.wsrf.properties;
 import org.globus.crux.stateful.MethodProcessor;
 import org.globus.crux.cxf.jaxb.AbstractJAXBStatefulReflectiveHandler;
 import org.globus.crux.cxf.StatefulServiceWebProvider;
-import org.globus.crux.service.StatefulService;
-import org.globus.crux.service.StateKey;
 import org.globus.crux.service.StateKeyParam;
 import org.oasis.wsrf.properties.GetMultipleResourcePropertiesResponse;
 import org.oasis.wsrf.properties.GetMultipleResourceProperties;
@@ -37,9 +35,7 @@ public class GetMultipleRPJAXBProcessor implements MethodProcessor {
 
     public void process(Object toProcess, Method method) {
         if (handler == null) {
-            StateKey key = toProcess.getClass().getAnnotation(StatefulService.class).value();
-            QName keyName = new QName(key.namespace(), key.localpart());
-            handler = new GetMRPHandler(keyName, toProcess, jaxb);
+            handler = new GetMRPHandler(toProcess, jaxb);
             provider.registerHandler(new QName("http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd",
                     "GetMultipleResourceProperties"), this.handler);
         }
@@ -56,8 +52,8 @@ public class GetMultipleRPJAXBProcessor implements MethodProcessor {
             propertyMap.put(qname, method);
         }
 
-        GetMRPHandler(QName keyName, Object target, JAXBContext jaxb) {
-            super(keyName, target, jaxb);
+        GetMRPHandler(Object target, JAXBContext jaxb) {
+            super(target, jaxb);
         }
 
         protected GetMultipleResourcePropertiesResponse doHandle(Object key, Object target, GetMultipleResourceProperties payload) throws Exception {

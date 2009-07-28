@@ -14,8 +14,8 @@ import javax.xml.bind.JAXBContext;
 public class FinalGetRPJaxbHandler extends AbstractGetRPJaxbHandler<GetResourcePropertyResponse> {
     private ObjectFactory objectFactory = new ObjectFactory();
 
-    public FinalGetRPJaxbHandler(QName keyName, Object target, JAXBContext jaxb) {
-        super(keyName, target, jaxb);
+    public FinalGetRPJaxbHandler(Object target, JAXBContext jaxb) {
+        super(target, jaxb);
     }
 
     protected GetResourcePropertyResponse doHandle(Object key, Object target, JAXBElement<QName> payload) throws Exception {

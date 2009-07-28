@@ -22,8 +22,8 @@ public class JAXBStatefulHandler extends AbstractJAXBStatefulReflectiveHandler<O
     private int payloadIndex;
     private int keyIndex;
 
-    public JAXBStatefulHandler(QName keyName, Object targetService, Method method, JAXBContext jaxb) {
-        super(keyName, targetService, jaxb);
+    public JAXBStatefulHandler(Object targetService, Method method, JAXBContext jaxb) {
+        super(targetService, jaxb);
         this.method = method;
         int count = 0;
         for (Annotation[] annos : this.method.getParameterAnnotations()) {

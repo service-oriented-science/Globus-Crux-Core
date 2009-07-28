@@ -15,13 +15,11 @@ import javax.xml.parsers.DocumentBuilderFactory;
  */
 public abstract class AbstractJAXBStatefulReflectiveHandler<T, V> implements DispatchHandler {
     private JAXBContext jaxb;
-    private QName keyName;
     private DocumentBuilderFactory dbf;
     private Object target;
 
-    protected AbstractJAXBStatefulReflectiveHandler(QName keyName, Object target, JAXBContext jaxb) {
+    protected AbstractJAXBStatefulReflectiveHandler(Object target, JAXBContext jaxb) {
         this.jaxb = jaxb;
-        this.keyName = keyName;
         dbf = DocumentBuilderFactory.newInstance();
         this.target = target;
     }

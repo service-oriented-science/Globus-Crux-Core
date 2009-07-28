@@ -15,19 +15,17 @@ public class PhotoSharingService {
     //This factory generates eprs for gallery services
     @Resource
     EPRFactory eprFactory;
-    Map<String, Gallery> galleryMap = new ConcurrentHashMap<String, Gallery>();
+    GalleryService galleryService;
 
     @CreateState
     @Payload(namespace = "http://images.com", localpart = "CreateGallery")
     public CreateGalleryResponse createGallery(CreateGallery request) {
-        CreateGalleryResponse response = new CreateGalleryResponse(eprFactory.createEPRWithId(request.getName()));
-        Gallery gallery = new Gallery().withGalleryName(request.getName());
-        galleryMap.put(request.getName(), gallery);
-        return response;
+        String galId = galleryService.createGallery(request.getName());
+        return new CreateGalleryResponse(eprFactory.createEPRWithId(galId));                
     }
 
     public FindGalleryResponse findGallery(FindGallery request) {
-        Gallery gallery = galleryMap.get(request.getGalleryName());
+        Gallery gallery = galleryService.getGallery(request.getGalleryName());
         if (gallery == null) {
             //handle null resource
         }

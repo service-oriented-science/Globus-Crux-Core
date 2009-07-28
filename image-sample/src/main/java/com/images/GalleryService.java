@@ -21,6 +21,12 @@ public class GalleryService {
     @Resource
     private EPRFactory eprFactory;
 
+    public String createGallery(String galleryId){
+        Gallery gallery = new Gallery().withGalleryName(galleryId);
+        galleryMap.put(galleryId, gallery);
+        return gallery.getGalleryName();
+    }
+
     @StatefulMethod
     @Payload(namespace = "http://images.com", localpart = "FindImage")
     public FindImageResponse findImage(@StateKeyParam String galleryId, @PayloadParam FindImage request) {

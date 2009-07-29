@@ -33,11 +33,11 @@ public class PhotoSharingService {
                 withEndpointReference(eprFactory.createEPRWithId(request.getGalleryName()));
     }
 
-    public Map<String, Gallery> getGalleryMap() {
-        return galleryMap;
+    public GalleryService getGalleryService() {
+        return galleryService;
     }
 
-    public void setGalleryMap(Map<String, Gallery> galleryMap) {
-        this.galleryMap = galleryMap;
-    }
+    public void setGalleryService(GalleryService galleryService) {
+        this.galleryService = galleryService;
+    }    
 }

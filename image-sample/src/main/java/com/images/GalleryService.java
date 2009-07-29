@@ -8,6 +8,7 @@ import org.globus.crux.service.Payload;
 import org.globus.crux.wsrf.properties.GetResourceProperty;
 
 import javax.annotation.Resource;
+import javax.xml.ws.wsaddressing.W3CEndpointReference;
 import java.util.Map;
 
 /**
@@ -16,39 +17,42 @@ import java.util.Map;
 public class GalleryService {
 
     private Map<String, Gallery> galleryMap;
-
-    //this factory generates eprs for images
+    private ImageService imageService;
+    
+    //this factory generates eprs for galleries
     @Resource
     private EPRFactory eprFactory;
 
-    public String createGallery(String galleryId){
+    public W3CEndpointReference createGallery(String galleryId){
         Gallery gallery = new Gallery().withGalleryName(galleryId);
         galleryMap.put(galleryId, gallery);
-        return gallery.getGalleryName();
+        return eprFactory.createEPRWithId(gallery.getGalleryName());
+    }
+
+    public W3CEndpointReference findGallery(String galleryID){
+        if(galleryMap.get(galleryID) != null){
+            return eprFactory.createEPRWithId(galleryMap.get(galleryID).getGalleryName());
+        }
+        return null;
     }
 
     @StatefulMethod
     @Payload(namespace = "http://images.com", localpart = "FindImage")
     public FindImageResponse findImage(@StateKeyParam String galleryId, @PayloadParam FindImage request) {
-        Gallery gallery = galleryMap.get(galleryId);
-        boolean found = false;
-        //Obviously this is not a good way to do this, but it works for this purpose
-        for (String image : gallery.getImages()) {
-            if (image.equals(request.getImageName())) {
-                found = true;
-                break;
-            }
-        }
-        FindImageResponse response = new FindImageResponse();
-        if (found) {
-            response.setEndpointReference(eprFactory.createEPRWithId(request.getImageName()));
-        }
-        return response;
+        return new FindImageResponse().withEndpointReference(imageService.findImageResource(request.getImageName()));
     }
 
     @GetResourceProperty(namespace = "http://images.com", localpart = "Gallery")
     public Gallery getGallery(@StateKeyParam String galleryId) {
         return galleryMap.get(galleryId);
+    }
+
+    public ImageService getImageService() {
+        return imageService;
+    }
+
+    public void setImageService(ImageService imageService) {
+        this.imageService = imageService;
     }
 
     public Map<String, Gallery> getGalleryMap() {

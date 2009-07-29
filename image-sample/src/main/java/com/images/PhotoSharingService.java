@@ -5,23 +5,17 @@ import org.globus.crux.service.CreateState;
 import org.globus.crux.service.Payload;
 
 import javax.annotation.Resource;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author turtlebender
  */
 public class PhotoSharingService {
-    //This factory generates eprs for gallery services
-    @Resource
-    EPRFactory eprFactory;
     GalleryService galleryService;
 
     @CreateState
     @Payload(namespace = "http://images.com", localpart = "CreateGallery")
     public CreateGalleryResponse createGallery(CreateGallery request) {
-        String galId = galleryService.createGallery(request.getName());
-        return new CreateGalleryResponse(eprFactory.createEPRWithId(galId));                
+        return new CreateGalleryResponse(galleryService.createGallery(request.getName()));
     }
 
     public FindGalleryResponse findGallery(FindGallery request) {
@@ -30,7 +24,7 @@ public class PhotoSharingService {
             //handle null resource
         }
         return new FindGalleryResponse().
-                withEndpointReference(eprFactory.createEPRWithId(request.getGalleryName()));
+                withEndpointReference(galleryService.findGallery(request.getGalleryName()));
     }
 
     public GalleryService getGalleryService() {
@@ -39,5 +33,5 @@ public class PhotoSharingService {
 
     public void setGalleryService(GalleryService galleryService) {
         this.galleryService = galleryService;
-    }    
+    }
 }

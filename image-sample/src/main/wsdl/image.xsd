@@ -95,6 +95,7 @@
     <xsd:element name="Image">
         <xsd:complexType>
             <xsd:sequence>
+                <xsd:element name="name" type="xsd:string"/>
                 <xsd:element name="fileUri" type="xsd:anyURI"/>
                 <xsd:element name="width" type="xsd:int"/>
                 <xsd:element name="height" type="xsd:int"/>

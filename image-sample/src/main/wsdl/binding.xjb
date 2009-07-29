@@ -1,4 +1,10 @@
-<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:wsa="http://www.w3.org/2005/08/addressing">
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb"
+          xmlns:wsa="http://www.w3.org/2005/08/addressing"
+          xmlns:hj="http://hyperjaxb3.jvnet.org/ejb/schemas/customizations"
+          xmlns:orm="http://java.sun.com/xml/ns/persistence/orm"
+          xmlns:image="http://images.com"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
     <bindings scd="x-schema::wsa" if-exists="true">
         <schemaBindings map="false"/>
         <bindings scd="wsa:EndpointReference">
@@ -7,5 +13,5 @@
         <bindings scd="~wsa:EndpointReferenceType">
             <class ref="javax.xml.ws.wsaddressing.W3CEndpointReference"/>
         </bindings>
-    </bindings>
+    </bindings>   
 </bindings>

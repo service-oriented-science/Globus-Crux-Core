@@ -17,23 +17,6 @@
 
     <build>
         <plugins>
-<!--            <plugin>
-                <groupId>org.globus.crux</groupId>
-                <artifactId>maven-crux-plugin</artifactId>
-                <version>1.0-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>generateWSDL</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFile>src/main/wsdl/counter.wsdl</wsdlFile>
-                            <portTypeName>CounterPortType</portTypeName>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>-->
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
@@ -51,7 +34,7 @@
                     <args>
                         <arg>-Xfluent-api</arg>
                         <arg>-Xcollection-setter-injector</arg>
-                        <args>-Xvalue-constructor</args>
+                        <arg>-Xvalue-constructor</arg>                        
                     </args>
                     <schemaDirectory>src/main/wsdl</schemaDirectory>
                     <bindingDirectory>src/main/wsdl</bindingDirectory>
@@ -95,6 +78,16 @@
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http-jetty</artifactId>
             <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.openjpa</groupId>
+            <artifactId>openjpa</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jvnet.hyperjaxb3</groupId>
+            <artifactId>hyperjaxb3-ejb-runtime</artifactId>
+            <version>0.5.3</version>
         </dependency>
         <dependency>
             <groupId>org.apache.cxf</groupId>

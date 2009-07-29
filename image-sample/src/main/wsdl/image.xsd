@@ -51,9 +51,15 @@
     <xsd:element name="Gallery">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element name="images" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="imageRef" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:attribute name="id" type="xsd:long"/>
+                        <xsd:attribute name="name" type="xsd:string"/>
+                    </xsd:complexType>
+                </xsd:element>
                 <xsd:element name="galleryName" type="xsd:string"/>
             </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:long"/>
         </xsd:complexType>
     </xsd:element>
 
@@ -95,10 +101,20 @@
     <xsd:element name="Image">
         <xsd:complexType>
             <xsd:sequence>
+                <xsd:element ref="tns:ImageKey"/>
                 <xsd:element name="name" type="xsd:string"/>
                 <xsd:element name="fileUri" type="xsd:anyURI"/>
                 <xsd:element name="width" type="xsd:int"/>
                 <xsd:element name="height" type="xsd:int"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="ImageKey">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="galleryId" type="xsd:long"/>
+                <xsd:element name="imageId" type="xsd:long"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>

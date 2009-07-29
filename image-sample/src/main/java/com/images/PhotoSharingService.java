@@ -18,11 +18,8 @@ public class PhotoSharingService {
         return new CreateGalleryResponse(galleryService.createGallery(request.getName()));
     }
 
+    @Payload(namespace = "http://images.com", localpart = "FindGallery")
     public FindGalleryResponse findGallery(FindGallery request) {
-        Gallery gallery = galleryService.getGallery(request.getGalleryName());
-        if (gallery == null) {
-            //handle null resource
-        }
         return new FindGalleryResponse().
                 withEndpointReference(galleryService.findGallery(request.getGalleryName()));
     }

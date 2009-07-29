@@ -42,8 +42,12 @@ public class GalleryService {
 
 
     @DestroyState
-    public void destroyGallery(@StateKeyParam String galleryId) {
-
+    public void destroyGallery(@StateKeyParam long galleryId) {
+        Gallery gallery = galleryMap.get(galleryId);
+        for(Gallery.ImageRef ref: gallery.getImageRef()){
+            imageService.destroyImage(new ImageKey(galleryId, ref.getId()));
+        }
+        this.galleryMap.remove(galleryId);
     }
 
     protected W3CEndpointReference createGallery(String galleryName) {

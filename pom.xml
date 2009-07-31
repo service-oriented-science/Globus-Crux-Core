@@ -18,6 +18,5 @@
         <module>wsdl</module>
     	<module>wsrf</module>
         <module>api</module>
-	<module>image-sample</module>
     </modules>
 </project>

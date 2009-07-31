@@ -190,4 +190,17 @@
             <version>2.1.8</version>
         </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>globus-snapshot</id>
+            <name>Globus Snapshot Repo</name>
+            <url>http://repo.globus.org/content/groups/public-snapshots/</url>
+            <snapshots/>
+        </repository>
+        <repository>
+            <id>globus-release</id>
+            <name>Globus Release Repo</name>
+            <url>http://repo.globus.org/content/groups/public/</url>
+        </repository>
+    </repositories>
 </project>

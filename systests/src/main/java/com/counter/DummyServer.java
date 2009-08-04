@@ -1,7 +1,5 @@
 package com.counter;
 
-import org.globus.wsrf.tools.wsdl.WSDLPreprocessor;
-import org.globus.wsrf.tools.wsdl.GenerateBinding;
 import org.apache.cxf.jaxws.JaxWsServerFactoryBean;
 import org.apache.cxf.ws.addressing.WSAddressingFeature;
 import org.apache.cxf.interceptor.LoggingInInterceptor;
@@ -17,7 +15,6 @@ import org.globus.crux.stateful.ServiceMethodProcessor;
 import org.globus.crux.stateful.ServiceProcessor;
 import org.globus.crux.cxf.jaxb.JAXBCreateProcesor;
 import org.globus.crux.cxf.jaxb.JAXBStatefulProcessor;
-import org.globus.crux.wsrf.properties.GetRPJAXBProcessor;
 
 /**
  * @author turtlebender
@@ -40,23 +37,22 @@ public class DummyServer {
         provider.setFactory(fac);
         ServiceProcessor processor = new ServiceMethodProcessor().
                 withProcessor(new JAXBStatefulProcessor(jaxb, provider)).
-                withProcessor(new JAXBCreateProcesor(jaxb, provider)).
-                withProcessor(new GetRPJAXBProcessor(jaxb, provider));
+                withProcessor(new JAXBCreateProcesor(jaxb, provider));
         processor.processObject(service);
         createService(provider);
     }
 
     private static void prepareWsdl(String compactWsdl, String portType) throws Exception {
-        WSDLPreprocessor pp = new WSDLPreprocessor();
-        pp.setInputFile(compactWsdl);
-        pp.setOutputFile("target/wsdl/counter_flattened.wsdl");
-        pp.setPortTypeName(portType);
-        pp.execute();
-        GenerateBinding gb = new GenerateBinding();
-        gb.setFileRoot("target/wsdl/counter");
-        gb.setProtocol("http");
-        gb.setPortTypeFile("target/wsdl/counter_flattened.wsdl");
-        gb.execute();
+//        WSDLPreprocessor pp = new WSDLPreprocessor();
+//        pp.setInputFile(compactWsdl);
+//        pp.setOutputFile("target/wsdl/counter_flattened.wsdl");
+//        pp.setPortTypeName(portType);
+//        pp.execute();
+//        GenerateBinding gb = new GenerateBinding();
+//        gb.setFileRoot("target/wsdl/counter");
+//        gb.setProtocol("http");
+//        gb.setPortTypeFile("target/wsdl/counter_flattened.wsdl");
+//        gb.execute();
     }
 
     private static void createService(StatefulServiceWebProvider provider) {

@@ -2,19 +2,21 @@ package com.counter;
 
 import org.globus.crux.ResourceContext;
 
-import javax.xml.bind.JAXBElement;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * This is an implementation of ResourceContext.  Pretty simple.  resource storage should be
+ * moved out of this class.
+ *
  * @author turtlebender
  */
 public class InMemoryResourceContext<T, V> implements ResourceContext<T, V> {
     private Map<T, V> resourceMap = new ConcurrentHashMap<T, V>();
     private ResourceKeyThreadLocal currentResource = new ResourceKeyThreadLocal();
 
-    class ResourceKeyThreadLocal extends ThreadLocal<Object> {
-        public Object getCurrentResource() {
+    class ResourceKeyThreadLocal extends ThreadLocal<T> {
+        public T getCurrentResource() {
             return get();
         }
 
@@ -28,13 +30,7 @@ public class InMemoryResourceContext<T, V> implements ResourceContext<T, V> {
     }
 
     public V getCurrentResource() {
-        Object key = currentResource.getCurrentResource();
-        System.out.println("key = " + key);
-        V resource = resourceMap.get(key);
-        for(Map.Entry<T,V> entry: resourceMap.entrySet()){
-            System.out.println("entry.getKey() = " + entry.getKey());
-        }
-        return resource;
+        return resourceMap.get(currentResource.getCurrentResource());
     }
 
     public void setCurrentResourceKey(T key) {        

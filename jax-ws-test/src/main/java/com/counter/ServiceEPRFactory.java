@@ -24,6 +24,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class ServiceEPRFactory implements EPRFactory {
     private Endpoint endpoint;
     private JAXBContext jaxb;
+    private String endpointAddress;
 
     public void setJAXBPackage(String pkg) {
         try {
@@ -31,6 +32,10 @@ public class ServiceEPRFactory implements EPRFactory {
         } catch (JAXBException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
+    }
+
+    public void setEndpointAddress(String endpointAddress) {
+        this.endpointAddress = endpointAddress;
     }
 
     public void setEndpoint(Endpoint endpoint) {
@@ -44,12 +49,13 @@ public class ServiceEPRFactory implements EPRFactory {
             EndpointDefinitionParser.SpringEndpointImpl springEnd = (EndpointDefinitionParser.SpringEndpointImpl) endpoint;
             W3CEndpointReferenceBuilder builder = new W3CEndpointReferenceBuilder();
             builder.serviceName(springEnd.getServiceName());
-                        builder.endpointName(springEnd.getEndpointName());
-            builder.address("http://localhost:8080/jax-ws-test/counter");
+            builder.endpointName(springEnd.getEndpointName());
+            builder.address(endpointAddress);
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
             DOMResult result = new DOMResult(doc);
             jaxb.createMarshaller().marshal(id, result);
             return builder.referenceParameter(doc.getDocumentElement()).build();
+//            return endpoint.getEndpointReference(W3CEndpointReference.class, doc.getDocumentElement());
         } catch (JAXBException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (ParserConfigurationException e) {

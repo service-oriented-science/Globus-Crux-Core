@@ -9,6 +9,9 @@ import org.globus.crux.wsrf.properties.GetRPProvider;
 import java.util.List;
 
 /**
+ * This uses the Spring AOP support to generate a proxy for the service interface using the
+ * providers and the service implementation.
+ *
  * @author turtlebender
  */
 public class ProviderServiceFactory implements FactoryBean {

@@ -1,10 +1,10 @@
-package com.counter;
+package org.globus.crux;
 
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.aop.framework.ProxyFactory;
-import org.globus.crux.OperationProvider;
-import org.globus.crux.wsrf.properties.AnnotationResourcePropertySet;
-import org.globus.crux.wsrf.properties.GetRPProvider;
+import org.springframework.aop.support.DelegatingIntroductionInterceptor;
+import org.springframework.aop.support.DefaultIntroductionAdvisor;
+import org.globus.crux.service.EPRFactory;
 
 import java.util.List;
 
@@ -19,12 +19,19 @@ public class ProviderServiceFactory implements FactoryBean {
     private List<OperationProvider> providers;
     private Object proxied;
     private Class interf;
+    //TODO: this really probably shouldn't be here
+    private EPRFactory eprFactory;
 
     public Object getObject() throws Exception {
         if (proxied == null) {
             ProxyFactory factory = new ProxyFactory(target);
-            for (OperationProvider provider : providers) {
-                factory.addAdvisor(provider.getAdvisor());
+            factory.addAdvice(new CruxMixin(target).withEprFactory(eprFactory));
+            if (providers != null) {
+                for (OperationProvider provider : providers) {
+                    DelegatingIntroductionInterceptor interceptor = new DelegatingIntroductionInterceptor(provider.getImplementation());
+                    DefaultIntroductionAdvisor advisor = new DefaultIntroductionAdvisor(interceptor, provider.getInterface());
+                    factory.addAdvisor(advisor);
+                }
             }
             factory.addInterface(interf);
             proxied = factory.getProxy();
@@ -34,6 +41,11 @@ public class ProviderServiceFactory implements FactoryBean {
 
     public Class getObjectType() {
         return interf;
+    }
+
+
+    public void setEprFactory(EPRFactory eprFactory) {
+        this.eprFactory = eprFactory;
     }
 
     public boolean isSingleton() {

@@ -16,6 +16,11 @@ class RPProviderImpl implements GetResourceProperty {
             this.rpSet = rpSet;
         }
 
+        public RPProviderImpl withRPSet(ResourcePropertySet rpSet){
+            this.rpSet = rpSet;
+            return this;
+        }
+
         public GetResourcePropertyResponse getResourceProperty(QName getResourcePropertyRequest) throws InvalidResourcePropertyQNameFault, ResourceUnknownFault {
             GetResourcePropertyResponse response = new GetResourcePropertyResponse();
             response.getAny().add(this.rpSet.getResourceProperty(getResourcePropertyRequest));

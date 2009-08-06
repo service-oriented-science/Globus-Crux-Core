@@ -1,15 +1,13 @@
 package com.counter;
 
+import com.counter.service.CounterFactoryService;
 import com.counter.service.CounterService;
-
-import java.net.URL;
-
-import org.apache.cxf.BusFactory;
 import org.apache.cxf.Bus;
+import org.apache.cxf.BusFactory;
 import org.apache.cxf.bus.spring.SpringBusFactory;
-import org.apache.cxf.interceptor.LoggingOutInterceptor;
 
 import javax.xml.ws.wsaddressing.W3CEndpointReference;
+import java.net.URL;
 
 /**
  * @author turtlebender
@@ -17,15 +15,17 @@ import javax.xml.ws.wsaddressing.W3CEndpointReference;
 public class TestClient {
 
     public static void main(String[] args) throws Exception {
-        SpringBusFactory fac = new SpringBusFactory();
-        Bus bus = fac.createBus("client.xml");
+        Bus bus = new SpringBusFactory().createBus("client.xml");
+
         BusFactory.setDefaultBus(bus);
-        CounterService service = new CounterService(new URL("http://localhost:8080/jax-ws-test/counter?wsdl"));
-        CounterPortType port = service.getCounterPortTypePort();
-        W3CEndpointReference epr = port.createCounter();
-        port = service.getPort(epr, CounterPortType.class);
-        System.out.println(port.add(10));
-        System.out.println(port.add(10));
-        System.out.println(port.add(10));                
+        CounterFactoryService counters = new CounterFactoryService(new URL("http://localhost:8080/jax-ws-test/counterFactory?wsdl"));
+        CounterFactoryPortType factory = counters.getCounterFactoryPortTypePort();
+
+        W3CEndpointReference epr = factory.createCounter();
+        CounterService service = new CounterService();
+        CounterPortType counter = service.getPort(epr, CounterPortType.class);
+        System.out.println(counter.add(10));
+        System.out.println(counter.add(10));
+        System.out.println(counter.add(10));
     }
 }

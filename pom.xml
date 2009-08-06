@@ -18,5 +18,6 @@
     	<module>wsrf</module>
         <module>api</module>
         <module>jax-ws-test</module>
+	<module>core</module>
     </modules>
 </project>

@@ -9,14 +9,14 @@ import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_0
 
 import javax.xml.namespace.QName;
 
-class RPProviderImpl implements GetResourceProperty {
+public class GetResourcePropertyImpl implements GetResourceProperty {
         private ResourcePropertySet rpSet;
 
         public void setRpSet(ResourcePropertySet rpSet) {
             this.rpSet = rpSet;
         }
 
-        public RPProviderImpl withRPSet(ResourcePropertySet rpSet){
+        public GetResourcePropertyImpl withRPSet(ResourcePropertySet rpSet){
             this.rpSet = rpSet;
             return this;
         }

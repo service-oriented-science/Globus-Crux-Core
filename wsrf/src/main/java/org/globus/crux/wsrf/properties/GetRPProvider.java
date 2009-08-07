@@ -18,11 +18,11 @@ public class GetRPProvider implements OperationProvider<GetResourceProperty> {
     }
 
     public GetRPProvider withRps(ResourcePropertySet rps) {
-        impl = new RPProviderImpl().withRPSet(rps);
+        impl = new GetResourcePropertyImpl().withRPSet(rps);
         return this;
     }
 
     public void setRPSet(ResourcePropertySet rps){
-        impl = new RPProviderImpl().withRPSet(rps);
+        impl = new GetResourcePropertyImpl().withRPSet(rps);
     }
 }

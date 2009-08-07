@@ -3,7 +3,7 @@ package com.counter;
 
 public class CounterResource {
     private long id;
-    private CounterRP counterRP;
+    private int value;
     private int status;
     public static final int INITIALIZED =0;
 
@@ -12,7 +12,7 @@ public class CounterResource {
 
     public CounterResource(long id){
         this.id = id;
-        this.counterRP = new CounterRP();
+        this.value = 0;
         this.status = INITIALIZED;
     }
 
@@ -24,12 +24,12 @@ public class CounterResource {
         this.id = id;
     }
 
-    public CounterRP getCounterRP() {
-        return counterRP;
+    public int getValue() {
+        return value;
     }
 
-    public void setCounterRP(CounterRP counterRP) {
-        this.counterRP = counterRP;
+    public void setValue(int value) {
+        this.value = value;
     }
 
     public int getStatus() {

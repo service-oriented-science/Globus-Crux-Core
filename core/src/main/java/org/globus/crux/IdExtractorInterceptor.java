@@ -45,7 +45,7 @@ public class IdExtractorInterceptor extends AbstractSoapInterceptor {
     public void setTarget(Object target) {
         if (target.getClass().isAnnotationPresent(StatefulService.class)) {
             StatefulService service = target.getClass().getAnnotation(StatefulService.class);
-            resourceKeyName = new QName(service.value().namespace(), service.value().localpart());
+            resourceKeyName = new QName(service.namespace(), service.keyName());
         }
     }
 

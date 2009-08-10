@@ -2,14 +2,14 @@ package org.globus.crux.wsrf.query;
 
 import org.globus.crux.wsrf.ResourcePropertySetMarshaller;
 import org.globus.crux.wsrf.properties.ResourcePropertySet;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryEvaluationErrorFault;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourcePropertiesResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.oxm.Unmarshaller;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import org.oasis.wsrf.properties.QueryEvaluationErrorFault;
+import org.oasis.wsrf.properties.QueryResourcePropertiesResponse;
 
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.parsers.DocumentBuilder;
@@ -37,6 +37,7 @@ public class DefaultXPathQueryEngine implements QueryEngine<Object, XPathQuery> 
     private DocumentBuilder docBuilder;
     private XPathFactory xpathFac;
     private Logger logger = LoggerFactory.getLogger(getClass());
+    private ResourcePropertySet rps;
 
     public static final String XPATH_1_DIALECT =
             "http://www.w3.org/TR/xpath";
@@ -50,7 +51,7 @@ public class DefaultXPathQueryEngine implements QueryEngine<Object, XPathQuery> 
         return dialect.equals(XPATH_1_DIALECT);
     }
 
-    public List<Object> executeQuery(XPathQuery queryExpr, ResourcePropertySet rps) throws QueryEvaluationErrorFault {
+    public List<Object> executeQuery(XPathQuery queryExpr) throws QueryEvaluationErrorFault {
         Document doc = docBuilder.newDocument();
         Element root = doc.createElementNS(rps.getResourceName().getNamespaceURI(), rps.getResourceName().getLocalPart());
         doc.appendChild(root);
@@ -62,7 +63,7 @@ public class DefaultXPathQueryEngine implements QueryEngine<Object, XPathQuery> 
         }
         QueryResourcePropertiesResponse response = new QueryResourcePropertiesResponse();
         List<Object> results = response.getContent();
-        //TODO: cache this?
+        //TODO: cache this? SOS-270
         try {
             XPath xpath = xpathFac.newXPath();
             xpath.setNamespaceContext(new XMLNamespaceContext(queryExpr));
@@ -80,6 +81,10 @@ public class DefaultXPathQueryEngine implements QueryEngine<Object, XPathQuery> 
             throw new QueryEvaluationErrorFault(e.getMessage());
         }
         return results;
+    }
+
+    public void setRps(ResourcePropertySet rps) {
+        this.rps = rps;
     }
 
     public void setUnmarshaller(Unmarshaller unmarshaller) {

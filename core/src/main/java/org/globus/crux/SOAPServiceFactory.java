@@ -19,7 +19,7 @@ public class SOAPServiceFactory implements FactoryBean {
     private List<OperationProvider> providers;
     private Object proxied;
     private Class interf;
-    //TODO: this really probably shouldn't be here
+    //TODO: this really probably shouldn't be here  SOS-271
     private EPRFactory eprFactory;
 
     public Object getObject() throws Exception {

@@ -1,7 +1,6 @@
 package org.globus.crux.wsrf.query;
 
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryEvaluationErrorFault;
-import org.globus.crux.wsrf.properties.ResourcePropertySet;
+import org.oasis.wsrf.properties.QueryEvaluationErrorFault;
 
 import java.util.List;
 
@@ -10,6 +9,6 @@ import java.util.List;
  */
 public interface QueryEngine<T, V> {
     boolean canProcessDialect(String dialect);
-    List<T> executeQuery(V query, ResourcePropertySet rps) throws QueryEvaluationErrorFault;
+    List<T> executeQuery(V query) throws QueryEvaluationErrorFault;
     Class<V> getQueryType();
 }

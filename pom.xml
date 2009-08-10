@@ -11,8 +11,8 @@
     <name>Crux (Master Project)</name>
        
     <modules>
-        <module>parent</module>
-        <module>stateful</module>
+        <module>parent</module>        
+        <!--<module>stateful</module>-->
 <!--        <module>wsdl</module>-->
     	<module>wsrf</module>
         <module>api</module>

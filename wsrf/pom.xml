@@ -10,67 +10,113 @@
     </parent>
     <artifactId>wsrf</artifactId>
     <name>WSRF Implementation</name>
+    <properties>
+        <cxf.version>2.2.2</cxf.version>
+    </properties>
     <dependencies>
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.1</version>
-        </dependency>
-        <dependency>
             <groupId>${groupId}</groupId>
-            <artifactId>cxf-adapter</artifactId>
+            <artifactId>stateful</artifactId>
             <version>${version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.5.6</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>2.2.2</version>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.7.1</version>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.java.dev.jaxb2-commons</groupId>
+                        <artifactId>jaxb-fluent-api</artifactId>
+                        <version>2.1.8</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2-commons</groupId>
+                        <artifactId>collection-setter-injector</artifactId>
+                        <version>1.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2-commons</groupId>
+                        <artifactId>value-constructor-plugin</artifactId>
+                        <version>1.0</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
-                        <phase>generate-sources</phase>
+                        <id>rp</id>
+                        <configuration>
+                            <defaultOptions>
+                                <extraargs>
+                                    <extraarg>-xjc-Xfluent-api,-Xcollection-setter-injector,-Xvalue-constructor
+                                    </extraarg>
+                                </extraargs>
+                            </defaultOptions>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>src/main/wsdl/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl</wsdl>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
                         <goals>
-                            <goal>generate</goal>
+                            <goal>wsdl2java</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <extension>true</extension>
-                    <args>
-                        <arg>-Xfluent-api</arg>
-                        <arg>-Xcollection-setter-injector</arg>
-                        <args>-Xvalue-constructor</args>
-                    </args>
-                    <schemaDirectory>src/main/wsdl</schemaDirectory>
-                    <bindingDirectory>src/main/wsdl</bindingDirectory>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.jvnet.jaxb2_commons</groupId>
-                            <artifactId>basic</artifactId>
-                            <version>0.4.1</version>
-                        </plugin>
-                        <plugin>
-                            <groupId>net.java.dev.jaxb2-commons</groupId>
-                            <artifactId>jaxb-fluent-api</artifactId>
-                            <version>2.1.8</version>
-                        </plugin>
-                        <dependency>
-                            <groupId>org.jvnet.jaxb2-commons</groupId>
-                            <artifactId>collection-setter-injector</artifactId>
-                            <version>1.0</version>
-                        </dependency>
-                        <plugin>
-                            <groupId>org.jvnet.jaxb2-commons</groupId>
-                            <artifactId>value-constructor-plugin</artifactId>
-                            <version>1.0</version>
-                        </plugin>
-                    </plugins>
-                </configuration>
             </plugin>
+            <!--<plugin>-->
+            <!--<groupId>org.jvnet.jaxb2.maven2</groupId>-->
+            <!--<artifactId>maven-jaxb2-plugin</artifactId>-->
+            <!--<version>0.7.1</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>generate-sources</phase>-->
+            <!--<goals>-->
+            <!--<goal>generate</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+            <!--<extension>true</extension>-->
+            <!--<args>-->
+            <!--<arg>-Xfluent-api</arg>-->
+            <!--<arg>-Xcollection-setter-injector</arg>-->
+            <!--<args>-Xvalue-constructor</args>-->
+            <!--</args>-->
+            <!--<schemaDirectory>src/main/wsdl</schemaDirectory>-->
+            <!--<bindingDirectory>src/main/wsdl</bindingDirectory>-->
+            <!--<plugins>-->
+            <!--<plugin>-->
+            <!--<groupId>org.jvnet.jaxb2_commons</groupId>-->
+            <!--<artifactId>basic</artifactId>-->
+            <!--<version>0.4.1</version>-->
+            <!--</plugin>-->
+
+            <!--<dependency>-->
+            <!--<groupId>org.jvnet.jaxb2-commons</groupId>-->
+            <!--<artifactId>collection-setter-injector</artifactId>-->
+            <!--<version>1.0</version>-->
+            <!--</dependency>-->
+            <!--<plugin>-->
+            <!--<groupId>org.jvnet.jaxb2-commons</groupId>-->
+            <!--<artifactId>value-constructor-plugin</artifactId>-->
+            <!--<version>1.0</version>-->
+            <!--</plugin>-->
+            <!--</plugins>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 </project>

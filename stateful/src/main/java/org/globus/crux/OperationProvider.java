@@ -1,7 +1,10 @@
 package org.globus.crux;
 
+import org.springframework.aop.Advisor;
+
 /**
  * @author turtlebender
  */
-public class OperationProvider {
+public interface OperationProvider{
+    public Advisor getAdvisor();
 }

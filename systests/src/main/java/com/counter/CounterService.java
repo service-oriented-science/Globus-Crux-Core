@@ -1,8 +1,7 @@
 package com.counter;
 
 
-import org.globus.crux.wsrf.properties.GetResourceProperty;
-import org.globus.crux.wsrf.properties.ResourcePropertyTopic;
+//import org.globus.crux.wsrf.properties.GetResourceProperty;
 import org.globus.crux.service.StatefulService;
 import org.globus.crux.service.StateKey;
 import org.globus.crux.service.CreateState;
@@ -64,7 +63,7 @@ public class CounterService {
      * @return A wrapped EPR.
      */
     @CreateState()
-    @Payload(namespace = "http://counter.com", localpart = "createCounter")
+//    @Payload(namespace = "http://counter.com", localpart = "createCounter")
     public CreateCounterResponse createCounter(
             @PayloadParam CreateCounter request) {
         int idNum = counter.incrementAndGet();
@@ -100,7 +99,7 @@ public class CounterService {
      */
     @StatefulMethod
     @Payload(namespace = "http://counter.com", localpart = "add")
-    @ResourcePropertyTopic(namespace = "http://counter.com", localpart = "CounterRP")
+//    @ResourcePropertyTopic(namespace = "http://counter.com", localpart = "CounterRP")
     public JAXBElement<Integer> add(@StateKeyParam JAXBElement<String> id,
                                     @PayloadParam JAXBElement<Integer> request) {
         CounterRP counter = counterMap.get(id.getValue());
@@ -121,7 +120,7 @@ public class CounterService {
      * @param id The resource key.
      * @return the value of the {http://counter.com}CounterRP resource property.
      */
-    @GetResourceProperty(namespace = "http://counter.com", localpart = "CounterRP")
+//    @GetResourceProperty(namespace = "http://counter.com", localpart = "CounterRP")
     public CounterRP getCounter(@StateKeyParam JAXBElement<String> id) {
         return counterMap.get(id.getValue());
     }

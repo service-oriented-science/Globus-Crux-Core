@@ -54,6 +54,14 @@ public class IdExtractorInterceptor extends AbstractSoapInterceptor {
         this.context = context;
     }
 
+    /**
+     * This extracts the appropriate resource key from the request.
+     * Actually, this just chooses the first ReferenceParameter.  A real implementation would
+     * choose the ReferenceParameter that matches the Resource Key qname.
+     *
+     * @param message
+     * @throws Fault
+     */
     public void handleMessage(SoapMessage message) throws Fault {
         AddressingProperties map =
                 (AddressingProperties) message.getExchange().getInMessage().

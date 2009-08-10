@@ -27,10 +27,5 @@ public class TestClient {
         System.out.println(port.add(10));
         System.out.println(port.add(10));
         System.out.println(port.add(10));
-
-
-        System.out.println("epr = " + epr);
-//        Counter port = service.getCounterPortTypePort();
-//        port.createCounter();
     }
 }

@@ -1,22 +1,20 @@
 package org.globus.crux;
 
-import org.aopalliance.intercept.MethodInvocation;
 import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
 import org.globus.crux.service.CreateState;
 import org.globus.crux.service.EPRFactory;
 import org.globus.crux.service.EPRFactoryException;
-import org.globus.crux.service.StatefulService;
 
-import javax.xml.ws.EndpointReference;
-import javax.xml.namespace.QName;
 import javax.xml.bind.JAXBElement;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.HashSet;
+import javax.xml.namespace.QName;
+import javax.xml.ws.EndpointReference;
 import java.lang.reflect.Method;
-import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author turtlebender
@@ -26,7 +24,6 @@ public class CruxMixin implements MethodInterceptor {
     private Set<Method> createMethods = new HashSet<Method>();
     private Set<Method> nonCreateMethods = new HashSet<Method>();
     private EPRFactory eprFactory;
-    private QName keyName;
 
     public CruxMixin(Object delegate) {
         for (Method method : delegate.getClass().getMethods()) {

@@ -31,7 +31,7 @@ public class StatefulServiceDesc {
             throw new StatefulServiceException(String.format("%s is not a stateful service",
                     statefulServiceClass.getName()));
         }
-        keyQname = new QName(serviceAnno.value().namespace(), serviceAnno.value().localpart());
+        keyQname = new QName(serviceAnno.namespace(), serviceAnno.keyName());
         if (serviceAnno.publicInterface() != Object.class) {
             for (Method method : serviceAnno.publicInterface().getMethods()) {
                 Method serviceMethod = getServiceMethod(statefulServiceClass, method);

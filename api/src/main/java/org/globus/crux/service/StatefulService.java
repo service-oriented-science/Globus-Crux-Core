@@ -16,7 +16,8 @@ public @interface StatefulService {
      * Specifies the key QName for the resource associated with the service.
      * @return
      */
-    StateKey value();
-
+    String namespace();
+    String keyName();
+    String resourceName();
     Class publicInterface() default Object.class;
 }

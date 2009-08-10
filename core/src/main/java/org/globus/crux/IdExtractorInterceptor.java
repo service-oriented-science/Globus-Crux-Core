@@ -1,4 +1,4 @@
-package com.counter;
+package org.globus.crux;
 
 import org.apache.cxf.binding.soap.interceptor.AbstractSoapInterceptor;
 import org.apache.cxf.binding.soap.SoapMessage;
@@ -9,12 +9,10 @@ import org.apache.cxf.ws.addressing.JAXWSAConstants;
 import org.apache.cxf.ws.addressing.AddressingProperties;
 import org.apache.cxf.ws.addressing.EndpointReferenceType;
 import org.apache.cxf.ws.addressing.ReferenceParametersType;
-import org.apache.cxf.ws.addressing.VersionTransformer;
 import org.apache.cxf.ws.addressing.ContextUtils;
 import org.w3c.dom.Document;
+import org.globus.crux.service.StatefulService;
 
-import javax.annotation.Resource;
-import javax.xml.ws.WebServiceContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -22,15 +20,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.dom.DOMResult;
 import javax.xml.transform.dom.DOMSource;
+import javax.xml.namespace.QName;
 import java.util.List;
 
 /**
  * @author turtlebender
  */
 public class IdExtractorInterceptor extends AbstractSoapInterceptor {
-    private InMemoryResourceContext<Object, Object> context;
+    private DefaultResourceContext<Object, Object> context;
     private JAXBContext jaxb;
     private JAXBContext bareJaxb;
+    private QName resourceKeyName;
 
     public IdExtractorInterceptor() {
         super(Phase.PRE_PROTOCOL);
@@ -42,6 +42,13 @@ public class IdExtractorInterceptor extends AbstractSoapInterceptor {
         }
     }
 
+    public void setTarget(Object target) {
+        if (target.getClass().isAnnotationPresent(StatefulService.class)) {
+            StatefulService service = target.getClass().getAnnotation(StatefulService.class);
+            resourceKeyName = new QName(service.value().namespace(), service.value().localpart());
+        }
+    }
+
     public void setJAXBParam(String pkg) {
         try {
             jaxb = JAXBContext.newInstance(pkg);
@@ -50,7 +57,7 @@ public class IdExtractorInterceptor extends AbstractSoapInterceptor {
         }
     }
 
-    public void setContext(InMemoryResourceContext<Object, Object> context) {
+    public void setContext(DefaultResourceContext<Object, Object> context) {
         this.context = context;
     }
 
@@ -73,6 +80,16 @@ public class IdExtractorInterceptor extends AbstractSoapInterceptor {
                 List<Object> params = referenceParams.getAny();
                 if (params != null && params.size() > 0) {
                     Object param = params.get(0);
+                    if (resourceKeyName != null) {
+                        for(Object candidate: params){
+                            if(candidate instanceof JAXBElement){
+                                if(((JAXBElement) candidate).getName().equals(resourceKeyName)){
+                                    param = candidate;
+                                    break;
+                                }
+                            }
+                        }
+                    }
                     //This is horribly ugly, but since the JAXBContext used by the addressing
                     //tools can't properly deserialize our elements, this is required.
                     try {

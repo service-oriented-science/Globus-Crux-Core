@@ -6,5 +6,5 @@ import javax.xml.ws.wsaddressing.W3CEndpointReference;
  * @author turtlebender
  */
 public interface EPRFactory {
-    W3CEndpointReference createEPRWithId(Object id);
+    W3CEndpointReference createEPRWithId(Object id) throws EPRFactoryException;
 }

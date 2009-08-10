@@ -1,0 +1,51 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+
+    <bean id="jaxb" class="org.globus.crux.JAXBContextFactory">
+        <property name="contextPath" value="com.counter"/>
+    </bean>
+
+
+    <bean id="eprFactory" class="org.globus.crux.SimpleEPRFactory">
+        <property name="jaxb" ref="jaxb"/>
+        <property name="address" value="http://localhost:8080/jax-ws-test/counter"/>
+        <property name="portName" value="{http://counter.com/service}CounterPortTypePort"/>
+        <property name="serviceName" value="{http://counter.com/service}CounterService"/>
+    </bean>
+
+    <bean id="counters" class="com.counter.Counters">
+        <property name="idGen">
+            <bean class="org.globus.crux.SimpleIDGenerator"/>
+        </property>
+        <property name="resourceStore" ref="resourceStore"/>
+    </bean>
+
+    <bean id="counterFactoryService" class="org.globus.crux.ProviderServiceFactory">
+        <property name="target" ref="counters"/>
+        <property name="interf" value="com.counter.CounterFactoryPortType"/>
+        <property name="eprFactory" ref="eprFactory"/>
+    </bean>
+
+    <jaxws:endpoint xmlns:counter="http://counter.com/service"
+                    id="counterFactory"
+                    implementor="#counterFactoryService"
+                    address="/counterFactory"
+                    serviceName="counter:CounterFactoryService"
+                    implementorClass="com.counter.CounterFactoryPortType">
+        <jaxws:inInterceptors>
+            <ref bean="keyInterceptor"/>
+        </jaxws:inInterceptors>
+        <jaxws:features>
+            <wsa:addressing xmlns:wsa="http://cxf.apache.org/ws/addressing"/>
+        </jaxws:features>
+    </jaxws:endpoint>
+</beans>

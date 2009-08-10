@@ -13,5 +13,7 @@ import java.lang.annotation.ElementType;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface CreateState {    
+public @interface CreateState {
+    String namespace() default "";
+    String localpart() default "";
 }

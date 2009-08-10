@@ -1,4 +1,4 @@
-package com.counter;
+package org.globus.crux;
 
 import org.globus.crux.IDGenerator;
 

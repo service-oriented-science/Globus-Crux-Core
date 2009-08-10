@@ -10,11 +10,13 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <cxf.version>2.2.3</cxf.version>
         <spring.maven.artifact.version>2.5.6</spring.maven.artifact.version>
         <slf4j.version>1.5.6</slf4j.version>
         <lambdaj.version>1.8</lambdaj.version>
         <aspectj.version>1.6.3</aspectj.version>
         <cglib.version>2.1_3</cglib.version>
+        <mockito.version>1.8.0</mockito.version>
     </properties>
 
     <ciManagement>
@@ -156,6 +158,48 @@
                 <groupId>javax.annotation</groupId>
                 <artifactId>jsr250-api</artifactId>
                 <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>1.8.0</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>${groupId}</groupId>
+                <artifactId>wsrf</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${groupId}</groupId>
+                <artifactId>stateful</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${groupId}</groupId>
+                <artifactId>core</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-bindings-soap</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http-jetty</artifactId>
+                <version>${cxf.version}</version>
+                <scope>runtime</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

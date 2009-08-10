@@ -8,7 +8,12 @@ import org.globus.crux.wsrf.properties.ResourceProperty;
 import javax.xml.ws.wsaddressing.W3CEndpointReference;
 import javax.jws.WebService;
 
+//Probably would want a StatefulService annotation here to define the ResourceKey qname.
 public class CounterImpl implements CounterResource {
+    //So, right now, we are accessing the resource via this context.  I'd like to move this
+    //to passing the key directly into the method using StateKeyParam.  Because we are using
+    //a proxy approach, we could do such and still take advantage of cxf's ability to unwrap
+    //parameters.
     private ResourceContext<Long, CounterRP> resourceContext;
     private EPRFactory eprFac;
     private IDGenerator<Long> idGen;

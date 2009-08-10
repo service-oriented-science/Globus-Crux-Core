@@ -20,16 +20,16 @@ public class AnnotationResourcePropertySet implements ResourcePropertySet {
 
     public void setTarget(Object target) {
         this.target = target;
-    }
-
-    public AnnotationResourcePropertySet(Object target) {
-        this.target = target;
         for (Method method : target.getClass().getMethods()) {
             if (method.isAnnotationPresent(ResourceProperty.class)) {
                 ResourceProperty rp = method.getAnnotation(ResourceProperty.class);
                 methodMap.put(new QName(rp.namespace(), rp.localpart()), method);
             }
         }
+    }
+
+    public AnnotationResourcePropertySet(Object target) {
+        setTarget(target);
     }
 
     public Object getResourceProperty(QName qname) throws InvalidResourcePropertyQNameFault {

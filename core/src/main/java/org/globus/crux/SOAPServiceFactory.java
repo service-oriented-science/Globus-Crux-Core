@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author turtlebender
  */
-public class ProviderServiceFactory implements FactoryBean {
+public class SOAPServiceFactory implements FactoryBean {
     private Object target;
     private List<OperationProvider> providers;
     private Object proxied;

@@ -29,7 +29,7 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
         <property name="resourceStore" ref="resourceStore"/>
     </bean>
 
-    <bean id="counterFactoryService" class="org.globus.crux.ProviderServiceFactory">
+    <bean id="counterFactoryService" class="org.globus.crux.SOAPServiceFactory">
         <property name="target" ref="counters"/>
         <property name="interf" value="com.counter.CounterFactoryPortType"/>
         <property name="eprFactory" ref="eprFactory"/>

@@ -5,17 +5,17 @@ import static org.mockito.Matchers.any;
 import org.mockito.Mock;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryExpressionType;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourcePropertiesResponse;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourceProperties_Type;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.UnknownQueryExpressionDialectFault;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.oasis.wsrf.properties.QueryExpressionType;
+import org.oasis.wsrf.properties.InvalidQueryExpressionFault;
+import org.oasis.wsrf.properties.QueryResourceProperties_Type;
+import org.oasis.wsrf.properties.QueryResourcePropertiesResponse;
+import org.oasis.wsrf.properties.UnknownQueryExpressionDialectFault;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ import java.util.List;
 /**
  * @author turtlebender
  */
+@Test(groups = {"wsrf", "query"})
 public class DefaultQueryResourcePropertiesTest {
     @Mock
     QueryEngine queryEngine;
@@ -39,7 +40,6 @@ public class DefaultQueryResourcePropertiesTest {
     public void setup() throws Exception {
         initMocks(this);
         qrp = new DefaultQueryResourceProperties();
-        qrp.setRps(rps);
         expr = new QueryExpressionType();
         expr.setDialect(DefaultXPathQueryEngine.XPATH_1_DIALECT);
         expr.getContent().add(new XPathQuery());
@@ -51,7 +51,16 @@ public class DefaultQueryResourcePropertiesTest {
         when(queryEngine.canProcessDialect(DefaultXPathQueryEngine.XPATH_1_DIALECT)).thenReturn(true);
         when(queryEngine.canProcessDialect("Fake Dialect")).thenReturn(false);
         when(queryEngine.getQueryType()).thenReturn(XPathQuery.class);
-        when(queryEngine.executeQuery(expr.getContent().get(0), rps)).thenReturn(queryResults);
+        when(queryEngine.executeQuery(expr.getContent().get(0))).thenReturn(queryResults);
+    }
+
+    @Test(expectedExceptions = InvalidQueryExpressionFault.class)
+    public void testNullQuery() throws Exception {
+        QueryResourceProperties_Type query = new QueryResourceProperties_Type();
+        expr.getContent().set(0, null);
+        query.setQueryExpression(expr);
+        qrp.addQueryEngine(this.queryEngine);
+        qrp.queryResourceProperties(query);
     }
 
     @Test
@@ -62,7 +71,7 @@ public class DefaultQueryResourcePropertiesTest {
         runTest();
     }
 
-    private void runTest() throws Exception{
+    private void runTest() throws Exception {
         QueryResourceProperties_Type query = new QueryResourceProperties_Type();
         query.setQueryExpression(expr);
         QueryResourcePropertiesResponse response = qrp.queryResourceProperties(query);
@@ -77,7 +86,7 @@ public class DefaultQueryResourcePropertiesTest {
             //better happen
         }
         verify(queryEngine, times(2)).canProcessDialect(any(String.class));
-        verify(queryEngine, times(1)).executeQuery(expr.getContent().get(0), rps);
+        verify(queryEngine, times(1)).executeQuery(expr.getContent().get(0));
         assertEquals(results.size(), 1);
         assertEquals(results.get(0), value);
     }

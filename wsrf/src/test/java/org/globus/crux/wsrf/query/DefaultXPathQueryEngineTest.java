@@ -9,7 +9,6 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryExpressionType;
 import org.springframework.oxm.Unmarshaller;
 import static org.testng.Assert.*;
 import org.testng.annotations.BeforeTest;
@@ -17,6 +16,7 @@ import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.oasis.wsrf.properties.QueryExpressionType;
 
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -32,6 +32,7 @@ import java.util.List;
 /**
  * @author turtlebender
  */
+@Test(groups={"wsrf","query"})
 public class DefaultXPathQueryEngineTest {
     DefaultXPathQueryEngine queryEngine;
     @Mock
@@ -67,6 +68,7 @@ public class DefaultXPathQueryEngineTest {
         queryEngine = new DefaultXPathQueryEngine();
         queryEngine.setMarshaller(marshaller);
         queryEngine.setUnmarshaller(unmarshaller);
+        queryEngine.setRps(rps);
         QName resourceName = new QName("http://counter.com", "CounterRP");
         when(rps.getResourceName()).thenReturn(resourceName);
         doAnswer(new Answer() {
@@ -94,7 +96,7 @@ public class DefaultXPathQueryEngineTest {
         query.getNsMapping().add(new NamespaceMapping("count", "http://counter.com"));
         query.setQuery("/count:CounterRP");
         exp.getContent().add(query);
-        List<Object> results = queryEngine.executeQuery(query, rps);
+        List<Object> results = queryEngine.executeQuery(query);
         assertEquals(results.size(), 1);
         assertEquals(results.get(0), counterNode);
     }

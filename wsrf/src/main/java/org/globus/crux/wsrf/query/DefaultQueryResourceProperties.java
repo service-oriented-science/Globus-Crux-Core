@@ -1,15 +1,14 @@
 package org.globus.crux.wsrf.query;
 
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidQueryExpressionFault;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidResourcePropertyQNameFault;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryEvaluationErrorFault;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourceProperties;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourcePropertiesResponse;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourceProperties_Type;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.ResourceUnknownFault;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.UnknownQueryExpressionDialectFault;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryExpressionType;
-import org.globus.crux.wsrf.properties.ResourcePropertySet;
+import org.oasis.wsrf.properties.QueryResourceProperties;
+import org.oasis.wsrf.properties.QueryResourcePropertiesResponse;
+import org.oasis.wsrf.properties.QueryResourceProperties_Type;
+import org.oasis.wsrf.properties.UnknownQueryExpressionDialectFault;
+import org.oasis.wsrf.properties.InvalidResourcePropertyQNameFault;
+import org.oasis.wsrf.properties.QueryEvaluationErrorFault;
+import org.oasis.wsrf.properties.InvalidQueryExpressionFault;
+import org.oasis.wsrf.properties.ResourceUnknownFault;
+import org.oasis.wsrf.properties.QueryExpressionType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,6 @@ import java.util.List;
  */
 public class DefaultQueryResourceProperties implements QueryResourceProperties {
     private List<QueryEngine<Object, Object>> engines = new ArrayList<QueryEngine<Object, Object>>();
-    private ResourcePropertySet rps;
 
     public QueryResourcePropertiesResponse queryResourceProperties(QueryResourceProperties_Type queryResourcePropertiesRequest)
             throws UnknownQueryExpressionDialectFault, InvalidResourcePropertyQNameFault, QueryEvaluationErrorFault,
@@ -43,7 +41,7 @@ public class DefaultQueryResourceProperties implements QueryResourceProperties {
             throw new InvalidQueryExpressionFault("No query supplied");
         }
         if (executor.getQueryType().isAssignableFrom(query.getClass())) {
-            results.addAll(executor.executeQuery(query, rps));
+            results.addAll(executor.executeQuery(query));
         } else {
             throw new InvalidQueryExpressionFault("The supplied query is not valid for the specified dialect: " + dialect);
         }
@@ -57,9 +55,5 @@ public class DefaultQueryResourceProperties implements QueryResourceProperties {
 
     public void setEngines(List<QueryEngine<Object, Object>> engines) {
         this.engines = engines;
-    }
-
-    public void setRps(ResourcePropertySet rps) {
-        this.rps = rps;
     }
 }

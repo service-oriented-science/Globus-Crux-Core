@@ -4,7 +4,7 @@
 
     <bindings scd="x-schema::bf" if-exists="true">
         <schemaBindings>
-            <package name="org.oasis.wsrf.v200406.faults"/>
+            <package name="org.oasis.wsrf.faults"/>
             <nameXmlTransform>
                 <elementName prefix="Draft"/>                
                 <typeName prefix="Draft"/>

@@ -1,15 +1,22 @@
 package org.globus.crux.wsrf.properties;
 
 import org.globus.crux.OperationProvider;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.GetResourceProperty;
+import org.globus.crux.ProviderException;
+import org.oasis.wsrf.properties.GetResourceProperty;
 
 /**
  * @author turtlebender
  */
 public class GetRPProvider implements OperationProvider<GetResourceProperty> {
     GetResourceProperty impl;
+    private ResourcePropertySet rps;
 
-    public GetResourceProperty getImplementation() {
+    public GetResourceProperty getImplementation() throws ProviderException {
+        if(impl == null && rps == null){
+            throw new ProviderException("ResourcePropertySet is required");
+        }else if(impl == null){
+            impl = new GetResourcePropertyImpl().withRPSet(rps);
+        }
         return impl;
     }
 
@@ -18,11 +25,13 @@ public class GetRPProvider implements OperationProvider<GetResourceProperty> {
     }
 
     public GetRPProvider withRps(ResourcePropertySet rps) {
-        impl = new GetResourcePropertyImpl().withRPSet(rps);
+        this.rps = rps;
+        impl = null;
         return this;
     }
 
-    public void setRPSet(ResourcePropertySet rps){
-        impl = new GetResourcePropertyImpl().withRPSet(rps);
+    public void setRPSet(ResourcePropertySet rps) {
+        this.rps = rps;
+        impl = null;
     }
 }

@@ -1,0 +1,8 @@
+<jxb:bindings version="2.1" xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+              xmlns:wsrp="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd">
+    <jxb:bindings scd="x-schema::wsrp" if-exists="true">
+        <jxb:schemaBindings>
+            <jxb:package name="org.oasis.wsrf.properties"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+</jxb:bindings>

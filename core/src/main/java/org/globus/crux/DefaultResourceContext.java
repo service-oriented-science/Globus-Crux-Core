@@ -1,16 +1,16 @@
 package org.globus.crux;
 
-import org.globus.crux.ResourceContext;
-import org.globus.crux.ResourceStore;
 import org.globus.crux.service.ResourceStoreException;
 
 /**
- * This is an implementation of ResourceContext.  Pretty simple.  resource storage should be
- * moved out of this class.
+ * This is an implementation of ResourceContext.  Pretty simple.
  *
- * @author turtlebender
+ * @author Tom Howe
+ * @since 1.0
+ * @version 1.0
  */
 public class DefaultResourceContext<T, V> implements ResourceContext<T, V> {
+    //TODO: support external Context, e.g. WebServiceContext
     private ResourceStore<T, V> store;
     private ResourceKeyThreadLocal currentResource = new ResourceKeyThreadLocal();
 

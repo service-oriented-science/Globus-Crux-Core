@@ -26,7 +26,7 @@
         </dependency>
         <dependency>
             <groupId>${groupId}</groupId>
-            <artifactId>stateful</artifactId>
+            <artifactId>core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -84,6 +84,12 @@
                             <wsdlOptions>
                                 <wsdlOption>
                                     <wsdl>src/main/wsdl/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl</wsdl>
+                                    <bindingFiles>
+                                        <bindingFile>${basedir}/src/main/wsdl/properties.xjb</bindingFile>
+                                        <bindingFile>${basedir}/src/main/wsdl/propschema.xjb</bindingFile>
+                                        <bindingFile>${basedir}/src/main/wsdl/basefaults.xjb</bindingFile>
+                                        <bindingFile>${basedir}/src/main/wsdl/addressing.xjb</bindingFile>
+                                    </bindingFiles>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>
@@ -93,47 +99,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<plugin>-->
-            <!--<groupId>org.jvnet.jaxb2.maven2</groupId>-->
-            <!--<artifactId>maven-jaxb2-plugin</artifactId>-->
-            <!--<version>0.7.1</version>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<phase>generate-sources</phase>-->
-            <!--<goals>-->
-            <!--<goal>generate</goal>-->
-            <!--</goals>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--<configuration>-->
-            <!--<extension>true</extension>-->
-            <!--<args>-->
-            <!--<arg>-Xfluent-api</arg>-->
-            <!--<arg>-Xcollection-setter-injector</arg>-->
-            <!--<args>-Xvalue-constructor</args>-->
-            <!--</args>-->
-            <!--<schemaDirectory>src/main/wsdl</schemaDirectory>-->
-            <!--<bindingDirectory>src/main/wsdl</bindingDirectory>-->
-            <!--<plugins>-->
-            <!--<plugin>-->
-            <!--<groupId>org.jvnet.jaxb2_commons</groupId>-->
-            <!--<artifactId>basic</artifactId>-->
-            <!--<version>0.4.1</version>-->
-            <!--</plugin>-->
-
-            <!--<dependency>-->
-            <!--<groupId>org.jvnet.jaxb2-commons</groupId>-->
-            <!--<artifactId>collection-setter-injector</artifactId>-->
-            <!--<version>1.0</version>-->
-            <!--</dependency>-->
-            <!--<plugin>-->
-            <!--<groupId>org.jvnet.jaxb2-commons</groupId>-->
-            <!--<artifactId>value-constructor-plugin</artifactId>-->
-            <!--<version>1.0</version>-->
-            <!--</plugin>-->
-            <!--</plugins>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
         </plugins>
     </build>
 </project>

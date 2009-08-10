@@ -5,6 +5,8 @@ import org.aopalliance.intercept.MethodInvocation;
 import org.globus.crux.service.CreateState;
 import org.globus.crux.service.EPRFactory;
 import org.globus.crux.service.EPRFactoryException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
@@ -15,15 +17,23 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.ResourceBundle;
 
 /**
- * @author turtlebender
+ * This takes care of integrating the developer's service method with the operation providers as well
+ * as injecting the necessary state info into the object.  Pretty standard AOP.
+ *
+ * @author Tom Howe
+ * @since 1.0
+ * @version 1.0
  */
 public class CruxMixin implements MethodInterceptor {
     private Map<MethodKey, Method> methodMap = new HashMap<MethodKey, Method>();
     private Set<Method> createMethods = new HashSet<Method>();
     private Set<Method> nonCreateMethods = new HashSet<Method>();
     private EPRFactory eprFactory;
+    private static ResourceBundle resourceBundle = ResourceBundle.getBundle("org.globus.crux.crux");/* NON-NLS */
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     public CruxMixin(Object delegate) {
         for (Method method : delegate.getClass().getMethods()) {
@@ -32,13 +42,22 @@ public class CruxMixin implements MethodInterceptor {
         }
     }
 
+    /**
+     * This invokes the method.  In actuality, this invokes the method from the original object.
+     * In this way, we can support all kinds of fun injections and the whatnot.
+     *
+     * @param mi
+     * @return
+     * @throws Throwable
+     */
     public Object invoke(MethodInvocation mi) throws Throwable {
         Method method = mi.getMethod();
         MethodKey key = new MethodKey(method.getName(), method.getParameterTypes());
         Method createMethod = methodMap.get(key);
         if (createMethod == null) {
-            //We have a big problem.
-            throw new RuntimeException("No such method exists in the service class");
+            String message = resourceBundle.getString("no.such.service.method");
+            logger.warn(message);
+            throw new RuntimeException(message);
         }
         Object result = createMethod.invoke(mi.getThis(), mi.getArguments());
         if (createMethods.contains(mi.getMethod())) {
@@ -55,7 +74,7 @@ public class CruxMixin implements MethodInterceptor {
         return result;
     }
 
-    //TODO: replace with better exception
+    @SuppressWarnings("unchecked")
     private Object processCreate(Object result, CreateState cs) throws EPRFactoryException {
         if (cs.localpart().length() > 0) {
             if (cs.namespace().length() > 0) {

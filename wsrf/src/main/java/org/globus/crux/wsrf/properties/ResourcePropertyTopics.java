@@ -5,7 +5,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * @author turtlebender
+ * Not used yet.
+ *
+ * @author Tom Howe
+ * @since 1.0
+ * @version 1.0
  */
 @Retention(java.lang.annotation.RetentionPolicy.RUNTIME)
 @Target(java.lang.annotation.ElementType.METHOD)

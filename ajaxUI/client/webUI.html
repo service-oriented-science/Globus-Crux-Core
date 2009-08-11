@@ -1,0 +1,1406 @@
+<head>
+<title>Ajax Web UI for Crux (Testbed)</title>
+<style type="text/css">
+body {
+	font: 11px Arial, Helvetica, sans-serif;
+	padding: 0;
+	margin: 0;
+}
+img {
+	border: none;
+}
+
+.highlightText {
+	color: #FF0000
+}
+	
+/* windows */
+.window {
+	position: absolute;
+	left: 200px;
+	top: 100px;
+	width: 500px;
+	height: 400px;
+	overflow: hidden;
+	display: none;
+}
+.windowTop {
+	height: 30px;
+	overflow: 30px;
+	background-image: url(images/window_top_end.png);
+	background-position: right top;
+	background-repeat: no-repeat;
+	position: relative;
+	overflow: hidden;
+	cursor: move;
+}
+.windowTopContent {
+	margin-right: 10px;
+	background-image:url(images/window_top_start.png);
+	background-position:left top;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	height: 30px;
+	line-height: 30px;
+	text-indent: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	color: #6caf00;
+}
+.windowMin {
+	position: absolute;
+	right: 25px;
+	top: 10px;
+	cursor: pointer;
+}
+.windowMax {
+	position: absolute;
+	right: 25px;
+	top: 10px;
+	cursor: pointer;
+	display: none;
+}
+.windowClose {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	cursor: pointer;
+}
+.windowBottom {
+	position: relative;
+	height: 370px;
+	background-image: url(images/window_bottom_end.png);
+	background-position: right bottom;
+	background-repeat: no-repeat;
+}
+.windowBottomContent {
+	position: relative;
+	height: 370px;
+	background-image: url(images/window_bottom_start.png);
+	background-position: left bottom;
+	background-repeat: no-repeat;
+	margin-right: 10px;
+}
+.windowResize {
+	position: absolute;
+	right: 3px;
+	bottom: 5px;
+	cursor: se-resize;
+}
+.windowContent {
+	position:absolute;
+	top: 30px;
+	left: 10px;
+	width: auto;
+	height: auto;
+	overflow: auto;
+	border: 1px solid #6caf00;	
+	margin-right: 10px;
+	height: 355px;
+	width: 475px;
+	font-size: 11px;
+	background-color: #e7e7e7;
+}
+.windowContent * {
+	margin: 0px;
+	font-size: 11px;
+}
+
+.transferer2 {
+	border: 1px solid #6BAF04;
+	background-color: #B4F155;
+	filter:alpha(opacity=30); 
+	-moz-opacity: 0.3; 
+	opacity: 0.3;
+}
+
+/* dock2 - bottom */
+.dock {
+	position: relative; 
+	height: 50px; 
+	text-align: center;
+}
+#dock2 {
+	width: 100%;
+	bottom: 0px;
+	position: absolute;
+	left: 0px;
+}
+.dock-container2 {
+	position: absolute;
+	height: 50px;
+	background: url(images/dock-bg.gif);
+	padding-left: 20px;
+}
+a.dock-item2 {
+	display: block; 
+	font: bold 12px Arial, Helvetica, sans-serif;
+	width: 40px; 
+	color: #000; 
+	bottom: 0px; 
+	position: absolute;
+	text-align: center;
+	text-decoration: none;
+}
+.dock-item2 span {
+	display: none;
+	padding-left: 20px;
+}
+.dock-item2 img {
+	border: none; 
+	margin: 5px 10px 0px; 
+	width: 100%; 
+}
+
+.filelistcontainer {
+	width: 400px;
+	height: 300px;
+	overflow: scroll
+}
+
+.dropactive {
+	background-color: #fc9;
+}
+.drophover {
+	background-color: #ffc;
+}
+
+</style>
+
+<!--[if lt IE 7]>
+ <style type="text/css">
+ .dock img { behavior: url(iepngfix.htc) }
+ </style>
+<![endif]-->
+
+<script type="text/javascript" src="lib/amq.js"></script>
+<script type="text/javascript">amq.uri='/agent/amq';</script> 
+<script type="text/javascript" src="CogKit2.js"></script>
+
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/interface.js"></script>
+<script type="text/javascript" src="lib/soapclient24NSMod.js"></script>
+<script type="text/javascript" src="lib/dojo/dojo/dojo.js" djConfig="parseOnLoad:true"></script>
+<script type="text/javascript">
+    dojo.require("dojox.grid.DataGrid");
+    dojo.require("dojox.data.CsvStore");
+    dojo.require("dijit.form.Button");
+</script>
+
+<div id="winsDiv"></div>
+
+<!--bottom dock -->
+<div class="dock" id="dock2">
+  <div class="dock-container2">
+  <a class="dock-item2" id="auth" href="#"><span>Authentication</span><img src="images/auth.png" alt="authentication" /></a>
+  <a class="dock-item2" id="logs" href="#"><span>logs</span><img src="images/portfolio.png" alt="logs" /></a>
+  <a class="dock-item2" id="job" href="#"><span>Remote job</span><img src="images/remotejob.png" alt="remoteJob" /></a> 
+  <a class="dock-item2" id="wf" href="#"><span>Workflow</span><img src="images/workflow.png" alt="workflow" /></a> 
+  <a class="dock-item2" id="jobman" href="#"><span>Job management</span><img src="images/histjobs.png" alt="jobman" /></a> 
+  <a class="dock-item2" id="result" href="#"><span>Result</span><img src="images/result.png" alt="result" /></a> 
+  <a class="dock-item2" id="ftp" href="#"><span>File operation</span><img src="images/transfer.png" alt="ftp" /></a>
+  <a class="dock-item2" id="resource" href="#"><span>Resources</span><img src="images/resources.png" alt="resources" /></a> 
+  <a class="dock-item2" id="nws" href="#"><span>Nws</span><img src="images/nws.png" alt="nws" /></a>
+  <a class="dock-item2" id="rss" href="#"><span>Teragrid News RSS</span><img src="images/rss.png" alt="rss" /></a>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+var ZMAX = 0;
+var JQ = jQuery.noConflict();
+
+function addWindow(windowName){
+    var win = document.createElement("div");
+    win.setAttribute("class", "window");
+    win.setAttribute("id", windowName+"Window");
+    win.setAttribute("style", "z-index: " + (++ZMAX));
+    win.innerHTML="<div class=\"windowTop\" id=\"" + windowName + "WindowTop\">" + 
+    	"<div class=\"windowTopcontent\" id=\"" + windowName + "WindowTopContent\"></div>" +
+		"<img src=\"images/window_min.jpg\" class=\"windowMin\" id=\"" + windowName + "WindowMin\"/>" +
+		"<img src=\"images/window_max.jpg\" class=\"windowMax\" id=\"" + windowName + "WindowMax\"/>" +
+		"<img src=\"images/window_close.jpg\" class=\"windowClose\" id=\"" + windowName + "WindowClose\"/>" + 
+        "</div><div class=\"windowBottom\" id=\"" + windowName + "WindowBottom\"><div class=\"windowBottomContent\" id=\"" + windowName + "WindowBottomContent\"></div></div>" +
+	"<div class=\"windowContent\" id=\"" + windowName + "WindowContent\"></div>" + 
+	"<img src=\"images/window_resize.gif\" class=\"windowResize\" id=\"" + windowName + "WindowResize\"/></div>";
+    
+    document.getElementById("winsDiv").appendChild(win);    
+}
+
+var curzmax = 0;
+var nwsImgTimer;
+
+var layersOccupied = new Array();
+
+function bringToTop(windowName) {
+	var mywindow = JQ('#' + windowName + 'Window');
+	var styles = mywindow[0].getAttribute('style');
+	//alert(styles);
+	var zindexPos = styles.indexOf(';');
+	var part1 = styles.substring(0, zindexPos);
+	var myzindex = parseInt(part1.substring(part1.indexOf(':') + 1));
+	if(isNaN(myzindex)){
+		myzindex = 0;
+	}
+	//alert(windowName + ", " + myzindex + ", " + curzmax);
+	for(i = 1; i <= ZMAX; ++i){
+		layersOccupied[i] = false;
+	}
+	//alert("after false assigned!");
+	var windows = JQ(".window");
+	var winnum = windows.length;
+	
+	//alert("windows #: " + winnum);
+	for(i = 0; i < winnum; ++i){
+		styles = windows[i].getAttribute('style');
+		zindexPos = styles.indexOf(';');
+		part1 = styles.substring(0, zindexPos);
+		part2 = styles.substring(zindexPos);
+		var zindex = parseInt(part1.substring(part1.indexOf(':') + 1));
+		if(zindex > 0 && zindex <= ZMAX){
+			layersOccupied[zindex] = true;
+		}
+	}
+	for(i = 0; i < winnum; ++i){
+		styles = windows[i].getAttribute('style');
+		zindexPos = styles.indexOf(';');
+		part1 = styles.substring(0, zindexPos);
+		part2 = styles.substring(zindexPos);
+		var zindex = parseInt(part1.substring(part1.indexOf(':') + 1));
+		if(isNaN(zindex)){
+			zindex = 0;
+		}
+		if(zindex > ZMAX){
+			for(var i = 1; i <= ZMAX; ++i){
+				if(!layersOccupied[i]){
+					part1 = "z-index: " + i;
+					layersOccupied[i] = true;
+					break;
+				}
+			}
+		} else if(zindex >= myzindex){
+			if(windows[i].id != windowName+"Window"){
+				part1 = "z-index: " + (zindex - 1);
+				layersOccupied[zindex-1] = true;
+			} else {
+				part1 = "z-index: " + curzmax;
+				layersOccupied[curzmax] = true;
+			}
+		}
+		/*} else if(zindex > myzindex){
+			part1 = "z-index: " + (zindex - 1);
+			layersOccupied[zindex-1] = true;
+		} else if(zindex == myzindex) {
+			part1 = "z-index: " + ZMAX;
+			layersOccupied[ZMAX] = true;
+		}*/
+		styles = part1 + part2;
+		windows[i].setAttribute('style', styles);
+	}
+	return false;
+}
+			
+function bindWindows(windowName) {
+		JQ('#' + windowName).bind(
+			'click',
+			function() {
+				if(JQ('#'+ windowName +'Window').css('display') == 'none') {
+					JQ(this).TransferTo(
+						{
+							to: windowName +'Window',
+							className:'transferer2', 
+							duration: 400,
+							complete: function()
+							{
+								JQ('#'+ windowName +'Window').show();
+							}
+						}
+					);
+				}
+				this.blur();
+				curzmax++;
+				bringToTop(windowName);
+				
+				if(windowName == "nws"){
+					refreshNwsImg();
+				}
+				
+				//return false;
+			}
+		);
+		JQ('#'+ windowName +'WindowClose').bind(
+			'click',
+			function()
+			{
+				bringToTop(windowName);
+				JQ('#'+ windowName +'Window').TransferTo(
+					{
+						to: windowName +'WindowOpen',
+						className:'transferer2', 
+						duration: 400
+					}
+				).hide();
+				curzmax--;
+				
+				if(windowName == "nws"){
+					stopRefreshNwsImg();
+				}
+			}
+		);
+		JQ('#'+ windowName +'WindowMin').bind(
+			'click',
+			function()
+			{
+				JQ('#'+ windowName +'WindowContent').SlideToggleUp(300);
+				JQ('#'+ windowName +'WindowBottom, #'+ windowName +'WindowBottomContent').animate({height: 10}, 300);
+				JQ('#'+ windowName +'Window').animate({height:40},300).get(0).isMinimized = true;
+				JQ(this).hide();
+				JQ('#'+ windowName +'WindowResize').hide();
+				JQ('#'+ windowName +'WindowMax').show();
+				bringToTop(windowName);
+				
+				if(windowName == "nws"){
+					stopRefreshNwsImg();
+				}
+			}
+		);
+		JQ('#'+ windowName +'WindowMax').bind(
+			'click',
+			function()
+			{
+				var windowSize = $.iUtil.getSize(document.getElementById(windowName +'WindowContent'));
+				JQ('#'+ windowName +'WindowContent').SlideToggleUp(300);
+				JQ('#'+ windowName +'WindowBottom, ' + '#'+ windowName +'WindowBottomContent').animate({height: windowSize.hb + 13}, 300);
+				JQ('#'+ windowName +'Window').animate({height:windowSize.hb+43}, 300).get(0).isMinimized = false;
+				JQ(this).hide();
+				JQ('#'+ windowName +'WindowMin, #'+ windowName +'WindowResize').show();
+				bringToTop(windowName);
+				
+				if(windowName == "nws"){
+					refreshNwsImg();
+				}
+			}
+		);
+		JQ('#'+ windowName +'Window').Resizable(
+			{
+				minWidth: 200,
+				minHeight: 60,
+				maxWidth: 1024,//800,//700
+				maxHeight: 1024,//420,//400
+				dragHandle: '#'+ windowName +'WindowTop',
+				handlers: {
+					se: '#'+ windowName +'WindowResize'
+				},
+				onResize : function(size, position) {
+					JQ('#'+ windowName +'WindowBottom, #'+ windowName +'WindowBottomContent').css('height', size.height-33 + 'px');
+					var windowContentEl = JQ('#'+ windowName +'WindowContent').css('width', size.width - 25 + 'px');
+					if (!document.getElementById(windowName +'Window').isMinimized) {
+						windowContentEl.css('height', size.height - 48 + 'px');
+					}
+				}
+			}
+		);
+		
+		JQ('#' + windowName + 'WindowTop').bind(
+			'mousedown',
+			function(){
+				bringToTop(windowName);
+			}
+		);
+		
+		JQ('#' + windowName + 'Window').bind(
+			'mousedown',
+			function(){
+				bringToTop(windowName);
+			}
+		);
+		
+		JQ('#' + windowName + 'WindowBottom').bind(
+			'mousedown',
+			function(){
+				bringToTop(windowName);
+			}
+		);
+	}
+	
+	
+	JQ(document).ready(
+		function()
+		{
+			JQ('#dock2').Fisheye(
+				{
+					maxWidth: 60,
+					items: 'a',
+					itemsText: 'span',
+					container: '.dock-container2',
+					itemWidth: 40,
+					proximity: 80,
+					alignment : 'left',
+					valign: 'bottom',
+					halign : 'center'
+				}
+			);
+		
+		//add windows content in html
+		addWindow('auth');
+		addWindow('logs');
+		addWindow('job');
+		addWindow('wf');
+		addWindow('jobman');
+		addWindow('result');
+		addWindow('resource');
+		addWindow('nws');
+		addWindow('ftp');
+		addWindow('rss');
+		
+		//set layers
+		for(i=1; i<=ZMAX; i++){
+            layersOccupied[i] = true;
+        }
+
+		JQ('#sourcefilelistcontainer').Droppable(
+		{
+		accept : 'destfileitem', 
+		activeclass: 'dropactive', 
+		hoverclass:	'drophover',
+		tolerance: 'pointer',
+		ondrop:	function (drag)
+				{
+					var node = document.getElementById("ftpsource").childNodes[0];
+					var sourceHost = node.options[node.selectedIndex].value;
+					var sourceDir = document.getElementById("sourceURIDir").innerHTML;
+					var tmpSourceURI = sourceHost + sourceDir;
+					
+					node = document.getElementById("ftpdest").childNodes[0];
+					var destHost = node.options[node.selectedIndex].value;
+					var destDir = document.getElementById("destURIDir").innerHTML;
+					var tmpDestURI = destHost + destDir;
+
+					var dragInnerHtml = drag.innerHTML;
+					var pos1 = dragInnerHtml.indexOf("<pre>") + 5;
+					var pos2 = dragInnerHtml.indexOf("</pre>");
+					var fileinfo = dragInnerHtml.substring(pos1, pos2);
+					var fileinfoitems = fileinfo.split(" ");
+					var filename = fileinfoitems[fileinfoitems.length-1];
+					tmpSourceURI = tmpSourceURI + "/" + filename;
+					tmpDestURI = tmpDestURI + "/" + filename;
+					document.getElementById("sourceURI").value = tmpSourceURI;
+					document.getElementById("destURI").value = tmpDestURI;
+					//console.info("source: " + tmpSourceURI);
+					//console.info("dest: " + tmpDestURI);
+					transfer(true);
+				},
+		//fit: true
+		}
+		);
+		
+		JQ('#destfilelistcontainer').Droppable(
+		{
+		accept : 'sourcefileitem', 
+		activeclass: 'dropactive', 
+		hoverclass:	'drophover',
+		tolerance: 'pointer',
+		ondrop:	function (drag)
+				{
+					var node = document.getElementById("ftpsource").childNodes[0];
+					var sourceHost = node.options[node.selectedIndex].value;
+					var sourceDir = document.getElementById("sourceURIDir").innerHTML;
+					var tmpSourceURI = sourceHost + sourceDir;
+					
+					node = document.getElementById("ftpdest").childNodes[0];
+					var destHost = node.options[node.selectedIndex].value;
+					var destDir = document.getElementById("destURIDir").innerHTML;
+					var tmpDestURI = destHost + destDir;
+					
+					var dragInnerHtml = drag.innerHTML;
+					var pos1 = dragInnerHtml.indexOf("<pre>") + 5;
+					var pos2 = dragInnerHtml.indexOf("</pre>");
+					var fileinfo = dragInnerHtml.substring(pos1, pos2);
+					var fileinfoitems = fileinfo.split(" ");
+					var filename = fileinfoitems[fileinfoitems.length-1];
+					tmpSourceURI = tmpSourceURI + "/" + filename;
+					tmpDestURI = tmpDestURI + "/" + filename;
+					document.getElementById("sourceURI").value = tmpSourceURI;
+					document.getElementById("destURI").value = tmpDestURI;
+					//console.info("source: " + tmpSourceURI);
+					//console.info("dest: " + tmpDestURI);
+					transfer(false);
+				},
+		//fit: true
+		}
+		);
+		
+		//add windows specific content
+		//set content for the auth window
+		document.getElementById("authWindowTopContent").innerHTML="MyProxy Authentication <span class='highlightText' name='authStatus' id='authStatus'></span>";        
+        document.getElementById("authWindowContent").innerHTML="<table><tr><td>myproxy server host</td> <td><input name='host' type='text' id='host' size='50'/></td>  </tr>  <tr>  <td>myproxy server port</td> <td><input name='port' type='text' id='port' size='50'/></td>  </tr>  <tr>  <td>myproxy username</td>  <td><input name='user' type='text' id='user' size='50'/></td>  </tr>  <tr>  <td>myproxy passphrase</td><td><input name='password' type='password' id='password' size='50'/></td>  </tr></table><input name='button0' type='button' class='runButton' id='button0' onclick='auth();return false' value='Authenticate'/></p>";	
+		//end for auth window
+		
+		//set content for the logs window
+		document.getElementById("logsWindowTopContent").innerHTML="Logs";        
+        document.getElementById("logsWindowContent").innerHTML="logs goes here";
+		//end for logs window
+		
+		//set content for the job window
+		document.getElementById("jobWindowTopContent").innerHTML="remote job <span class='highlightText' name='submitStatus' id='submitStatus'></span>";        
+        document.getElementById("jobWindowContent").innerHTML="<table><tr> <td>Command</td><td><input name='cmd' type='text' id='cmd' size='50'/></td>  </tr>  <tr>  <td>Arguments</td><td><input name='arg' type='text' id='arg' size='50'/></td>  </tr>  <tr>  <td>Host</td>  <td><input name='rHost' type='text' id='rHost' size='50' style='display:none'/>  <span class='selectlist' id='rHostSelect' name='rHostSelect' onchange='updateRHost();return false'>  </span>  </td>  </tr>  <tr>  <td>Standard Output</td>  <td><input name='stdout' type='text' id='stdout' size='50'/></td>  </tr>  <tr>  <td>Provider</td>  <td><input name='provider' type='radio' id='gt2' checked>GT2 <input name='provider' type='radio' id='gt4'>GT4</td>  </tr></table><input name='button1' type='button' class='runButton' id='button1' onclick='submitJob();return false' value='Submit job'/><input name='button11' type='button' class='runButton' id='button11' onclick='resetJobSpecs();return false' value='Reset'/></p>";
+		//end for job window
+		
+		//set content for the workflow window
+		document.getElementById("wfWindowTopContent").innerHTML="workflow";        
+        document.getElementById("wfWindowContent").innerHTML="project description (in Karajan)<br><textarea name='proj' wrap='soft' rows='20' cols='60'> </textarea><br><input name='button2' type='button' class='runButton' id='button2' onclick='submitWf();return false' value='Submit workflow'/>";	
+		//end for workflow window
+		
+		//set content for the jobman window
+		document.getElementById("jobmanWindowTopContent").innerHTML="Historical Jobs Management";        
+        document.getElementById("jobmanWindowContent").innerHTML="<div class='panel' id='jobmanPanel'></div>";
+		//end for jobman window
+		
+		//set content for the result window
+		document.getElementById("resourceWindowTopContent").innerHTML="Results";        
+        document.getElementById("resourceWindowContent").innerHTML="<div class='panel' id='resultPanel'></div>";	
+		//end for result window
+		
+		//set content for the resource window
+		document.getElementById("resourceWindowTopContent").innerHTML="Resources";        
+        document.getElementById("resourceWindowContent").innerHTML="<span dojoType=\"dojox.data.CsvStore\" jsId=\"resourcesStore\" url=\"tginfo.csv\"></span>Dojo Grid to be replaced";
+		//end for resource window
+		
+		//set content for the nws window
+		document.getElementById("nwsWindowTopContent").innerHTML="Network Performance";        
+        document.getElementById("nwsWindowContent").innerHTML="<img src='https://network.teragrid.org/trafmap/tglogical-rtg.png' id='nwsImg' /><p>If you could not see the picture, please right click on the icon and open the picture in another window and then trust the site certificate.</p>";		
+		//end for nws window
+		
+		//set content for the file window
+		document.getElementById("ftpWindowTopContent").innerHTML="File operations";        
+        document.getElementById("ftpWindowContent").innerHTML="<fieldset id='ftpframe' class='fsframe'><legend>Transfer<span class='highlightText' name='transferStatus' id='transferStatus'></span></legend><table><tr><td><fieldset id='sourceframe' class='fsframe'><legend>Source</legend><p>Host<p><span class='selectlist' id='ftpsource' name='ftpsource' onchange='updateFtpList('source');return false'></span><p>Current Dir:<span name='sourceURIDir' id='sourceURIDir' onchange='updateFtpList('source');return false'/>~</span><p><fieldset><legend>File List</legend><div class='filelistcontainer' id='sourcefilelistcontainer' name='sourcefilelistcontainer'><table class='filelist' id='sourcefilelist' name='sourcefilelist'></table></div></fieldset></fieldset></td><td><fieldset id='targetframe' class='fsframe'><legend>Target</legend><p>Host<p><span class='selectlist' id='ftpdest' name='ftpdest' onchange='updateFtpList('dest');return false'></span><p>Current Dir:<span name='destURIDir' id='destURIDir' onchange='updateFtpList('dest');return false'/>~</span><p><fieldset><legend>File List</legend><div class='filelistcontainer' id='destfilelistcontainer' name='destfilelistcontainer'><table class='filelist' id='destfilelist' name='destfilelist'></table></div></fieldset></fieldset></td></tr></table><input name='buttonFtp' type='button' class='runButton' id='buttonFtp' style='display:none' onclick='transfer();return false' value='Transfer'/></fieldset>  <div style='display:none'><input name='sourceURI' type='text' id='sourceURI' size='50'/><input name='destURI' type='text' id='destURI' size='50'/>  </div>";	
+		//end for file window
+		
+		//set content for the RSS news window
+        document.getElementById("rssWindowTopContent").innerHTML="Teragrid RSS news feed";        
+        document.getElementById("rssWindowContent").innerHTML="<b>Events and News for the last 7 days</b><p><div class='panel' id='newsPanel'></div>";
+        //end for Rss window   
+        
+        //bind events and trigger
+		bindWindows('auth');
+		bindWindows('logs');
+		bindWindows('job');
+		bindWindows('jobman');
+		bindWindows('wf');
+		bindWindows('result');
+		bindWindows('resource');
+		bindWindows('nws');
+		bindWindows('ftp');
+		bindWindows('rss');		
+		}
+	);	
+	
+	var amqHandler = 
+        { 
+          rcvMessage: function(message) 
+          { 
+             var old = document.getElementById('logsWindowContent').innerHTML;
+             
+             document.getElementById('logsWindowContent').innerHTML= old + "<p>received: " + message.data;
+             //console.info(message);
+             //var msg = message.type;
+             console.info(message.data);
+          } 
+        }; 
+           
+    amq.addListener('TestMyId','topic://CRUX.TEST',amqHandler.rcvMessage);
+	
+	/*
+     * initialize the authenticate page with default values
+     * and give an example karajan workflow
+     * initialize the supported service types in Teragrid
+     */
+    function init(){
+		var strProj = "<project>\n"+
+		  "<include file=\"cogkit.xml\"/>\n"+ 
+		  "<echo message=\"Job is going to be started...\"/>\n"+
+		  "<execute executable=\"/bin/date\" "+ 
+		                "stdout=\"thedate\"\n"+
+		                "\thost=\"tg-login1.sdsc.teragrid.org\" provider=\"GT4\" "+ "redirect=\"false\"/>\n"+
+		  "<echo message=\"Job completed. Transferring the output\"/>\n"+
+		  "<transfer srchost=\"tg-login1.sdsc.teragrid.org\" srcfile=\"thedate\"\n"+
+		                 "\tdesthost=\"localhost\" provider=\"gridftp\"/>\n"+
+		  "<echo message=\"Transfer complete\"/>\n"+
+		"</project>";
+		document.getElementsByName("host")[0].value="myproxy.teragrid.org";
+		document.getElementsByName("port")[0].value="7512";
+		document.getElementsByName("user")[0].value="";
+		document.getElementsByName("password")[0].value="";
+		document.getElementById("authStatus").innerHTML="Not Authenticated";
+	
+		//document.getElementById("resourceWindowContent").innerHTML = info["Kit.Services"].length;
+		var nodes = document.getElementsByName("proj");
+		nodes[0].value = strProj;
+		
+		var ihtml = "";
+		var tgTypes=["all", "condor-g", "globus-mds4", "gpfs", "gridftp", "gsi-openssh", "ws-ogsa-dai", 
+						"prews-gram", "ws-rft", "srb", "ws-delegation", "ws-gram"];
+		for(var i in tgTypes){
+			if(tgTypes[i] == "all"){
+				ihtml = ihtml + "<option value =\"*\">all</option>";
+				//alert(ihtml);
+			} else {
+				ihtml = ihtml + "<option value =\"" + tgTypes[i] + "\">" + tgTypes[i] + "</option>";
+			}
+		}
+		ihtml = "<select>" + ihtml + "</select>";
+		//document.getElementById("tgTypes").innerHTML = ihtml;
+		
+		document.getElementById("sourceURI").value = "file:///~";
+		document.getElementById("destURI").value = "file:///~";
+		
+		var request = resourcesStore.fetch({query: {Type: "gridftp"}, onComplete: ftpList});
+		var request1 = resourcesStore.fetch({query: {Type: "gsi-openssh"}, onComplete: loginList});
+		getRssNews();
+		var rssNewsTimer = setInterval(getRssNews, 10*60*1000);
+    }
+    
+    function ftpList(items, request){
+		
+		var ihtml = "<option value =\"" + "file:///" + "\">" + "Remote User Home" + "</option>";
+		for(var i in items){
+			var name = resourcesStore.getValues(items[i], "Name");
+			var endpoint = resourcesStore.getValues(items[i], "Endpoint");
+			var resource = resourcesStore.getValues(items[i], "ResourceID");
+			var dispInfo = resource + " [" +  name + "]";
+    		//console.log(dispInfo);
+    		
+    		ihtml = ihtml + "<option value =\"" + endpoint + "\">" + dispInfo + "</option>";
+		}
+		ihtml = "<select>" + ihtml + "</select>";
+		document.getElementById("ftpsource").innerHTML = ihtml;		
+		document.getElementById("ftpdest").innerHTML = ihtml;
+	}
+	
+	function loginList(items, request){
+		
+		var ihtml = "";
+		var loginHosts = new Array();
+		for(var i in items){
+			var name = resourcesStore.getValues(items[i], "Name");
+			var endpoint = resourcesStore.getValues(items[i], "Endpoint");
+			var strEndpoint = endpoint + "";
+			var hostname = strEndpoint.split(":")[0];
+			if(!existHost(hostname)){
+				loginHosts.push(hostname);
+			}
+		}
+		
+		for(var i in loginHosts){
+			var hostname = loginHosts[i];
+			ihtml = ihtml + "<option value =\"" + hostname + "\">" + hostname + "</option>";
+		}
+		
+		ihtml = "<select>" + ihtml + "</select>";
+		document.getElementById("rHostSelect").innerHTML = ihtml;
+		
+		function existHost(host){
+			for(var i in loginHosts) {
+				if(loginHosts[i] == host){
+					return true;
+				}
+			}
+			return false;
+		}
+	}
+	
+	function updateRHost(){
+		node = document.getElementById("rHostSelect").childNodes[0];
+		document.getElementById("rHost").value = node.options[node.selectedIndex].value;;
+	}
+	
+	function refreshNwsImg(){
+		nwsImgTimer = setInterval('document.getElementById(\'nwsImg\').src=\'https://network.teragrid.org/trafmap/tglogical-rtg.png?\' + Math.random()', 20*1000);
+	}
+	
+	function stopRefreshNwsImg(){
+		clearInterval(nwsImgTimer);
+	}
+	
+	function getRssNews(){
+		var feedProviders = 
+			new Array("indiana", "lsu","ncar","ncsa","nics","ornl","psc","purdue","sdsc","tacc","anl");
+		var curTime = new Date().getTime();
+		var durationFilter = 7 * 24 * 60 * 60 * 1000;
+		var news = new Array();
+		for(var feedid in feedProviders){
+			var url = "rss-" + feedProviders[feedid] + ".rss";
+			parseRss(url);
+		}
+
+		function makeRequest(url, callback) {
+				var httpRequest;
+				if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+				    httpRequest = new XMLHttpRequest();
+				} 
+				else if (window.ActiveXObject) { // IE
+				    try {
+				        httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+				    } 
+				    catch (e) {
+				        try {
+				            httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				        } 
+				        catch (e) {}
+				    }
+				}
+
+				if (!httpRequest) {
+				    alert('Giving up :( Cannot create an XMLHTTP instance');
+				    return false;
+				}
+				httpRequest.onreadystatechange = function (){
+					extractNewsItems(httpRequest);
+				}
+				httpRequest.open('GET', url, true);
+				httpRequest.send('');
+		}
+
+		function extractNewsItems(httpRequest) {
+				if (httpRequest.readyState == 4) {
+				    if (httpRequest.status == 200) {
+				        var rss = httpRequest.responseText;
+				        callback(rss);
+				    } else {
+				    }
+				}
+		}
+
+		function parseRss(feedUrl){
+			makeRequest(feedUrl, callback);
+		}
+
+		function callback(r){
+				var xmlstring = r;
+				var xmlobject = (new DOMParser()).parseFromString(xmlstring, "text/xml");
+				var root = xmlobject.getElementsByTagName("rss")[0];
+				if(typeof root != "undefined"){
+					var channels = root.getElementsByTagName("channel");
+					if(typeof channels != "undefined"){
+						var items = channels[0].getElementsByTagName("item");
+						if(typeof items != "undefined"){
+							for(var i = 0; i < items.length; ++i){
+								var pubDateNode = items[i].getElementsByTagName("pubDate")[0].firstChild;
+								var pubdate = new Date(pubDateNode.nodeValue);
+								var pubtime = pubdate.getTime();
+								if(curTime - pubtime < durationFilter){
+									var link = items[i].getElementsByTagName("link")[0].firstChild.nodeValue;			
+									var title = items[i].getElementsByTagName("title")[0].firstChild.nodeValue;
+									var description = items[i].getElementsByTagName("description")[0].firstChild.nodeValue;
+
+									if(!exist(pubdate, title, description)){
+										news.push(
+										{
+											"title": title,
+											"description": description,
+											"link": link,
+											"pubdate": pubdate,
+											"timestamp": pubtime
+										}
+										);
+										news.sort(
+											function(a, b){
+												if(a.timestamp < b.timestamp){
+													return 1;
+												}
+												if(a.timestamp > b.timestamp){
+													return -1;
+												}
+												if(a.timestamp == b.timestamp){
+													return 0;
+												}
+											}
+										);
+										updateNewsDisplay();
+									}
+								}
+							}
+						}
+					}
+				}
+		}
+
+		function exist(pubdate, title, description){
+			for(var i = 0; i < news.length; ++i){
+				if(pubdate.valueOf() != news[i].pubdate.valueOf()){
+					continue;
+				} else if(title != news[i].title){
+					continue;
+				} else if(description != news[i].description){
+					continue;
+				} else {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		function updateNewsDisplay(){
+			var ihtml = "<table>";
+			for(var i = 0; i < news.length; ++i){
+				ihtml = ihtml + "<tr><td><pre>" + news[i].pubdate + "</pre></td>" + "<td></td><td><pre><A HREF=\"javascript:void(0)\" onclick=\"window.open('" + news[i].link + "')\">" + news[i].title + "</A></pre></td></tr>";
+			}
+			ihtml = ihtml + "</table>";
+			document.getElementById("newsPanel").innerHTML = ihtml;
+		}
+
+	}
+	
+</script>
+</head>
+
+<body onload="init()">
+<script language="javascript" type="text/javascript">
+/* the service endpoint url */
+var url = "../agent/services/agent";
+
+amq._startPolling();
+
+amq.sendMessage('topic://CRUX.TEST','Test Msg from crux Web UI');
+
+/* maintain a map of project and its number of nodes.
+ * effective for the current session
+ */  
+var proj = new Array();
+var numJobs = new Array();
+var idx = 0;
+var jscog = new CogKit2(url);
+var authStatus = false;
+var filelistTimer = {};
+filelistTimer.source = {};
+filelistTimer.dest = {};
+resetJobSpecs();
+
+/*
+ * Ajax call generate and callback event processing functions
+ */
+ 
+/*
+ * send the authentication info through SOAP
+ */
+function auth(){
+var nodes = document.getElementsByName("host");
+var host = nodes[0].value;
+var nodes = document.getElementsByName("port");
+var port = nodes[0].value;
+var nodes = document.getElementsByName("user");
+var user = nodes[0].value;
+var nodes = document.getElementsByName("password");
+var password = nodes[0].value;
+
+document.getElementById("authStatus").innerHTML="<img src=\"images/greenback/1-1.gif\"/> Authenticating";
+jscog.auth(host, port, user, password, authResponse);
+
+}
+
+/*
+ * the authenticate callback function
+ */
+function authResponse(ret) {
+	if(ret){
+		authStatus = true;
+		//alert("authenticated successfully!");
+		document.getElementById("authStatus").innerHTML="Authenticated successfully!";
+		document.getElementsByName("password")[0].value="";
+		listMyWf();
+		listDir("source", ".");
+	} else{
+		//alert("failed to retrieve proxy certificate");
+		authStatus = false;
+		document.getElementById("authStatus").innerHTML="Failed to Authenticate!";
+		document.getElementsByName("password")[0].value="";
+	}
+}
+
+/*
+ * list the submitted workflows of the current user
+ */
+function listDir(loc, dir){
+	jscog.listDir(loc, dir, listDirResponse);
+}
+
+/*
+ * display the returned workflowId info and add status query links
+ */
+function listDirResponse(loc, jsonRet){
+	if(jsonRet != null){
+		var jsonRetObj = eval("(" + jsonRet + ")")
+		var files = jsonRetObj.filelists;
+		updateFileList(loc, files);
+	}	
+}
+
+function updateFileList(loc, files){
+	var ihtml = "";
+	for(var i = 0; i < files.length; ++i){
+		ihtml = ihtml +  "<tr><td class=\"" + loc + "fileitem\"><pre>" + files[i] + "</pre></td></tr>";
+	}
+	document.getElementById(loc + "filelist").innerHTML = ihtml;
+	JQ("." + loc + "fileitem").Draggable(
+	{
+		zIndex: 	1000,
+		ghosting:	true,
+		opacity: 	0.7
+	}
+	);
+}
+
+/*
+ * construct Karajan workflow from job specifation and submit it
+ */
+function submitJob(){
+    /* extract job specification */
+    var cmd = document.getElementById("cmd").value;   
+    var arg = document.getElementById("arg").value;   
+    var rHost = document.getElementById("rHost").value;
+    var stdout = document.getElementById("stdout").value;
+    var provider = document.getElementsByName("provider");
+    var prov = null;
+    if(provider[0].checked){
+        prov = "GT2";
+    } else {
+        prov = "GT4";
+    }
+    /* construct karajan workflow */
+    var strProj = jscog.constructRemoteJob(cmd, arg, rHost, stdout, stdout, prov);
+    document.getElementsByName("proj")[0].value = strProj;
+    document.getElementById("submitStatus").innerHTML = "<img src=\"images/greenback/18-1.gif\"/> Job Submitting";
+    submitWf();
+}
+
+/* 
+ * submit a karajan workflow
+ */
+function submitWf(callback, loc){
+	//console.info("in submitWf");
+	if(arguments.length == 0){
+		callback = submitResponse;
+	}
+	var nodes = document.getElementsByName("proj");
+	var user = document.getElementsByName("user")[0].value;
+	var strProj = nodes[0].value;
+	jscog.submitWf(strProj, callback, loc);
+}
+
+/* 
+ * submit filelist job
+ */	
+	function filelistSubmitCallback(ret, loc){
+		if(ret > 0){
+		var theProj = document.getElementsByName("proj")[0].value;
+		proj[idx] = ret;
+		numJobs[idx] = parseXML(theProj);
+		idx++;
+		//alert(ret);
+		//statusQuery(ret, filelistQueryCallback, loc);
+		filelistTimer.loc = setInterval(checkStatus, 5*1000);
+		}
+		
+		function checkStatus(){
+			statusQuery(ret, filelistQueryCallback, loc);
+		}
+	}
+
+/*
+ * display the returned workflowId as a handler for status/result monitor. callback of workflow submission
+ */
+function submitResponse(ret) {
+	if(ret > 0){
+		document.getElementById("submitStatus").innerHTML = "Job Submitted and put into Job Management Window";
+		setTimeout("document.getElementById(\"submitStatus\").innerHTML = \"\"", 2000);
+		var theProj = document.getElementsByName("proj")[0].value;
+		proj[idx] = ret;
+		numJobs[idx] = parseXML(theProj);
+		idx++;
+		//alert(ret);	
+		var origStatusIds = document.getElementById("jobmanPanel").innerHTML;
+		document.getElementById("jobmanPanel").innerHTML = 
+		origStatusIds + "<div name=\"submittedWf\" class=\"submittedWf\" id=\"wf" + ret +
+				"\"><td><span name=\"wfIds\" class=\"wfIds\" id=\"wfid" + ret + 
+				"\"><b>[workflow Id]:</b> " + ret + 
+				"</span></td> <td><span name=\"statusCode\" class=\"statusCode\" id=\"status" + ret + 
+				"\"></span></td>" + "<td><span name=\"resultHandler\" class=\"result\" id=\"result" + ret +
+				"\"></span></td></div>";
+		addStatusQueryLinks();
+		addResultLinks();
+	} else {
+		document.getElementById("submitStatus").innerHTML = "Job Submission failed!";
+		setTimeout("document.getElementById(\"submitStatus\").innerHTML = \"\"", 2000);
+	}
+}
+
+/*
+ * send the file transfer request info through SOAP
+ */
+function transfer(isReversed){
+	var source = document.getElementById("sourceURI").value;
+	var dest = document.getElementById("destURI").value;
+	document.getElementById("transferStatus").innerHTML = "<img src=\"images/grayback/10-1.gif\"/> Transferring";
+	if(isReversed){
+		jscog.transfer(dest, source, transferResponse, "source");
+	} else {
+		jscog.transfer(source, dest, transferResponse, "dest");
+	}
+}
+
+/*
+ * the transfer callback function
+ */
+function transferResponse(ret, updateloc) {
+	if(!ret){
+		//alert("Transfered successfully!");
+		document.getElementById("transferStatus").innerHTML="<b>Transfer Completed!</b>";
+		setTimeout("document.getElementById(\"transferStatus\").innerHTML = \"\"", 2000);
+		//console.info("in response: " + updateloc);
+		updateFtpList(updateloc);
+	} else{
+		//alert("Transfer fail!");
+		document.getElementById("transferStatus").innerHTML="Transfer Failed!";		
+		setTimeout("document.getElementById(\"transferStatus\").innerHTML = \"\"", 2000);
+	}
+}
+
+/*
+ * send status query request
+ */
+function statusQuery(wfid, callback, loc){
+	if(loc == undefined){
+		//the first child is the tag [workflow id]
+		var strWfid = this.lastChild.nodeValue;
+		strWfid = strWfid.substring(strWfid.indexOf(":") + 1);
+		var wfid = parseInt(strWfid);
+		//alert("querying..." + wfid);
+		//document.getElementById("status" + wfid).innerHTML = "<img src=\"images/grayback/4-1.gif\"/> Query in processing";
+		document.getElementById("status" + wfid).innerHTML = "<img src=\"images/grayback/18-1.gif\"/> Not Finished";
+		jscog.statusQuery(wfid, statusQueryResponse);
+	} else {
+		//console.info("invoke status query for filelist");
+		jscog.statusQuery(wfid, callback, loc);
+	}
+}
+
+/*
+ * callback function of filelist status query
+ */
+function filelistQueryCallback(jsonRet, loc){
+	if(jsonRet != null){
+		var jsonRetObj = eval("(" + jsonRet + ")")
+		var wfid = jsonRetObj.wfid;
+		var status = jsonRetObj.status;
+		var numNodes = numJobs[findIndex(wfid)];
+		if(numNodes <= status){
+			clearInterval(filelistTimer.loc);
+			displayResult(wfid, "cogfilelist", filelistResultCallback, loc);  
+		}
+	}
+}
+
+/*
+ * callback function of status query, to display the status info
+ */
+function statusQueryResponse(jsonRet){
+	if(jsonRet != null){
+		var jsonRetObj = eval("(" + jsonRet + ")")
+		var wfid = jsonRetObj.wfid;
+		var status = jsonRetObj.status;
+		var numNodes = numJobs[findIndex(wfid)];
+		//alert("wfid: " + wfid + "status: " + status);
+		if(numNodes <= status){
+			document.getElementById("status" + wfid).innerHTML = "";
+			listOutput(wfid);    
+		} else if(numNodes > status){
+			document.getElementById("status" + wfid).innerHTML = "<img src=\"images/grayback/18-1.gif\"/> Not Finished";	
+		} else {
+			document.getElementById("status" + wfid).innerHTML = "";	
+		}
+	}
+}
+
+/*
+ * list the submitted workflows of the current user
+ */
+function listMyWf(){
+	jscog.listMyWf(listMyWfResponse);
+}
+
+/*
+ * display the returned workflowId info and add status query links
+ */
+function listMyWfResponse(jsonRet){
+	if(jsonRet != null){
+		//alert(jsonRet);
+		var jsonRetObj = eval("(" + jsonRet + ")");
+		var wfids = jsonRetObj.wfids;
+		var numIds = wfids.length;
+		var submittedIds = "";
+		for(i = 0; i < numIds; i++){
+			submittedIds += "<div name=\"submittedWf\" class=\"submittedWf\" id=\"wf" + wfids[i] +
+				"\"><td><span name=\"wfIds\" class=\"wfIds\" id=\"wfid" + wfids[i] + 
+				"\"><b>[workflow Id]:</b> " + wfids[i] + 
+				"</span></td> <td><span name=\"statusCode\" class=\"statusCode\" id=\"status" + wfids[i] + 
+				"\"></span></td>" + "<td><span name=\"resultHandler\" class=\"result\" id=\"result" + wfids[i] +
+				"\"></span></td></div>";
+		}
+		var origStatusIds = document.getElementById("jobmanPanel").innerHTML;
+		document.getElementById("jobmanPanel").innerHTML = submittedIds;
+		for(i = 0; i < numIds; i++){
+			listOutput(wfids[i]);
+		}
+		addStatusQueryLinks();
+	}
+}
+
+/*
+ * send out request to retrieve the names of all the output files of a specified workflow
+ */
+function listOutput(wfid){
+	jscog.listOutput(wfid, listOutputResponse);
+	return false;
+}
+
+/* 
+ * display the returned output file names appropriately and add content retrieve links
+ */
+function listOutputResponse(jsonRet){
+	if(jsonRet != null){
+		var jsonRetObj = eval("(" + jsonRet + ")");
+		var wfid = jsonRetObj.wfid;
+		var resultFiles = jsonRetObj.resultFiles;
+		var numResults = resultFiles.length;
+		var resultsFilename = "";
+		for(i = 0; i < numResults; i++){
+			resultsFilename += "<span name=\"resultFile\" class=\"resultFile\" id=\"resultFile" + resultFiles[i] + "\"><b> [Results]:</b> " + resultFiles[i] + " </span>";
+		}
+		//alert(resultsFilename);
+		document.getElementById("result" + wfid).innerHTML = resultsFilename;
+		addResultLinks();
+	}
+	return false;
+}
+
+/*
+ * fetch the content of an output file of a specified workflow
+ */
+function displayResult(wfid, filename, callback, loc){
+	if(loc == undefined){
+		//console.info("invoke displayResult result for normal job");
+		var wfid = parseInt(this.parentNode.parentNode.firstChild.lastChild.nodeValue);
+		var filename = trim(this.lastChild.nodeValue);
+		var callback = fetchOutputResponse;
+		//console.info(wfid);
+		//console.info(filename);
+		//console.info(arguments.length);
+		jscog.displayResult(wfid, filename, fetchOutputResponse);
+	} else {
+		//console.info("invoke displayResult for filelist");
+		jscog.displayResult(wfid, filename, callback, loc);
+	}
+	return false;
+}
+
+/*
+ * display the returned output for filelist
+ */
+function filelistResultCallback(jsonRet, loc){
+	//console.info("into filelistResultCallback with loc: " + loc);
+	if(jsonRet != null){
+		var jsonRetObj = eval("(" + jsonRet + ")");
+		//var wfid = jsonRetObj.wfid;
+		//var filename = jsonRetObj.filename;
+		var content = unescape(jsonRetObj.content);
+		//alert(unescape(content));
+		
+		//console.info(content);
+		
+		var mySplitResults = content.split("\n");
+		var numIds = mySplitResults.length - 1;
+		mySplitResults[0] = "";
+		var jsonRetNew = "{\"filelists\": [";
+		for(i = 1; i < numIds - 1; i++){
+			jsonRetNew = jsonRetNew + "\"" + mySplitResults[i] + "\"";
+			jsonRetNew = jsonRetNew + ",";
+		}
+		jsonRetNew = jsonRetNew + "\"" + mySplitResults[numIds - 1] + "\"]}";
+		//console.info("jsonRetNew: " + jsonRetNew);
+		listDirResponse(loc, jsonRetNew);
+	}
+}
+
+/*
+ * display the returned output
+ */
+function fetchOutputResponse(jsonRet){
+	if(jsonRet != null){
+		var jsonRetObj = eval("(" + jsonRet + ")");
+		var wfid = jsonRetObj.wfid;
+		var filename = jsonRetObj.filename;
+		var content = jsonRetObj.content;
+		//alert(unescape(content));
+		document.getElementById("resultPanel").innerHTML = "<p>Workflow Id: " + wfid + "</p><p>Output file:" + filename + "<br><pre>" + unescape(content) + "</pre></p>";
+	}
+}
+
+function updateFtpList(updateloc){
+	//console.info(updateloc);
+	var loc = updateloc;
+	//console.info("in update ftp " + loc + "list");
+	var node = document.getElementById("ftp" + loc).childNodes[0];
+	var host = node.options[node.selectedIndex].value;
+	var dir = document.getElementById(loc + "URIDir").innerHTML;
+	var uri = host + dir;
+	//console.info("uri of " + loc + " is " + uri);
+	document.getElementById(loc + "URI").value = uri;
+	
+	document.getElementById(loc + "filelist").innerHTML="<img src=\"images/grayback/19-1.gif\"/>";
+	
+	if(host.indexOf("file:") == -1){
+		//console.info("go to teragrid host to list file");
+		var resourceID = node.options[node.selectedIndex].innerHTML.split(" [")[0];				
+		getLoginHost(resourceID, loginList);
+	} else {
+		//console.info("list user's remot home");
+		listDir(loc, ".");
+	}
+		
+		function getLoginHost(resourceID, callback){
+			var request = resourcesStore.fetch(
+			{
+				query: {Type: "gsi-openssh", ResourceID: resourceID}, 
+				onComplete: loginList
+			});
+		}
+	
+		function loginList(items, request){
+			//console.info(items.length);
+			var host = resourcesStore.getValues(items[0], "Endpoint");
+			//console.info("endpoint of login host: " + host);
+			constructFilelistJob(host, loc);
+		}
+		
+}
+
+function constructFilelistJob(host, loc){
+		//console.info("constructing job for filelist");
+		var strHost = host + "";
+		var rHost = strHost.split(":")[0];
+		//console.info("login host: " + rHost);
+		
+		var strProj = 
+		  "<project>\n"+
+		  "<include file=\"cogkit.xml\"/>\n"+ 
+		  "<execute executable=\"/bin/rm\" arguments=\"-rf cogfilelist\""+
+						"\thost=\"" + rHost + "\" provider=\"GT4\" "+ "redirect=\"false\"/>\n"+
+		  "<execute executable=\"/bin/ls\" arguments=\"-l\" "+
+		                "stdout=\"cogfilelist\"\n"+
+		                "\thost=\"" + rHost + "\" provider=\"GT4\" "+ "redirect=\"false\"/>\n"+
+		  "<transfer srchost=\"" + rHost + "\" srcfile=\"cogfilelist\"\n"+
+		                 "\tdesthost=\"localhost\" provider=\"gridftp\"/>\n"+
+		  "</project>";
+
+		document.getElementsByName("proj")[0].value = strProj;
+		submitWf(filelistSubmitCallback, loc);
+}
+	
+/*
+ * helper functions below
+ */
+ 
+/*
+ * add status query links for the submitted workflows
+ */	
+function addStatusQueryLinks(){
+    var allSubmittedWfIds = document.getElementsByName("wfIds");
+    for(var i = 0; i < allSubmittedWfIds.length; ++i){
+        allSubmittedWfIds[i].onclick = statusQuery;
+    }
+    return false;
+}
+
+/*
+ * add result retrieve links for the results file
+ */ 
+function addResultLinks(){
+	var allResultFiles = document.getElementsByName("resultFile");
+    for(var i = 0; i < allResultFiles.length; ++i){
+        allResultFiles[i].onclick = displayResult;
+    }
+    return false;
+}
+
+/*
+ * trim the leading and tailing spaces from a string and return the trimmed part
+ */
+function trim(s)
+{
+	var l = 0; 
+	var r = s.length - 1;
+	while(l < s.length && s[l] == ' '){
+		l++;
+	}
+	while(r > l && s[r] == ' '){
+		r--;
+	}
+	return s.substring(l, r+1);
+}
+
+/*
+ * reset the job specification form
+ */
+function resetJobSpecs(){
+    document.getElementById('cmd').value = "";   
+    document.getElementById('arg').value = "";   
+    document.getElementById('rHost').value = "";
+    document.getElementById('stdout').value = "";
+    document.getElementsByName('provider')[0].checked = true;
+}
+
+/*
+ * parse the project file and find the effective number of Job Node
+ */ 
+function parseXML(text){
+	try{//Internet Explorer
+		xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+		xmlDoc.async="false";
+		xmlDoc.loadXML(text);
+	} catch(e){
+		try{//Firefox, Mozilla, Opera, etc.
+			parser=new DOMParser();
+			xmlDoc=parser.parseFromString(text,"text/xml");
+		} catch(e) {
+			alert(e.message);
+			return;
+		}
+	}
+	var numNodes = 0;
+	var root = xmlDoc.firstChild;
+	var nodes = root.childNodes;
+	var allNodes = nodes.length;
+	for(i = 0; i < allNodes; i++){
+		//alert(nodes[i].nodeName);
+		if(nodes[i].nodeName != "include" && nodes[i].nodeName != "#text"){
+			numNodes++;
+		}
+	}
+	return numNodes;
+}
+
+/*
+ * find the index of the specified jobId/workflowId from the current session's map
+ */
+function findIndex(jobId){
+    for(var i = 0; i <= idx; i++){
+        if(proj[i] == jobId){
+            return i;
+        }
+    }
+    return -1;
+}
+</script>
+</body>
+</html>

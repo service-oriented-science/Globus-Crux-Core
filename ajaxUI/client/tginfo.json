@@ -1,0 +1,4328 @@
+{"Kit.Services": [
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.3",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gatekeeper.frost.ncar.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.frost.ncar.teragrid.org:22",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.7.18",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "gpfs",
+  "Version": "3.1",
+  "Name": "gpfs-wan/front-end",
+  "Description": "GPFS wide-area file system",
+  "Endpoint": "/mnt/gpfs-wan",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "wan-gpfs.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gatekeeper.frost.ncar.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gatekeeper.frost.ncar.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-cobalt",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "gatekeeper.frost.ncar.teragrid.org:2119/jobmanager-cobalt",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "gatekeeper.frost.ncar.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://gatekeeper.frost.ncar.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://gatekeeper.frost.ncar.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://gatekeeper.frost.ncar.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Cobalt",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://gatekeeper.frost.ncar.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.frost.ncar.teragrid.org:2811/",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.frost.ncar.teragrid.org:2811/",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "gsi-scp-hpn",
+  "Version": "4.5",
+  "Name": "gsi-scp-hpn",
+  "Description": "",
+  "Endpoint": "tg-login.frost.ncar.teragrid.org:22",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://gatekeeper.frost.ncar.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "ncar.teragrid.org",
+  "ResourceID": "frost.ncar.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:01:50Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.3",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gram.bigben.psc.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "bigben.psc.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:43Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.bigben.psc.teragrid.org:22",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "bigben.psc.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:43Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gram.bigben.psc.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "bigben.psc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:43Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gram.bigben.psc.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "bigben.psc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:43Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "gram.bigben.psc.teragrid.org:2119/jobmanager-pbs",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "bigben.psc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:43Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://gram.bigben.psc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "bigben.psc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:43Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.bigben.psc.teragrid.org:2811/",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "bigben.psc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:43Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://gt4-submit.psc.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "bigben.psc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:43Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.bigben.psc.teragrid.org:2811/",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "bigben.psc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:43Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-scp-hpn",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.bigben.psc.teragrid.org:22",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "bigben.psc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:43Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://lonestar.tacc.utexas.edu:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp2.lonestar.tacc.teragrid.org:2811/",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-nonstriped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp2.lonestar.tacc.teragrid.org:2812/",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp2.lonestar.tacc.teragrid.org:2811/",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-scp-hpn",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.lonestar.tacc.teragrid.org:22",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://gatekeeper.lonestar.tacc.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5p1",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.lonestar.tacc.teragrid.org:22",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.7.18",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gatekeeper.lonestar.tacc.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gatekeeper.lonestar.tacc.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "gatekeeper.lonestar.tacc.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://gatekeeper.lonestar.tacc.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-lsf",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "gatekeeper.lonestar.tacc.teragrid.org:2119/jobmanager-lsf",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://gatekeeper.lonestar.tacc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/LSF",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://gatekeeper.lonestar.tacc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://gatekeeper.lonestar.tacc.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "lonestar.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:07:03Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://maverick.tacc.utexas.edu:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.maverick.tacc.teragrid.org:2811/",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-nonstriped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.maverick.tacc.teragrid.org:2812/",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.maverick.tacc.teragrid.org:2811/",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-scp-hpn",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-viz-login.tacc.teragrid.org:22",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://tg-viz-login.tacc.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5p1",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-viz-login.tacc.teragrid.org:22",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.7.18",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-viz-login.tacc.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-viz-login.tacc.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://tg-viz-login.tacc.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-viz-login.tacc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://tg-viz-login.tacc.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-sge",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-viz-login.tacc.teragrid.org:2119/jobmanager-sge",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "maverick.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:46Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.3",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gram.pople.psc.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "pople.psc.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:23Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.pople.psc.teragrid.org:2811/",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "pople.psc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:23Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.pople.psc.teragrid.org:2811/",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "pople.psc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:23Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://gt4-submit.psc.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "pople.psc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:23Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "5.0",
+  "Name": "gsi-scp-hpn",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.pople.psc.teragrid.org:22",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "pople.psc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:23Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gram.pople.psc.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "pople.psc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:23Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gram.pople.psc.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "pople.psc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:23Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://gram.pople.psc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "pople.psc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:23Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "gram.pople.psc.teragrid.org:2119/jobmanager-pbs",
+  "SiteID": "psc.teragrid.org",
+  "ResourceID": "pople.psc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:23Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.5",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://grid-co.ncsa.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "login-co.ncsa.teragrid.org:22",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp-co.ncsa.teragrid.org:2811/",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-nonstriped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://grid-co.ncsa.teragrid.org:2812/",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://grid-co.ncsa.teragrid.org:2811/",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-scp-hpn",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "login-co.ncsa.teragrid.org:22",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://grid-co.ncsa.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.7.18",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://grid-co.ncsa.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "grid-co.ncsa.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "grid-co.ncsa.teragrid.org:2119/jobmanager-pbs",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://grid-co.ncsa.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://grid-co.ncsa.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://grid-co.ncsa.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://grid-co.ncsa.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://grid-co.ncsa.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "cobalt.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:26Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.5",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-monitor.uc.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp.uc.teragrid.org:2811/",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-nonstriped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp.uc.teragrid.org:2811/",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp.uc.teragrid.org:2812/",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "5.0p1",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-viz-login.uc.teragrid.org:22",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://tg-rft.uc.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "5.0p1",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-viz-login.uc.teragrid.org:22",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-grid.uc.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-grid.uc.teragrid.org:2119/jobmanager-pbs",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "gpfs",
+  "Version": "3.1",
+  "Name": "gpfs-wan/cluster",
+  "Description": "GPFS wide-area file system",
+  "Endpoint": "/scratch/gpfs/wan",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "wan-gpfs.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.8.4",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "viz.uc.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-21T18:05:26Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.3",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-login.ornl.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "3.9p1",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.ornl.teragrid.org:22",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp.ornl.teragrid.org:2811/",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.1",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://tg-login.ornl.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.ornl.teragrid.org:22",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp.ornl.teragrid.org:2811/",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.1",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-login.ornl.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.1",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-login.ornl.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.1",
+  "Name": "globus-mds-auth",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-login.ornl.teragrid.org:8448/wsrf/services/DefaultIndexService",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.1",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-login.ornl.teragrid.org:2119/jobmanager-pbs",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.1",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-login.ornl.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.1",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-login.ornl.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.1",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://tg-login.ornl.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.7.18",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "ornl.teragrid.org",
+  "ResourceID": "nstg.ornl.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:05:47Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.3",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-login1.sdsc.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.8.4",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login1.sdsc.teragrid.org:22",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "srb",
+  "Version": "3.4.1",
+  "Name": "srb-server",
+  "Description": "Storage Request Broker",
+  "Endpoint": "srb://tgsrb.sdsc.edu:7321/",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "data-management.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.1",
+  "Name": "globus-mds-auth",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-login1.sdsc.teragrid.org:8448/wsrf/services/DefaultIndexService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.1",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-login1.sdsc.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.1",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-login1.sdsc.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.1",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://tg-login1.sdsc.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.1",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-login1.sdsc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.1",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-login1.sdsc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.1",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-login1.sdsc.teragrid.org:2119/jobmanager-pbs",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp.sdsc.teragrid.org:2811/",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp.sdsc.teragrid.org:2811/",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.sdsc.teragrid.org:22",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.1",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://tg-login1.sdsc.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "gpfs",
+  "Version": "3.1",
+  "Name": "gpfs-wan/cluster",
+  "Description": "GPFS wide-area file system",
+  "Endpoint": "/gpfs-wan",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "dtf.sdsc.teragrid.org",
+  "Kit.Name": "wan-gpfs.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:00:31Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.3",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://dslogin.sdsc.edu:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "srb",
+  "Version": "3.4.1",
+  "Name": "srb-server",
+  "Description": "Storage Request Broker",
+  "Endpoint": "srb://tgsrb.sdsc.edu:7321/",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "data-management.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "dslogin.sdsc.edu:22",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.1",
+  "Name": "globus-mds-auth",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://dslogin.sdsc.teragrid.org:8448/wsrf/services/DefaultIndexService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.1",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://dslogin.sdsc.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.1",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "dslogin.sdsc.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.1",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://dslogin.sdsc.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.1",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://dslogin.sdsc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.1",
+  "Name": "prews-gram-loadleveler",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "dslogin.sdsc.teragrid.org:2119/jobmanager-loadleveler",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.7.18",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://ds-gridftp.sdsc.edu:2811/",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://ds-gridftp.sdsc.edu:2811/",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "dslogin.sdsc.teragrid.org:22",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.1",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://dslogin.sdsc.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "gpfs",
+  "Version": "3.1",
+  "Name": "gpfs-wan/cluster",
+  "Description": "GPFS wide-area file system",
+  "Endpoint": "/gpfs-wan",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "datastar.sdsc.teragrid.org",
+  "Kit.Name": "wan-gpfs.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:34Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.3",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://bg-login1.sdsc.edu:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "bg-login1.sdsc.teragrid.org:22",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://bg-login1.sdsc.edu:2811/",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-nonstriped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://bg-login1.sdsc.edu:2811/",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp.sdsc.teragrid.org:2811/",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "bg-login.sdsc.edu:22",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.1",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://bg-login1.sdsc.edu:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "srb",
+  "Version": "3.4.1",
+  "Name": "srb-server",
+  "Description": "Storage Request Broker",
+  "Endpoint": "srb://tgsrb.sdsc.edu:7321/",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "data-management.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.8.4",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.1",
+  "Name": "globus-mds-auth",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://bg-login1.sdsc.edu:8448/wsrf/services/DefaultIndexService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.1",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://bg-login1.sdsc.edu:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.1",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "bg-login1.sdsc.edu:2119/jobmanager-fork",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.1",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://bg-login1.sdsc.edu:8443/wsrf/services/DelegationService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.1",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://bg-login1.sdsc.edu:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.1",
+  "Name": "prews-gram-loadleveler",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "bg-login1.sdsc.edu:2119/jobmanager-loadleveler",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "gpfs",
+  "Version": "3.1",
+  "Name": "gpfs-wan/cluster",
+  "Description": "GPFS wide-area file system",
+  "Endpoint": "/gpfs-wan",
+  "SiteID": "sdsc.teragrid.org",
+  "ResourceID": "intimidata.sdsc.teragrid.org",
+  "Kit.Name": "wan-gpfs.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-08-25T18:02:58Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.5",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp.uc.teragrid.org:2811/",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-nonstriped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp.uc.teragrid.org:2811/",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-gridftp.uc.teragrid.org:2812/",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "5.0p1",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.uc.teragrid.org:22",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://tg-rft.uc.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "5.0p1",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.uc.teragrid.org:22",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-grid.uc.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-grid.uc.teragrid.org:2119/jobmanager-pbs",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://tg-grid.uc.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "gpfs",
+  "Version": "3.1",
+  "Name": "gpfs-wan/cluster",
+  "Description": "GPFS wide-area file system",
+  "Endpoint": "/scratch/gpfs/wan",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "wan-gpfs.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.8.4",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "uc.teragrid.org",
+  "ResourceID": "dtf.uc.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T16:31:30Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://ranger.tacc.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://ranger.tacc.teragrid.org:2811/",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-nonstriped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://ranger.tacc.teragrid.org:2812/",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://ranger.tacc.teragrid.org:2811/",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-scp-hpn",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "ranger.tacc.teragrid.org:22",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://ranger.tacc.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.7p1",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "ranger.tacc.teragrid.org:22",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.7.18",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gatekeeper.ranger.tacc.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gatekeeper.ranger.tacc.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "gatekeeper.ranger.tacc.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://gatekeeper.ranger.tacc.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-sge",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "gatekeeper.ranger.tacc.teragrid.org:2119/jobmanager-sge",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://gatekeeper.ranger.tacc.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://gatekeeper.ranger.tacc.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranger.tacc.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:14Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.3",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-t001.uc.teragrid.org:8444/wsrf/services/DefaultIndexService",
+  "SiteID": "gig.teragrid.org",
+  "ResourceID": "auth.gig.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "development",
+  "Kit.SupportGoal": "development",
+  "Timestamp": "2007-09-26T02:27:04Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.5",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-steele.purdue.teragrid.org:22",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-steele.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.1",
+  "Name": "globus-mds-auth",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8448/wsrf/services/DefaultIndexService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-steele.purdue.teragrid.org:2119/jobmanager-pbs",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-steele.purdue.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-steele.purdue.teragrid.org:2119/jobmanager-pbs",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-steele.purdue.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-data.purdue.teragrid.org:2811/",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://tg-steele.purdue.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-data.purdue.teragrid.org:2811/",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-scp-hpn",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-steele.purdue.teragrid.org:22",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "srb",
+  "Version": "3.4.1",
+  "Name": "srb-server",
+  "Description": "Storage Request Broker",
+  "Endpoint": "srb://srb.rcac.purdue.edu:7321/",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "data-management.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.9.3",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "steele.purdue.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:02:20Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.5",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-login.purdue.teragrid.org:22",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-condor",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-condor.purdue.teragrid.org:2119/jobmanager-condor",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Condor",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.1",
+  "Name": "globus-mds-auth",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8448/wsrf/services/DefaultIndexService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-condor.purdue.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "3.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-condor",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-condor.purdue.teragrid.org:2119/jobmanager-condor",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Condor",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "tg-condor.teragrid.purdue.org:2119/jobmanager-fork",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-scp-hpn",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "tg-condor.purdue.teragrid.org:22",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://tg-condor.purdue.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-data.purdue.teragrid.org:2811/",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://tg-data.purdue.teragrid.org:2811/",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "srb",
+  "Version": "3.4.1",
+  "Name": "srb-server",
+  "Description": "Storage Request Broker",
+  "Endpoint": "srb://srb.rcac.purdue.edu:7321/",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "data-management.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.9.3",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "purdue.teragrid.org",
+  "ResourceID": "condor.purdue.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:03:05Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.5",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://g1.bigred.teragrid.iu.edu:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.2p1",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "login.bigred.iu.teragrid.org:22",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.8.4",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gatekeeper.bigred.iu.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://gatekeeper.bigred.iu.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "gatekeeper.bigred.iu.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://gatekeeper.bigred.iu.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://gatekeeper.bigred.iu.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-loadleveler",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "gatekeeper.iu.teragrid.org:2119/jobmanager-loadleveler",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://gatekeeper.bigred.iu.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Loadleveler",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://gatekeeper.bigred.iu.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "gpfs",
+  "Version": "3.1",
+  "Name": "gpfs-wan/cluster",
+  "Description": "GPFS wide-area file system",
+  "Endpoint": "/N/gpfswan",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "wan-gpfs.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.bigred.iu.teragrid.org:2811/",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-nonstriped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.bigred.iu.teragrid.org:2812/",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.bigred.iu.teragrid.org:2811/",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "5.0",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "login.bigred.iu.teragrid.org:22",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://gatekeeper.bigred.iu.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "iu.teragrid.org",
+  "ResourceID": "bigred.iu.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:06:06Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.5",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://qb1.loni.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.8.4",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.2",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "qb1.loni.org:22",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-scp-hpn",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "qb1.loni.org:22",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://qb1.loni.org:2811/",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.5",
+  "Name": "gridftp-nonstriped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://qb1.loni.org:2811/",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://qb1.loni.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://qb1.loni.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://qb1.loni.org:8443/wsrf/services/DelegationService",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://qb1.loni.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "qb1.loni.org:2119/jobmanager-pbs",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "qb1.loni.org:2119/jobmanager-fork",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://qb1.loni.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://qb1.loni.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://qb1.loni.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "loni-lsu.teragrid.org",
+  "ResourceID": "queenbee.loni-lsu.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T18:04:37Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://grid-hg.ncsa.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp-hg.ncsa.teragrid.org:2811/",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-nonstriped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp-hg.ncsa.teragrid.org:2812/",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp-hg.ncsa.teragrid.org:2811/",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "login-hg.ncsa.teragrid.org:22",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://grid-hg.ncsa.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "login-hg.ncsa.teragrid.org:22",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.7.18",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://grid-hg.ncsa.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "grid-hg.ncsa.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://grid-hg.ncsa.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://grid-hg.ncsa.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://grid-hg.ncsa.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "grid-hg.ncsa.teragrid.org:2119/jobmanager-pbs",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://grid-hg.ncsa.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://grid-hg.ncsa.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "dtf.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T13:36:06Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.5",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://kraken-pwd1.nics.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "nics.teragrid.org",
+  "ResourceID": "kraken.nics.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-03T05:35:21Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.nics.teragrid.org:2811/",
+  "SiteID": "nics.teragrid.org",
+  "ResourceID": "kraken.nics.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-03T05:35:21Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-scp-hpn",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "kraken-pwd.nics.teragrid.org:22",
+  "SiteID": "nics.teragrid.org",
+  "ResourceID": "kraken.nics.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-03T05:35:21Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp.nics.teragrid.org:2811/",
+  "SiteID": "nics.teragrid.org",
+  "ResourceID": "kraken.nics.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-03T05:35:21Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://grid-abe.ncsa.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp-abe.ncsa.teragrid.org:2811/",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-nonstriped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp-abe.ncsa.teragrid.org:2812/",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp-abe.ncsa.teragrid.org:2811/",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "login-abe.ncsa.teragrid.org:22",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "ws-rft",
+  "Version": "4.0.7",
+  "Name": "rft",
+  "Description": "WebServices Reliable File Transfer",
+  "Endpoint": "https://grid-abe.ncsa.teragrid.org:8443/wsrf/services/ReliableFileTransferService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "gsi-openssh",
+  "Version": "4.5",
+  "Name": "gsi-openssh",
+  "Description": "GSI OpenSSH",
+  "Endpoint": "login-abe.ncsa.teragrid.org:22",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "login.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "condor-g",
+  "Version": "6.7.18",
+  "Name": "condor-g",
+  "Description": "Condor-G",
+  "Endpoint": "embedded_in_software",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "workflow.teragrid.org",
+  "Kit.Version": "4.0.0",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-secure",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://grid-abe.ncsa.teragrid.org:8443/wsrf/services/SecureIndexService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://grid-abe.ncsa.teragrid.org:8443/wsrf/services/DefaultIndexService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-fork",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "grid-abe.ncsa.teragrid.org:2119/jobmanager-fork",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "ws-delegation",
+  "Version": "4.0.7",
+  "Name": "ws-delegation",
+  "Description": "WebServices Delegation",
+  "Endpoint": "https://grid-abe.ncsa.teragrid.org:8443/wsrf/services/DelegationService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/Fork",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://grid-abe.ncsa.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "prews-gram",
+  "Version": "4.0.7",
+  "Name": "prews-gram-pbs",
+  "Description": "Pre-WebServices GRAM",
+  "Endpoint": "grid-abe.ncsa.teragrid.org:2119/jobmanager-pbs",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "ws-ogsa-dai",
+  "Version": "4.0.7",
+  "Name": "ogsa-dai/TeraGridResource",
+  "Description": "OGSA DAI",
+  "Endpoint": "https://grid-abe.ncsa.teragrid.org:8443/wsrf/services/ogsadai/Teragrid",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "ws-gram",
+  "Version": "4.0.7",
+  "Name": "ws-gram/PBS",
+  "Description": "WebServices GRAM",
+  "Endpoint": "https://grid-abe.ncsa.teragrid.org:8443/wsrf/services/ManagedJobFactoryService",
+  "SiteID": "ncsa.teragrid.org",
+  "ResourceID": "abe.ncsa.teragrid.org",
+  "Kit.Name": "remote-compute.teragrid.org",
+  "Kit.Version": "4.0.2",
+  "Kit.SupportLevel": "production",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-10-09T17:31:00Z"
+ }
+ {
+  "Type": "globus-mds4",
+  "Version": "4.0.7",
+  "Name": "globus-mds-info",
+  "Description": "WebServices MDS4",
+  "Endpoint": "https://ranch.tacc.teragrid.org:8446/wsrf/services/DefaultIndexService",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranch.tacc.teragrid.org",
+  "Kit.Name": "core.teragrid.org",
+  "Kit.Version": "4.1.0",
+  "Kit.SupportLevel": "development",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-07-15T16:04:56Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-default-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp1.ranch.tacc.teragrid.org:2811/",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranch.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "development",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-07-15T16:04:56Z"
+ }
+ {
+  "Type": "gridftp",
+  "Version": "4.0.7",
+  "Name": "gridftp-striped-server",
+  "Description": "GridFTP",
+  "Endpoint": "gsiftp://gridftp1.ranch.tacc.teragrid.org:2811/",
+  "SiteID": "tacc.teragrid.org",
+  "ResourceID": "ranch.tacc.teragrid.org",
+  "Kit.Name": "data-movement.teragrid.org",
+  "Kit.Version": "4.1.1",
+  "Kit.SupportLevel": "development",
+  "Kit.SupportGoal": "production",
+  "Timestamp": "2008-07-15T16:04:56Z"
+ }
+] }

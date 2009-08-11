@@ -207,7 +207,13 @@
 		  <artifactId>activemq-core</artifactId> 
 		  <version>5.2.0</version> 
 		</dependency>
-	
+
+		<dependency> 
+		  <groupId>org.apache.activemq</groupId> 
+		  <artifactId>activemq-web</artifactId> 
+		  <version>5.2.0</version> 
+		</dependency>
+			
 	</dependencies>
 	
 	<build>

@@ -1,35 +1,78 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <web-app xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         version="2.5">
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+   version="2.5">
 
-    <display-name>JavaScript CoG Agent service</display-name>
-    <description>
-        Agent
-    </description>
+  <display-name>Agent service for Crux Ajax WebUI</display-name>
+  <description>
+     Agent
+  </description>
+  
+	<context-param>
+		<param-name>org.apache.activemq.brokerURL</param-name>
+		<param-value>tcp://localhost:61616</param-value>
+		<description>The URL of the Message Broker to connect to</description>
+	    </context-param>
 
-    <servlet>
-        <display-name>CXF Servlet</display-name>
-        <servlet-name>CXFServlet</servlet-name>
-        <servlet-class>
-            org.apache.cxf.transport.servlet.CXFServlet
-        </servlet-class>
-    </servlet>
+	    <context-param>
+		<param-name>org.apache.activemq.embeddedBroker</param-name>
+		<param-value>false</param-value>
+		<description>Whether we should include an embedded broker or not</description>
+	    </context-param>
 
-    <servlet-mapping>
-        <servlet-name>CXFServlet</servlet-name>
-        <url-pattern>/services/*</url-pattern>
-    </servlet-mapping>
 
-    <servlet>
-        <servlet-name>ActiveMqAjaxServlet</servlet-name>
-        <servlet-class>org.apache.activemq.web.AjaxServlet</servlet-class>
-    </servlet>
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<display-name>CXF Servlet</display-name>
+		<servlet-class>
+		    org.apache.cxf.transport.servlet.CXFServlet
+		</servlet-class>
+	  </servlet>
 
-    <servlet-mapping>
-        <servlet-name>ActiveMqAjaxServlet</servlet-name>
-        <url-pattern>/amq/*</url-pattern>
-    </servlet-mapping>
+	  <servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	  </servlet-mapping>
 
+	  <servlet> 
+	    <servlet-name>ActiveMqAjaxServlet</servlet-name> 
+	    <servlet-class>org.apache.activemq.web.AjaxServlet</servlet-class>
+	    <load-on-startup>1</load-on-startup>
+	  </servlet>
+
+	<servlet>
+        <servlet-name>MessageServlet</servlet-name>
+        <servlet-class>org.apache.activemq.web.MessageServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        <!--
+        Uncomment this parameter if you plan to use multiple consumers over REST
+        <init-param>
+                <param-name>destinationOptions</param-name>
+                <param-value>consumer.prefetchSize=1</param-value>
+        </init-param> 
+        -->
+    	</servlet>
+	
+	<servlet>
+        <servlet-name>QueueBrowseServlet</servlet-name>
+        <servlet-class>org.apache.activemq.web.QueueBrowseServlet</servlet-class>
+    	</servlet>
+
+
+	  <servlet-mapping> 
+	    <servlet-name>ActiveMqAjaxServlet</servlet-name> 
+	    <url-pattern>/amq/*</url-pattern> 
+	  </servlet-mapping>
+
+	<servlet-mapping>
+        <servlet-name>MessageServlet</servlet-name>
+        <url-pattern>/message/*</url-pattern>
+    	</servlet-mapping>
+    
+    	<servlet-mapping>
+        <servlet-name>QueueBrowseServlet</servlet-name>
+        <url-pattern>/queueBrowse/*</url-pattern>
+    	</servlet-mapping>
+	  
 </web-app>

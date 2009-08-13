@@ -225,7 +225,7 @@
             <artifactId>tomcat-maven-plugin</artifactId>
             <configuration>
                <server>tomcat6.0</server>
-               <!--url>Place URL if different from http://localhost:8080/manager</url-->
+               <url>http://localhost:18080/manager</url>
             </configuration>
          </plugin>
          

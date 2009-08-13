@@ -1,24 +1,24 @@
 #
 # PLEASE CHANGE PORT AND HOSTNAME 
 #
-SERVER_PORT=8998
+SERVER_PORT=18998
 #Linux
 SERVER_HOSTNAME=$(shell hostname -f)
 #OSX
 #SERVER_HOSTNAME=$(shell hostname)
 
 #deploy the agent and mediator in two seperated host
-EXT_SERVER_HOSTNAME=lily01.rit.edu
-EXT_SERVER_PORT=8998
+#EXT_SERVER_HOSTNAME=lily01.rit.edu
+#EXT_SERVER_PORT=8998
 #when deployed in the same host
-#EXT_SERVER_HOSTNAME=${SERVER_HOSTNAME}
-#EXT_SERVER_PORT=${SERVER_PORT}
+EXT_SERVER_HOSTNAME=${SERVER_HOSTNAME}
+EXT_SERVER_PORT=${SERVER_PORT}
 
 #URL to deploy javascript library document
 JSDOC_URI=lily01.rit.edu:/usr/local/tomcat/apache-tomcat-6.0.14/webapps/grid/jscogdoc/jsdoc/
 
-EDITOR=emacs
-#EDITOR=vi
+#EDITOR=emacs
+EDITOR=vi
 
 ######################################################################
 # Location of the password file
@@ -33,7 +33,6 @@ PASSWD_FILE=./users.cyberaide
 
 serveraddr=http://${SERVER_HOSTNAME}:${SERVER_PORT}/mediator
 dummyjob=dummyjob
-
 
 help:
 	@echo "=============================================================="

@@ -197,6 +197,17 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-javascript</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-transports-http-jetty</artifactId>
                 <version>${cxf.version}</version>
                 <scope>runtime</scope>
@@ -259,6 +270,22 @@
                     <id>atlassian-m2-repository</id>
                     <name>Atlassian Maven 2.x Repository</name>
                     <url>http://repository.atlassian.com/maven2</url>
+                </repository>
+                <repository>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <id>globus-releases</id>
+                    <name>Globus Release Repo</name>
+                    <url>http://repo.globus.org/content/groups/public/</url>
+                </repository>
+                <repository>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                    <id>globus-snapshot</id>
+                    <name>Globus Snapshot Repo</name>
+                    <url>http://repo.globus.org/content/groups/public-snapshots/</url>
                 </repository>
             </repositories>
             <pluginRepositories>

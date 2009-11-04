@@ -9,7 +9,7 @@
     <artifactId>crux</artifactId>
     <packaging>pom</packaging>
     <name>Crux (Master Project)</name>
-       
+    <description>This project supports the basic Crux framework libraries.  Most developers will interact with these libraries</description>       
     <modules>
         <module>parent</module>
         <!--<module>stateful</module>-->

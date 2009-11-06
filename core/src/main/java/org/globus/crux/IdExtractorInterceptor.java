@@ -122,9 +122,9 @@ public class IdExtractorInterceptor extends AbstractSoapInterceptor {
     }
 
     private void setLogContext(AddressingProperties map) {
-        MDC.put(MDC_MESSAGEID_KEY, map.getMessageID().getValue());
-        MDC.put(MDC_CLIENT_KEY, map.getFrom().getAddress().getValue());
-        MDC.put(MDC_ACTION_KEY, map.getAction().getValue());
+//        MDC.put(MDC_MESSAGEID_KEY, map.getMessageID().getValue());
+//        MDC.put(MDC_CLIENT_KEY, map.getFrom().getAddress().getValue());
+//        MDC.put(MDC_ACTION_KEY, map.getAction().getValue());
     }
 
     private Object processResourceKey(Object param) {

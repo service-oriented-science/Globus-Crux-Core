@@ -1,13 +1,13 @@
 package org.globus.crux.wsrf.properties;
 
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.GetResourcePropertyResponse;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidResourcePropertyQNameFault;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
 import static org.testng.Assert.assertEquals;
 import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
-import org.oasis.wsrf.properties.InvalidResourcePropertyQNameFault;
-import org.oasis.wsrf.properties.GetResourcePropertyResponse;
 
 import javax.xml.namespace.QName;
 

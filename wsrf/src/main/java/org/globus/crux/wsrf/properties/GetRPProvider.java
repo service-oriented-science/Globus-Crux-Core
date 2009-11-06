@@ -2,7 +2,7 @@ package org.globus.crux.wsrf.properties;
 
 import org.globus.crux.OperationProvider;
 import org.globus.crux.ProviderException;
-import org.oasis.wsrf.properties.GetResourceProperty;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.GetResourceProperty;
 
 /**
  * @author turtlebender

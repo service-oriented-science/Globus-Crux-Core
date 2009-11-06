@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryExpressionType;
 import org.springframework.oxm.Unmarshaller;
 import static org.testng.Assert.*;
 import org.testng.annotations.BeforeTest;
@@ -16,7 +17,6 @@ import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.oasis.wsrf.properties.QueryExpressionType;
 
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;

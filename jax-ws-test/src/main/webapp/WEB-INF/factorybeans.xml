@@ -17,7 +17,7 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 
     <bean id="eprFactory" class="org.globus.crux.SimpleEPRFactory">
         <property name="jaxb" ref="jaxb"/>
-        <property name="address" value="http://localhost:8080/jax-ws-test/counter"/>
+        <property name="address" value="http://localhost:8080/counter"/>
         <property name="portName" value="{http://counter.com/service}CounterPortTypePort"/>
         <property name="serviceName" value="{http://counter.com/service}CounterService"/>
     </bean>

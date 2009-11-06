@@ -1,14 +1,14 @@
 package org.globus.crux.wsrf.query;
 
-import org.oasis.wsrf.properties.QueryResourceProperties;
-import org.oasis.wsrf.properties.QueryResourcePropertiesResponse;
-import org.oasis.wsrf.properties.QueryResourceProperties_Type;
-import org.oasis.wsrf.properties.UnknownQueryExpressionDialectFault;
-import org.oasis.wsrf.properties.InvalidResourcePropertyQNameFault;
-import org.oasis.wsrf.properties.QueryEvaluationErrorFault;
-import org.oasis.wsrf.properties.InvalidQueryExpressionFault;
-import org.oasis.wsrf.properties.ResourceUnknownFault;
-import org.oasis.wsrf.properties.QueryExpressionType;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidQueryExpressionFault;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidResourcePropertyQNameFault;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryEvaluationErrorFault;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryExpressionType;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourceProperties;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourcePropertiesResponse;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourceProperties_Type;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.ResourceUnknownFault;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.UnknownQueryExpressionDialectFault;
 
 import java.util.ArrayList;
 import java.util.List;

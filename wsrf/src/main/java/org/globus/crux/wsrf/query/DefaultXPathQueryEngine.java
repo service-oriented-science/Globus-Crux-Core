@@ -2,14 +2,15 @@ package org.globus.crux.wsrf.query;
 
 import org.globus.crux.wsrf.ResourcePropertySetMarshaller;
 import org.globus.crux.wsrf.properties.ResourcePropertySet;
+
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryEvaluationErrorFault;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourcePropertiesResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.oxm.Unmarshaller;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import org.oasis.wsrf.properties.QueryEvaluationErrorFault;
-import org.oasis.wsrf.properties.QueryResourcePropertiesResponse;
 
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.parsers.DocumentBuilder;

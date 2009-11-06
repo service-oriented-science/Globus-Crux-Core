@@ -6,6 +6,7 @@
                   xmlns:wsdlpp="http://www.globus.org/namespaces/2004/10/WSDLPreprocessor"
                   xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns="http://schemas.xmlsoap.org/wsdl/">
+    
     <wsdl:import namespace="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl"
                  location="wsrf-WS-ResourceProperties-1.2-draft-01.wsdl">
     </wsdl:import>

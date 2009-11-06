@@ -1,11 +1,11 @@
 package org.globus.crux.wsrf.properties;
 
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidResourcePropertyQNameFault;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertEquals;
 import org.globus.crux.service.StatefulService;
-import org.oasis.wsrf.properties.InvalidResourcePropertyQNameFault;
 
 import java.util.Iterator;
 

@@ -1,8 +1,6 @@
 package org.globus.crux.wsrf.properties;
 
 import org.globus.crux.service.StatefulService;
-import org.oasis.wsrf.properties.InvalidResourcePropertyQNameFault;
-import org.oasis.wsrf.properties.ResourceUnknownFault;
 
 import javax.xml.namespace.QName;
 import java.lang.reflect.InvocationTargetException;
@@ -11,6 +9,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidResourcePropertyQNameFault;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.ResourceUnknownFault;
 
 /**
  * ResourcePropertySet based on annotations applied to a resource class.  This will process the class

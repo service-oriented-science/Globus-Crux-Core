@@ -7,15 +7,16 @@ import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
+
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidQueryExpressionFault;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryExpressionType;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourcePropertiesResponse;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourceProperties_Type;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.UnknownQueryExpressionDialectFault;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.oasis.wsrf.properties.QueryExpressionType;
-import org.oasis.wsrf.properties.InvalidQueryExpressionFault;
-import org.oasis.wsrf.properties.QueryResourceProperties_Type;
-import org.oasis.wsrf.properties.QueryResourcePropertiesResponse;
-import org.oasis.wsrf.properties.UnknownQueryExpressionDialectFault;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.util.ArrayList;

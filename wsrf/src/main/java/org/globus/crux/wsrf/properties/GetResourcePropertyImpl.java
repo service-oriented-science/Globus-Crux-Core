@@ -1,15 +1,16 @@
 package org.globus.crux.wsrf.properties;
 
 
-import org.oasis.wsrf.properties.GetResourcePropertyResponse;
-import org.oasis.wsrf.properties.GetResourceProperty;
-import org.oasis.wsrf.properties.InvalidResourcePropertyQNameFault;
-import org.oasis.wsrf.properties.ResourceUnknownFault;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.ResourceBundle;
 
 import javax.xml.namespace.QName;
-import java.util.ResourceBundle;
+
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.GetResourceProperty;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.GetResourcePropertyResponse;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidResourcePropertyQNameFault;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.ResourceUnknownFault;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This is the default implementation of GetResourceProperty.  It delegates the request to

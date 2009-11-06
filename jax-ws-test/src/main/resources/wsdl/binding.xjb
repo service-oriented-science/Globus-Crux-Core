@@ -1,5 +1,7 @@
 <bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb"
-          xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing">
+          xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+          xmlns:wsrf="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl">    
+
     <bindings scd="x-schema::wsa" if-exists="true">
         <schemaBindings map="false"/>
         <bindings scd="wsa:EndpointReference">
@@ -7,6 +9,16 @@
         </bindings>
         <bindings scd="~wsa:EndpointReferenceType">
             <class ref="javax.xml.ws.wsaddressing.W3CEndpointReference"/>
+        </bindings>
+    </bindings>
+
+    <bindings scd="x-schema::wsrf" if-exists="true">
+        <schemaBindings map="false"/>
+        <bindings scd="wsrf:GetResourcePropertyResponse">
+            <class ref="org.oasis.wsrf.properties.GetResourcePropertyResponse"/>
+        </bindings>
+        <bindings scd="~wsrf:GetResourcePropertyResponseType">
+            <class ref="org.oasis.wsrf.properties.GetResourcePropertyResponse"/>
         </bindings>
     </bindings>
 </bindings>

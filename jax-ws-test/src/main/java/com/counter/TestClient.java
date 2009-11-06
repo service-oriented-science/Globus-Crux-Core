@@ -18,7 +18,7 @@ public class TestClient {
         Bus bus = new SpringBusFactory().createBus("client.xml");
 
         BusFactory.setDefaultBus(bus);
-        CounterFactoryService counters = new CounterFactoryService(new URL("http://localhost:8080/jax-ws-test/counterFactory?wsdl"));
+        CounterFactoryService counters = new CounterFactoryService(new URL("http://localhost:8080/counterFactory?wsdl"));
         CounterFactoryPortType factory = counters.getCounterFactoryPortTypePort();
 
         W3CEndpointReference epr = factory.createCounter();

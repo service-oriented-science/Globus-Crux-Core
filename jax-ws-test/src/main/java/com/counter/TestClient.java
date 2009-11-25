@@ -6,6 +6,7 @@ import org.apache.cxf.Bus;
 import org.apache.cxf.BusFactory;
 import org.apache.cxf.bus.spring.SpringBusFactory;
 
+import javax.xml.namespace.QName;
 import javax.xml.ws.wsaddressing.W3CEndpointReference;
 import java.net.URL;
 
@@ -24,6 +25,7 @@ public class TestClient {
         W3CEndpointReference epr = factory.createCounter();
         CounterService service = new CounterService();
         CounterPortType counter = service.getPort(epr, CounterPortType.class);
+        System.out.println(counter.getResourceProperty(new QName("http://counter.com", "Value")));
         System.out.println(counter.add(10));
         System.out.println(counter.add(10));
         System.out.println(counter.add(10));

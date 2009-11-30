@@ -57,7 +57,8 @@ public class CruxMixin implements MethodInterceptor {
         if (createMethod == null) {
             String message = resourceBundle.getString("no.such.service.method");
             logger.warn(message);
-            throw new RuntimeException(message);
+//            throw new RuntimeException(message);
+            return null;
         }
         Object result = createMethod.invoke(mi.getThis(), mi.getArguments());
         if (createMethods.contains(mi.getMethod())) {

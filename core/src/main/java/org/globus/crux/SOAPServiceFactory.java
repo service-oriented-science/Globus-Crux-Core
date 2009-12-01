@@ -6,6 +6,7 @@ import org.springframework.aop.support.DelegatingIntroductionInterceptor;
 import org.springframework.aop.support.DefaultIntroductionAdvisor;
 import org.globus.crux.service.EPRFactory;
 
+import java.lang.reflect.Proxy;
 import java.util.List;
 
 /**
@@ -24,17 +25,14 @@ public class SOAPServiceFactory implements FactoryBean {
 
     public Object getObject() throws Exception {
         if (proxied == null) {
-            ProxyFactory factory = new ProxyFactory(target);
-            factory.addAdvice(new CruxMixin(target).withEprFactory(eprFactory));
+            CruxMixin mixin = new CruxMixin(target, interf);
             if (providers != null) {
                 for (OperationProvider provider : providers) {
-                    DelegatingIntroductionInterceptor interceptor = new DelegatingIntroductionInterceptor(provider.getImplementation());
-                    DefaultIntroductionAdvisor advisor = new DefaultIntroductionAdvisor(interceptor, provider.getInterface());
-                    factory.addAdvisor(advisor);
+                    mixin.addProvider(provider);
                 }
             }
-            factory.addInterface(interf);
-            proxied = factory.getProxy();
+            proxied = Proxy.newProxyInstance(SOAPServiceFactory.class.getClassLoader(), new Class[]{interf},
+                    mixin.withEprFactory(eprFactory));            
         }
         return proxied;
     }

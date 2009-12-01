@@ -3,6 +3,7 @@ package org.globus.crux.wsrf.properties;
 
 import java.util.ResourceBundle;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
 import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.GetResourceProperty;
@@ -42,7 +43,9 @@ public class GetResourcePropertyImpl implements GetResourceProperty {
             logger.info(message);
             throw new InvalidResourcePropertyQNameFault(message);
         }
-        response.getAny().add(this.rpSet.getResourceProperty(getResourcePropertyRequest));
+        Object rpResult =this.rpSet.getResourceProperty(getResourcePropertyRequest);
+        JAXBElement rp = new JAXBElement(getResourcePropertyRequest, rpResult.getClass(), rpResult);
+        response.getAny().add(rp);
         return response;
     }
 }

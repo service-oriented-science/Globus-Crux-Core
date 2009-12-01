@@ -1,45 +1,98 @@
 package org.globus.crux;
 
-import org.aopalliance.intercept.MethodInterceptor;
-import org.aopalliance.intercept.MethodInvocation;
-import org.globus.crux.service.CreateState;
-import org.globus.crux.service.EPRFactory;
-import org.globus.crux.service.EPRFactoryException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.xml.bind.JAXBElement;
-import javax.xml.namespace.QName;
-import javax.xml.ws.EndpointReference;
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 import java.util.ResourceBundle;
+import java.util.Set;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.namespace.QName;
+import javax.xml.ws.EndpointReference;
+
+import org.globus.crux.service.CreateState;
+import org.globus.crux.service.EPRFactory;
+import org.globus.crux.service.EPRFactoryException;
+
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This takes care of integrating the developer's service method with the operation providers as well
  * as injecting the necessary state info into the object.  Pretty standard AOP.
  *
  * @author Tom Howe
- * @since 1.0
  * @version 1.0
+ * @since 1.0
  */
-public class CruxMixin implements MethodInterceptor {
-    private Map<MethodKey, Method> methodMap = new HashMap<MethodKey, Method>();
+public class CruxMixin implements MethodInterceptor, InvocationHandler {
+    private Map<MethodKey, MethodValue> methodMap = new HashMap<MethodKey, MethodValue>();
     private Set<Method> createMethods = new HashSet<Method>();
     private Set<Method> nonCreateMethods = new HashSet<Method>();
     private EPRFactory eprFactory;
     private static ResourceBundle resourceBundle = ResourceBundle.getBundle("org.globus.crux.crux");/* NON-NLS */
     private Logger logger = LoggerFactory.getLogger(getClass());
 
-    public CruxMixin(Object delegate) {
-        for (Method method : delegate.getClass().getMethods()) {
+    public CruxMixin(Object delegate, Class iface) throws NoSuchMethodException {
+        Class delegateClass = delegate.getClass();
+        for (Method method : iface.getMethods()) {
+            String methodName = method.getName();
+            Class[] parameterTypes = method.getParameterTypes();
             MethodKey key = new MethodKey(method.getName(), method.getParameterTypes());
-            methodMap.put(key, method);
+            try {
+                Method methodToCall = delegateClass.getMethod(methodName, parameterTypes);
+                if(methodToCall.getAnnotation(CreateState.class) != null){
+                    createMethods.add(methodToCall);
+                }
+                methodMap.put(key, new MethodValue(methodToCall, delegate));
+            } catch (NoSuchMethodException nsme) {
+                logger.debug("Method not present in delegate", nsme);
+                //this is fine, the method is not exposed via the web service
+            }
         }
+    }
+
+    //TODO: throw appropriate exception
+
+    public void addProvider(OperationProvider provider) throws Exception {
+        Class clazz = provider.getInterface();
+        Object delegate = provider.getImplementation();
+        for (Method method : clazz.getMethods()) {
+            String methodName = method.getName();
+            Class[] parameterType = method.getParameterTypes();
+            MethodKey key = new MethodKey(methodName, parameterType);
+            Class delegateClass = provider.getImplementation().getClass();
+            Method methodToCall = delegateClass.getMethod(method.getName(), parameterType);
+            methodMap.put(key, new MethodValue(methodToCall, delegate));
+        }
+    }
+
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        MethodKey key = new MethodKey(method.getName(), method.getParameterTypes());
+        MethodValue methodToCall = methodMap.get(key);
+        if (methodToCall == null) {
+            String message = resourceBundle.getString("no.such.service.method");
+            logger.warn(message);
+            throw new NoSuchMethodError(resourceBundle.getString("no.such.service.method"));
+        }
+        Object result = methodToCall.getMethod().invoke(methodToCall.getTarget(), args);
+        if (createMethods.contains(methodToCall.getMethod())) {
+            return processCreate(result, methodToCall.getMethod().getAnnotation(CreateState.class));
+        }
+        if (!nonCreateMethods.contains(methodToCall.getMethod())) {
+            if (EndpointReference.class.isAssignableFrom(methodToCall.getMethod().getReturnType())) {
+                createMethods.add(methodToCall.getMethod());
+                return processCreate(result, methodToCall.getMethod().getAnnotation(CreateState.class));
+            } else {
+                nonCreateMethods.add(methodToCall.getMethod());
+            }
+        }
+        return result;
     }
 
     /**
@@ -53,21 +106,20 @@ public class CruxMixin implements MethodInterceptor {
     public Object invoke(MethodInvocation mi) throws Throwable {
         Method method = mi.getMethod();
         MethodKey key = new MethodKey(method.getName(), method.getParameterTypes());
-        Method createMethod = methodMap.get(key);
-        if (createMethod == null) {
+        MethodValue methodToCall = methodMap.get(key);
+        if (methodToCall == null) {
             String message = resourceBundle.getString("no.such.service.method");
             logger.warn(message);
-//            throw new RuntimeException(message);
-            return null;
+            throw new NoSuchMethodError(resourceBundle.getString("no.such.service.method"));
         }
-        Object result = createMethod.invoke(mi.getThis(), mi.getArguments());
+        Object result = methodToCall.getMethod().invoke(methodToCall.getTarget(), mi.getArguments());
         if (createMethods.contains(mi.getMethod())) {
-            return processCreate(result, createMethod.getAnnotation(CreateState.class));
+            return processCreate(result, methodToCall.getMethod().getAnnotation(CreateState.class));
         }
         if (!nonCreateMethods.contains(mi.getMethod())) {
             if (EndpointReference.class.isAssignableFrom(mi.getMethod().getReturnType())) {
                 createMethods.add(mi.getMethod());
-                return processCreate(result, createMethod.getAnnotation(CreateState.class));
+                return processCreate(result, methodToCall.getMethod().getAnnotation(CreateState.class));
             } else {
                 nonCreateMethods.add(mi.getMethod());
             }
@@ -94,6 +146,32 @@ public class CruxMixin implements MethodInterceptor {
 
     public void setEprFactory(EPRFactory eprFactory) {
         this.eprFactory = eprFactory;
+    }
+
+    class MethodValue {
+        private Method method;
+        private Object target;
+
+        MethodValue(Method method, Object target) {
+            this.method = method;
+            this.target = target;
+        }
+
+        public Method getMethod() {
+            return method;
+        }
+
+        public void setMethod(Method method) {
+            this.method = method;
+        }
+
+        public Object getTarget() {
+            return target;
+        }
+
+        public void setTarget(Object target) {
+            this.target = target;
+        }
     }
 
     class MethodKey {

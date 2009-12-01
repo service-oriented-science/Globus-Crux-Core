@@ -5,7 +5,7 @@ public class CounterResource {
     private long id;
     private int value;
     private int status;
-    public static final int INITIALIZED =0;
+    public static final int INITIALIZED = 0;
 
     public CounterResource() {
     }

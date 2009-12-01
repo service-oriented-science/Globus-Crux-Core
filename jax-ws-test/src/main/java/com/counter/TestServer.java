@@ -34,8 +34,11 @@ public class TestServer {
 
     public static void main(String[] args) throws Exception {
         Server server = new Server(8080);
+
         Context context = new Context();
+        
         ServletHolder servletHolder = new ServletHolder();
+
         servletHolder.setInitOrder(1);
         servletHolder.setServlet(new CXFServlet());
         servletHolder.setName("CXFServlet");

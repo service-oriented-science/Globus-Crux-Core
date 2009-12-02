@@ -6,6 +6,16 @@
 
 	<xsd:import namespace="http://www.springframework.org/schema/beans" />
 
+	<xsd:element name="annotatedRPSet">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="beans:identifiedType">
+					<xsd:attribute name="target" type="xsd:string" use="required" />
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
 	<xsd:element name="service">
 		<xsd:complexType>
 			<xsd:complexContent>
@@ -13,14 +23,30 @@
 					<xsd:sequence>
 						<xsd:element name="providers">
 							<xsd:complexType>
-								<xsd:sequence>
-									<xsd:element name="provider">
+								<xsd:all>
+									<xsd:element name="getRPProvider">
 										<xsd:complexType>
-											<xsd:attribute name="resourceSet" type="xsd:string"
-												use="required" />
+											<xsd:attribute name="target" type="xsd:string" use="required" />
 										</xsd:complexType>
 									</xsd:element>
-								</xsd:sequence>
+									<xsd:element name="queryRPProvider">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="queryEngine">
+													<xsd:complexType>
+														<xsd:attribute name="dialect" type="xsd:string" use="required" />
+														<xsd:attribute name="target" type="xsd:string" use="required" />
+													</xsd:complexType>
+												</xsd:element>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="resourceLifetimeProvider">
+										<xsd:complexType>
+											<xsd:attribute name="target" type="xsd:string" use="required" />
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:all>
 							</xsd:complexType>
 						</xsd:element>
 					</xsd:sequence>

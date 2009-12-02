@@ -72,7 +72,7 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 				provider = parseGetRPProvider(providerElement);
 			} else if (providerElementName.equals(queryRPProviderTag)) {
 				// this does not work at the moment and I don't have a clue why
-//				provider = parseQueryRPProvider(providerElement);
+				provider = parseQueryRPProvider(providerElement);
 			}
 
 			if (provider != null) {

@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
+import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
 /**
@@ -37,7 +38,7 @@ public class GetResourcePropertyImplTest {
         grp.setRpSet(rps);
         GetResourcePropertyResponse grpr = grp.getResourceProperty(propName);
         assertEquals(grpr.getAny().size(), 1);
-        assertEquals(grpr.getAny().get(0), propValue);
+        assertEquals(((JAXBElement)grpr.getAny().get(0)).getValue(), propValue);
         grp.withRPSet(rps);
         grp.getResourceProperty(fakePropName);
     }

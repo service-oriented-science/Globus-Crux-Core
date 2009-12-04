@@ -62,14 +62,7 @@ public class ResourceTerminationImpl implements ImmediateResourceTermination, Sc
 			throws ResourceUnknownFault, UnableToSetTerminationTimeFault,
 			TerminationTimeChangeRejectedFault, ResourceUnavailableFault {
 
-		XMLGregorianCalendar xmlTerminationTime = setTerminationTimeRequest.getRequestedTerminationTime().getValue();
-		Calendar terminationTime = Calendar.getInstance();
-		terminationTime.set(xmlTerminationTime.getYear(),
-				xmlTerminationTime.getMonth(),
-				xmlTerminationTime.getDay(),
-				xmlTerminationTime.getHour(),
-				xmlTerminationTime.getMinute(),
-				xmlTerminationTime.getSecond());
+		Calendar terminationTime = setTerminationTimeRequest.getRequestedTerminationTime().getValue();
 
 		String triggerName = "org.globus.crux.wsrf.lifetime.trigger.scheduled";
 		try {
@@ -80,8 +73,10 @@ public class ResourceTerminationImpl implements ImmediateResourceTermination, Sc
 			throw new RuntimeException(e);
 		}
 		scheduleJob(new SimpleTrigger(triggerName, new Date(terminationTime.getTimeInMillis())));
-		// FIXME create and return response object
-		return null;
+        SetTerminationTimeResponse response = new SetTerminationTimeResponse();
+        response.setCurrentTime(Calendar.getInstance());
+        response.setNewTerminationTime(terminationTime);
+        return response;
 	}
 
 	/**

@@ -1,6 +1,7 @@
 package com.counter;
 
 import org.globus.crux.ResourceContext;
+import org.globus.crux.service.DestroyState;
 import org.globus.crux.service.ResourceStoreException;
 import org.globus.crux.service.StatefulService;
 import org.globus.crux.wsrf.properties.ResourceProperty;
@@ -36,6 +37,11 @@ public class Counter {
         } catch (ResourceStoreException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @DestroyState
+    public void destroyResource() {
+	System.out.println("resource destroyed");
     }
 
     public void setResourceContext(ResourceContext<Long, CounterResource> resourceContext) {

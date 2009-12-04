@@ -21,6 +21,7 @@
     xmlns="http://schemas.xmlsoap.org/wsdl/"
     xmlns:wsdlpp="http://www.globus.org/namespaces/2004/10/WSDLPreprocessor"
     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsrlw="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl"
     xmlns:wsrp="http://docs.oasis-open.org/wsrf/rp-2"
     xmlns:wsrpw="http://docs.oasis-open.org/wsrf/rpw-2"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -29,6 +30,11 @@
         namespace="http://docs.oasis-open.org/wsrf/rpw-2"
         location="http://docs.oasis-open.org/wsrf/rpw-2.wsdl" />
 
+    <wsdl:import
+
+    namespace=
+    "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl"
+    location="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl" />
 
     <types>
         <xsd:schema targetNamespace="http://counter.com"
@@ -39,6 +45,13 @@
             <xsd:import 
                 namespace="http://www.w3.org/2005/08/addressing"
                 schemaLocation="http://www.w3.org/2005/08/addressing/ws-addr.xsd"/>
+
+                <!-- IMPORT WS-ResourceLifetime schemas -->
+
+        <xsd:import namespace="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd"
+
+             schemaLocation="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd"/>
+
 
             <xsd:element name="createCounter">
                 <xsd:complexType/>
@@ -85,7 +98,8 @@
     </message>
 
     <portType name="CounterPortType"
-        wsdlpp:extends="wsrpw:GetResourceProperty"
+        wsdlpp:extends="wsrpw:GetResourceProperty
+                        wsrlw:ScheduledResourceTermination"
         wsrp:ResourceProperties ="tns:CounterRP">
         <operation name="createCounter">
             <input message="tns:CreateCounterRequest"/>

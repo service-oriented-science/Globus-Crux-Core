@@ -74,7 +74,8 @@ http://www.globus.org/schema/crux http://www.globus.org/schema/crux/crux.xsd">
             <crux:queryRPProvider>
                 <crux:queryEngine dialect="xpath" target="counterRPSet"/>
             </crux:queryRPProvider>
-            <crux:resourceLifetimeProvider target="counterResource"/>
+            <crux:immediateResourceLifetimeProvider target="counterResource"/>
+            <crux:scheduledResourceLifetimeProvider target="counterResource"/>
         </crux:providers>
     </crux:service>
 

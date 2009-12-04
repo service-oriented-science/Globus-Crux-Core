@@ -2,11 +2,15 @@
 <wsdl:definitions name="Counter" targetNamespace="http://counter.com"
                   xmlns:wsrp="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"
                   xmlns:tns="http://counter.com"
+                  xmlns:wsrlw="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl"
                   xmlns:wsrpw="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl"
                   xmlns:wsdlpp="http://www.globus.org/namespaces/2004/10/WSDLPreprocessor"
                   xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns="http://schemas.xmlsoap.org/wsdl/">
     
+    <wsdl:import namespace="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl"
+                 location="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl"/>
+
     <wsdl:import namespace="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl"
                  location="wsrf-WS-ResourceProperties-1.2-draft-01.wsdl">
     </wsdl:import>
@@ -15,6 +19,8 @@
                     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
             <xsd:import namespace="http://www.w3.org/2005/08/addressing" schemaLocation="ws-addr.xsd"/>
+
+            <xsd:import namespace="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd" schemaLocation="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd"/>
 
             <!--<xsd:element name="createCounter">-->
             <!--<xsd:complexType>-->
@@ -84,6 +90,28 @@
             <wsdl:fault name="InvalidResourcePropertyQNameFault" message="wsrpw:InvalidResourcePropertyQNameFault">
             </wsdl:fault>
             <wsdl:fault name="ResourceUnknownFault" message="wsrpw:ResourceUnknownFault">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="Destroy">
+            <wsdl:input message="wsrlw:DestroyRequest">
+            </wsdl:input>
+            <wsdl:output message="wsrlw:DestroyResponse">
+            </wsdl:output>
+            <wsdl:fault name="ResourceUnknownFault" message="wsrlw:ResourceUnknownFault">
+            </wsdl:fault>
+            <wsdl:fault name="ResourceNotDestroyedFault" message="wsrlw:ResourceNotDestroyedFault">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="SetTerminationTime">
+            <wsdl:input message="wsrlw:SetTerminationTimeRequest">
+            </wsdl:input>
+            <wsdl:output message="wsrlw:SetTerminationTimeResponse">
+            </wsdl:output>
+            <wsdl:fault name="ResourceUnknownFault" message="wsrlw:ResourceUnknownFault">
+            </wsdl:fault>
+            <wsdl:fault name="UnableToSetTerminationTimeFault" message="wsrlw:UnableToSetTerminationTimeFault">
+            </wsdl:fault>
+            <wsdl:fault name="TerminationTimeChangeRejectedFault" message="wsrlw:TerminationTimeChangeRejectedFault">
             </wsdl:fault>
         </wsdl:operation>
     </wsdl:portType>

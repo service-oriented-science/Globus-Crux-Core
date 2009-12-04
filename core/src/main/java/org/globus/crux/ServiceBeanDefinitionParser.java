@@ -27,6 +27,10 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 	private final static String getRPProviderTag = "crux:getRPProvider";
 	/** Tag identifying a QueryRPProvider. */
 	private final static String queryRPProviderTag = "crux:queryRPProvider";
+	/** Tag identifying a ImmediateResourceLifetimeProvider. */
+	private final static String immediateResourceLifetimeProviderTag = "crux:immediateResourceLifetimeProvider";
+	/** Tag identifying a ScheduledResourceLifetimeProvider. */
+	private final static String scheduledResourceLifetimeProviderTag = "crux:scheduledResourceLifetimeProvider";
 
 	@Override
 	protected AbstractBeanDefinition parseInternal(Element element, ParserContext parserContext) {
@@ -43,7 +47,8 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 		Element providersElement = DomUtils.getChildElementByTagName(element, providersTag);
 		List<Element> providerElements = DomUtils.getChildElementsByTagName(providersElement,
-				new String[] {getRPProviderTag, queryRPProviderTag});
+				new String[] {getRPProviderTag, queryRPProviderTag, immediateResourceLifetimeProviderTag,
+				scheduledResourceLifetimeProviderTag});
 
 		if (providerElements != null && providerElements.size() > 0) {
 			serviceBean.addPropertyValue("providers", parseProviders(providerElements));
@@ -62,7 +67,6 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 		ManagedList providers = new ManagedList(providersElements.size());
 
 		for (int i = 0; i < providersElements.size(); ++i) {
-
 			Element providerElement = (Element) providersElements.get(i);
 			String providerElementName = providerElement.getNodeName();
 
@@ -71,8 +75,12 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 			if (providerElementName.equals(getRPProviderTag)) {
 				provider = parseGetRPProvider(providerElement);
 			} else if (providerElementName.equals(queryRPProviderTag)) {
-				// this does not work at the moment and I don't have a clue why
-				provider = parseQueryRPProvider(providerElement);
+				// FIXME this does not work at the moment and I don't have a clue why
+//				provider = parseQueryRPProvider(providerElement);
+			} else if (providerElementName.equals(immediateResourceLifetimeProviderTag)) {
+				provider = parseImmediateResourceLifetimeProvider(providerElement);
+			} else if (providerElementName.equals(scheduledResourceLifetimeProviderTag)) {
+				provider = parseScheduledResourceLifetimeProvider(providerElement);
 			}
 
 			if (provider != null) {
@@ -122,4 +130,27 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 		return provider.getBeanDefinition();
 	}
 
+	/**
+	 * Parses the 'immediateResourceLifetimeProvider' element.
+	 *
+	 * @param providerElement the appropriate provider {@link Element}.
+	 * @return an {@link AbstractBeanDefinition} representing the ImmediateResourceLifetimeProvider object.
+	 */
+	private AbstractBeanDefinition parseImmediateResourceLifetimeProvider(Element providerElement) {
+		BeanDefinitionBuilder provider = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.lifetime.ImmediateResourceLifetimeProvider");
+		provider.addPropertyReference(targetTag, providerElement.getAttribute(targetTag));
+		return provider.getBeanDefinition();
+	}
+
+	/**
+	 * Parses the 'scheduledResourceLifetimeProvider' element.
+	 *
+	 * @param providerElement the appropriate provider {@link Element}.
+	 * @return an {@link AbstractBeanDefinition} representing the ResourceLifetimeProvider object.
+	 */
+	private AbstractBeanDefinition parseScheduledResourceLifetimeProvider(Element providerElement) {
+		BeanDefinitionBuilder provider = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.lifetime.ScheduledResourceLifetimeProvider");
+		provider.addPropertyReference(targetTag, providerElement.getAttribute(targetTag));
+		return provider.getBeanDefinition();
+	}
 }

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions name="Counter" targetNamespace="http://counter.com/bindings" xmlns:porttype="http://counter.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsdl:import namespace="http://counter.com" location="counter_port_type_flattened.wsdl">
-    </wsdl:import>
+<wsdl:definitions name="Counter" targetNamespace="http://counter.com/bindings" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:porttype="http://counter.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:import namespace="http://counter.com" location="counter_port_type_flattened.wsdl"/>
   <wsdl:binding name="CounterPortTypeSOAPBinding" type="porttype:CounterPortType">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="add">
-      <soap:operation/>
+      <soap:operation soapAction="http://counter.com/CounterPortType/addRequest"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -14,7 +13,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetResourceProperty">
-      <soap:operation/>
+      <soap:operation soapAction="http://counter.com/CounterPortType/GetResourcePropertyRequest"/>
       <wsdl:input>
         <soap:body use="literal"/>
       </wsdl:input>
@@ -26,6 +25,39 @@
       </wsdl:fault>
       <wsdl:fault name="ResourceUnknownFault">
         <soap:fault name="ResourceUnknownFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Destroy">
+      <soap:operation soapAction="http://counter.com/CounterPortType/DestroyRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResourceUnknownFault">
+        <soap:fault name="ResourceUnknownFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ResourceNotDestroyedFault">
+        <soap:fault name="ResourceNotDestroyedFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SetTerminationTime">
+      <soap:operation soapAction="http://counter.com/CounterPortType/SetTerminationTimeRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ResourceUnknownFault">
+        <soap:fault name="ResourceUnknownFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="UnableToSetTerminationTimeFault">
+        <soap:fault name="UnableToSetTerminationTimeFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="TerminationTimeChangeRejectedFault">
+        <soap:fault name="TerminationTimeChangeRejectedFault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>

@@ -6,9 +6,13 @@ import org.apache.cxf.Bus;
 import org.apache.cxf.BusFactory;
 import org.apache.cxf.bus.spring.SpringBusFactory;
 
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.namespace.QName;
+import javax.xml.ws.Holder;
 import javax.xml.ws.wsaddressing.W3CEndpointReference;
 import java.net.URL;
+import java.util.GregorianCalendar;
 
 /**
  * @author turtlebender
@@ -25,9 +29,19 @@ public class TestClient {
         W3CEndpointReference epr = factory.createCounter();
         CounterService service = new CounterService();
         CounterPortType counter = service.getPort(epr, CounterPortType.class);
+        XMLGregorianCalendar currentTime = null;
+        XMLGregorianCalendar newTermTime = null;
+        GregorianCalendar termTime = new GregorianCalendar();
+        termTime.add(GregorianCalendar.SECOND, 10);
+        // FIXME this method does not exactly match (concerning the arguments) the one of the operation provider
+        // but this method was generated ... what to do?
+//        counter.setTerminationTime(DatatypeFactory.newInstance().newXMLGregorianCalendar(termTime),
+//        		new Holder<XMLGregorianCalendar>(newTermTime), new Holder<XMLGregorianCalendar>(currentTime));
+        System.out.println(currentTime + " - " + newTermTime);
         System.out.println(counter.getResourceProperty(new QName("http://counter.com", "Value")));
         System.out.println(counter.add(10));
         System.out.println(counter.add(10));
         System.out.println(counter.add(10));
+        counter.destroy();
     }
 }

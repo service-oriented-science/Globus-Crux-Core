@@ -24,12 +24,12 @@
 						<xsd:element name="providers">
 							<xsd:complexType>
 								<xsd:all>
-									<xsd:element name="getRPProvider">
+									<xsd:element name="getRPProvider" minOccurs="0">
 										<xsd:complexType>
 											<xsd:attribute name="target" type="xsd:string" use="required" />
 										</xsd:complexType>
 									</xsd:element>
-									<xsd:element name="queryRPProvider">
+									<xsd:element name="queryRPProvider"  minOccurs="0">
 										<xsd:complexType>
 											<xsd:sequence>
 												<xsd:element name="queryEngine">
@@ -41,7 +41,12 @@
 											</xsd:sequence>
 										</xsd:complexType>
 									</xsd:element>
-									<xsd:element name="resourceLifetimeProvider">
+									<xsd:element name="immediateResourceLifetimeProvider" minOccurs="0">
+										<xsd:complexType>
+											<xsd:attribute name="target" type="xsd:string" use="required" />
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="scheduledResourceLifetimeProvider" minOccurs="0">
 										<xsd:complexType>
 											<xsd:attribute name="target" type="xsd:string" use="required" />
 										</xsd:complexType>

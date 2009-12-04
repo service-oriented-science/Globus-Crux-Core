@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions name="Counter" targetNamespace="http://counter.com" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsrpw="http://docs.oasis-open.org/wsrf/rpw-2" xmlns:wsdlpp="http://www.globus.org/namespaces/2004/10/WSDLPreprocessor" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:gtwsdl0="http://docs.oasis-open.org/wsrf/rw-2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://counter.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsrp="http://docs.oasis-open.org/wsrf/rp-2">
-  <import namespace="http://docs.oasis-open.org/wsrf/rpw-2" location="http://docs.oasis-open.org/wsrf/rpw-2.wsdl">
-    </import>
-  <import namespace="http://docs.oasis-open.org/wsrf/rw-2" location="http://docs.oasis-open.org/wsrf/rw-2.wsdl">
-    </import>
+<definitions name="Counter" targetNamespace="http://counter.com" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsrpw="http://docs.oasis-open.org/wsrf/rpw-2" xmlns:wsdlpp="http://www.globus.org/namespaces/2004/10/WSDLPreprocessor" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:gtwsdl0="http://docs.oasis-open.org/wsrf/rw-2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://counter.com" xmlns:wsrlw="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsrp="http://docs.oasis-open.org/wsrf/rp-2">
+  <import namespace="http://docs.oasis-open.org/wsrf/rpw-2" location="http://docs.oasis-open.org/wsrf/rpw-2.wsdl"/>
+  <import namespace="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl" location="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl"/>
+  <import namespace="http://docs.oasis-open.org/wsrf/rw-2" location="http://docs.oasis-open.org/wsrf/rw-2.wsdl"/>
   <types>
     <xsd:schema elementFormDefault="qualified" targetNamespace="http://counter.com" xmlns:tns="http://counter.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
             <xsd:import namespace="http://www.w3.org/2005/08/addressing" schemaLocation="http://www.w3.org/2005/08/addressing/ws-addr.xsd"/>
+
+                <!-- IMPORT WS-ResourceLifetime schemas -->
+
+        <xsd:import namespace="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd" schemaLocation="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd"/>
+
 
             <xsd:element name="createCounter">
                 <xsd:complexType/>
@@ -37,45 +41,39 @@
         </xsd:schema>
   </types>
   <message name="AddInputMessage">
-    <part name="parameters" element="tns:add">
-    </part>
+    <part name="parameters" element="tns:add"/>
   </message>
   <message name="CreateCounterRequest">
-    <part name="request" element="tns:createCounter">
-    </part>
+    <part name="request" element="tns:createCounter"/>
   </message>
   <message name="CreateCounterResponse">
-    <part name="response" element="tns:createCounterResponse">
-    </part>
+    <part name="response" element="tns:createCounterResponse"/>
   </message>
   <message name="AddOutputMessage">
-    <part name="parameters" element="tns:addResponse">
-    </part>
+    <part name="parameters" element="tns:addResponse"/>
   </message>
   <portType name="CounterPortType" wsrp:ResourceProperties="tns:CounterRP">
     <operation name="createCounter">
-      <input message="tns:CreateCounterRequest">
-    </input>
-      <output message="tns:CreateCounterResponse">
-    </output>
+      <input message="tns:CreateCounterRequest"/>
+      <output message="tns:CreateCounterResponse"/>
     </operation>
     <operation name="add">
-      <input message="tns:AddInputMessage">
-    </input>
-      <output message="tns:AddOutputMessage">
-    </output>
+      <input message="tns:AddInputMessage"/>
+      <output message="tns:AddOutputMessage"/>
     </operation>
     <operation name="GetResourceProperty">
-      <input name="GetResourcePropertyRequest" message="wsrpw:GetResourcePropertyRequest">
-    </input>
-      <output name="GetResourcePropertyResponse" message="wsrpw:GetResourcePropertyResponse">
-    </output>
-      <fault name="InvalidResourcePropertyQNameFault" message="wsrpw:InvalidResourcePropertyQNameFault">
-    </fault>
-      <fault name="ResourceUnknownFault" message="gtwsdl0:ResourceUnknownFault">
-    </fault>
-      <fault name="ResourceUnavailableFault" message="gtwsdl0:ResourceUnavailableFault">
-    </fault>
+      <input name="GetResourcePropertyRequest" message="wsrpw:GetResourcePropertyRequest"/>
+      <output name="GetResourcePropertyResponse" message="wsrpw:GetResourcePropertyResponse"/>
+      <fault name="InvalidResourcePropertyQNameFault" message="wsrpw:InvalidResourcePropertyQNameFault"/>
+      <fault name="ResourceUnknownFault" message="gtwsdl0:ResourceUnknownFault"/>
+      <fault name="ResourceUnavailableFault" message="gtwsdl0:ResourceUnavailableFault"/>
+    </operation>
+    <operation name="SetTerminationTime">
+      <input message="wsrlw:SetTerminationTimeRequest"/>
+      <output message="wsrlw:SetTerminationTimeResponse"/>
+      <fault name="ResourceUnknownFault" message="wsrlw:ResourceUnknownFault"/>
+      <fault name="UnableToSetTerminationTimeFault" message="wsrlw:UnableToSetTerminationTimeFault"/>
+      <fault name="TerminationTimeChangeRejectedFault" message="wsrlw:TerminationTimeChangeRejectedFault"/>
     </operation>
   </portType>
 </definitions>

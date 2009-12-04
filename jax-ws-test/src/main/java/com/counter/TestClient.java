@@ -41,8 +41,6 @@ public class TestClient {
         System.out.println(counter.getResourceProperty(new QName("http://counter.com", "Value")));
         System.out.println(counter.add(10));
         System.out.println(counter.add(10));
-        System.out.println(counter.add(10));
-        counter.destroy();
-        
+        System.out.println(counter.add(10));        
     }
 }

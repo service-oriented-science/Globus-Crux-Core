@@ -2,7 +2,8 @@ package org.globus.crux.wsrf.lifetime;
 
 import org.globus.crux.OperationProvider;
 import org.globus.crux.ProviderException;
-import org.oasis_open.docs.wsrf.rlw_2.ImmediateResourceTermination;
+
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourcelifetime_1_2_draft_01.ImmediateResourceTermination;
 
 /**
  * {@link OperationProvider} providing a lifetime method for immediate destruction of
@@ -18,7 +19,7 @@ public class ImmediateResourceLifetimeProvider implements OperationProvider<Imme
 	public ImmediateResourceTermination getImplementation() throws ProviderException {
         if (impl == null && target == null){
             throw new ProviderException("target is required");
-        } else if (impl == null){
+        } else if (impl == null){                                                                                 
             impl = new ResourceTerminationImpl(target);
         }
         return impl;

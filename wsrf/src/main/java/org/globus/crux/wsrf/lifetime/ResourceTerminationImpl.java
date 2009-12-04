@@ -3,17 +3,17 @@ package org.globus.crux.wsrf.lifetime;
 import java.util.Calendar;
 import java.util.Date;
 
-import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.oasis_open.docs.wsrf.rl_2.SetTerminationTime;
-import org.oasis_open.docs.wsrf.rl_2.SetTerminationTimeResponse;
-import org.oasis_open.docs.wsrf.rlw_2.ImmediateResourceTermination;
-import org.oasis_open.docs.wsrf.rlw_2.ResourceNotDestroyedFault;
-import org.oasis_open.docs.wsrf.rlw_2.ScheduledResourceTermination;
-import org.oasis_open.docs.wsrf.rlw_2.TerminationTimeChangeRejectedFault;
-import org.oasis_open.docs.wsrf.rlw_2.UnableToSetTerminationTimeFault;
-import org.oasis_open.docs.wsrf.rw_2.ResourceUnavailableFault;
-import org.oasis_open.docs.wsrf.rw_2.ResourceUnknownFault;
+import javax.jws.WebParam;
+import javax.xml.ws.Holder;
+
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourcelifetime_1_2_draft_01.ImmediateResourceTermination;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourcelifetime_1_2_draft_01.ResourceNotDestroyedFault;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourcelifetime_1_2_draft_01.ResourceUnknownFault;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourcelifetime_1_2_draft_01.ScheduledResourceTermination;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourcelifetime_1_2_draft_01.SetTerminationTimeResponse;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourcelifetime_1_2_draft_01.TerminationTimeChangeRejectedFault;
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourcelifetime_1_2_draft_01.UnableToSetTerminationTimeFault;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
@@ -54,15 +54,16 @@ public class ResourceTerminationImpl implements ImmediateResourceTermination, Sc
 		jobDetail.getJobDataMap().put(TARGET_KEY, target);
 	}
 
-	public void destroy() throws ResourceUnknownFault, ResourceUnavailableFault, ResourceNotDestroyedFault {
+	public void destroy() throws ResourceUnknownFault, ResourceNotDestroyedFault {
 		scheduleJob(new SimpleTrigger("org.globus.crux.wsrf.lifetime.trigger.immediate", new Date()));
 	}
 
-	public SetTerminationTimeResponse setTerminationTime(SetTerminationTime setTerminationTimeRequest)
-			throws ResourceUnknownFault, UnableToSetTerminationTimeFault,
-			TerminationTimeChangeRejectedFault, ResourceUnavailableFault {
-
-		Calendar terminationTime = setTerminationTimeRequest.getRequestedTerminationTime().getValue();
+    public void setTerminationTime(@WebParam(name = "RequestedTerminationTime",
+            targetNamespace = "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd") Calendar requestedTerminationTime, @WebParam(
+            mode = WebParam.Mode.OUT, name = "NewTerminationTime",
+            targetNamespace = "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd") Holder<Calendar> newTerminationTime, @WebParam(
+            mode = WebParam.Mode.OUT, name = "CurrentTime",
+            targetNamespace = "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd") Holder<Calendar> currentTime) throws UnableToSetTerminationTimeFault, TerminationTimeChangeRejectedFault, ResourceUnknownFault {
 
 		String triggerName = "org.globus.crux.wsrf.lifetime.trigger.scheduled";
 		try {
@@ -72,12 +73,13 @@ public class ResourceTerminationImpl implements ImmediateResourceTermination, Sc
 		} catch (SchedulerException e) {
 			throw new RuntimeException(e);
 		}
-		scheduleJob(new SimpleTrigger(triggerName, new Date(terminationTime.getTimeInMillis())));
+		scheduleJob(new SimpleTrigger(triggerName, new Date(requestedTerminationTime.getTimeInMillis())));
         SetTerminationTimeResponse response = new SetTerminationTimeResponse();
         response.setCurrentTime(Calendar.getInstance());
-        response.setNewTerminationTime(terminationTime);
-        return response;
-	}
+        response.setNewTerminationTime(requestedTerminationTime);
+    }
+
+
 
 	/**
 	 * Helper method used for scheduling a job.

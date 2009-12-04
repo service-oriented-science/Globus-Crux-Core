@@ -2,7 +2,8 @@ package org.globus.crux.wsrf.lifetime;
 
 import org.globus.crux.OperationProvider;
 import org.globus.crux.ProviderException;
-import org.oasis_open.docs.wsrf.rlw_2.ScheduledResourceTermination;
+
+import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourcelifetime_1_2_draft_01.ScheduledResourceTermination;
 
 public class ScheduledResourceLifetimeProvider implements OperationProvider<ScheduledResourceTermination> {
 

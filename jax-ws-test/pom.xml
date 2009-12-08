@@ -45,6 +45,10 @@
                                         <extraarg>
                                             http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd
                                         </extraarg>
+                                        <extraarg>-nexclude</extraarg>
+                                        <extraarg>
+                                            http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd
+                                        </extraarg>
                                     </extraargs>
                                 </wsdlOption>
                                 <wsdlOption>
@@ -64,6 +68,10 @@
                                         <extraarg>-nexclude</extraarg>
                                         <extraarg>
                                             http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd
+                                        </extraarg>
+                                        <extraarg>-nexclude</extraarg>
+                                        <extraarg>
+                                            http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-BaseFaults-1.2-draft-01.xsd
                                         </extraarg>
                                     </extraargs>
                                 </wsdlOption>

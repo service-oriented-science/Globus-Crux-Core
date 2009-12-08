@@ -75,7 +75,6 @@ public class IntegrationTest {
     }
 
     public void testAdd() throws Exception{
-        DatatypeFactory fac = DatatypeFactory.newInstance();
         Bus bus = new SpringBusFactory().createBus("client.xml");
 
         BusFactory.setDefaultBus(bus);
@@ -91,8 +90,7 @@ public class IntegrationTest {
         assertEquals(((JAXBElement)counter.getResourceProperty(
                 new QName("http://counter.com", "Value")).getAny().get(0)).getValue(),30);
         counter.setTerminationTime(GregorianCalendar.getInstance(),
-                new Holder<Calendar>(GregorianCalendar.getInstance()),
-                new Holder<Calendar>(GregorianCalendar.getInstance()));
+                new Holder<Calendar>(), new Holder<Calendar>());
     }
 
     @AfterClass

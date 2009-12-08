@@ -82,20 +82,18 @@
                         <configuration>
 
                             <wsdlOptions>
-
                                 <wsdlOption>
                                     <wsdl>src/main/wsdl/properties/draft/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl</wsdl>
                                     <bindingFiles>
                                         <bindingFile>${basedir}/src/main/wsdl/basebinding.xjb</bindingFile>
                                     </bindingFiles>
-
                                 </wsdlOption>
+                                
                                 <wsdlOption>
                                     <wsdl>src/main/wsdl/lifetime/draft/WS-ResourceLifetime.wsdl</wsdl>
                                     <bindingFiles>
                                         <bindingFile>${basedir}/src/main/wsdl/basebinding.xjb</bindingFile>
                                     </bindingFiles>
-
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>

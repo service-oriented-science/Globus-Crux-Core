@@ -1,15 +1,21 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jaxws="http://cxf.apache.org/jaxws"
-       xmlns:crux="http://www.globus.org/schema/crux"
-       xsi:schemaLocation="
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       xmlns:crux="http://www.globus.org/schema/crux" xmlns:cxf="http://cxf.apache.org/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
-http://www.globus.org/schema/crux http://www.globus.org/schema/crux/crux.xsd">
+http://www.globus.org/schema/crux http://www.globus.org/schema/crux/crux.xsd http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
 
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
     <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"/>
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+    <cxf:bus>
+        <cxf:features>
+            <cxf:logging/>
+        </cxf:features>
+    </cxf:bus>
+
 
     <!--This is the resource store.  It is used both by the counter service vi ResourceContext
     and the Factory to store the created resource-->
@@ -70,7 +76,7 @@ http://www.globus.org/schema/crux http://www.globus.org/schema/crux/crux.xsd">
 
     <crux:service id="counterService" target="counterResource" interf="com.counter.CounterPortType">
         <crux:providers>
-            <crux:getRPProvider target="counterRPSet" />
+            <crux:getRPProvider target="counterRPSet"/>
             <crux:queryRPProvider>
                 <crux:queryEngine dialect="xpath" target="counterRPSet"/>
             </crux:queryRPProvider>
@@ -104,6 +110,7 @@ http://www.globus.org/schema/crux http://www.globus.org/schema/crux/crux.xsd">
             <ref bean="keyInterceptor"/>
         </jaxws:inInterceptors>
         <jaxws:features>
+
             <wsa:addressing xmlns:wsa="http://cxf.apache.org/ws/addressing"/>
         </jaxws:features>
     </jaxws:endpoint>

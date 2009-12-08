@@ -16,10 +16,14 @@
 package com.counter;
 
 import java.net.URL;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Properties;
 
 import javax.xml.bind.JAXBElement;
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.namespace.QName;
+import javax.xml.ws.Holder;
 import javax.xml.ws.wsaddressing.W3CEndpointReference;
 
 import org.apache.cxf.Bus;
@@ -71,7 +75,8 @@ public class IntegrationTest {
     }
 
     public void testAdd() throws Exception{
-         Bus bus = new SpringBusFactory().createBus("client.xml");
+        DatatypeFactory fac = DatatypeFactory.newInstance();
+        Bus bus = new SpringBusFactory().createBus("client.xml");
 
         BusFactory.setDefaultBus(bus);
         CounterFactoryService counters = new CounterFactoryService(new URL("http://localhost:55555/counterFactory?wsdl"));
@@ -84,7 +89,10 @@ public class IntegrationTest {
         assertEquals(counter.add(10), 20);
         assertEquals(counter.add(10), 30);
         assertEquals(((JAXBElement)counter.getResourceProperty(
-                new QName("http://counter.com", "Value")).getAny().get(0)).getValue(),30);                
+                new QName("http://counter.com", "Value")).getAny().get(0)).getValue(),30);
+        counter.setTerminationTime(GregorianCalendar.getInstance(),
+                new Holder<Calendar>(GregorianCalendar.getInstance()),
+                new Holder<Calendar>(GregorianCalendar.getInstance()));
     }
 
     @AfterClass

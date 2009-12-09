@@ -1,0 +1,7 @@
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.globus.crux.messaging
+Bundle-Name: Globus Crux :: Messaging
+Bundle-Vendor: Globus.org
+Import-Package:
+  org.apache.activemq.spring;version="[5.2.0, 5.2.0]"
+

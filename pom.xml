@@ -6,17 +6,19 @@
         <artifactId>parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <groupId>org.globus.crux</groupId>
     <artifactId>crux</artifactId>
     <packaging>pom</packaging>
     <name>Crux (Master Project)</name>
     <description>This project supports the basic Crux framework libraries.  Most developers will interact with these libraries</description>       
     <modules>
-        <module>parent</module>
         <!--<module>stateful</module>-->
 <!--        <module>wsdl</module>-->
-    	<module>wsrf</module>
-        <module>api</module>
-        <module>jax-ws-test</module>
+	<module>parent</module>
+	<module>wsrf</module>
+	<module>api</module>
+	<module>jax-ws-test</module>
 	<module>core</module>
+	<module>messaging</module>
     </modules>
 </project>

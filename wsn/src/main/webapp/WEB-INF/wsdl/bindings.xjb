@@ -1,0 +1,18 @@
+<bindings version="2.1"
+              xmlns="http://java.sun.com/xml/ns/jaxb"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema"
+              schemaLocation="file:b-2.xsd"
+              node="/xs:schema">
+    <globalBindings>
+        <javaType name="java.util.Calendar" xmlType="xs:dateTime"
+                      parseMethod="javax.xml.bind.DatatypeConverter.parseDateTime"
+                      printMethod="javax.xml.bind.DatatypeConverter.printDateTime"/>
+        <serializable/>
+    </globalBindings>
+    <schemaBindings>
+        <nameXmlTransform>
+            <typeName prefix="WSN"/>
+        </nameXmlTransform>
+    </schemaBindings>
+</bindings>
+

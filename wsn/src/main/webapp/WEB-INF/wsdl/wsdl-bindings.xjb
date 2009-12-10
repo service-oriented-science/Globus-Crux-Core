@@ -1,0 +1,12 @@
+<jaxws:bindings version="2.1"
+                wsdlLocation="bw-2.wsdl"
+                xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+                xmlns:jxb="http://java.sun.com/xml/ns/jaxb">
+    <jaxws:bindings node="wsdl:definitions/wsdl:portType[@name='NotificationProducer']">
+        <jaxws:class name="WSNNotificationProducer"/>
+    </jaxws:bindings>
+    <jaxws:bindings node="wsdl:definitions/wsdl:portType[@name='SubscriptionManager']">
+        <jaxws:class name="WSNSubscriptionManager"/>
+    </jaxws:bindings>
+</jaxws:bindings>
+        <!--node="wsdl:definitions/wsdl:portType[@name='NotificationProducer']"-->

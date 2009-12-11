@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions name="Counter" targetNamespace="http://counter.com"
-                  xmlns:wsrp="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"
                   xmlns:tns="http://counter.com"
-                  xmlns:wsrlw="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl"
-                  xmlns:wsrpw="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl"
-                  xmlns:wsdlpp="http://www.globus.org/namespaces/2004/10/WSDLPreprocessor"
+                  xmlns:gtwsdl0="http://docs.oasis-open.org/wsrf/rw-2"
                   xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:wsdlpp="http://www.globus.org/namespaces/2004/10/WSDLPreprocessor"
+                  xmlns:wsrlw="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl"
+                  xmlns:wsrp="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"
+                  xmlns:wsrpw="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl"
                   xmlns="http://schemas.xmlsoap.org/wsdl/">
 
     <wsdl:import namespace="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl"
                  location="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl"/>
 
     <wsdl:import namespace="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl"
-                 location="wsrf-WS-ResourceProperties-1.2-draft-01.wsdl">
-    </wsdl:import>
+                 location="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl"/>
+    
+    <wsdl:import namespace="http://docs.oasis-open.org/wsrf/rw-2"
+                 location="http://docs.oasis-open.org/wsrf/rw-2.wsdl"/>
+                 
     <wsdl:types>
-        <xsd:schema elementFormDefault="qualified" targetNamespace="http://counter.com" xmlns:tns="http://counter.com"
+        <xsd:schema elementFormDefault="qualified" targetNamespace="http://counter.com"
+                    xmlns:tns="http://counter.com"
                     xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-            <xsd:import namespace="http://www.w3.org/2005/08/addressing" schemaLocation="ws-addr.xsd"/>
+            <xsd:import namespace="http://docs.oasis-open.org/wsrf/rp-2"
+                        schemaLocation="http://docs.oasis-open.org/wsrf/rp-2.xsd"/>
 
-            <xsd:import namespace="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd" schemaLocation="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd"/>
+            <xsd:import namespace="http://www.w3.org/2005/08/addressing"
+                        schemaLocation="http://www.w3.org/2005/08/addressing/ws-addr.xsd"/>
+
+            <xsd:import namespace="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd"
+                        schemaLocation="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd"/>
 
             <!--<xsd:element name="createCounter">-->
             <!--<xsd:complexType>-->
@@ -35,6 +45,8 @@
             <!--</xsd:sequence>-->
             <!--</xsd:complexType>-->
             <!--</xsd:element>-->
+
+            <!--<xsd:element maxOccurs="unbounded" minOccurs="0" ref="wsrp:QueryExpressionDialect"/>-->
 
             <xsd:element name="add">
                 <xsd:complexType>
@@ -65,6 +77,7 @@
             </xsd:element>
 
             <xsd:element name="CounterKey" type="xsd:long"/>
+                        
         </xsd:schema>
     </wsdl:types>
     <wsdl:message name="AddInputMessage">
@@ -90,6 +103,24 @@
             <wsdl:fault name="InvalidResourcePropertyQNameFault" message="wsrpw:InvalidResourcePropertyQNameFault">
             </wsdl:fault>
             <wsdl:fault name="ResourceUnknownFault" message="wsrpw:ResourceUnknownFault">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="QueryResourceProperties">
+            <wsdl:input name="QueryResourcePropertiesRequest" message="wsrpw:QueryResourcePropertiesRequest">
+            </wsdl:input>
+            <wsdl:output name="QueryResourcePropertiesResponse" message="wsrpw:QueryResourcePropertiesResponse">
+            </wsdl:output>
+            <wsdl:fault name="UnknownQueryExpressionDialectFault" message="wsrpw:UnknownQueryExpressionDialectFault">
+            </wsdl:fault>
+            <wsdl:fault name="QueryEvaluationErrorFault" message="wsrpw:QueryEvaluationErrorFault">
+            </wsdl:fault>
+            <wsdl:fault name="InvalidQueryExpressionFault" message="wsrpw:InvalidQueryExpressionFault">
+            </wsdl:fault>
+            <wsdl:fault name="InvalidResourcePropertyQNameFault" message="wsrpw:InvalidResourcePropertyQNameFault">
+            </wsdl:fault>
+            <wsdl:fault name="ResourceUnknownFault" message="gtwsdl0:ResourceUnknownFault">
+            </wsdl:fault>
+            <wsdl:fault name="ResourceUnavailableFault" message="gtwsdl0:ResourceUnavailableFault">
             </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="Destroy">

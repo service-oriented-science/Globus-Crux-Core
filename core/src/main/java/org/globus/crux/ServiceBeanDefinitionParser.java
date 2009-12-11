@@ -76,7 +76,7 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 				provider = parseGetRPProvider(providerElement);
 			} else if (providerElementName.equals(queryRPProviderTag)) {
 				// FIXME this does not work at the moment and I don't have a clue why
-//				provider = parseQueryRPProvider(providerElement);
+				provider = parseQueryRPProvider(providerElement);
 			} else if (providerElementName.equals(immediateResourceLifetimeProviderTag)) {
 				provider = parseImmediateResourceLifetimeProvider(providerElement);
 			} else if (providerElementName.equals(scheduledResourceLifetimeProviderTag)) {
@@ -120,13 +120,13 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 			if (queryEngineElement.getAttribute(dialectTag).equals("xpath")) {
 				queryEngine = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.query.DefaultXPathQueryEngine");
-				queryEngine.addPropertyReference("Rps", queryEngineElement.getAttribute(targetTag));
+				queryEngine.addPropertyReference("rps", queryEngineElement.getAttribute(targetTag));
 			}
 			if (queryEngine != null) {
-				queryEngines.add(queryEngine);
+				queryEngines.add(queryEngine.getBeanDefinition());
 			}
 		}
-		provider.addPropertyValue("Engine", queryEngines);
+		provider.addPropertyValue("engines", queryEngines);
 		return provider.getBeanDefinition();
 	}
 

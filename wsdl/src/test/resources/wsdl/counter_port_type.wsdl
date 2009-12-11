@@ -99,7 +99,7 @@
 
     <portType name="CounterPortType"
         wsdlpp:extends="wsrpw:GetResourceProperty
-                        wsrlw:ScheduledResourceTermination"
+                        wsrpw:QueryResourceProperties"
         wsrp:ResourceProperties ="tns:CounterRP">
         <operation name="createCounter">
             <input message="tns:CreateCounterRequest"/>

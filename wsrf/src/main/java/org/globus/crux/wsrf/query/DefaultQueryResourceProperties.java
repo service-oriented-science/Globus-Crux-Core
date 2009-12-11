@@ -31,7 +31,7 @@ public class DefaultQueryResourceProperties implements QueryResourceProperties {
             }
         }
         if (executor == null) {
-            throw new UnknownQueryExpressionDialectFault("No Query Engine can process query of dialect: " + dialect);
+            throw new UnknownQueryExpressionDialectFault("Not Query Engine can process query of dialect: " + dialect);
         }
         QueryResourcePropertiesResponse response = new QueryResourcePropertiesResponse();
         List<Object> results = response.getContent();

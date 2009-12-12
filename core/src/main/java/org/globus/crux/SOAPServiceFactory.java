@@ -1,13 +1,10 @@
 package org.globus.crux;
 
-import org.springframework.beans.factory.FactoryBean;
-import org.springframework.aop.framework.ProxyFactory;
-import org.springframework.aop.support.DelegatingIntroductionInterceptor;
-import org.springframework.aop.support.DefaultIntroductionAdvisor;
-import org.globus.crux.service.EPRFactory;
-
 import java.lang.reflect.Proxy;
 import java.util.List;
+
+import org.globus.crux.service.EPRFactory;
+import org.springframework.beans.factory.FactoryBean;
 
 /**
  * This uses the Spring AOP support to generate a proxy for the service interface using the
@@ -22,10 +19,12 @@ public class SOAPServiceFactory implements FactoryBean {
     private Class interf;
     //TODO: this really probably shouldn't be here  SOS-271
     private EPRFactory eprFactory;
+    private MethodCallWrapper rpChangedMCW;
 
     public Object getObject() throws Exception {
         if (proxied == null) {
             CruxMixin mixin = new CruxMixin(target, interf);
+            mixin.setRPChangedMCW(rpChangedMCW);
             if (providers != null) {
                 for (OperationProvider provider : providers) {
                     mixin.addProvider(provider);
@@ -41,9 +40,12 @@ public class SOAPServiceFactory implements FactoryBean {
         return interf;
     }
 
-
     public void setEprFactory(EPRFactory eprFactory) {
         this.eprFactory = eprFactory;
+    }
+    
+    public void setRPChangedMCW(MethodCallWrapper rpChangedMCW) {
+        this.rpChangedMCW = rpChangedMCW;
     }
 
     public boolean isSingleton() {

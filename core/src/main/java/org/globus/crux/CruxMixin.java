@@ -13,12 +13,12 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 import javax.xml.ws.EndpointReference;
 
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
 import org.globus.crux.service.CreateState;
 import org.globus.crux.service.EPRFactory;
 import org.globus.crux.service.EPRFactoryException;
-
-import org.aopalliance.intercept.MethodInterceptor;
-import org.aopalliance.intercept.MethodInvocation;
+import org.globus.crux.service.ResourcePropertyChange;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +34,9 @@ public class CruxMixin implements MethodInterceptor, InvocationHandler {
     private Map<MethodKey, MethodValue> methodMap = new HashMap<MethodKey, MethodValue>();
     private Set<Method> createMethods = new HashSet<Method>();
     private Set<Method> nonCreateMethods = new HashSet<Method>();
+    private Set<Method> rpChangedMethods = new HashSet<Method>();
     private EPRFactory eprFactory;
+    private MethodCallWrapper rpChangedMCW;
     private static ResourceBundle resourceBundle = ResourceBundle.getBundle("org.globus.crux.crux");/* NON-NLS */
     private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -48,6 +50,8 @@ public class CruxMixin implements MethodInterceptor, InvocationHandler {
                 Method methodToCall = delegateClass.getMethod(methodName, parameterTypes);
                 if(methodToCall.getAnnotation(CreateState.class) != null){
                     createMethods.add(methodToCall);
+                } else if (methodToCall.getAnnotation(ResourcePropertyChange.class) != null){
+                    rpChangedMethods.add(methodToCall);
                 }
                 methodMap.put(key, new MethodValue(methodToCall, delegate));
             } catch (NoSuchMethodException nsme) {
@@ -80,17 +84,24 @@ public class CruxMixin implements MethodInterceptor, InvocationHandler {
             logger.warn(message);
             throw new NoSuchMethodError(resourceBundle.getString("no.such.service.method"));
         }
-        Object result = methodToCall.getMethod().invoke(methodToCall.getTarget(), args);
-        if (createMethods.contains(methodToCall.getMethod())) {
-            return processCreate(result, methodToCall.getMethod().getAnnotation(CreateState.class));
-        }
-        if (!nonCreateMethods.contains(methodToCall.getMethod())) {
-            if (EndpointReference.class.isAssignableFrom(methodToCall.getMethod().getReturnType())) {
-                createMethods.add(methodToCall.getMethod());
-                return processCreate(result, methodToCall.getMethod().getAnnotation(CreateState.class));
-            } else {
-                nonCreateMethods.add(methodToCall.getMethod());
-            }
+        Object result = null;
+        if (rpChangedMethods.contains(methodToCall.getMethod())) {
+        	rpChangedMCW.doBefore(methodToCall.getTarget(), method);
+        	result = methodToCall.getMethod().invoke(methodToCall.getTarget(), args);
+	        rpChangedMCW.doAfter(methodToCall.getTarget(), method);
+        } else {
+	        result = methodToCall.getMethod().invoke(methodToCall.getTarget(), args);
+	        if (createMethods.contains(methodToCall.getMethod())) {
+	            return processCreate(result, methodToCall.getMethod().getAnnotation(CreateState.class));
+	        }
+	        if (!nonCreateMethods.contains(methodToCall.getMethod())) {
+	            if (EndpointReference.class.isAssignableFrom(methodToCall.getMethod().getReturnType())) {
+	                createMethods.add(methodToCall.getMethod());
+	                return processCreate(result, methodToCall.getMethod().getAnnotation(CreateState.class));
+	            } else {
+	                nonCreateMethods.add(methodToCall.getMethod());
+	            }
+	        }
         }
         return result;
     }
@@ -104,27 +115,7 @@ public class CruxMixin implements MethodInterceptor, InvocationHandler {
      * @throws Throwable
      */
     public Object invoke(MethodInvocation mi) throws Throwable {
-        Method method = mi.getMethod();
-        MethodKey key = new MethodKey(method.getName(), method.getParameterTypes());
-        MethodValue methodToCall = methodMap.get(key);
-        if (methodToCall == null) {
-            String message = resourceBundle.getString("no.such.service.method");
-            logger.warn(message);
-            throw new NoSuchMethodError(resourceBundle.getString("no.such.service.method"));
-        }
-        Object result = methodToCall.getMethod().invoke(methodToCall.getTarget(), mi.getArguments());
-        if (createMethods.contains(mi.getMethod())) {
-            return processCreate(result, methodToCall.getMethod().getAnnotation(CreateState.class));
-        }
-        if (!nonCreateMethods.contains(mi.getMethod())) {
-            if (EndpointReference.class.isAssignableFrom(mi.getMethod().getReturnType())) {
-                createMethods.add(mi.getMethod());
-                return processCreate(result, methodToCall.getMethod().getAnnotation(CreateState.class));
-            } else {
-                nonCreateMethods.add(mi.getMethod());
-            }
-        }
-        return result;
+        return invoke(null, mi.getMethod(), mi.getArguments());
     }
 
     @SuppressWarnings("unchecked")
@@ -147,6 +138,10 @@ public class CruxMixin implements MethodInterceptor, InvocationHandler {
     public void setEprFactory(EPRFactory eprFactory) {
         this.eprFactory = eprFactory;
     }
+    
+    public void setRPChangedMCW(MethodCallWrapper rpChangedMCW) {
+        this.rpChangedMCW = rpChangedMCW;
+    }    
 
     class MethodValue {
         private Method method;

@@ -2,6 +2,7 @@ package com.counter;
 
 import org.globus.crux.ResourceContext;
 import org.globus.crux.service.DestroyState;
+import org.globus.crux.service.ResourcePropertyChange;
 import org.globus.crux.service.ResourceStoreException;
 import org.globus.crux.service.StatefulService;
 import org.globus.crux.wsrf.properties.ResourceProperty;
@@ -11,6 +12,7 @@ import org.globus.crux.wsrf.properties.ResourceProperty;
 public class Counter {
     private ResourceContext<Long, CounterResource> resourceContext;
 
+    @ResourcePropertyChange(namespace = "http://counter.com", localpart = "Value")
     public int add(int value) {
         try {
             CounterResource c = resourceContext.getCurrentResource();

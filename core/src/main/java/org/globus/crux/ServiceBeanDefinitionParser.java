@@ -37,6 +37,8 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 
 		BeanDefinitionBuilder serviceBean = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.SOAPServiceFactory");
 
+		serviceBean.addPropertyValue("RPChangedMCW", BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.properties.ResourcePropertyChangeNotifier").getBeanDefinition());
+		
 		String interf = element.getAttribute(interfTag);
 		try {
 			serviceBean.addPropertyValue(interfTag, getClass().getClassLoader().loadClass(interf));
@@ -75,7 +77,6 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 			if (providerElementName.equals(getRPProviderTag)) {
 				provider = parseGetRPProvider(providerElement);
 			} else if (providerElementName.equals(queryRPProviderTag)) {
-				// FIXME this does not work at the moment and I don't have a clue why
 				provider = parseQueryRPProvider(providerElement);
 			} else if (providerElementName.equals(immediateResourceLifetimeProviderTag)) {
 				provider = parseImmediateResourceLifetimeProvider(providerElement);

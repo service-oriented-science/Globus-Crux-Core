@@ -15,29 +15,29 @@ import org.w3c.dom.Element;
  *
  * @author Doreen Seider
  */
-public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
+public class ServiceBeanConstructor extends AbstractBeanDefinitionParser {
+
+	private BeanDefinitionBuilder serviceBean = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.SOAPServiceFactory");
+	
+	private ManagedList providers = new ManagedList();
+	private ManagedList wrappers = new ManagedList();
 
 	private static final String interfTag = "interf";
 	private static final String targetTag = "target";
 	private static final String dialectTag = "dialect";
 	private static final String providersTag = "crux:providers";
+	private static final String notifiersTag = "crux:notifiers";
 	private static final String queryEngineTag = "crux:queryEngine";
 
-	/** Tag identifying a GetRPProvider. */
 	private final static String getRPProviderTag = "crux:getRPProvider";
-	/** Tag identifying a QueryRPProvider. */
 	private final static String queryRPProviderTag = "crux:queryRPProvider";
-	/** Tag identifying a ImmediateResourceLifetimeProvider. */
 	private final static String immediateResourceLifetimeProviderTag = "crux:immediateResourceLifetimeProvider";
-	/** Tag identifying a ScheduledResourceLifetimeProvider. */
 	private final static String scheduledResourceLifetimeProviderTag = "crux:scheduledResourceLifetimeProvider";
+
+	private final static String rpChangedNotifierTag = "crux:RPChangeNotifier";
 
 	@Override
 	protected AbstractBeanDefinition parseInternal(Element element, ParserContext parserContext) {
-
-		BeanDefinitionBuilder serviceBean = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.SOAPServiceFactory");
-
-		serviceBean.addPropertyValue("RPChangedMCW", BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.properties.ResourcePropertyChangeNotifier").getBeanDefinition());
 		
 		String interf = element.getAttribute(interfTag);
 		try {
@@ -51,66 +51,64 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 		List<Element> providerElements = DomUtils.getChildElementsByTagName(providersElement,
 				new String[] {getRPProviderTag, queryRPProviderTag, immediateResourceLifetimeProviderTag,
 				scheduledResourceLifetimeProviderTag});
-
-		if (providerElements != null && providerElements.size() > 0) {
-			serviceBean.addPropertyValue("providers", parseProviders(providerElements));
+		parseProviders(providerElements);
+		
+		Element notifierssElement = DomUtils.getChildElementByTagName(element, notifiersTag);
+		List<Element> notifiersElements = DomUtils.getChildElementsByTagName(notifierssElement,
+				new String[] {rpChangedNotifierTag});
+		parseNotifiers(notifiersElements);
+		
+		
+		if (providers.size() > 0) {
+			serviceBean.addPropertyValue("providers", providers);
 		}
-
+		if (wrappers.size() > 0) {
+			serviceBean.addPropertyValue("wrappers", wrappers);
+		}
+		
 		return serviceBean.getBeanDefinition();
 	}
 
 	/**
-	 * Parses the 'providers' element.
+	 * Parses the 'providers' element, creates appropriate beans and adds them to the service bean
+	 * construction..
 	 *
 	 * @param providersElements a {@link List} of {@link OperationProvider} elements.
-	 * @return a {@link List} of {@link OperationProvider} objects.
 	 */
-	private ManagedList parseProviders(List<Element> providersElements) {
-		ManagedList providers = new ManagedList(providersElements.size());
-
+	private void parseProviders(List<Element> providersElements) {
 		for (int i = 0; i < providersElements.size(); ++i) {
 			Element providerElement = (Element) providersElements.get(i);
 			String providerElementName = providerElement.getNodeName();
 
-			AbstractBeanDefinition provider = null;
-
 			if (providerElementName.equals(getRPProviderTag)) {
-				provider = parseGetRPProvider(providerElement);
+				parseGetRPProvider(providerElement);
 			} else if (providerElementName.equals(queryRPProviderTag)) {
-				provider = parseQueryRPProvider(providerElement);
+				parseQueryRPProvider(providerElement);
 			} else if (providerElementName.equals(immediateResourceLifetimeProviderTag)) {
-				provider = parseImmediateResourceLifetimeProvider(providerElement);
+				parseImmediateResourceLifetimeProvider(providerElement);
 			} else if (providerElementName.equals(scheduledResourceLifetimeProviderTag)) {
-				provider = parseScheduledResourceLifetimeProvider(providerElement);
+				parseScheduledResourceLifetimeProvider(providerElement);
 			}
-
-			if (provider != null) {
-				providers.add(provider);
-			}
-		}
-
-		return providers;
+		}		
 	}
 
 	/**
-	 * Parses the 'getRPProvider' element.
+	 * Parses the 'getRPProvider' element and creates a appropriate bean.
 	 *
 	 * @param providerElement the appropriate provider {@link Element}.
-	 * @return an {@link AbstractBeanDefinition} representing the GetRPProvider object.
 	 */
-	private AbstractBeanDefinition parseGetRPProvider(Element providerElement) {
+	private void parseGetRPProvider(Element providerElement) {
 		BeanDefinitionBuilder provider = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.properties.GetRPProvider");
 		provider.addPropertyReference("RPSet", providerElement.getAttribute(targetTag));
-		return provider.getBeanDefinition();
+		providers.add(provider.getBeanDefinition());
 	}
 
 	/**
-	 * Parses the 'queryRPProvider' element.
+	 * Parses the 'queryRPProvider' element and creates a appropriate bean.
 	 *
 	 * @param providerElement the appropriate provider {@link Element}.
-	 * @return an {@link AbstractBeanDefinition} representing the QueryRPProvider object.
 	 */
-	private AbstractBeanDefinition parseQueryRPProvider(Element providerElement) {
+	private void parseQueryRPProvider(Element providerElement) {
 		BeanDefinitionBuilder provider = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.query.QueryRPProvider");
 
 		List<Element> queryEngineElements = DomUtils.getChildElementsByTagName(providerElement, queryEngineTag);
@@ -128,30 +126,56 @@ public class ServiceBeanDefinitionParser extends AbstractBeanDefinitionParser {
 			}
 		}
 		provider.addPropertyValue("engines", queryEngines);
-		return provider.getBeanDefinition();
+		providers.add(provider.getBeanDefinition());
 	}
 
 	/**
-	 * Parses the 'immediateResourceLifetimeProvider' element.
+	 * Parses the 'immediateResourceLifetimeProvider' element and creates a appropriate bean.
 	 *
 	 * @param providerElement the appropriate provider {@link Element}.
-	 * @return an {@link AbstractBeanDefinition} representing the ImmediateResourceLifetimeProvider object.
 	 */
-	private AbstractBeanDefinition parseImmediateResourceLifetimeProvider(Element providerElement) {
+	private void parseImmediateResourceLifetimeProvider(Element providerElement) {
 		BeanDefinitionBuilder provider = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.lifetime.ImmediateResourceLifetimeProvider");
 		provider.addPropertyReference(targetTag, providerElement.getAttribute(targetTag));
-		return provider.getBeanDefinition();
+		providers.add(provider.getBeanDefinition());
 	}
 
 	/**
-	 * Parses the 'scheduledResourceLifetimeProvider' element.
+	 * Parses the 'scheduledResourceLifetimeProvider' element and creates a appropriate bean.
 	 *
 	 * @param providerElement the appropriate provider {@link Element}.
-	 * @return an {@link AbstractBeanDefinition} representing the ResourceLifetimeProvider object.
 	 */
-	private AbstractBeanDefinition parseScheduledResourceLifetimeProvider(Element providerElement) {
+	private void parseScheduledResourceLifetimeProvider(Element providerElement) {
 		BeanDefinitionBuilder provider = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.lifetime.ScheduledResourceLifetimeProvider");
 		provider.addPropertyReference(targetTag, providerElement.getAttribute(targetTag));
-		return provider.getBeanDefinition();
+		providers.add(provider.getBeanDefinition());
 	}
+	
+	/**
+	 * Parses the 'notifiers' element, creates appropriate beans.
+	 *
+	 * @param notifiersElements a {@link List} of notifier elements.
+	 */
+	private void parseNotifiers(List<Element> notifiersElements) {
+		for (int i = 0; i < notifiersElements.size(); ++i) {
+			Element notifierElement = (Element) notifiersElements.get(i);
+			String notifierElementName = notifierElement.getNodeName();
+
+			if (notifierElementName.equals(rpChangedNotifierTag)) {
+				parseRPChangedNotifier(notifierElement);
+			}
+		}
+	}
+	
+	/**
+	 * Parses the 'RPChangedNotifier' element and creates a appropriate bean.
+	 *
+	 * @param providerElement the appropriate provider {@link Element}.
+	 */
+	private void parseRPChangedNotifier(Element notifierElement) {
+		BeanDefinitionBuilder wrapper = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.properties.ResourcePropertyChangeNotifier");
+		wrapper.addPropertyReference("RPSet", notifierElement.getAttribute(targetTag));
+		wrappers.add(wrapper.getBeanDefinition());
+	}
+
 }

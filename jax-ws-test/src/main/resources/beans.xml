@@ -83,6 +83,9 @@ http://www.globus.org/schema/crux http://www.globus.org/schema/crux/crux.xsd htt
             <crux:immediateResourceLifetimeProvider target="counterResource"/>
             <crux:scheduledResourceLifetimeProvider target="counterResource"/>
         </crux:providers>
+        <crux:notifiers>
+        	<crux:RPChangeNotifier target="counterRPSet"/>
+        </crux:notifiers>
     </crux:service>
 
     <!--

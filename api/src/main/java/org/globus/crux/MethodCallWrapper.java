@@ -1,22 +1,31 @@
 package org.globus.crux;
 
-import java.lang.reflect.Method;
+import java.lang.annotation.Annotation;
 
 /**
  * Interface defining a wrapper for a method. It provides a method to call before
- * the method will be called and one to call after the method was called.
+ * the appropriate annotated method will be called and one to call after the method was called.
  * 
  * @author Doreen Seider
  */
 public interface MethodCallWrapper {
 
 	/**
-	 * Method which will be called before the method will be called.
+	 * Returns the associated annotation. Any method with that given
+	 * annotation will be wrapped by this method call wrapper.
+	 * @return the associated annotation class.
 	 */
-	void doBefore(Object target, Method method);
+	Class getAssociatedAnnotation();
+	
+	/**
+	 * Method which will be called before the method will be called.
+	 * @param annotation The {@link Annotation} of the method to wrap.
+	 */
+	void doBefore(Annotation annotation);
 	
 	/**
 	 * Method which will be called after the method was called.
+	 * @param annotation The {@link Annotation} of the method to wrap.
 	 */
-	void doAfter(Object target, Method method);
+	void doAfter(Annotation annotation);
 }

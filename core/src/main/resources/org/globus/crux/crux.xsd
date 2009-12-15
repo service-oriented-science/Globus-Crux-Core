@@ -54,6 +54,17 @@
 								</xsd:all>
 							</xsd:complexType>
 						</xsd:element>
+						<xsd:element name="notifiers">
+							<xsd:complexType>
+								<xsd:all>
+									<xsd:element name="RPChangeNotifier" minOccurs="0">
+										<xsd:complexType>
+											<xsd:attribute name="target" type="xsd:string" use="required" />
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:all>
+							</xsd:complexType>
+						</xsd:element>
 					</xsd:sequence>
 					<xsd:attribute name="interf" type="xsd:string" use="required" />
 					<xsd:attribute name="target" type="xsd:string" use="required" />

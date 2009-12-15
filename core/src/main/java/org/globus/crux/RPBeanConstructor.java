@@ -10,7 +10,7 @@ import org.w3c.dom.Element;
  *
  * @author Doreen Seider
  */
-public class RPBeanDefinitionParser extends AbstractSingleBeanDefinitionParser {
+public class RPBeanConstructor extends AbstractSingleBeanDefinitionParser {
 
 	private static final String targetTag = "target";
 

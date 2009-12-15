@@ -18,5 +18,5 @@ public @interface ResourcePropertyChange {
     String namespace();
     
     /** Localpart of the ResourceProperty. */
-    String localpart();
+    String[] localparts();
 }

@@ -15,21 +15,26 @@ import org.springframework.beans.factory.FactoryBean;
 public class SOAPServiceFactory implements FactoryBean {
     private Object target;
     private List<OperationProvider> providers;
+    private List<MethodCallWrapper> wrappers;
     private Object proxied;
     private Class interf;
     //TODO: this really probably shouldn't be here  SOS-271
     private EPRFactory eprFactory;
-    private MethodCallWrapper rpChangedMCW;
 
     public Object getObject() throws Exception {
         if (proxied == null) {
             CruxMixin mixin = new CruxMixin(target, interf);
-            mixin.setRPChangedMCW(rpChangedMCW);
             if (providers != null) {
                 for (OperationProvider provider : providers) {
                     mixin.addProvider(provider);
                 }
             }
+            if (wrappers != null) {
+                for (MethodCallWrapper wrapper : wrappers) {
+                	mixin.addWrapper(wrapper);
+                }
+            }
+
             proxied = Proxy.newProxyInstance(SOAPServiceFactory.class.getClassLoader(), new Class[]{interf},
                     mixin.withEprFactory(eprFactory));            
         }
@@ -44,10 +49,6 @@ public class SOAPServiceFactory implements FactoryBean {
         this.eprFactory = eprFactory;
     }
     
-    public void setRPChangedMCW(MethodCallWrapper rpChangedMCW) {
-        this.rpChangedMCW = rpChangedMCW;
-    }
-
     public boolean isSingleton() {
         return true;
     }
@@ -58,6 +59,10 @@ public class SOAPServiceFactory implements FactoryBean {
 
     public void setProviders(List<OperationProvider> providers) {
         this.providers = providers;
+    }
+
+    public void setWrappers(List<MethodCallWrapper> wrappers) {
+        this.wrappers = wrappers;
     }
 
     public void setProxied(Object proxied) {

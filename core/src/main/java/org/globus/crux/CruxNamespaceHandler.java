@@ -20,8 +20,8 @@ public class CruxNamespaceHandler extends NamespaceHandlerSupport {
 	 * Initialize this namespace handler.
 	 */
 	public void init() {
-		registerBeanDefinitionParser(serviceTag, new ServiceBeanDefinitionParser());
-		registerBeanDefinitionParser(annotatedRPSetTag, new RPBeanDefinitionParser());
+		registerBeanDefinitionParser(serviceTag, new ServiceBeanConstructor());
+		registerBeanDefinitionParser(annotatedRPSetTag, new RPBeanConstructor());
 	}
 
 }

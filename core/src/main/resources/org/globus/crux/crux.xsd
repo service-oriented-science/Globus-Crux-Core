@@ -59,6 +59,7 @@
 								<xsd:all>
 									<xsd:element name="RPChangeNotifier" minOccurs="0">
 										<xsd:complexType>
+											<xsd:attribute name="type" type="xsd:string" use="required" />
 											<xsd:attribute name="target" type="xsd:string" use="required" />
 										</xsd:complexType>
 									</xsd:element>

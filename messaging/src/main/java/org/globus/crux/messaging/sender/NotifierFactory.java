@@ -1,5 +1,8 @@
 package org.globus.crux.messaging.sender;
 
+import javax.jms.ConnectionFactory;
+import javax.xml.namespace.QName;
+
 import org.globus.crux.messaging.subscription.Subscription;
 
 /**
@@ -10,4 +13,5 @@ import org.globus.crux.messaging.subscription.Subscription;
 public interface NotifierFactory {
 
     Notifier createNotificationSender(Subscription subscript);
+    Notifier createNotificationSender(QName topicName, String resourceKeyId);
 }

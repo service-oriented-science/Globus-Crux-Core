@@ -72,7 +72,7 @@
         <dependency>
             <groupId>opensymphony</groupId>
             <artifactId>quartz-all</artifactId>
-            <version>1.6.3</version>
+            <version>${quartz.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.santuario</groupId>

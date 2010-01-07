@@ -25,6 +25,8 @@ public class ServiceBeanConstructor extends AbstractBeanDefinitionParser {
 	private static final String interfTag = "interf";
 	private static final String targetTag = "target";
 	private static final String dialectTag = "dialect";
+	private static final String typeTag = "type";
+	private static final String notifierTag = "notifierFactoryTag";
 	private static final String providersTag = "crux:providers";
 	private static final String notifiersTag = "crux:notifiers";
 	private static final String queryEngineTag = "crux:queryEngine";
@@ -173,9 +175,12 @@ public class ServiceBeanConstructor extends AbstractBeanDefinitionParser {
 	 * @param providerElement the appropriate provider {@link Element}.
 	 */
 	private void parseRPChangedNotifier(Element notifierElement) {
-		BeanDefinitionBuilder wrapper = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.properties.ResourcePropertyChangeNotifier");
-		wrapper.addPropertyReference("RPSet", notifierElement.getAttribute(targetTag));
-		wrappers.add(wrapper.getBeanDefinition());
+		if (notifierElement.getAttribute(typeTag).equals("jms")) {
+			BeanDefinitionBuilder wrapper = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.properties.ResourcePropertyChangeNotifier");
+			wrapper.addPropertyReference("RPSet", notifierElement.getAttribute(targetTag));
+			wrapper.addPropertyReference("notifierFactory", "notifierFactory");
+			wrappers.add(wrapper.getBeanDefinition());
+		}
 	}
 
 }

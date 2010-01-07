@@ -1,11 +1,11 @@
 package org.globus.crux.messaging.sender.impl;
 
-import org.globus.crux.messaging.subscription.Subscription;
-import org.globus.crux.messaging.sender.NotifierFactory;
-import org.globus.crux.messaging.sender.Notifier;
-
 import javax.jms.ConnectionFactory;
-import javax.xml.bind.JAXBContext;
+import javax.xml.namespace.QName;
+
+import org.globus.crux.messaging.sender.Notifier;
+import org.globus.crux.messaging.sender.NotifierFactory;
+import org.globus.crux.messaging.subscription.Subscription;
 
 /**
  * @author Tom Howe
@@ -18,6 +18,10 @@ public class JMSNotifierFactory implements NotifierFactory {
     public Notifier createNotificationSender(Subscription subscript) {
         return new JMSNotifier(subscript.getTopic().getQname(), subscript.getProducerId(),
                 connectionFactory);
+    }
+    
+    public Notifier createNotificationSender(QName topicName, String resourceKeyId) {
+        return new JMSNotifier(topicName, resourceKeyId, connectionFactory);
     }
 
     public ConnectionFactory getConnectionFactory() {

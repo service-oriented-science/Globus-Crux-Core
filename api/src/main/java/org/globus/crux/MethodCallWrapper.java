@@ -21,11 +21,11 @@ public interface MethodCallWrapper {
 	 * Method which will be called before the method will be called.
 	 * @param annotation The {@link Annotation} of the method to wrap.
 	 */
-	void doBefore(Annotation annotation);
+	Object doBefore(Annotation annotation);
 	
 	/**
 	 * Method which will be called after the method was called.
 	 * @param annotation The {@link Annotation} of the method to wrap.
 	 */
-	void doAfter(Annotation annotation);
+	void doAfter(Annotation annotation, Object doBeforeResult);
 }

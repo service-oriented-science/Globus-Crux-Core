@@ -86,21 +86,22 @@ public class CruxMixin implements MethodInterceptor, InvocationHandler {
             throw new NoSuchMethodError(resourceBundle.getString("no.such.service.method"));
         }
         
-        HashSet<MethodCallWrapper> wrappersToInvoke = new HashSet<MethodCallWrapper>();
+        Map<Class, MethodCallWrapper> wrappersToInvoke = new HashMap<Class ,MethodCallWrapper>();
         for (Class annotation : wrappers.keySet()) {
         	if (methodToCall.getMethod().isAnnotationPresent(annotation)) {
-        		wrappersToInvoke.add(wrappers.get(annotation));
+        		wrappersToInvoke.put(annotation, wrappers.get(annotation));
         	}
         }
         
-        for (MethodCallWrapper wrapper : wrappersToInvoke) {
-        	wrapper.doBefore(methodToCall.getMethod().getAnnotation(wrapper.getAssociatedAnnotation()));
+        Map<Class, Object> doBeforeResults = new HashMap<Class, Object>();
+    	for (Class annotation : wrappersToInvoke.keySet()) {
+        	doBeforeResults.put(annotation, wrappersToInvoke.get(annotation).doBefore(methodToCall.getMethod().getAnnotation(annotation)));
         }
     	
         Object result = methodToCall.getMethod().invoke(methodToCall.getTarget(), args);
 
-    	for (MethodCallWrapper wrapper : wrappersToInvoke) {
-        	wrapper.doAfter(methodToCall.getMethod().getAnnotation(wrapper.getAssociatedAnnotation()));
+    	for (Class annotation : wrappersToInvoke.keySet()) {
+        	wrappersToInvoke.get(annotation).doAfter(methodToCall.getMethod().getAnnotation(annotation), doBeforeResults.get(annotation));
         }
 
         if (createMethods.contains(methodToCall.getMethod())) {

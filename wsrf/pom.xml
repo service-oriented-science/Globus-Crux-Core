@@ -17,7 +17,7 @@
         <dependency>
             <groupId>opensymphony</groupId>
             <artifactId>quartz-all</artifactId>
-            <version>1.6.6</version>
+            <version>${quartz.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.ws</groupId>
@@ -28,6 +28,10 @@
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-oxm-tiger</artifactId>
             <version>1.5.6</version>
+        </dependency>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>messaging</artifactId>
         </dependency>
         <dependency>
             <groupId>${groupId}</groupId>

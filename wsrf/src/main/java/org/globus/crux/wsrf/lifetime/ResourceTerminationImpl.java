@@ -3,7 +3,6 @@ package org.globus.crux.wsrf.lifetime;
 import java.util.Calendar;
 import java.util.Date;
 
-
 import javax.jws.WebParam;
 import javax.xml.ws.Holder;
 
@@ -31,7 +30,8 @@ public class ResourceTerminationImpl implements ImmediateResourceTermination, Sc
 
 	public static final String TARGET_KEY = "target";
 
-	private static final String jobName = "org.globus.crux.wsrf.lifetime.job";
+	private final String jobName;
+	private final String triggerName;
 
 	private Scheduler scheduler;
 	private JobDetail jobDetail;
@@ -50,12 +50,24 @@ public class ResourceTerminationImpl implements ImmediateResourceTermination, Sc
 			throw new RuntimeException(e);
 		}
 
+		jobName = "org.globus.crux.wsrf.lifetime.job." + target.toString();
+		
 		jobDetail = new JobDetail(jobName, AnnotationDestroyerJob.class);
 		jobDetail.getJobDataMap().put(TARGET_KEY, target);
+		
+		triggerName = "org.globus.crux.wsrf.lifetime.trigger." + target.toString();
 	}
 
 	public void destroy() throws ResourceUnknownFault, ResourceNotDestroyedFault {
-		scheduleJob(new SimpleTrigger("org.globus.crux.wsrf.lifetime.trigger.immediate", new Date()));
+		try {
+			if (scheduler.getTrigger(triggerName, "DEFAULT") == null) {
+				scheduler.scheduleJob(jobDetail, new SimpleTrigger(triggerName, new Date()));
+			} else {
+				throw new IllegalStateException("resource is allready being destroyed");
+			}
+		} catch (SchedulerException e) {
+			throw new ResourceNotDestroyedFault();
+		}
 	}
 
     public void setTerminationTime(@WebParam(name = "RequestedTerminationTime",
@@ -65,32 +77,19 @@ public class ResourceTerminationImpl implements ImmediateResourceTermination, Sc
             mode = WebParam.Mode.OUT, name = "CurrentTime",
             targetNamespace = "http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.xsd") Holder<Calendar> currentTime) throws UnableToSetTerminationTimeFault, TerminationTimeChangeRejectedFault, ResourceUnknownFault {
 
-		String triggerName = "org.globus.crux.wsrf.lifetime.trigger.scheduled";
 		try {
-			if (scheduler.getJobNames(triggerName).length != 0) {
-				scheduler.unscheduleJob(jobName, triggerName);
+			Trigger trigger = scheduler.getTrigger(triggerName, "DEFAULT");
+			if (trigger != null) {
+				scheduler.rescheduleJob(triggerName, "DEFAULT", trigger);
+			} else {
+		    	trigger = new SimpleTrigger(triggerName, new Date(requestedTerminationTime.getTimeInMillis()));
+				scheduler.scheduleJob(jobDetail, trigger);
 			}
 		} catch (SchedulerException e) {
 			throw new RuntimeException(e);
 		}
-		scheduleJob(new SimpleTrigger(triggerName, new Date(requestedTerminationTime.getTimeInMillis())));
         SetTerminationTimeResponse response = new SetTerminationTimeResponse();
         response.setCurrentTime(Calendar.getInstance());
         response.setNewTerminationTime(requestedTerminationTime);
     }
-
-
-
-	/**
-	 * Helper method used for scheduling a job.
-	 *
-	 * @param trigger The trigger to use when scheduling.
-	 */
-	private void scheduleJob(Trigger trigger) {
-		try {
-			scheduler.scheduleJob(jobDetail, trigger);
-		} catch (SchedulerException e) {
-			throw new RuntimeException(e);
-		}
-	}
 }

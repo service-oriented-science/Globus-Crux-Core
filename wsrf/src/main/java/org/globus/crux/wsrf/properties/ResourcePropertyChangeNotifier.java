@@ -4,6 +4,7 @@ import java.lang.annotation.Annotation;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.management.RuntimeErrorException;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
@@ -75,13 +76,16 @@ public class ResourcePropertyChangeNotifier implements MethodCallWrapper {
 	 * @return the value of the desired resource property or null if there is none.
 	 */
 	private Object getRP(QName rpQName) {
+		if (rpSet == null) {
+			throw new IllegalStateException("resource property set not set");
+		}
 		if (rpSet.containsResourceProperty(rpQName)) {
 			try {
 				return rpSet.getResourceProperty(rpQName);
 			} catch (InvalidResourcePropertyQNameFault e) {
-				logger.error("rp not found: " + rpQName, e);
+				throw new RuntimeException("resource property could not found: " + rpQName.toString(), e);
 			} catch (ResourceUnknownFault e) {
-				logger.error("rp not found: " + rpQName, e);
+				throw new RuntimeException("resource cpuld not be found: " + rpSet.getResourceName(), e);
 			}
 		}
 		
@@ -92,6 +96,13 @@ public class ResourcePropertyChangeNotifier implements MethodCallWrapper {
 	 * Helper class used to send the notification about the resource property modification.
 	 */
 	private void sendNotifications(Map<QName, Object> oldValues, Map<QName, Object> newValues) {
+		if (rpSet == null) {
+			throw new IllegalStateException("resource property set not set");
+		}
+		if (notifierFactory == null) {
+			throw new IllegalStateException("notifier factory not set");
+		}
+
 		if (oldValues.size() != newValues.size()) {
 			throw new IllegalArgumentException("number of old values does not match number of new values");
 		}

@@ -14,6 +14,12 @@ http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/ac
     <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml"/>
     <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
 
+    <amq:broker useJmx="true" persistent="false">
+        <amq:transportConnectors>
+            <amq:transportConnector uri="vm://localhost"/>
+        </amq:transportConnectors>
+    </amq:broker>
+    
  	<amq:connectionFactory id="jmsFactory" brokerURL="vm://localhost"/>
 	
     <bean id="notifierFactory" class="org.globus.crux.messaging.sender.impl.JMSNotifierFactory">

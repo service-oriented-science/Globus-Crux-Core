@@ -7,6 +7,11 @@ import org.globus.crux.OperationProvider;
 import org.globus.crux.ProviderException;
 import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryResourceProperties;
 
+/**
+ * Providing query resource property operations.
+ * 
+ * @author Doreen Seider
+ */
 public class QueryRPProvider implements OperationProvider<QueryResourceProperties> {
 
 	private DefaultQueryResourceProperties qrpImpl;
@@ -26,12 +31,6 @@ public class QueryRPProvider implements OperationProvider<QueryResourcePropertie
 	public Class<QueryResourceProperties> getInterface() {
 		return QueryResourceProperties.class;
 	}
-
-    public QueryRPProvider addQueryEngine(QueryEngine<Object, Object> engine) {
-        this.engines.add(engine);
-        qrpImpl = null;
-        return this;
-    }
 
     public void setEngines(List<QueryEngine<Object, Object>> engines) {
         this.engines = engines;

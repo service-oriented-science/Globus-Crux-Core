@@ -26,7 +26,6 @@ public class ServiceBeanConstructor extends AbstractBeanDefinitionParser {
 	private static final String targetTag = "target";
 	private static final String dialectTag = "dialect";
 	private static final String typeTag = "type";
-	private static final String notifierTag = "notifierFactoryTag";
 	private static final String providersTag = "crux:providers";
 	private static final String notifiersTag = "crux:notifiers";
 	private static final String queryEngineTag = "crux:queryEngine";

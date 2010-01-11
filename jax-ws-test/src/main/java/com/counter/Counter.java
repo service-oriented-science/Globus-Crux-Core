@@ -16,7 +16,7 @@ public class Counter {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
     
-    @ResourcePropertyChange(namespace = "http://counter.com", localparts = {"Value"})
+    @ResourcePropertyChange(namespace = "http://counter.com", localparts = {"Value", "Status"})
     public int add(int value) {
         try {
             CounterResource c = resourceContext.getCurrentResource();

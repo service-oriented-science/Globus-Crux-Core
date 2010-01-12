@@ -27,6 +27,7 @@
         <module>jax-ws-test</module>
         <module>core</module>
         <module>messaging</module>
+        <module>wsn</module>
     </modules>
 
     

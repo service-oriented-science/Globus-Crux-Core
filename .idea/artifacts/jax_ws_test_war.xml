@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="jax-ws-test:war">
-    <output-path>$PROJECT_DIR$/jax-ws-test/target</output-path>
-    <root id="archive" name="jax-ws-test-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="jax-ws-test:war exploded" />
-    </root>
-  </artifact>
-</component>

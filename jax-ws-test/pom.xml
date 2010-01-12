@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.globus.crux</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>crux</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>jax-ws-test</artifactId>

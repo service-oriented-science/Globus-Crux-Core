@@ -22,7 +22,7 @@
 	<module>messaging</module>
     </modules>
 
-    <reporitories>
+    <repositories>
 <repository>
             <id>globus-repo</id>
             <url>http://repo.globus.org/content/groups/public/</url>

@@ -22,7 +22,11 @@ http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/ac
     
  	<amq:connectionFactory id="jmsFactory" brokerURL="vm://localhost"/>
 	
-    <bean id="notifierFactory" class="org.globus.crux.messaging.sender.impl.JMSNotifierFactory">
+    <bean id="jmsNotifierFactory" class="org.globus.crux.messaging.sender.impl.JMSNotifierFactory">
+        <property name="connectionFactory" ref="jmsFactory"/>
+    </bean>
+    
+    <bean id="wsnNotifierFactory" class="org.globus.crux.messaging.wsn.WSNNotificationFactory">
         <property name="connectionFactory" ref="jmsFactory"/>
     </bean>
 
@@ -60,6 +64,7 @@ http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/ac
             </crux:queryRPProvider>
             <crux:immediateResourceLifetimeProvider target="counterResource"/>
             <crux:scheduledResourceLifetimeProvider target="counterResource"/>
+            <crux:WSNNotificationProducerProvider />
         </crux:providers>
         <crux:notifiers>
         	<crux:RPChangeNotifier type="jms" target="counterRPSet"/>

@@ -87,5 +87,44 @@
         <soap:fault name="TerminationTimeChangeRejectedFault" use="literal"/>
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="Subscribe">
+      <soap:operation soapAction="http://counter.com/CounterPortType/SubscribeRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SubscribeCreationFailedFault">
+        <soap:fault name="SubscribeCreationFailedFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ResourceUnknownFault">
+        <soap:fault name="ResourceUnknownFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="TopicPathDialectUnknownFault">
+        <soap:fault name="TopicPathDialectUnknownFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentMessage">
+      <soap:operation soapAction="http://counter.com/CounterPortType/GetCurrentMessageRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="TopicNotSupportedFault">
+        <soap:fault name="TopicNotSupportedFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="InvalidTopicExpressionFault">
+        <soap:fault name="InvalidTopicExpressionFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="ResourceUnknownFault">
+        <soap:fault name="ResourceUnknownFault" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="NoCurrentMessageOnTopicFault">
+        <soap:fault name="NoCurrentMessageOnTopicFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
   </wsdl:binding>
 </wsdl:definitions>

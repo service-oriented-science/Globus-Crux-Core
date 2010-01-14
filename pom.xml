@@ -55,6 +55,11 @@
                 <version>${version}</version>
             </dependency>
             <dependency>
+                <groupId>${groupId}</groupId>
+                <artifactId>wsn</artifactId>
+                <version>${version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-frontend-jaxws</artifactId>
                 <version>2.2.3</version>

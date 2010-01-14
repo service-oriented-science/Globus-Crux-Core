@@ -167,6 +167,10 @@
         </dependency>
         <dependency>
             <groupId>${groupId}</groupId>
+            <artifactId>wsn</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${groupId}</groupId>
             <artifactId>core</artifactId>
         </dependency>
         <dependency>

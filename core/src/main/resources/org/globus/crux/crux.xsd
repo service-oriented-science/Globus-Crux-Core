@@ -29,6 +29,7 @@
 											<xsd:attribute name="target" type="xsd:string" use="required" />
 										</xsd:complexType>
 									</xsd:element>
+									<xsd:element name="WSNotificationProvider" minOccurs="0" />
 									<xsd:element name="queryRPProvider"  minOccurs="0">
 										<xsd:complexType>
 											<xsd:sequence>

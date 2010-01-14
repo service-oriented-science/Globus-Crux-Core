@@ -4,6 +4,7 @@
                   xmlns:gtwsdl0="http://docs.oasis-open.org/wsrf/rw-2"
                   xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
                   xmlns:wsdlpp="http://www.globus.org/namespaces/2004/10/WSDLPreprocessor"
+                  xmlns:wsntw="http://docs.oasis-open.org/wsn/2004/06/wsn-WS-BaseNotification-1.2-draft-01.wsdl"
                   xmlns:wsrlw="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceLifetime-1.2-draft-01.wsdl"
                   xmlns:wsrp="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.xsd"
                   xmlns:wsrpw="http://docs.oasis-open.org/wsrf/2004/06/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl"
@@ -17,6 +18,9 @@
     
     <wsdl:import namespace="http://docs.oasis-open.org/wsrf/rw-2"
                  location="http://docs.oasis-open.org/wsrf/rw-2.wsdl"/>
+                 
+    <wsdl:import namespace="http://docs.oasis-open.org/wsn/2004/06/wsn-WS-BaseNotification-1.2-draft-01.wsdl" 
+                 location="http://docs.oasis-open.org/wsn/2004/06/wsn-WS-BaseNotification-1.2-draft-01.wsdl"/>
                  
     <wsdl:types>
         <xsd:schema elementFormDefault="qualified" targetNamespace="http://counter.com"
@@ -143,6 +147,32 @@
             <wsdl:fault name="UnableToSetTerminationTimeFault" message="wsrlw:UnableToSetTerminationTimeFault">
             </wsdl:fault>
             <wsdl:fault name="TerminationTimeChangeRejectedFault" message="wsrlw:TerminationTimeChangeRejectedFault">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="Subscribe">
+            <wsdl:input message="wsntw:SubscribeRequest">
+            </wsdl:input>
+            <wsdl:output message="wsntw:SubscribeResponse">
+            </wsdl:output>
+            <wsdl:fault name="SubscribeCreationFailedFault" message="wsntw:SubscribeCreationFailedFault">
+            </wsdl:fault>
+            <wsdl:fault name="ResourceUnknownFault" message="wsntw:ResourceUnknownFault">
+            </wsdl:fault>
+            <wsdl:fault name="TopicPathDialectUnknownFault" message="wsntw:TopicPathDialectUnknownFault">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="GetCurrentMessage">
+            <wsdl:input message="wsntw:GetCurrentMessageRequest">
+            </wsdl:input>
+            <wsdl:output message="wsntw:GetCurrentMessageResponse">
+            </wsdl:output>
+            <wsdl:fault name="TopicNotSupportedFault" message="wsntw:TopicNotSupportedFault">
+            </wsdl:fault>
+            <wsdl:fault name="InvalidTopicExpressionFault" message="wsntw:InvalidTopicExpressionFault">
+            </wsdl:fault>
+            <wsdl:fault name="ResourceUnknownFault" message="wsntw:ResourceUnknownFault">
+            </wsdl:fault>
+            <wsdl:fault name="NoCurrentMessageOnTopicFault" message="wsntw:NoCurrentMessageOnTopicFault">
             </wsdl:fault>
         </wsdl:operation>
     </wsdl:portType>

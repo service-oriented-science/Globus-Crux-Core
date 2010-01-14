@@ -34,6 +34,7 @@ public class ServiceBeanConstructor extends AbstractBeanDefinitionParser {
 	private final static String queryRPProviderTag = "crux:queryRPProvider";
 	private final static String immediateResourceLifetimeProviderTag = "crux:immediateResourceLifetimeProvider";
 	private final static String scheduledResourceLifetimeProviderTag = "crux:scheduledResourceLifetimeProvider";
+	private final static String wsnNotificationProducerProviderTag = "crux:WSNNotificationProducerProvider";
 
 	private final static String rpChangedNotifierTag = "crux:RPChangeNotifier";
 
@@ -89,6 +90,8 @@ public class ServiceBeanConstructor extends AbstractBeanDefinitionParser {
 				parseImmediateResourceLifetimeProvider(providerElement);
 			} else if (providerElementName.equals(scheduledResourceLifetimeProviderTag)) {
 				parseScheduledResourceLifetimeProvider(providerElement);
+			} else if (providerElementName.equals(wsnNotificationProducerProviderTag)) {
+				parseWSNNotificationProducerProvider(providerElement);
 			}
 		}		
 	}
@@ -153,6 +156,16 @@ public class ServiceBeanConstructor extends AbstractBeanDefinitionParser {
 	}
 	
 	/**
+	 * Parses the 'WSNotificationProvider' element and creates a appropriate bean.
+	 *
+	 * @param providerElement the appropriate provider {@link Element}.
+	 */
+	private void parseWSNNotificationProducerProvider(Element providerElement) {
+		BeanDefinitionBuilder provider = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.messaging.wsn.WSNNotificationProducerProvider");
+		providers.add(provider.getBeanDefinition());
+	}
+	
+	/**
 	 * Parses the 'notifiers' element, creates appropriate beans.
 	 *
 	 * @param notifiersElements a {@link List} of notifier elements.
@@ -177,7 +190,7 @@ public class ServiceBeanConstructor extends AbstractBeanDefinitionParser {
 		if (notifierElement.getAttribute(typeTag).equals("jms")) {
 			BeanDefinitionBuilder wrapper = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.wsrf.properties.ResourcePropertyChangeNotifier");
 			wrapper.addPropertyReference("RPSet", notifierElement.getAttribute(targetTag));
-			wrapper.addPropertyReference("notifierFactory", "notifierFactory");
+			wrapper.addPropertyReference("notifierFactory", "jmsNotifierFactory");
 			wrappers.add(wrapper.getBeanDefinition());
 		}
 	}

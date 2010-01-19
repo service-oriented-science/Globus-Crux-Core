@@ -52,7 +52,7 @@ public class ServiceBeanConstructor extends AbstractBeanDefinitionParser {
 		Element providersElement = DomUtils.getChildElementByTagName(element, providersTag);
 		List<Element> providerElements = DomUtils.getChildElementsByTagName(providersElement,
 				new String[] {getRPProviderTag, queryRPProviderTag, immediateResourceLifetimeProviderTag,
-				scheduledResourceLifetimeProviderTag});
+				scheduledResourceLifetimeProviderTag, wsnNotificationProducerProviderTag});
 		parseProviders(providerElements);
 		
 		Element notifierssElement = DomUtils.getChildElementByTagName(element, notifiersTag);
@@ -162,6 +162,10 @@ public class ServiceBeanConstructor extends AbstractBeanDefinitionParser {
 	 */
 	private void parseWSNNotificationProducerProvider(Element providerElement) {
 		BeanDefinitionBuilder provider = BeanDefinitionBuilder.rootBeanDefinition("org.globus.crux.messaging.wsn.WSNNotificationProducerProvider");
+		provider.addPropertyReference("topicManager", "topicManager");
+		provider.addPropertyReference("subscriptionManager", "subscriptionManager");
+		provider.addPropertyReference("subscriptionFactory", "subscriptionFactory");
+		provider.addPropertyReference("subscriptionEPRFactory", "wsnSubscriptionEPRFactory");
 		providers.add(provider.getBeanDefinition());
 	}
 	

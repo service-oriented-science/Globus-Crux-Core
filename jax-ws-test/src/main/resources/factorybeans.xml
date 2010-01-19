@@ -14,10 +14,35 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
         <property name="contextPath" value="com.counter"/>
     </bean>
 
+	<bean id="topicListener" class="org.globus.crux.messaging.topic.impl.DefaultTopicListenerManager" />
+
+	<bean id="wsnNotificationFactory" class="org.globus.crux.messaging.wsn.WSNNotificationFactory">
+        <property name="connectionFactory" ref="jmsFactory"/>
+    </bean>
+    
+	<bean id="topicManager" class="org.globus.crux.messaging.topic.impl.InMemoryTopicManager">
+        <property name="listenerManager" ref="topicListener"/>
+        <property name="senderFactory" ref="wsnNotificationFactory"/>
+    </bean>
+    
+    <bean id="subscriptionFactory" class="org.globus.crux.messaging.wsn.SubscriptionFactory">
+        <property name="topicManager" ref="topicManager"/>
+    </bean>
+
+    <bean id="subscriptionManager" class="org.globus.crux.messaging.subscription.impl.InMemorySubscriptionManager">
+        <property name="connFact" ref="jmsFactory"/>
+        <property name="senderFact" ref="wsnNotificationFactory"/>
+        <property name="topicManager" ref="topicManager"/>
+    </bean>
+
+    <bean id="wsnSubscriptionEPRFactory" class="org.globus.crux.messaging.wsn.SimpleWSNSubscriptionEPRFactory">
+        <property name="portName" value="{http://counter.com/service}CounterPortTypePort"/>
+        <property name="serviceName" value="{http://counter.com/service}CounterService"/>
+    </bean>
 
     <bean id="eprFactory" class="org.globus.crux.SimpleEPRFactory">
         <property name="jaxb" ref="jaxb"/>
-        <property name="address" value="http://localhost:55555/counter"/>
+        <property name="address" value="http://localhost:8080/counter"/>
         <property name="portName" value="{http://counter.com/service}CounterPortTypePort"/>
         <property name="serviceName" value="{http://counter.com/service}CounterService"/>
     </bean>

@@ -1,0 +1,695 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!-- ViewVC :: http://www.viewvc.org/ -->
+<head>
+<title>[Globus Packages] Log of /wsrf/schema/wsrf/faults/bfw-2.wsdl</title>
+<meta name="generator" content="ViewVC 1.0.1" />
+<link rel="stylesheet" href="/viewcvs.cgi/*docroot*/styles.css" type="text/css" />
+
+</head>
+<body>
+<div class="vc_navheader">
+
+<form method="get" action="/viewcvs.cgi/">
+
+<table style="padding:0.1em;">
+<tr>
+<td>
+<strong>
+
+<a href="/viewcvs.cgi/">
+
+[Globus Packages]</a>
+/
+
+<a href="/viewcvs.cgi/wsrf/">
+
+wsrf</a>
+/
+
+<a href="/viewcvs.cgi/wsrf/schema/">
+
+schema</a>
+/
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/">
+
+wsrf</a>
+/
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/">
+
+faults</a>
+/
+
+
+
+bfw-2.wsdl
+
+
+</strong>
+
+</td>
+<td style="text-align:right;">
+
+
+<strong>Repository:</strong>
+<select name="root" onchange="submit()">
+
+
+<option value="*viewroots*">Repository Listing</option>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<optgroup label="CVS Repositories"><option>Alliance Website</option><option>COGKIT</option><option selected="selected">Globus Packages</option><option>Java COG</option></optgroup>
+
+
+</select>
+<input type="submit" value="Go" />
+
+</td>
+</tr>
+</table>
+
+</form>
+
+</div>
+<div style="float: right; padding: 5px;"><a href="http://www.viewvc.org/"><img src="/viewcvs.cgi/*docroot*/images/logo.png" alt="ViewVC logotype" width="128" height="48" /></a></div>
+<h1>Log of /wsrf/schema/wsrf/faults/bfw-2.wsdl</h1>
+
+<p style="margin:0;">
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/"><img src="/viewcvs.cgi/*docroot*/images/back_small.png" width="16" height="16" alt="Parent Directory" /> Parent Directory</a>
+
+
+| <a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=graph"><img src="/viewcvs.cgi/*docroot*/images/cvsgraph_16x16.png" width="16" height="16" alt="View Revision Graph" /> Revision Graph</a>
+
+
+
+</p>
+
+<hr />
+<table class="auto">
+
+
+
+<tr>
+<td>Links to HEAD:</td>
+<td>
+(<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=markup">view</a>)
+(<a href="/viewcvs.cgi/*checkout*/wsrf/schema/wsrf/faults/bfw-2.wsdl">download</a>)
+
+(<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=annotate">annotate</a>)
+</td>
+</tr>
+
+
+
+<tr>
+<td>Sticky Tag:</td>
+<td><form method="get" action="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl" style="display: inline">
+<input type="hidden" name="view" value="log" />
+
+
+<select name="pathrev" onchange="submit()">
+<option value=""></option>
+
+<optgroup label="Branches">
+
+
+<option>wsrf_final_branch</option>
+
+
+
+<option>globus_4_2_core_gpt_issues_branch</option>
+
+
+
+<option>globus_4_2_branch</option>
+
+
+
+<option>bug_6314_branch</option>
+
+
+
+<option>bug_5932_branch_1</option>
+
+
+
+<option>bug_5922_branch_1</option>
+
+
+
+<option>bug_5708_branch_2</option>
+
+
+
+<option>bug_5708_branch</option>
+
+
+
+<option>bug_5622_4</option>
+
+
+
+<option>bug_5559_branch_3</option>
+
+
+
+<option>bug_5559_branch_2</option>
+
+
+
+<option>MAIN</option>
+
+
+</optgroup>
+
+<optgroup label="Non-branch tags">
+
+
+<option>jwscore_wsrf_final_tag_1</option>
+
+
+
+<option>globus_4_2_point</option>
+
+
+
+<option>globus_4_2_core_gpt_issues_tag</option>
+
+
+
+<option>globus_4_2_1</option>
+
+
+
+<option>globus_4_2_0</option>
+
+
+
+<option>bug_6314_base</option>
+
+
+
+<option>bug_5932_tag_1</option>
+
+
+
+<option>bug_5922_tag_1</option>
+
+
+
+<option>bug_5708_tag_2</option>
+
+
+
+<option>bug_5708_branch_point</option>
+
+
+
+<option>bug_5559_tag_3</option>
+
+
+
+<option>bug_5559_tag_2</option>
+
+
+
+<option>HEAD</option>
+
+
+</optgroup>
+
+</select>
+
+<input type="submit" value="Set" />
+</form>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+<div>
+<hr />
+
+<a name="rev1.2"></a>
+<a name="bug_6314_base"></a>
+<a name="bug_5932_tag_1"></a>
+<a name="bug_5708_branch_point"></a>
+<a name="bug_5559_tag_3"></a>
+<a name="bug_5559_tag_2"></a>
+<a name="globus_4_2_point"></a>
+<a name="globus_4_2_1"></a>
+<a name="globus_4_2_0"></a>
+<a name="globus_4_2_core_gpt_issues_tag"></a>
+<a name="bug_5922_tag_1"></a>
+<a name="bug_5708_tag_2"></a>
+<a name="HEAD"></a>
+
+
+Revision <strong>1.2</strong> -
+
+(<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?revision=1.2&amp;view=markup">view</a>)
+
+(<a href="/viewcvs.cgi/*checkout*/wsrf/schema/wsrf/faults/bfw-2.wsdl?revision=1.2">download</a>)
+
+(<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?annotate=1.2">annotate</a>)
+
+
+
+- <a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?r1=1.2&amp;view=log">[select for diffs]</a>
+
+
+
+
+<br />
+
+<em>Wed Oct 31 14:38:48 2007 UTC</em> (2 years, 1 month ago) by <em>ranantha</em>
+
+
+<br />Branch:
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=MAIN"><strong>MAIN</strong></a>
+
+
+
+<br />CVS Tags:
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=HEAD"><strong>HEAD</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5559_tag_2"><strong>bug_5559_tag_2</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5559_tag_3"><strong>bug_5559_tag_3</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5708_branch_point"><strong>bug_5708_branch_point</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5708_tag_2"><strong>bug_5708_tag_2</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5922_tag_1"><strong>bug_5922_tag_1</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5932_tag_1"><strong>bug_5932_tag_1</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_6314_base"><strong>bug_6314_base</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=globus_4_2_0"><strong>globus_4_2_0</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=globus_4_2_1"><strong>globus_4_2_1</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=globus_4_2_core_gpt_issues_tag"><strong>globus_4_2_core_gpt_issues_tag</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=globus_4_2_point"><strong>globus_4_2_point</strong></a>
+
+
+
+<br />Branch point for:
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5559_branch_2"><strong>bug_5559_branch_2</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5559_branch_3"><strong>bug_5559_branch_3</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5622_4"><strong>bug_5622_4</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5708_branch"><strong>bug_5708_branch</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5708_branch_2"><strong>bug_5708_branch_2</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5922_branch_1"><strong>bug_5922_branch_1</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_5932_branch_1"><strong>bug_5932_branch_1</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=bug_6314_branch"><strong>bug_6314_branch</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=globus_4_2_branch"><strong>globus_4_2_branch</strong></a>,
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=globus_4_2_core_gpt_issues_branch"><strong>globus_4_2_core_gpt_issues_branch</strong></a>
+
+
+
+
+
+<br />Changes since <strong>1.1: +37 -0 lines</strong>
+
+
+
+
+
+
+
+<br />Diff to <a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?r1=1.1&amp;r2=1.2">previous 1.1</a>
+
+
+
+
+
+
+
+
+
+
+<pre class="vc_log">Merge of WSRF/WSN specification upgrade branch
+</pre>
+</div>
+
+
+
+<div>
+<hr />
+
+<a name="rev1.1.2.1"></a>
+<a name="jwscore_wsrf_final_tag_1"></a>
+
+<a name="wsrf_final_branch"></a>
+
+Revision <strong>1.1.2.1</strong> -
+
+(<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?revision=1.1.2.1&amp;view=markup">view</a>)
+
+(<a href="/viewcvs.cgi/*checkout*/wsrf/schema/wsrf/faults/bfw-2.wsdl?revision=1.1.2.1">download</a>)
+
+(<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?annotate=1.1.2.1">annotate</a>)
+
+
+
+- <a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?r1=1.1.2.1&amp;view=log">[select for diffs]</a>
+
+
+
+
+<br />
+
+<em>Fri May 25 21:15:04 2007 UTC</em> (2 years, 6 months ago) by <em>bester</em>
+
+
+<br />Branch:
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=wsrf_final_branch"><strong>wsrf_final_branch</strong></a>
+
+
+
+<br />CVS Tags:
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=jwscore_wsrf_final_tag_1"><strong>jwscore_wsrf_final_tag_1</strong></a>
+
+
+
+
+
+
+<br />Changes since <strong>1.1: +37 -0 lines</strong>
+
+
+
+
+
+
+
+<br />Diff to <a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?r1=1.1&amp;r2=1.1.2.1">previous 1.1</a>
+
+
+
+
+
+
+, to <a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?r1=1.2&amp;r2=1.1.2.1">next main 1.2</a>
+
+
+
+
+
+
+
+<pre class="vc_log">Copy over wsrf and wsa schemas from compact.
+These might change once the wsdlpp is working for new namespaces.
+</pre>
+</div>
+
+
+
+<div>
+<hr />
+
+Revision <strong>1.1</strong>
+
+
+<br />
+
+<em>Fri May 25 21:15:04 2007 UTC</em> (2 years, 6 months ago) by <em>bester</em>
+
+
+<br />Branch:
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=MAIN"><strong>MAIN</strong></a>
+
+
+
+
+<br />Branch point for:
+
+<a href="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl?view=log&amp;pathrev=wsrf_final_branch"><strong>wsrf_final_branch</strong></a>
+
+
+
+
+
+<br /><strong><em>FILE REMOVED</em></strong>
+
+<pre class="vc_log">file bfw-2.wsdl was initially added on branch wsrf_final_branch.
+</pre>
+</div>
+
+
+
+
+
+ <hr />
+<p><a name="diff"></a>
+This form allows you to request diffs between any two revisions of this file.
+For each of the two "sides" of the diff,
+
+select a symbolic revision name using the selection box, or choose
+'Use Text Field' and enter a numeric revision.
+
+</p>
+<form method="get" action="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl" name="diff_select">
+<table cellpadding="2" cellspacing="0" class="auto">
+<tr>
+<td>&nbsp;</td>
+<td>
+<input type="hidden" name="view" value="diff" />
+Diffs between
+
+<select name="r1">
+<option value="text" selected="selected">Use Text Field</option>
+
+<option value="1.1.2.1:wsrf_final_branch">wsrf_final_branch</option>
+
+<option value="1.1.2.1:jwscore_wsrf_final_tag_1">jwscore_wsrf_final_tag_1</option>
+
+<option value="1.2:globus_4_2_point">globus_4_2_point</option>
+
+<option value="1.2:globus_4_2_core_gpt_issues_tag">globus_4_2_core_gpt_issues_tag</option>
+
+<option value="1.2:globus_4_2_core_gpt_issues_branch">globus_4_2_core_gpt_issues_branch</option>
+
+<option value="1.2:globus_4_2_branch">globus_4_2_branch</option>
+
+<option value="1.2:globus_4_2_1">globus_4_2_1</option>
+
+<option value="1.2:globus_4_2_0">globus_4_2_0</option>
+
+<option value="1.2:bug_6314_branch">bug_6314_branch</option>
+
+<option value="1.2:bug_6314_base">bug_6314_base</option>
+
+<option value="1.2:bug_5932_tag_1">bug_5932_tag_1</option>
+
+<option value="1.2:bug_5932_branch_1">bug_5932_branch_1</option>
+
+<option value="1.2:bug_5922_tag_1">bug_5922_tag_1</option>
+
+<option value="1.2:bug_5922_branch_1">bug_5922_branch_1</option>
+
+<option value="1.2:bug_5708_tag_2">bug_5708_tag_2</option>
+
+<option value="1.2:bug_5708_branch_point">bug_5708_branch_point</option>
+
+<option value="1.2:bug_5708_branch_2">bug_5708_branch_2</option>
+
+<option value="1.2:bug_5708_branch">bug_5708_branch</option>
+
+<option value="1.2:bug_5622_4">bug_5622_4</option>
+
+<option value="1.2:bug_5559_tag_3">bug_5559_tag_3</option>
+
+<option value="1.2:bug_5559_tag_2">bug_5559_tag_2</option>
+
+<option value="1.2:bug_5559_branch_3">bug_5559_branch_3</option>
+
+<option value="1.2:bug_5559_branch_2">bug_5559_branch_2</option>
+
+<option value="1.2:MAIN">MAIN</option>
+
+<option value="1.2:HEAD">HEAD</option>
+
+</select>
+<input type="text" size="12" name="tr1"
+value="1.2"
+onchange="document.diff_select.r1.selectedIndex=0" />
+
+and
+
+<select name="r2">
+<option value="text" selected="selected">Use Text Field</option>
+
+<option value="1.1.2.1:wsrf_final_branch">wsrf_final_branch</option>
+
+<option value="1.1.2.1:jwscore_wsrf_final_tag_1">jwscore_wsrf_final_tag_1</option>
+
+<option value="1.2:globus_4_2_point">globus_4_2_point</option>
+
+<option value="1.2:globus_4_2_core_gpt_issues_tag">globus_4_2_core_gpt_issues_tag</option>
+
+<option value="1.2:globus_4_2_core_gpt_issues_branch">globus_4_2_core_gpt_issues_branch</option>
+
+<option value="1.2:globus_4_2_branch">globus_4_2_branch</option>
+
+<option value="1.2:globus_4_2_1">globus_4_2_1</option>
+
+<option value="1.2:globus_4_2_0">globus_4_2_0</option>
+
+<option value="1.2:bug_6314_branch">bug_6314_branch</option>
+
+<option value="1.2:bug_6314_base">bug_6314_base</option>
+
+<option value="1.2:bug_5932_tag_1">bug_5932_tag_1</option>
+
+<option value="1.2:bug_5932_branch_1">bug_5932_branch_1</option>
+
+<option value="1.2:bug_5922_tag_1">bug_5922_tag_1</option>
+
+<option value="1.2:bug_5922_branch_1">bug_5922_branch_1</option>
+
+<option value="1.2:bug_5708_tag_2">bug_5708_tag_2</option>
+
+<option value="1.2:bug_5708_branch_point">bug_5708_branch_point</option>
+
+<option value="1.2:bug_5708_branch_2">bug_5708_branch_2</option>
+
+<option value="1.2:bug_5708_branch">bug_5708_branch</option>
+
+<option value="1.2:bug_5622_4">bug_5622_4</option>
+
+<option value="1.2:bug_5559_tag_3">bug_5559_tag_3</option>
+
+<option value="1.2:bug_5559_tag_2">bug_5559_tag_2</option>
+
+<option value="1.2:bug_5559_branch_3">bug_5559_branch_3</option>
+
+<option value="1.2:bug_5559_branch_2">bug_5559_branch_2</option>
+
+<option value="1.2:MAIN">MAIN</option>
+
+<option value="1.2:HEAD">HEAD</option>
+
+</select>
+<input type="text" size="12" name="tr2"
+value="1.1"
+onchange="document.diff_select.r1.selectedIndex=0" />
+
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>
+Type of Diff should be a
+<select name="diff_format" onchange="submit()">
+<option value="h" selected="selected">Colored Diff</option>
+<option value="l" >Long Colored Diff</option>
+<option value="u" >Unidiff</option>
+<option value="c" >Context Diff</option>
+<option value="s" >Side by Side</option>
+</select>
+<input type="submit" value=" Get Diffs " />
+</td>
+</tr>
+</table>
+</form>
+
+
+<form method="get" action="/viewcvs.cgi/wsrf/schema/wsrf/faults/bfw-2.wsdl">
+<div>
+<hr />
+<a name="logsort"></a>
+<input type="hidden" name="view" value="log" />
+Sort log by:
+<select name="logsort" onchange="submit()">
+<option value="cvs" >Not sorted</option>
+<option value="date" selected="selected">Commit date</option>
+<option value="rev" >Revision</option>
+</select>
+<input type="submit" value=" Sort " />
+</div>
+</form>
+
+
+<hr />
+<table>
+<tr>
+<td><address><a href="mailto:webmaster@mcs.anl.gov">Webmaster</a></address></td>
+<td style="text-align: right;"><strong><a href="/viewcvs.cgi/*docroot*/help_log.html">ViewVC Help</a></strong></td>
+</tr>
+<tr>
+<td>Powered by <a href="http://viewvc.tigris.org/">ViewVC 1.0.1</a></td>
+<td style="text-align: right;">&nbsp;</td>
+</tr>
+</table>
+</body>
+</html>
+
+

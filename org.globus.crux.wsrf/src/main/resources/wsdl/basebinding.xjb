@@ -1,0 +1,32 @@
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb"
+          xmlns:wsa="http://www.w3.org/2005/08/addressing"
+          xmlns:wsadraft="http://schemas.xmlsoap.org/ws/2003/03/addressing"
+          xmlns:wsadraft1="http://schemas.xmlsoap.org/ws/2004/03/addressing">
+
+    <bindings scd="x-schema::wsadraft" if-exists="true">
+        <schemaBindings map="false"/>
+        <bindings scd="wsadraft:EndpointReference">
+            <class ref="javax.xml.ws.wsaddressing.W3CEndpointReference"/>
+        </bindings>
+        <bindings scd="~wsadraft:EndpointReferenceType">
+            <class ref="javax.xml.ws.wsaddressing.W3CEndpointReference"/>
+        </bindings>
+    </bindings>
+
+    <bindings scd="x-schema::wsadraft1" if-exists="true">
+        <schemaBindings map="false"/>
+        <bindings scd="wsadraft1:EndpointReference">
+            <class ref="javax.xml.ws.wsaddressing.W3CEndpointReference"/>
+        </bindings>
+        <bindings scd="~wsadraft1:EndpointReferenceType">
+            <class ref="javax.xml.ws.wsaddressing.W3CEndpointReference"/>
+        </bindings>
+    </bindings>
+
+    <jxb:globalBindings xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <jxb:javaType name="java.util.Calendar" xmlType="xs:dateTime"
+                      parseMethod="javax.xml.bind.DatatypeConverter.parseDate"
+                      printMethod="javax.xml.bind.DatatypeConverter.printDate"/>
+    </jxb:globalBindings>
+
+</bindings>

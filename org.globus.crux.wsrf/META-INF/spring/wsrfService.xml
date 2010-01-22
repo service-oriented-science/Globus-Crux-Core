@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+	
+	<bean name="getResourcePropertyService" class="org.globus.crux.wsrf.properties.get.internal.GetResourcePropertyServiceImpl" />
+	
+	<bean name="immediateResourceTerminationService" class="org.globus.crux.wsrf.lifetime.internal.ResourceTerminationServiceImpl" />
+	<bean name="scheduledResourceTerminationServiceOSGi" class="org.globus.crux.wsrf.lifetime.internal.ResourceTerminationServiceImpl" />
+
+	<bean name="xPathQueryEngine" class="org.globus.crux.wsrf.properties.query.internal.XPathQueryEngine" />
+
+	<bean name="queryResourcePropertiesService" class="org.globus.crux.wsrf.properties.query.internal.QueryResourcePropertiesServiceImpl">
+		<property name="queryEngines" ref="xPathQueryEngine"/>
+    </bean>
+	
+</beans>

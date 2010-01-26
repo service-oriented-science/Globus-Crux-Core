@@ -52,7 +52,6 @@ public class QueryResourcePropertiesServiceImpl implements QueryResourceProperti
     
     public void setQueryEngines(List<QueryEngine<Object, Object>> queryEngines) {
         this.queryEngines = queryEngines;
-        System.out.println(">>> injected engines: " + queryEngines.toString());
     }
     
 }

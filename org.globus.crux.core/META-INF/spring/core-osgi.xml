@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+	<osgi:list id="operationProviders" interface="org.globus.crux.core.OperationProvider" cardinality="0..N"/>
+
+	<osgi:reference id="cruxService" interface="org.globus.crux.core.CruxService">
+		<osgi:listener bind-method="addService" unbind-method="removeService">
+			<bean name="soapServiceFactory" class="org.globus.crux.core.internal.SOAPServiceFactory">
+				<property name="operationProviders" ref="operationProviders" />
+			</bean>
+		</osgi:listener>
+	</osgi:reference>
+
+</beans>

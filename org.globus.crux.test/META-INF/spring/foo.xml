@@ -4,10 +4,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 	
-	<osgi:reference id="getResourcePropertyService" interface="org.globus.crux.wsrf.properties.get.GetResourcePropertyService" />
-	
-	<bean name="testConsumer" class="org.globus.crux.test.TestServiceConsumer">
-		<property name="getResourcePropertyService" ref="getResourcePropertyService"/>
-    </bean>
+	<bean name="fooService" class="org.globus.crux.test.FooServiceImpl" />
     
 </beans>

@@ -1,7 +1,4 @@
-package org.globus.crux.wsrf.properties.get;
-
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidResourcePropertyQNameFault;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.ResourceUnknownFault;
+package org.globus.crux.core.state;
 
 import javax.xml.namespace.QName;
 
@@ -26,11 +23,8 @@ public interface ResourcePropertySet extends Iterable<QName> {
      *
      * @param qname name of the ResourceProperty to retrieve.
      * @return The value of the ResourceProperty.
-     * @throws InvalidResourcePropertyQNameFault
-     *                              If named ResourceProperty does not exist.
-     * @throws ResourceUnknownFault If the resource can not be found.
      */
-    public Object getResourceProperty(QName qname) throws InvalidResourcePropertyQNameFault, ResourceUnknownFault;
+    public Object getResourceProperty(QName qname);
 
     /**
      * Get the name of the resource described by this ResourcePropertySet.

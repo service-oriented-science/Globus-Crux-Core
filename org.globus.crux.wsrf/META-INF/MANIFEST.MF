@@ -3,13 +3,14 @@ Bundle-ManifestVersion: 2
 Bundle-Name: WSRF Crux Bundle
 Bundle-SymbolicName: org.globus.crux.wsrf
 Bundle-Version: 1.0.0.qualifier
-Export-Package: org.globus.crux.wsrf,
- org.globus.crux.wsrf.lifetime,
+Export-Package: org.globus.crux.wsrf.lifetime,
  org.globus.crux.wsrf.properties.get,
  org.globus.crux.wsrf.properties.query
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: javax.xml.bind,
+ org.globus.crux.core,
+ org.globus.crux.core.state,
  org.quartz,
  org.quartz.impl,
- org.slf4j;version="1.5.8"
+ org.slf4j
 Spring-Context: *

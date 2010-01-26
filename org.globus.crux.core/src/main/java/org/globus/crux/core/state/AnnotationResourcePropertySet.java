@@ -1,4 +1,4 @@
-package org.globus.crux.wsrf.properties.internal;
+package org.globus.crux.core.state;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -8,12 +8,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.xml.namespace.QName;
-
-import org.globus.crux.wsrf.StatefulService;
-import org.globus.crux.wsrf.properties.get.ResourceProperty;
-import org.globus.crux.wsrf.properties.get.ResourcePropertySet;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidResourcePropertyQNameFault;
-import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.ResourceUnknownFault;
 
 /**
  * ResourcePropertySet based on annotations applied to a resource class.  This will process the class
@@ -97,10 +91,10 @@ public class AnnotationResourcePropertySet implements ResourcePropertySet {
      *                              If named ResourceProperty does not exist.
      * @throws ResourceUnknownFault If the resource can not be found.
      */
-    public Object getResourceProperty(QName qname) throws InvalidResourcePropertyQNameFault, ResourceUnknownFault {
+    public Object getResourceProperty(QName qname) {
         Method method = methodMap.get(qname);
         if (method == null) {
-            throw new InvalidResourcePropertyQNameFault();
+            return null;
         }
         try {
             return method.invoke(target);

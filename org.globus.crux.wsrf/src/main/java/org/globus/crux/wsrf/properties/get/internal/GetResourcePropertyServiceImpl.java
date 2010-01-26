@@ -5,8 +5,8 @@ import java.util.ResourceBundle;
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
+import org.globus.crux.core.state.ResourcePropertySet;
 import org.globus.crux.wsrf.properties.get.GetResourcePropertyService;
-import org.globus.crux.wsrf.properties.get.ResourcePropertySet;
 import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.GetResourcePropertyResponse;
 import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.InvalidResourcePropertyQNameFault;
 import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.ResourceUnknownFault;

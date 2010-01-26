@@ -20,7 +20,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import org.globus.crux.wsrf.properties.get.ResourcePropertySet;
+import org.globus.crux.core.state.ResourcePropertySet;
 import org.globus.crux.wsrf.properties.internal.ResourcePropertySetMarshaller;
 import org.globus.crux.wsrf.properties.query.QueryEngine;
 import org.oasis_open.docs.wsrf._2004._06.wsrf_ws_resourceproperties_1_2_draft_01.QueryEvaluationErrorFault;

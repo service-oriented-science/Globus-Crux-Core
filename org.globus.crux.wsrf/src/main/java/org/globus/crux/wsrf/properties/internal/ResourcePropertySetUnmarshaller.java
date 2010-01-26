@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import javax.xml.transform.Source;
 
-import org.globus.crux.wsrf.properties.get.ResourcePropertySet;
+import org.globus.crux.core.state.ResourcePropertySet;
 
 /**
  * This interface is used to convert an XML Source into ResourcePropertySet.  Often, this will be combined

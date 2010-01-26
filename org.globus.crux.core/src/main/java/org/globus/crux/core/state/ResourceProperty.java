@@ -1,4 +1,4 @@
-package org.globus.crux.wsrf.properties.get;
+package org.globus.crux.core.state;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

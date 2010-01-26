@@ -1,11 +1,9 @@
-package org.globus.crux.wsrf.lifetime;
+package org.globus.crux.core.state;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
-
-import org.globus.crux.wsrf.StatefulMethod;
 
 /**
  * This marks a method as a destruct method.  After this method is called, the resource

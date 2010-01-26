@@ -4,8 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ResourceBundle;
 
-import org.globus.crux.wsrf.StatefulService;
-import org.globus.crux.wsrf.lifetime.DestroyState;
+import org.globus.crux.core.state.DestroyState;
+import org.globus.crux.core.state.StatefulService;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

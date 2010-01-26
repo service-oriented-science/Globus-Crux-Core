@@ -1,11 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Test Bundle
+Bundle-Name: Crux Test Bundle
 Bundle-SymbolicName: org.globus.crux.test
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.0.1.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Spring-Context: *
-Import-Package: org.globus.crux.wsrf,
- org.globus.crux.wsrf.lifetime,
- org.globus.crux.wsrf.properties.get,
- org.globus.crux.wsrf.properties.query
+Import-Package: org.globus.crux.core,
+ org.globus.crux.core.state

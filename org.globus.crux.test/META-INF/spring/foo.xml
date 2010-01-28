@@ -3,7 +3,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:osgi="http://www.springframework.org/schema/osgi"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
-	
-	<bean name="fooService" class="org.globus.crux.test.FooServiceImpl" />
+
+	<bean name="serviceImpl" class="org.globus.crux.test.FooServiceImpl" />
+
+	<bean name="dummyInterceptor" class="org.globus.crux.test.DummyInterceptor" />
+
+	<bean name="fooCruxService" class="org.globus.crux.core.CruxServiceImpl">
+		<property name="serviceImpl" ref="serviceImpl" />
+		<property name="iface" value="org.globus.crux.test.FooService" />
+		<property name="interceptors">
+			<list>
+				<ref bean="dummyInterceptor" />
+			</list>
+		</property>		
+	</bean>
     
 </beans>

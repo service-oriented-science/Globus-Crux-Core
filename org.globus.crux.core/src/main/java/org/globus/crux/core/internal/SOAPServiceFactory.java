@@ -6,17 +6,24 @@ import java.util.Map;
 
 import org.globus.crux.core.CruxService;
 import org.globus.crux.core.OperationProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author Doreen Seider
  */
 public class SOAPServiceFactory {
 	
+    private Logger logger = LoggerFactory.getLogger(getClass());
     private List<OperationProvider> operationProviders;
 
     public void addService(CruxService service, Map properties) throws Exception {
-    	System.out.println(">>> service added: " +  service.getInterface().getCanonicalName());
-    	CruxMixin cruxMixin = new CruxMixin(service, service.getInterface());
+    	logger.error("crux service added: "
+    			+ "\n service impl - " + service.getServiceImpl().toString()
+    			+ "\n service iface - " + service.getIface().getCanonicalName()
+    			+ "\n interceptors - " + service.getInterceptors().toString());    	
+    	
+    	CruxMixin cruxMixin = new CruxMixin(service.getServiceImpl(), service.getIface());
     	for (OperationProvider provider : operationProviders) {
     		cruxMixin.addProvider(provider);
     	}
@@ -26,13 +33,13 @@ public class SOAPServiceFactory {
     }
 
     public void removeService(CruxService service, Map properties) {
-    	System.out.println(">>> crux service removed: " +  service.getInterface().getCanonicalName());
-    	// FIXME remove the appropriate endpoint
+    	logger.debug("crux service removed: " +  service.getIface().getCanonicalName());
+    	// FIXME destroy the appropriate endpoint
     }
 	
     public void setOperationProviders(List<OperationProvider> operationProviders) {
     	this.operationProviders = operationProviders;
-    	System.out.println(">>> " + operationProviders.size() + " operation providers added");
+    	logger.debug(operationProviders.size() + " operation providers added");
     }
 
 }

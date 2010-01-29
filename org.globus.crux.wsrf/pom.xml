@@ -4,116 +4,139 @@
 	<groupId>org.globus.crux</groupId>
 	<artifactId>wsrf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>bundle</packaging>
 
+	<properties>
+		<bundle.symbolicName>org.globus.crux.wsrf</bundle.symbolicName>
+		<bundle.namespace>org.globus.crux</bundle.namespace>
+	</properties>
+	
+	<name>${bundle.symbolicName} [${bundle.namespace}]</name>
+	
 	<dependencies>
 	    <dependency>
             <groupId>aopalliance</groupId>
             <artifactId>aopalliance</artifactId>
             <version>1.0</version>
+            <scope>provided</scope>
         </dependency>
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
 			<version>2.1</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>opensymphony</groupId>
 			<artifactId>quartz-all</artifactId>
 			<version>1.6.6</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jaxws_2.1_spec</artifactId>
 			<version>1.0</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
 			<version>1.1.2</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.globus.crux</groupId>
 			<artifactId>core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.5.8</version>
-			<scope>compile</scope>
+			<scope>provided</scope>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.5.8</version>
-			<scope>runtime</scope>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.felix</groupId>
+						<artifactId>org.osgi.core</artifactId>
+						<version>1.0.0</version>
+						<scope>compile</scope>
+					</dependency>
+				</dependencies>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>1.2.1</version>
+				<extensions>true</extensions>
 				<configuration>
-					<archive>
-						<manifestFile>META-INF/MANIFEST.MF</manifestFile>
-					</archive>
+					<manifestLocation>META-INF</manifestLocation>
+					<instructions>
+						<Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
+						<Bundle-Version>${pom.version}</Bundle-Version>
+						<Private-Package>${bundle.symbolicName}.*.internal,org.oasis_open.*,org.w3.*</Private-Package>
+						<Export-Package>${bundle.symbolicName}.lifetime,${bundle.symbolicName}.properties.get,${bundle.symbolicName}.properties.query</Export-Package>
+						<Import-Package>!${bundle.symbolicName}.lifetime,!${bundle.symbolicName}.properties.get,!${bundle.symbolicName}.properties.query,*</Import-Package>
+					</instructions>
 				</configuration>
 			</plugin>
-            <plugin>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-codegen-plugin</artifactId>
-                <version>2.2.3</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>net.java.dev.jaxb2-commons</groupId>
-                        <artifactId>jaxb-fluent-api</artifactId>
-                        <version>2.1.8</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.jvnet.jaxb2-commons</groupId>
-                        <artifactId>collection-setter-injector</artifactId>
-                        <version>1.0</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.jvnet.jaxb2-commons</groupId>
-                        <artifactId>value-constructor-plugin</artifactId>
-                        <version>1.0</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <id>rp</id>
-                        <configuration>
-                            <wsdlOptions>
-                                <wsdlOption>
-                                    <wsdl>src/main/resources/wsdl/properties/draft/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl</wsdl>
-                                    <bindingFiles>
-                                        <bindingFile>${basedir}/src/main/resources/wsdl/basebinding.xjb</bindingFile>
-                                    </bindingFiles>
-                                </wsdlOption>
-                                <wsdlOption>
-                                    <wsdl>src/main/resources/wsdl/lifetime/draft/WS-ResourceLifetime.wsdl</wsdl>
-                                    <bindingFiles>
-                                        <bindingFile>${basedir}/src/main/resources/wsdl/basebinding.xjb</bindingFile>
-                                    </bindingFiles>
-                                </wsdlOption>
-                            </wsdlOptions>
-                        </configuration>
-                        <goals>
-                            <goal>wsdl2java</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
+			<plugin>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-codegen-plugin</artifactId>
+				<version>2.2.3</version>
+				<dependencies>
+					<dependency>
+						<groupId>net.java.dev.jaxb2-commons</groupId>
+						<artifactId>jaxb-fluent-api</artifactId>
+						<version>2.1.8</version>
+					</dependency>
+					<dependency>
+						<groupId>org.jvnet.jaxb2-commons</groupId>
+						<artifactId>collection-setter-injector</artifactId>
+						<version>1.0</version>
+					</dependency>
+					<dependency>
+						<groupId>org.jvnet.jaxb2-commons</groupId>
+						<artifactId>value-constructor-plugin</artifactId>
+						<version>1.0</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>rp</id>
+						<configuration>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>src/main/resources/wsdl/properties/draft/wsrf-WS-ResourceProperties-1.2-draft-01.wsdl</wsdl>
+									<bindingFiles>
+										<bindingFile>${basedir}/src/main/resources/wsdl/basebinding.xjb</bindingFile>
+									</bindingFiles>
+								</wsdlOption>
+								<wsdlOption>
+									<wsdl>src/main/resources/wsdl/lifetime/draft/WS-ResourceLifetime.wsdl</wsdl>
+									<bindingFiles>
+										<bindingFile>${basedir}/src/main/resources/wsdl/basebinding.xjb</bindingFile>
+									</bindingFiles>
+								</wsdlOption>
+							</wsdlOptions>
+						</configuration>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.0.2</version>
 				<configuration>

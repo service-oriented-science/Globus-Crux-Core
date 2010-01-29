@@ -10,6 +10,8 @@
 		<bundle.symbolicName>org.globus.crux.test</bundle.symbolicName>
 		<bundle.namespace>org.globus.crux</bundle.namespace>
 	</properties>
+	
+	<name>${bundle.symbolicName} [${bundle.namespace}]</name>
 
 	<dependencies>
 		<dependency>
